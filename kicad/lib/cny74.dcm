@@ -1,0 +1,8 @@
+EESchema-DOCLIB  Version 2.0
+#
+$CMP CNY74-2
+D DIP8, DC Dual Optocoupler, Vce 70V, CTR 100%
+K NPN DC Dual Optocoupler
+$ENDCMP
+#
+#End Doc Library

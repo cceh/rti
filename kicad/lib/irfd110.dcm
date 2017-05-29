@@ -1,0 +1,9 @@
+EESchema-DOCLIB  Version 2.0
+#
+$CMP IRFD110
+D 100V Vds, 1A Id, MOSFET, DIP-4
+K N-Channel MOSFET
+F http://www.irf.com/product-info/datasheets/data/irfd110.pdf
+$ENDCMP
+#
+#End Doc Library

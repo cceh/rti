@@ -1,14 +1,10 @@
-#include "ledstrip.h"
-
 #include <avr/io.h>
-#include <avr/interrupt.h>
 #include <util/delay.h>
 
-#define __enable_irq sei
-#define __disable_irq cli
+#include "ledstrip.h"
 
 #if !(F_CPU == 16000000)
-#error "Only devices with a 16 MHz clock are supported."
+  #error "Only devices with a 16 MHz clock are supported."
 #endif
 
 void writeStrip (unsigned int pin, rgb_color *colors, unsigned int count)
@@ -22,7 +18,7 @@ void writeStrip (unsigned int pin, rgb_color *colors, unsigned int count)
     unsigned char *bytes = (unsigned char *) colors;
     count *= 3;              // Count of colors => count of bytes
 
-    __disable_irq ();        // Because of the tight timing
+    cli ();        // Because of the tight timing
     while (count--) {
         unsigned char color = *bytes++;
         uint8_t bits = 8;
@@ -83,7 +79,6 @@ void writeStrip (unsigned int pin, rgb_color *colors, unsigned int count)
            );
         } while (--bits);
     }
-    __enable_irq ();
-
-    delayMicroseconds (50);  // This sends a reset signal to the leds
+    delayMicroseconds (100);  // This sends a reset signal to the leds
+    sei ();
 }
