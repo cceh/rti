@@ -12,22 +12,25 @@
     #include "canon.h"
 #endif
 
-#define LED_PIN            13  // Arduino green led
+#define READY_PIN          13  // To ready status LED (Arduino green LED / SCK)
+#define START_PIN           2  // Start button (the user wants to start)
 
-#define TRIGGER_PIN        11  // Tip of the 2,5mm jack  (trigger the camera)
-#define WAKEUP_PIN         10  // Ring of the 2,5mm jack (wakeup the camera)
-#define FLASH_PIN           2  // Tip of the 3,5mm jack  (the camera wants us to flash)
-#define START_PIN           3  // Start button           (the user wants to start)
-#define FLASH_INSERTED_PIN  4  // Ring of the 3,5mm jack (jack presence detection)
+#define TRIGGER_PIN         9  // To tip of the 2,5mm jack  (trigger the camera)
+#define WAKEUP_PIN         10  // To ring of the 2,5mm jack (wakeup the camera)
+
+#define FLASH_PIN           3  // From tip of the 3,5mm jack  (the camera wants us to flash)
+#define HAVE_FLASH_PIN      8  // From ring of the 3,5mm jack (jack presence detection)
+
 
 #ifdef LED_MATRIX
     // the led matrix 595 driver
     #define LED_COUNT  16
     #define LED_COLS    4
-    #define SER_IN_PIN  5
-    #define SRCK_PIN    6
-    #define RCK_PIN     7
-    #define G_PIN       8
+
+    #define SER_IN_PIN  4
+    #define SRCK_PIN    5
+    #define RCK_PIN     6
+    #define G_PIN       7
     uint8_t ser_in_port;
     uint8_t ser_in_mask;
     uint8_t srck_port;
@@ -37,7 +40,7 @@
 #endif
 
 #ifdef LED_STRIP
-    #define LED_STRIP_PIN      12
+    #define LED_STRIP_PIN       4
     #define LED_COUNT          10
     rgb_color colors[LED_COUNT];
 #endif
@@ -46,6 +49,7 @@ volatile uint16_t index   = 0;
 volatile uint8_t  index_changed = 0;
 volatile uint8_t  blink   = 0;
 volatile uint8_t  blink_changed = 0;
+volatile uint8_t  camera_started = 0;
 volatile unsigned long lastFlashTime = 0;
 volatile unsigned long lastStartTime = 0;
 
@@ -56,12 +60,14 @@ uint16_t exposure = 10;  // 1s / 60
 const unsigned long debounceDelay = 50;
 
 void start_camera () {
+    camera_started = 1;
     digitalWrite (WAKEUP_PIN, HIGH);
     delay (250);
     digitalWrite (TRIGGER_PIN, HIGH);
 }
 
 void stop_camera () {
+    camera_started = 0;
     digitalWrite (WAKEUP_PIN, LOW);
     digitalWrite (TRIGGER_PIN, LOW);
 }
@@ -104,7 +110,11 @@ void on_start () {
     if ((millis () - lastStartTime) > debounceDelay) {
         index = 0;
         index_changed = 1;
-        start_camera ();
+        if (camera_started) {
+            stop_camera ();
+        } else {
+            start_camera ();
+        }
     }
     lastStartTime = millis ();
 }
@@ -116,6 +126,11 @@ void on_flash () {
         setTimeout (exposure);
         ++index;
         index_changed = 1;
+        // This lets you start the process by pressing on the camera's trigger
+        // button or using a remote connected directly to the camera.
+        if (!camera_started) {
+            start_camera ();
+        }
         if (index >= LED_COUNT) {
             stop_camera ();
         }
@@ -125,7 +140,8 @@ void on_flash () {
 
 ISR (TIMER1_COMPA_vect) {
     // Only turn the LEDs off in this function. If the camera flashes again
-    // before the timeout, we will miss this altogether.
+    // before the timeout, on_flash () will reset the timer and we will miss
+    // this function altogether.
 
     // Stop the timer
     TCCR1B = 0;
@@ -134,11 +150,11 @@ ISR (TIMER1_COMPA_vect) {
 }
 
 void setup () {
-    pinMode (FLASH_PIN,          INPUT_PULLUP);
-    pinMode (START_PIN,          INPUT_PULLUP);
-    pinMode (FLASH_INSERTED_PIN, INPUT_PULLUP);
-    pinMode (TRIGGER_PIN,        OUTPUT);
-    pinMode (WAKEUP_PIN,         OUTPUT);
+    pinMode (FLASH_PIN,      INPUT_PULLUP);
+    pinMode (START_PIN,      INPUT_PULLUP);
+    pinMode (HAVE_FLASH_PIN, INPUT_PULLUP);
+    pinMode (TRIGGER_PIN,    OUTPUT);
+    pinMode (WAKEUP_PIN,     OUTPUT);
 
     stop_camera ();
 
@@ -200,7 +216,7 @@ void loop () {
 
     }
     if (blink_changed) {
-        digitalWrite (LED_PIN, (blink & 1) ? HIGH : LOW);
+        digitalWrite (READY_PIN, (blink & 1) ? HIGH : LOW);
         blink_changed = 0;
     }
     sleep_mode ();
