@@ -5,9 +5,9 @@ The main goals of this design are:
 
 - bright and affordable LEDs,
 
-- user-solderable off the shelf-components.
+- user-solderable off-the-shelf components.
 
-Todays high performance LEDs are designed for surface mounting, which makes them
+High performance LEDs are designed for surface mounting, which makes them
 difficult to solder by traditional means.  Most of them are also very small.
 After research I settled on this LED make:
 
@@ -43,6 +43,7 @@ V_f (max) 22.2V
 @ a forward current of 200mA.
 
 ::
+
    LM 317 Drop-Out Voltage                     =  1.65V (@ I_O = 200mA, T_j = 25°C)
    LM 317 V_adjust                             =  1.25V
    BD 139 Collector-Emitter Saturation Voltage =  0.5V  (@ I_C =  0.5A, I_B =  50mA)

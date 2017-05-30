@@ -1,4 +1,4 @@
-update=Mo 29 Mai 2017 09:42:02 CEST
+update=Di 30 Mai 2017 12:19:06 CEST
 version=1
 last_client=eeschema
 [pcbnew]
@@ -41,3 +41,13 @@ LibName9=regul
 LibName10=switches
 LibName11=transistors
 LibName12=modules
+[schematic_editor]
+version=1
+PageLayoutDescrFile=
+PlotDirectoryName=
+SubpartIdSeparator=0
+SubpartFirstId=65
+NetFmtName=
+SpiceForceRefPrefix=0
+SpiceUseNetNumbers=0
+LabSize=60
