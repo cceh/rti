@@ -1,5 +1,10 @@
 *~
 *bak
 *bck
+
 bin/*
-rti-cache.lib
+
+kicad/*bin
+kicad/*dsn
+kicad/*ses
+kicad/rti-cache.lib

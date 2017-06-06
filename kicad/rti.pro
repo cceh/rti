@@ -1,6 +1,6 @@
-update=Di 30 Mai 2017 12:19:06 CEST
+update=Di 06 Jun 2017 11:36:49 CEST
 version=1
-last_client=eeschema
+last_client=kicad
 [pcbnew]
 version=1
 LastNetListRead=
@@ -27,7 +27,7 @@ NetIExt=net
 version=1
 [eeschema]
 version=1
-LibDir=lib;/home/highlander/kicad_sources/library-repos/kicad-library/library
+LibDir=lib;/home/highlander/kicad-sources/library-repos/kicad-library/library
 [eeschema/libraries]
 LibName1=lib/cny74
 LibName2=lib/tpic6b595
@@ -41,6 +41,7 @@ LibName9=regul
 LibName10=switches
 LibName11=transistors
 LibName12=modules
+LibName13=lib/cceh-logo
 [schematic_editor]
 version=1
 PageLayoutDescrFile=
