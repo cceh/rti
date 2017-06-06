@@ -7,4 +7,6 @@ bin/*
 kicad/*bin
 kicad/*dsn
 kicad/*ses
-kicad/rti-cache.lib
+kicad/*rules
+kicad/gui_defaults.par
+kicad/*-cache.lib
