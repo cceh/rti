@@ -1553,17 +1553,17 @@ Text Notes 14000 7700 0    60   ~ 0
 Use CAT5 or better cable
 Text Label 13600 4700 1    60   ~ 0
 An0
-Text Label 13800 4700 1    60   ~ 0
-An1
-Text Label 14000 4700 1    60   ~ 0
-An2
-Text Label 14200 4700 1    60   ~ 0
-An3
 Text Label 14900 4700 1    60   ~ 0
-An4
+An1
+Text Label 13800 4700 1    60   ~ 0
+An2
 Text Label 15100 4700 1    60   ~ 0
-An5
+An3
+Text Label 14000 4700 1    60   ~ 0
+An4
 Text Label 15300 4700 1    60   ~ 0
+An5
+Text Label 14200 4700 1    60   ~ 0
 An6
 Text Label 15500 4700 1    60   ~ 0
 An7
@@ -1585,17 +1585,17 @@ Wire Wire Line
 	13600 5600 13600 5200
 Text Label 13600 5200 3    60   ~ 0
 Cat0
-Text Label 13800 5200 3    60   ~ 0
-Cat1
-Text Label 14000 5200 3    60   ~ 0
-Cat2
-Text Label 14200 5200 3    60   ~ 0
-Cat3
 Text Label 14900 5200 3    60   ~ 0
-Cat4
+Cat1
+Text Label 13800 5200 3    60   ~ 0
+Cat2
 Text Label 15100 5200 3    60   ~ 0
-Cat5
+Cat3
+Text Label 14000 5200 3    60   ~ 0
+Cat4
 Text Label 15300 5200 3    60   ~ 0
+Cat5
+Text Label 14200 5200 3    60   ~ 0
 Cat6
 Text Label 15500 5200 3    60   ~ 0
 Cat7
