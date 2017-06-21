@@ -1,5 +1,6 @@
 (fp_lib_table
   (lib (name Connectors_Anonymous)(type KiCad)(uri "$(KIPRJMOD)/lib/Connectors_Anonymous.pretty")(options "")(descr ""))
   (lib (name Connectors_Lumberg)(type KiCad)(uri "$(KIPRJMOD)/lib/Connectors_Lumberg.pretty")(options "")(descr ""))
+  (lib (name Connectors_Neutrik)(type KiCad)(uri "$(KIPRJMOD)/lib/Connectors_Neutrik.pretty")(options "")(descr ""))
   (lib (name Logos)(type KiCad)(uri "$(KIPRJMOD)/lib/Logos.pretty")(options "")(descr ""))
 )
