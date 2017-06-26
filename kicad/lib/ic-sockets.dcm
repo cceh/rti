@@ -1,0 +1,23 @@
+EESchema-DOCLIB  Version 2.0
+#
+$CMP DIP28
+D DIP28 W15,24mm Socket
+K DIP Socket
+$ENDCMP
+#
+$CMP SDIP20
+D DIP20 W7,62mm Socket
+K DIP SDIP Socket
+$ENDCMP
+#
+$CMP SDIP28
+D DIP28 W7,62mm Socket
+K DIP SDIP Socket
+$ENDCMP
+#
+$CMP SDIP8
+D DIP8 W7,62mm Socket
+K DIP SDIP Socket
+$ENDCMP
+#
+#End Doc Library

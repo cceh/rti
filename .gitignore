@@ -1,6 +1,7 @@
 *~
 *bak
 *bck
+*.pyc
 
 bin/*
 
@@ -9,4 +10,7 @@ kicad/*dsn
 kicad/*ses
 kicad/*rules
 kicad/gui_defaults.par
-kicad/*-cache.lib
+kicad/*-cache.*
+
+*/gerber/*
+*/__pycache__/*

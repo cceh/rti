@@ -1,4 +1,4 @@
-update=Di 06 Jun 2017 11:36:49 CEST
+update=Fr 23 Jun 2017 22:57:11 CEST
 version=1
 last_client=kicad
 [pcbnew]
@@ -25,23 +25,6 @@ version=1
 NetIExt=net
 [general]
 version=1
-[eeschema]
-version=1
-LibDir=lib;/home/highlander/kicad-sources/library-repos/kicad-library/library
-[eeschema/libraries]
-LibName1=lib/cny74
-LibName2=lib/tpic6b595
-LibName3=atmel
-LibName4=conn
-LibName5=device
-LibName6=interface
-LibName7=opto
-LibName8=power
-LibName9=regul
-LibName10=switches
-LibName11=transistors
-LibName12=modules
-LibName13=lib/cceh-logo
 [schematic_editor]
 version=1
 PageLayoutDescrFile=
@@ -52,3 +35,20 @@ NetFmtName=
 SpiceForceRefPrefix=0
 SpiceUseNetNumbers=0
 LabSize=60
+[eeschema]
+version=1
+LibDir=lib;/home/highlander/kicad-sources/library-repos/kicad-library/library
+[eeschema/libraries]
+LibName1=lib/cceh-logo
+LibName2=lib/fischer-elektronik
+LibName3=lib/ic-sockets
+LibName4=lib/tpic6b595
+LibName5=atmel
+LibName6=conn
+LibName7=device
+LibName8=opto
+LibName9=power
+LibName10=regul
+LibName11=switches
+LibName12=transistors
+LibName13=graphic

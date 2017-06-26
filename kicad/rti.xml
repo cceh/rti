@@ -2,11 +2,11 @@
 <export version="D">
   <design>
     <source>/home/highlander/uni/prj/rti/rti/kicad/rti.sch</source>
-    <date>Mo 19 Jun 2017 17:21:43 CEST</date>
+    <date>So 25 Jun 2017 21:05:04 CEST</date>
     <tool>Eeschema 4.0.5+dfsg1-4</tool>
     <sheet number="1" name="/" tstamps="/">
       <title_block>
-        <title>LED-Driver for RTI</title>
+        <title>LED-Driver for RTI v 1.0</title>
         <company>CCeH Secret Labs</company>
         <rev>0.2</rev>
         <date/>
@@ -17,17 +17,33 @@
         <comment number="4" value=""/>
       </title_block>
     </sheet>
+    <sheet number="2" name="/rti-case/" tstamps="/594DF0F9/">
+      <title_block>
+        <title>Case for RTI LED-Driver</title>
+        <company>CCeH Secret Labs</company>
+        <rev/>
+        <date/>
+        <source>rti-case.sch</source>
+        <comment number="1" value=""/>
+        <comment number="2" value=""/>
+        <comment number="3" value=""/>
+        <comment number="4" value=""/>
+      </title_block>
+    </sheet>
   </design>
   <components>
     <comp ref="R4">
-      <value>180R</value>
+      <value>180</value>
       <footprint>Resistors_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P2.54mm_Vertical</footprint>
+      <fields>
+        <field name="Reichelt">11563</field>
+      </fields>
       <libsource lib="device" part="R"/>
       <sheetpath names="/" tstamps="/"/>
       <tstamp>5919F01C</tstamp>
     </comp>
     <comp ref="R5">
-      <value>180R</value>
+      <value>180</value>
       <footprint>Resistors_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P2.54mm_Vertical</footprint>
       <libsource lib="device" part="R"/>
       <sheetpath names="/" tstamps="/"/>
@@ -36,13 +52,22 @@
     <comp ref="U5">
       <value>LM317T</value>
       <footprint>TO_SOT_Packages_THT:TO-220_Vertical</footprint>
+      <fields>
+        <field name="Octopart">lm317t-stmicroelectronics-55399324</field>
+        <field name="Reichelt">10458</field>
+      </fields>
       <libsource lib="regul" part="LM317T"/>
       <sheetpath names="/" tstamps="/"/>
       <tstamp>5919F88F</tstamp>
     </comp>
     <comp ref="R6">
-      <value>6R2 0W25</value>
+      <value>6R2</value>
       <footprint>Resistors_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P2.54mm_Vertical</footprint>
+      <fields>
+        <field name="Rating">0W25 1%</field>
+        <field name="Reichelt">11898</field>
+        <field name="Criticality">important</field>
+      </fields>
       <libsource lib="device" part="R"/>
       <sheetpath names="/" tstamps="/"/>
       <tstamp>5919F94A</tstamp>
@@ -54,44 +79,72 @@
       <sheetpath names="/" tstamps="/"/>
       <tstamp>591EB55F</tstamp>
     </comp>
-    <comp ref="C1">
+    <comp ref="C2">
       <value>100n</value>
-      <footprint>Capacitors_THT:C_Disc_D10.0mm_W2.5mm_P5.00mm</footprint>
+      <footprint>Capacitors_THT:C_Disc_D7.5mm_W2.5mm_P5.00mm</footprint>
+      <fields>
+        <field name="Rating">63V</field>
+      </fields>
       <libsource lib="device" part="C"/>
       <sheetpath names="/" tstamps="/"/>
       <tstamp>59218313</tstamp>
     </comp>
     <comp ref="SW2">
-      <value>Start</value>
+      <value>Switch</value>
       <footprint>Buttons_Switches_THT:SW_PUSH_6mm_h7.3mm</footprint>
+      <fields>
+        <field name="Reichelt">44583</field>
+        <field name="Legend">Start</field>
+      </fields>
       <libsource lib="switches" part="SW_Push"/>
       <sheetpath names="/" tstamps="/"/>
       <tstamp>5923DCA7</tstamp>
     </comp>
     <comp ref="U2">
-      <value>TPIC6B595</value>
+      <value>TPIC6B595N</value>
       <footprint>Housings_DIP:DIP-20_W7.62mm</footprint>
-      <libsource lib="tpic6b595" part="TPIC6B595"/>
+      <fields>
+        <field name="Criticality">critical</field>
+        <field name="Vendor">Texas Instruments</field>
+        <field name="PartNo">TPIC6B595N</field>
+      </fields>
+      <libsource lib="tpic6b595" part="TPIC6B595N"/>
       <sheetpath names="/" tstamps="/"/>
       <tstamp>59247027</tstamp>
     </comp>
     <comp ref="U3">
-      <value>TPIC6B595</value>
+      <value>TPIC6B595N</value>
       <footprint>Housings_DIP:DIP-20_W7.62mm</footprint>
-      <libsource lib="tpic6b595" part="TPIC6B595"/>
+      <fields>
+        <field name="Criticality">critical</field>
+        <field name="Vendor">Texas Instruments</field>
+        <field name="PartNo">TPIC6B595N</field>
+      </fields>
+      <libsource lib="tpic6b595" part="TPIC6B595N"/>
       <sheetpath names="/" tstamps="/"/>
       <tstamp>592470BF</tstamp>
     </comp>
     <comp ref="J10">
-      <value>ICSP</value>
+      <value>Header 2x3</value>
       <footprint>Pin_Headers:Pin_Header_Straight_2x03_Pitch2.54mm</footprint>
+      <fields>
+        <field name="Reichelt">119893</field>
+        <field name="Legend">ICSP</field>
+      </fields>
       <libsource lib="conn" part="CONN_02X03"/>
       <sheetpath names="/" tstamps="/"/>
       <tstamp>592AF76D</tstamp>
     </comp>
     <comp ref="U1">
-      <value>ATMEGA328P-PU</value>
+      <value>ATMEGA328-PU</value>
       <footprint>Housings_DIP:DIP-28_W7.62mm</footprint>
+      <fields>
+        <field name="Octopart">atmega328-pu-microchip-77760210</field>
+        <field name="Reichelt">119685</field>
+        <field name="Criticality">critical</field>
+        <field name="Vendor">Microchip</field>
+        <field name="PartNo">ATMEGA328-PU</field>
+      </fields>
       <libsource lib="atmel" part="ATMEGA328P-PU"/>
       <sheetpath names="/" tstamps="/"/>
       <tstamp>592B7AC8</tstamp>
@@ -99,48 +152,68 @@
     <comp ref="Y1">
       <value>16MHz</value>
       <footprint>Crystals:Crystal_HC49-U_Vertical</footprint>
+      <fields>
+        <field name="Reichelt">32852</field>
+      </fields>
       <libsource lib="device" part="Crystal"/>
       <sheetpath names="/" tstamps="/"/>
       <tstamp>592B8E2D</tstamp>
     </comp>
-    <comp ref="C6">
-      <value>22pF</value>
-      <footprint>Capacitors_THT:C_Disc_D5.0mm_W2.5mm_P5.00mm</footprint>
+    <comp ref="C7">
+      <value>22p</value>
+      <footprint>Capacitors_THT:C_Disc_D5.0mm_W2.5mm_P2.50mm</footprint>
+      <fields>
+        <field name="Reichelt">9281</field>
+      </fields>
       <libsource lib="device" part="C"/>
       <sheetpath names="/" tstamps="/"/>
       <tstamp>592B909B</tstamp>
     </comp>
-    <comp ref="C7">
-      <value>22pF</value>
-      <footprint>Capacitors_THT:C_Disc_D5.0mm_W2.5mm_P5.00mm</footprint>
+    <comp ref="C8">
+      <value>22p</value>
+      <footprint>Capacitors_THT:C_Disc_D5.0mm_W2.5mm_P2.50mm</footprint>
       <libsource lib="device" part="C"/>
       <sheetpath names="/" tstamps="/"/>
       <tstamp>592B9117</tstamp>
     </comp>
     <comp ref="D2">
-      <value>Ready</value>
+      <value>Green</value>
       <footprint>LEDs:LED_D5.0mm</footprint>
+      <fields>
+        <field name="Reichelt">10232</field>
+        <field name="Legend">Ready</field>
+      </fields>
       <libsource lib="device" part="LED"/>
       <sheetpath names="/" tstamps="/"/>
       <tstamp>592B169F</tstamp>
     </comp>
-    <comp ref="C5">
+    <comp ref="C6">
       <value>100n</value>
-      <footprint>Capacitors_THT:C_Disc_D10.0mm_W2.5mm_P5.00mm</footprint>
+      <footprint>Capacitors_THT:C_Disc_D7.5mm_W2.5mm_P5.00mm</footprint>
+      <fields>
+        <field name="Rating">63V</field>
+      </fields>
       <libsource lib="device" part="C"/>
       <sheetpath names="/" tstamps="/"/>
       <tstamp>592C5087</tstamp>
     </comp>
-    <comp ref="C2">
-      <value>4µ7 16V</value>
+    <comp ref="C3">
+      <value>4µ7</value>
       <footprint>Capacitors_THT:CP_Radial_D5.0mm_P2.00mm</footprint>
+      <fields>
+        <field name="Rating">16V low ESR</field>
+        <field name="Reichelt">84583</field>
+      </fields>
       <libsource lib="device" part="CP"/>
       <sheetpath names="/" tstamps="/"/>
       <tstamp>592C71A9</tstamp>
     </comp>
     <comp ref="SW1">
-      <value>Reset</value>
+      <value>Switch</value>
       <footprint>Buttons_Switches_THT:SW_PUSH_6mm_h7.3mm</footprint>
+      <fields>
+        <field name="Legend">Reset</field>
+      </fields>
       <libsource lib="switches" part="SW_Push"/>
       <sheetpath names="/" tstamps="/"/>
       <tstamp>592C73B1</tstamp>
@@ -148,6 +221,9 @@
     <comp ref="R1">
       <value>1K</value>
       <footprint>Resistors_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P2.54mm_Vertical</footprint>
+      <fields>
+        <field name="Reichelt">11403</field>
+      </fields>
       <libsource lib="device" part="R"/>
       <sheetpath names="/" tstamps="/"/>
       <tstamp>592C7492</tstamp>
@@ -162,6 +238,10 @@
     <comp ref="Q1">
       <value>BD140</value>
       <footprint>TO_SOT_Packages_THT:TO-126_Vertical</footprint>
+      <fields>
+        <field name="Octopart">bd14016stu-fairchild+semiconductor-354676</field>
+        <field name="Reichelt">79489</field>
+      </fields>
       <libsource lib="transistors" part="BD140"/>
       <sheetpath names="/" tstamps="/"/>
       <tstamp>592D9DC6</tstamp>
@@ -264,23 +344,34 @@
       <sheetpath names="/" tstamps="/"/>
       <tstamp>592E10B2</tstamp>
     </comp>
-    <comp ref="C3">
+    <comp ref="C4">
       <value>1µ</value>
       <footprint>Capacitors_THT:CP_Radial_Tantal_D5.0mm_P2.50mm</footprint>
+      <fields>
+        <field name="Rating">16V Tantalum</field>
+        <field name="Reichelt">20330</field>
+      </fields>
       <libsource lib="device" part="CP1"/>
       <sheetpath names="/" tstamps="/"/>
       <tstamp>592F5917</tstamp>
     </comp>
-    <comp ref="C4">
+    <comp ref="C5">
       <value>1µ</value>
       <footprint>Capacitors_THT:CP_Radial_Tantal_D5.0mm_P2.50mm</footprint>
+      <fields>
+        <field name="Rating">16V Tantalum</field>
+      </fields>
       <libsource lib="device" part="CP1"/>
       <sheetpath names="/" tstamps="/"/>
       <tstamp>592F5C9E</tstamp>
     </comp>
     <comp ref="U6">
-      <value>LM7805CT</value>
+      <value>L7805CV</value>
       <footprint>TO_SOT_Packages_THT:TO-220_Vertical</footprint>
+      <fields>
+        <field name="Octopart">l7805cv-stmicroelectronics-39670767</field>
+        <field name="Reichelt">200897</field>
+      </fields>
       <libsource lib="regul" part="LM7805CT"/>
       <sheetpath names="/" tstamps="/"/>
       <tstamp>592EBE6A</tstamp>
@@ -295,6 +386,9 @@
     <comp ref="R7">
       <value>3K3</value>
       <footprint>Resistors_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P2.54mm_Vertical</footprint>
+      <fields>
+        <field name="Reichelt">11693</field>
+      </fields>
       <libsource lib="device" part="R"/>
       <sheetpath names="/" tstamps="/"/>
       <tstamp>59301D1C</tstamp>
@@ -344,62 +438,107 @@
     <comp ref="U4">
       <value>PC827</value>
       <footprint>Housings_DIP:DIP-8_W7.62mm</footprint>
+      <fields>
+        <field name="Octopart">ltv-827-lite-on-704500</field>
+        <field name="Reichelt">80592</field>
+      </fields>
       <libsource lib="opto" part="PC827"/>
       <sheetpath names="/" tstamps="/"/>
       <tstamp>5930F8DC</tstamp>
     </comp>
     <comp ref="J4">
-      <value>Anodes</value>
+      <value>MEBP 8-8G</value>
       <footprint>Connectors_Anonymous:MEBP_8-8G</footprint>
+      <fields>
+        <field name="Reichelt">24975</field>
+        <field name="Legend">Anodes</field>
+        <field name="Criticality">important</field>
+      </fields>
       <libsource lib="conn" part="RJ45"/>
       <sheetpath names="/" tstamps="/"/>
       <tstamp>5931BD12</tstamp>
     </comp>
     <comp ref="J5">
-      <value>Cathodes</value>
+      <value>MEBP 8-8G</value>
       <footprint>Connectors_Anonymous:MEBP_8-8G</footprint>
+      <fields>
+        <field name="Legend">Cathodes</field>
+        <field name="Criticality">important</field>
+      </fields>
       <libsource lib="conn" part="RJ45"/>
       <sheetpath names="/" tstamps="/"/>
       <tstamp>5931DC2C</tstamp>
     </comp>
     <comp ref="J11">
-      <value>Grove</value>
+      <value>JST PH 4</value>
       <footprint>Connectors_JST:JST_PH_B4B-PH-K_04x2.00mm_Straight</footprint>
+      <fields>
+        <field name="Octopart">b4b-ph-k-s-jst-248692</field>
+        <field name="Reichelt">185051</field>
+        <field name="Legend">Grove</field>
+        <field name="Criticality">important</field>
+        <field name="Vendor">JST</field>
+        <field name="PartNo">B4B-PH-K-S</field>
+      </fields>
       <libsource lib="conn" part="CONN_01X04"/>
       <sheetpath names="/" tstamps="/"/>
       <tstamp>5935510A</tstamp>
     </comp>
     <comp ref="J9">
-      <value>Start</value>
+      <value>JST PH 3</value>
       <footprint>Connectors_JST:JST_PH_B3B-PH-K_03x2.00mm_Straight</footprint>
+      <fields>
+        <field name="Legend">Start</field>
+        <field name="Criticality">important</field>
+      </fields>
       <libsource lib="conn" part="CONN_01X03"/>
       <sheetpath names="/" tstamps="/"/>
       <tstamp>5935DCA9</tstamp>
     </comp>
     <comp ref="J6">
-      <value>Trigger</value>
+      <value>JST PH 3</value>
       <footprint>Connectors_JST:JST_PH_B3B-PH-K_03x2.00mm_Straight</footprint>
+      <fields>
+        <field name="Legend">Trigger</field>
+        <field name="Criticality">important</field>
+      </fields>
       <libsource lib="conn" part="CONN_01X03"/>
       <sheetpath names="/" tstamps="/"/>
       <tstamp>5935FED7</tstamp>
     </comp>
     <comp ref="J7">
-      <value>Flash</value>
+      <value>JST PH 3</value>
       <footprint>Connectors_JST:JST_PH_B3B-PH-K_03x2.00mm_Straight</footprint>
+      <fields>
+        <field name="Octopart">b3b-ph-k-s-jst-248686</field>
+        <field name="Reichelt">185050</field>
+        <field name="Legend">Flash</field>
+        <field name="Criticality">important</field>
+        <field name="Vendor">JST</field>
+        <field name="PartNo">B3B-PH-K-S</field>
+      </fields>
       <libsource lib="conn" part="CONN_01X03"/>
       <sheetpath names="/" tstamps="/"/>
       <tstamp>5936000A</tstamp>
     </comp>
     <comp ref="J8">
-      <value>Reset</value>
+      <value>JST PH 3</value>
       <footprint>Connectors_JST:JST_PH_B3B-PH-K_03x2.00mm_Straight</footprint>
+      <fields>
+        <field name="Legend">Reset</field>
+        <field name="Criticality">important</field>
+      </fields>
       <libsource lib="conn" part="CONN_01X03"/>
       <sheetpath names="/" tstamps="/"/>
       <tstamp>5936FA61</tstamp>
     </comp>
     <comp ref="D1">
-      <value>Busy</value>
+      <value>Red</value>
       <footprint>LEDs:LED_D5.0mm</footprint>
+      <fields>
+        <field name="Reichelt">10233</field>
+        <field name="Legend">Busy</field>
+      </fields>
       <libsource lib="device" part="LED"/>
       <sheetpath names="/" tstamps="/"/>
       <tstamp>59464D3B</tstamp>
@@ -407,30 +546,295 @@
     <comp ref="R2">
       <value>330</value>
       <footprint>Resistors_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P2.54mm_Vertical</footprint>
+      <fields>
+        <field name="Reichelt">11733</field>
+      </fields>
       <libsource lib="device" part="R"/>
       <sheetpath names="/" tstamps="/"/>
       <tstamp>59464EBB</tstamp>
     </comp>
     <comp ref="J3">
-      <value>Flash</value>
+      <value>NRJ6HF</value>
       <footprint>Connectors_Neutrik:NRJ6HF</footprint>
+      <fields>
+        <field name="Rating">no chassis ground</field>
+        <field name="Legend">Flash</field>
+        <field name="Criticality">critical</field>
+        <field name="Vendor">Neutrik</field>
+        <field name="PartNo">NRJ6HF</field>
+      </fields>
       <libsource lib="conn" part="Audio-Jack-3_3Switches"/>
       <sheetpath names="/" tstamps="/"/>
       <tstamp>59483C0B</tstamp>
     </comp>
     <comp ref="J2">
-      <value>Trigger</value>
+      <value>NRJ6HF</value>
       <footprint>Connectors_Neutrik:NRJ6HF</footprint>
+      <fields>
+        <field name="Rating">no chassis ground</field>
+        <field name="Octopart">nrj6hf-neutrik-758943</field>
+        <field name="Reichelt">116984</field>
+        <field name="Legend">Trigger</field>
+        <field name="Criticality">critical</field>
+        <field name="Vendor">Neutrik</field>
+        <field name="PartNo">NRJ6HF</field>
+      </fields>
       <libsource lib="conn" part="Audio-Jack-3_3Switches"/>
       <sheetpath names="/" tstamps="/"/>
       <tstamp>59488F99</tstamp>
     </comp>
     <comp ref="J1">
-      <value>28V 250mA</value>
-      <footprint>Connectors_Terminal_Blocks:TerminalBlock_Pheonix_MKDS1.5-2pol</footprint>
-      <libsource lib="conn" part="CONN_01X02"/>
+      <value>Phoenix MKDS</value>
+      <footprint>Connectors_Terminal_Blocks:TerminalBlock_Pheonix_MKDS1.5-3pol</footprint>
+      <fields>
+        <field name="Octopart">1729131-phoenix+contact-5372</field>
+        <field name="Reichelt">169872</field>
+        <field name="Legend">Power</field>
+        <field name="Criticality">important</field>
+        <field name="Vendor">PhoenixContact</field>
+        <field name="PartNo">1715035</field>
+      </fields>
+      <libsource lib="conn" part="CONN_01X03"/>
       <sheetpath names="/" tstamps="/"/>
-      <tstamp>594BEC8D</tstamp>
+      <tstamp>5948DC94</tstamp>
+    </comp>
+    <comp ref="C1">
+      <value>100n</value>
+      <footprint>Capacitors_THT:C_Disc_D7.5mm_W2.5mm_P5.00mm</footprint>
+      <fields>
+        <field name="Rating">63V</field>
+        <field name="Reichelt">12349</field>
+      </fields>
+      <libsource lib="device" part="C"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>594905CB</tstamp>
+    </comp>
+    <comp ref="SW3">
+      <value>Red</value>
+      <fields>
+        <field name="Octopart">1.15.106.501%2F1300-rafi-5432762</field>
+        <field name="Reichelt">110895</field>
+        <field name="Legend">Reset</field>
+      </fields>
+      <libsource lib="switches" part="SW_Push_LED"/>
+      <sheetpath names="/rti-case/" tstamps="/594DF0F9/"/>
+      <tstamp>594E100C</tstamp>
+    </comp>
+    <comp ref="SW4">
+      <value>Green</value>
+      <fields>
+        <field name="Octopart">1.15.106.502%2F1500-rafi-5415858</field>
+        <field name="Reichelt">110896</field>
+        <field name="Legend">Start</field>
+      </fields>
+      <libsource lib="switches" part="SW_Push_LED"/>
+      <sheetpath names="/rti-case/" tstamps="/594DF0F9/"/>
+      <tstamp>594E1015</tstamp>
+    </comp>
+    <comp ref="J12">
+      <value>JST PH 3 Female</value>
+      <fields>
+        <field name="Description">Connector, single row, 1x3, female</field>
+        <field name="Octopart">phr-3-jst-279151</field>
+        <field name="Reichelt">185042</field>
+        <field name="Legend">Reset</field>
+        <field name="Criticality">important</field>
+        <field name="Vendor">JST</field>
+        <field name="PartNo">PHR-3</field>
+      </fields>
+      <libsource lib="conn" part="CONN_01X03"/>
+      <sheetpath names="/rti-case/" tstamps="/594DF0F9/"/>
+      <tstamp>594E101F</tstamp>
+    </comp>
+    <comp ref="J13">
+      <value>JST PH 3 Female</value>
+      <fields>
+        <field name="Reichelt">185042</field>
+        <field name="Legend">Start</field>
+        <field name="Criticality">important</field>
+      </fields>
+      <libsource lib="conn" part="CONN_01X03"/>
+      <sheetpath names="/rti-case/" tstamps="/594DF0F9/"/>
+      <tstamp>594E1034</tstamp>
+    </comp>
+    <comp ref="J17">
+      <value>Crimp Contact</value>
+      <fields>
+        <field name="Description">Crimp Contact for JST PH, female</field>
+        <field name="Reichelt">185071</field>
+        <field name="Criticality">important</field>
+      </fields>
+      <libsource lib="conn" part="CONN_01X01_MALE"/>
+      <sheetpath names="/rti-case/" tstamps="/594DF0F9/"/>
+      <tstamp>594E1049</tstamp>
+    </comp>
+    <comp ref="J18">
+      <value>Crimp Contact</value>
+      <fields>
+        <field name="Reichelt">185071</field>
+        <field name="Criticality">important</field>
+      </fields>
+      <libsource lib="conn" part="CONN_01X01_MALE"/>
+      <sheetpath names="/rti-case/" tstamps="/594DF0F9/"/>
+      <tstamp>594E1051</tstamp>
+    </comp>
+    <comp ref="J19">
+      <value>Crimp Contact</value>
+      <fields>
+        <field name="Reichelt">185071</field>
+        <field name="Criticality">important</field>
+      </fields>
+      <libsource lib="conn" part="CONN_01X01_MALE"/>
+      <sheetpath names="/rti-case/" tstamps="/594DF0F9/"/>
+      <tstamp>594E1059</tstamp>
+    </comp>
+    <comp ref="J14">
+      <value>Crimp Contact</value>
+      <fields>
+        <field name="Octopart">bph-002t-p0.5s-jst-8407485</field>
+        <field name="Reichelt">185071</field>
+        <field name="Criticality">important</field>
+        <field name="Vendor">JST</field>
+        <field name="PartNo">BPH-002T-P0.5S</field>
+      </fields>
+      <libsource lib="conn" part="CONN_01X01_MALE"/>
+      <sheetpath names="/rti-case/" tstamps="/594DF0F9/"/>
+      <tstamp>594E1061</tstamp>
+    </comp>
+    <comp ref="J15">
+      <value>Crimp Contact</value>
+      <fields>
+        <field name="Reichelt">185071</field>
+        <field name="Criticality">important</field>
+      </fields>
+      <libsource lib="conn" part="CONN_01X01_MALE"/>
+      <sheetpath names="/rti-case/" tstamps="/594DF0F9/"/>
+      <tstamp>594E1069</tstamp>
+    </comp>
+    <comp ref="J16">
+      <value>Crimp Contact</value>
+      <fields>
+        <field name="Reichelt">185071</field>
+        <field name="Criticality">important</field>
+      </fields>
+      <libsource lib="conn" part="CONN_01X01_MALE"/>
+      <sheetpath names="/rti-case/" tstamps="/594DF0F9/"/>
+      <tstamp>594E1071</tstamp>
+    </comp>
+    <comp ref="J20">
+      <value>Power Jack</value>
+      <fields>
+        <field name="Reichelt">8524</field>
+        <field name="Description">Power Jack Socket 5,5 / 2,1 mm</field>
+      </fields>
+      <libsource lib="conn" part="Barrel_Jack"/>
+      <sheetpath names="/rti-case/" tstamps="/594DF0F9/"/>
+      <tstamp>594E1080</tstamp>
+    </comp>
+    <comp ref="Z4">
+      <value>SDIP28</value>
+      <fields>
+        <field name="Reichelt">86281</field>
+      </fields>
+      <libsource lib="ic-sockets" part="SDIP28"/>
+      <sheetpath names="/rti-case/" tstamps="/594DF0F9/"/>
+      <tstamp>594E108B</tstamp>
+    </comp>
+    <comp ref="Z6">
+      <value>SDIP20</value>
+      <fields>
+        <field name="Reichelt">8212</field>
+      </fields>
+      <libsource lib="ic-sockets" part="SDIP20"/>
+      <sheetpath names="/rti-case/" tstamps="/594DF0F9/"/>
+      <tstamp>594E1093</tstamp>
+    </comp>
+    <comp ref="Z7">
+      <value>SDIP20</value>
+      <fields>
+        <field name="Reichelt">8212</field>
+      </fields>
+      <libsource lib="ic-sockets" part="SDIP20"/>
+      <sheetpath names="/rti-case/" tstamps="/594DF0F9/"/>
+      <tstamp>594E109B</tstamp>
+    </comp>
+    <comp ref="Z5">
+      <value>SDIP8</value>
+      <fields>
+        <field name="Reichelt">8230</field>
+      </fields>
+      <libsource lib="ic-sockets" part="SDIP8"/>
+      <sheetpath names="/rti-case/" tstamps="/594DF0F9/"/>
+      <tstamp>594E10A3</tstamp>
+    </comp>
+    <comp ref="Z2">
+      <value>KO_H_2_100</value>
+      <fields>
+        <field name="Reichelt">58240</field>
+        <field name="Description">Half-Shell-Case 100×22mm</field>
+      </fields>
+      <libsource lib="fischer-elektronik" part="KO_H_2_100"/>
+      <sheetpath names="/rti-case/" tstamps="/594DF0F9/"/>
+      <tstamp>594E10B0</tstamp>
+    </comp>
+    <comp ref="Z3">
+      <value>KO_H_2_100</value>
+      <fields>
+        <field name="Reichelt">58240</field>
+        <field name="Description">Half-Shell-Case 100×22mm</field>
+      </fields>
+      <libsource lib="fischer-elektronik" part="KO_H_2_100"/>
+      <sheetpath names="/rti-case/" tstamps="/594DF0F9/"/>
+      <tstamp>594E10B9</tstamp>
+    </comp>
+    <comp ref="Z1">
+      <value>FRONT_PANEL_2_2</value>
+      <fields>
+        <field name="Reichelt">58260</field>
+        <field name="Legend">Front Panel</field>
+      </fields>
+      <libsource lib="fischer-elektronik" part="FRONT_PANEL_2_2"/>
+      <sheetpath names="/rti-case/" tstamps="/594DF0F9/"/>
+      <tstamp>594E10C1</tstamp>
+    </comp>
+    <comp ref="Z8">
+      <value>NRJ-NUT-B</value>
+      <fields>
+        <field name="Description">Neutrik Plastic Nut</field>
+        <field name="Octopart">nrj-nut-b-neutrik-141986</field>
+        <field name="Reichelt">116986</field>
+        <field name="Legend">Plastic Nut</field>
+        <field name="Criticality">important</field>
+        <field name="Vendor">Neutrik</field>
+        <field name="PartNo">NRJ-NUT-B</field>
+      </fields>
+      <libsource lib="graphic" part="CIRCLE1"/>
+      <sheetpath names="/rti-case/" tstamps="/594DF0F9/"/>
+      <tstamp>594D86B5</tstamp>
+    </comp>
+    <comp ref="Z9">
+      <value>NRJ-NUT-B</value>
+      <fields>
+        <field name="Description">Neutrik Plastic Nut</field>
+        <field name="Reichelt">116986</field>
+        <field name="Legend">Plastic Nut</field>
+        <field name="Criticality">important</field>
+        <field name="Vendor">Neutrik</field>
+        <field name="PartNo">NRJ-NUT-B</field>
+      </fields>
+      <libsource lib="graphic" part="CIRCLE1"/>
+      <sheetpath names="/rti-case/" tstamps="/594DF0F9/"/>
+      <tstamp>594D8AD4</tstamp>
+    </comp>
+    <comp ref="Z10">
+      <value>Feet</value>
+      <fields>
+        <field name="Description">Adhesive Feet</field>
+        <field name="Reichelt">53673</field>
+      </fields>
+      <libsource lib="graphic" part="SQUARE2"/>
+      <sheetpath names="/rti-case/" tstamps="/594DF0F9/"/>
+      <tstamp>594DA464</tstamp>
     </comp>
   </components>
   <libparts>
@@ -526,6 +930,22 @@
         <pin num="3" name="B" type="input"/>
       </pins>
     </libpart>
+    <libpart lib="conn" part="Barrel_Jack">
+      <aliases>
+        <alias>Jack-DC</alias>
+      </aliases>
+      <description>DC Barrel Jack</description>
+      <docs>~</docs>
+      <fields>
+        <field name="Reference">J</field>
+        <field name="Value">Barrel_Jack</field>
+      </fields>
+      <pins>
+        <pin num="1" name="~" type="passive"/>
+        <pin num="2" name="~" type="passive"/>
+        <pin num="3" name="~" type="passive"/>
+      </pins>
+    </libpart>
     <libpart lib="device" part="C">
       <description>Unpolarized capacitor</description>
       <footprints>
@@ -540,21 +960,19 @@
         <pin num="2" name="~" type="passive"/>
       </pins>
     </libpart>
-    <libpart lib="conn" part="CONN_01X02">
-      <description>Connector, single row, 01x02, pin header</description>
-      <footprints>
-        <fp>Pin_Header_Straight_1X*</fp>
-        <fp>Pin_Header_Angled_1X*</fp>
-        <fp>Socket_Strip_Straight_1X*</fp>
-        <fp>Socket_Strip_Angled_1X*</fp>
-      </footprints>
+    <libpart lib="graphic" part="CIRCLE1">
+      <fields>
+        <field name="Value">CIRCLE1</field>
+      </fields>
+    </libpart>
+    <libpart lib="conn" part="CONN_01X01_MALE">
+      <description>Generic Male Connector, single row, 01x01, pin header</description>
       <fields>
         <field name="Reference">J</field>
-        <field name="Value">CONN_01X02</field>
+        <field name="Value">CONN_01X01_MALE</field>
       </fields>
       <pins>
-        <pin num="1" name="P1" type="passive"/>
-        <pin num="2" name="P2" type="passive"/>
+        <pin num="1" name="1" type="passive"/>
       </pins>
     </libpart>
     <libpart lib="conn" part="CONN_01X03">
@@ -657,6 +1075,22 @@
         <pin num="1" name="1" type="passive"/>
         <pin num="2" name="2" type="passive"/>
       </pins>
+    </libpart>
+    <libpart lib="fischer-elektronik" part="FRONT_PANEL_2_2">
+      <description>Front Panel for KO H 2 + KO H 2</description>
+      <fields>
+        <field name="Reference">Z</field>
+        <field name="Value">FRONT_PANEL_2_2</field>
+        <field name="Reichelt">58260</field>
+      </fields>
+    </libpart>
+    <libpart lib="fischer-elektronik" part="KO_H_2_100">
+      <fields>
+        <field name="Reference">Z</field>
+        <field name="Value">KO_H_2_100</field>
+        <field name="Reichelt">58240</field>
+        <field name="Description">Half-Shell-Case 100×22mm</field>
+      </fields>
     </libpart>
     <libpart lib="device" part="LED">
       <description>LED generic</description>
@@ -782,6 +1216,97 @@
         <pin num="9" name="SHIELD" type="passive"/>
       </pins>
     </libpart>
+    <libpart lib="ic-sockets" part="SDIP20">
+      <description>DIP20 W7,62mm Socket</description>
+      <fields>
+        <field name="Reference">Z</field>
+        <field name="Value">SDIP20</field>
+        <field name="Reichelt">8212</field>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="NotConnected"/>
+        <pin num="2" name="2" type="NotConnected"/>
+        <pin num="3" name="3" type="NotConnected"/>
+        <pin num="4" name="4" type="NotConnected"/>
+        <pin num="5" name="5" type="NotConnected"/>
+        <pin num="6" name="6" type="NotConnected"/>
+        <pin num="7" name="7" type="NotConnected"/>
+        <pin num="8" name="8" type="NotConnected"/>
+        <pin num="9" name="9" type="NotConnected"/>
+        <pin num="10" name="10" type="NotConnected"/>
+        <pin num="11" name="11" type="NotConnected"/>
+        <pin num="12" name="12" type="NotConnected"/>
+        <pin num="13" name="13" type="NotConnected"/>
+        <pin num="14" name="14" type="NotConnected"/>
+        <pin num="15" name="15" type="NotConnected"/>
+        <pin num="16" name="16" type="NotConnected"/>
+        <pin num="17" name="17" type="NotConnected"/>
+        <pin num="18" name="18" type="NotConnected"/>
+        <pin num="19" name="19" type="NotConnected"/>
+        <pin num="20" name="20" type="NotConnected"/>
+      </pins>
+    </libpart>
+    <libpart lib="ic-sockets" part="SDIP28">
+      <description>DIP28 W7,62mm Socket</description>
+      <fields>
+        <field name="Reference">Z</field>
+        <field name="Value">SDIP28</field>
+        <field name="Reichelt">86281</field>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="NotConnected"/>
+        <pin num="2" name="2" type="NotConnected"/>
+        <pin num="3" name="3" type="NotConnected"/>
+        <pin num="4" name="4" type="NotConnected"/>
+        <pin num="5" name="5" type="NotConnected"/>
+        <pin num="6" name="6" type="NotConnected"/>
+        <pin num="7" name="7" type="NotConnected"/>
+        <pin num="8" name="8" type="NotConnected"/>
+        <pin num="9" name="9" type="NotConnected"/>
+        <pin num="10" name="10" type="NotConnected"/>
+        <pin num="11" name="11" type="NotConnected"/>
+        <pin num="12" name="12" type="NotConnected"/>
+        <pin num="13" name="13" type="NotConnected"/>
+        <pin num="14" name="14" type="NotConnected"/>
+        <pin num="15" name="15" type="NotConnected"/>
+        <pin num="16" name="16" type="NotConnected"/>
+        <pin num="17" name="17" type="NotConnected"/>
+        <pin num="18" name="18" type="NotConnected"/>
+        <pin num="19" name="19" type="NotConnected"/>
+        <pin num="20" name="20" type="NotConnected"/>
+        <pin num="21" name="21" type="NotConnected"/>
+        <pin num="22" name="22" type="NotConnected"/>
+        <pin num="23" name="23" type="NotConnected"/>
+        <pin num="24" name="24" type="NotConnected"/>
+        <pin num="25" name="25" type="NotConnected"/>
+        <pin num="26" name="26" type="NotConnected"/>
+        <pin num="27" name="27" type="NotConnected"/>
+        <pin num="28" name="28" type="NotConnected"/>
+      </pins>
+    </libpart>
+    <libpart lib="ic-sockets" part="SDIP8">
+      <description>DIP8 W7,62mm Socket</description>
+      <fields>
+        <field name="Reference">Z</field>
+        <field name="Value">SDIP8</field>
+        <field name="Reichelt">8230</field>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="NotConnected"/>
+        <pin num="2" name="2" type="NotConnected"/>
+        <pin num="3" name="3" type="NotConnected"/>
+        <pin num="4" name="4" type="NotConnected"/>
+        <pin num="5" name="5" type="NotConnected"/>
+        <pin num="6" name="6" type="NotConnected"/>
+        <pin num="7" name="7" type="NotConnected"/>
+        <pin num="8" name="8" type="NotConnected"/>
+      </pins>
+    </libpart>
+    <libpart lib="graphic" part="SQUARE2">
+      <fields>
+        <field name="Value">SQUARE2</field>
+      </fields>
+    </libpart>
     <libpart lib="switches" part="SW_Push">
       <description>Push button switch, generic, two pins</description>
       <fields>
@@ -793,16 +1318,34 @@
         <pin num="2" name="2" type="passive"/>
       </pins>
     </libpart>
-    <libpart lib="tpic6b595" part="TPIC6B595">
+    <libpart lib="switches" part="SW_Push_LED">
+      <description>Push button switch with LED, generic</description>
+      <fields>
+        <field name="Reference">SW</field>
+        <field name="Value">SW_Push_LED</field>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+        <pin num="2" name="2" type="passive"/>
+        <pin num="3" name="K" type="passive"/>
+        <pin num="4" name="A" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="tpic6b595" part="TPIC6B595N">
+      <aliases>
+        <alias>TPIC6B595DW</alias>
+      </aliases>
       <description>8-Bit Shift Register 150mA 50V</description>
-      <docs>http://www.ti.com/lit/ds/symlink/tpic6b595.pdf</docs>
+      <docs>https://www.ti.com/lit/ds/symlink/tpic6b595.pdf</docs>
       <footprints>
-        <fp>DIP*</fp>
         <fp>SOIC*</fp>
+        <fp>DIP*</fp>
       </footprints>
       <fields>
         <field name="Reference">U</field>
-        <field name="Value">TPIC6B595</field>
+        <field name="Value">TPIC6B595N</field>
+        <field name="Reichelt">147328</field>
+        <field name="Octopart">tpic6b595n-texas+instruments-500652</field>
       </fields>
       <pins>
         <pin num="1" name="NC" type="NotConnected"/>
@@ -829,23 +1372,8 @@
     </libpart>
   </libparts>
   <libraries>
-    <library logical="device">
-      <uri>/home/highlander/kicad-sources/library-repos/kicad-library/library/device.lib</uri>
-    </library>
-    <library logical="opto">
-      <uri>/home/highlander/kicad-sources/library-repos/kicad-library/library/opto.lib</uri>
-    </library>
-    <library logical="conn">
-      <uri>/home/highlander/kicad-sources/library-repos/kicad-library/library/conn.lib</uri>
-    </library>
-    <library logical="atmel">
-      <uri>/home/highlander/kicad-sources/library-repos/kicad-library/library/atmel.lib</uri>
-    </library>
-    <library logical="tpic6b595">
-      <uri>/home/highlander/uni/prj/rti/rti/kicad/lib/tpic6b595.lib</uri>
-    </library>
-    <library logical="regul">
-      <uri>/home/highlander/kicad-sources/library-repos/kicad-library/library/regul.lib</uri>
+    <library logical="graphic">
+      <uri>/home/highlander/kicad-sources/library-repos/kicad-library/library/graphic.lib</uri>
     </library>
     <library logical="switches">
       <uri>/home/highlander/kicad-sources/library-repos/kicad-library/library/switches.lib</uri>
@@ -853,400 +1381,387 @@
     <library logical="transistors">
       <uri>/home/highlander/kicad-sources/library-repos/kicad-library/library/transistors.lib</uri>
     </library>
+    <library logical="conn">
+      <uri>/home/highlander/kicad-sources/library-repos/kicad-library/library/conn.lib</uri>
+    </library>
+    <library logical="regul">
+      <uri>/home/highlander/kicad-sources/library-repos/kicad-library/library/regul.lib</uri>
+    </library>
+    <library logical="opto">
+      <uri>/home/highlander/kicad-sources/library-repos/kicad-library/library/opto.lib</uri>
+    </library>
+    <library logical="tpic6b595">
+      <uri>/home/highlander/uni/prj/rti/rti/kicad/lib/tpic6b595.lib</uri>
+    </library>
+    <library logical="ic-sockets">
+      <uri>/home/highlander/uni/prj/rti/rti/kicad/lib/ic-sockets.lib</uri>
+    </library>
+    <library logical="device">
+      <uri>/home/highlander/kicad-sources/library-repos/kicad-library/library/device.lib</uri>
+    </library>
+    <library logical="fischer-elektronik">
+      <uri>/home/highlander/uni/prj/rti/rti/kicad/lib/fischer-elektronik.lib</uri>
+    </library>
+    <library logical="atmel">
+      <uri>/home/highlander/kicad-sources/library-repos/kicad-library/library/atmel.lib</uri>
+    </library>
   </libraries>
   <nets>
-    <net code="1" name="Net-(R8-Pad2)">
+    <net code="1" name="/D5">
+      <node ref="U3" pin="13"/>
+      <node ref="U2" pin="13"/>
+      <node ref="U1" pin="11"/>
+    </net>
+    <net code="2" name="Net-(R8-Pad2)">
       <node ref="R8" pin="2"/>
       <node ref="U2" pin="5"/>
     </net>
-    <net code="2" name="Net-(R9-Pad2)">
+    <net code="3" name="Net-(R9-Pad2)">
       <node ref="R9" pin="2"/>
       <node ref="U2" pin="6"/>
     </net>
-    <net code="3" name="Net-(R10-Pad2)">
+    <net code="4" name="Net-(R10-Pad2)">
       <node ref="U2" pin="7"/>
       <node ref="R10" pin="2"/>
     </net>
-    <net code="4" name="Net-(R11-Pad2)">
+    <net code="5" name="Net-(R11-Pad2)">
       <node ref="U2" pin="14"/>
       <node ref="R11" pin="2"/>
     </net>
-    <net code="5" name="Net-(R12-Pad2)">
+    <net code="6" name="Net-(R12-Pad2)">
       <node ref="U2" pin="15"/>
       <node ref="R12" pin="2"/>
     </net>
-    <net code="6" name="Net-(R13-Pad2)">
+    <net code="7" name="Net-(R13-Pad2)">
       <node ref="R13" pin="2"/>
       <node ref="U2" pin="16"/>
     </net>
-    <net code="7" name="/D7">
-      <node ref="U2" pin="9"/>
-      <node ref="U1" pin="13"/>
-      <node ref="U3" pin="9"/>
+    <net code="8" name="/D4">
+      <node ref="U1" pin="6"/>
+      <node ref="U2" pin="3"/>
     </net>
-    <net code="8" name="/A2">
-      <node ref="U1" pin="25"/>
+    <net code="9" name="/D6">
+      <node ref="U2" pin="12"/>
+      <node ref="U3" pin="12"/>
+      <node ref="U1" pin="12"/>
     </net>
-    <net code="9" name="/D0">
-      <node ref="U1" pin="2"/>
+    <net code="10" name="/D2">
+      <node ref="U1" pin="4"/>
+      <node ref="SW2" pin="2"/>
+      <node ref="J9" pin="3"/>
     </net>
-    <net code="10" name="/D1">
-      <node ref="U1" pin="3"/>
+    <net code="11" name="/D3">
+      <node ref="U1" pin="5"/>
+      <node ref="J7" pin="3"/>
+      <node ref="J3" pin="1"/>
     </net>
-    <net code="11" name="/A1">
-      <node ref="U1" pin="24"/>
-    </net>
-    <net code="12" name="/A0">
-      <node ref="U1" pin="23"/>
-    </net>
-    <net code="13" name="/D10">
+    <net code="12" name="/D10">
       <node ref="U1" pin="16"/>
       <node ref="R4" pin="1"/>
     </net>
-    <net code="14" name="/D2">
-      <node ref="U1" pin="4"/>
-      <node ref="J9" pin="3"/>
-      <node ref="SW2" pin="2"/>
-    </net>
-    <net code="15" name="/D3">
-      <node ref="J3" pin="1"/>
-      <node ref="U1" pin="5"/>
-      <node ref="J7" pin="3"/>
-    </net>
-    <net code="16" name="/D4">
-      <node ref="U2" pin="3"/>
-      <node ref="U1" pin="6"/>
-    </net>
-    <net code="17" name="/D5">
-      <node ref="U1" pin="11"/>
-      <node ref="U3" pin="13"/>
-      <node ref="U2" pin="13"/>
-    </net>
-    <net code="18" name="/D6">
-      <node ref="U1" pin="12"/>
-      <node ref="U2" pin="12"/>
-      <node ref="U3" pin="12"/>
-    </net>
-    <net code="19" name="/D9">
+    <net code="13" name="/D9">
       <node ref="U1" pin="15"/>
       <node ref="R5" pin="1"/>
     </net>
-    <net code="20" name="/D11">
-      <node ref="U1" pin="17"/>
+    <net code="14" name="/D11">
       <node ref="J10" pin="4"/>
+      <node ref="U1" pin="17"/>
     </net>
-    <net code="21" name="/D12">
+    <net code="15" name="Net-(Q1-Pad3)">
+      <node ref="Q1" pin="3"/>
+      <node ref="R7" pin="1"/>
+    </net>
+    <net code="16" name="Net-(Q2-Pad3)">
+      <node ref="R8" pin="1"/>
+      <node ref="Q2" pin="3"/>
+    </net>
+    <net code="17" name="Net-(Q3-Pad3)">
+      <node ref="R9" pin="1"/>
+      <node ref="Q3" pin="3"/>
+    </net>
+    <net code="18" name="Net-(Q4-Pad3)">
+      <node ref="R10" pin="1"/>
+      <node ref="Q4" pin="3"/>
+    </net>
+    <net code="19" name="/An0">
+      <node ref="Q1" pin="2"/>
+      <node ref="J4" pin="1"/>
+    </net>
+    <net code="20" name="/An6">
+      <node ref="Q7" pin="2"/>
+      <node ref="J4" pin="7"/>
+    </net>
+    <net code="21" name="/An4">
+      <node ref="J4" pin="5"/>
+      <node ref="Q5" pin="2"/>
+    </net>
+    <net code="22" name="/An2">
+      <node ref="Q3" pin="2"/>
+      <node ref="J4" pin="3"/>
+    </net>
+    <net code="23" name="Net-(Q5-Pad3)">
+      <node ref="Q5" pin="3"/>
+      <node ref="R11" pin="1"/>
+    </net>
+    <net code="24" name="/D12">
       <node ref="J10" pin="1"/>
       <node ref="U1" pin="18"/>
     </net>
-    <net code="22" name="/D13">
+    <net code="25" name="/D13">
       <node ref="U1" pin="19"/>
       <node ref="R3" pin="1"/>
       <node ref="J10" pin="3"/>
     </net>
-    <net code="23" name="Net-(C5-Pad1)">
-      <node ref="C5" pin="1"/>
+    <net code="26" name="Net-(C6-Pad1)">
+      <node ref="C6" pin="1"/>
       <node ref="U1" pin="21"/>
     </net>
-    <net code="24" name="/A3">
-      <node ref="R2" pin="1"/>
+    <net code="27" name="+5V">
+      <node ref="U3" pin="8"/>
+      <node ref="U3" pin="2"/>
+      <node ref="U1" pin="7"/>
+      <node ref="U1" pin="20"/>
+      <node ref="J10" pin="2"/>
+      <node ref="U2" pin="2"/>
+      <node ref="U2" pin="8"/>
+      <node ref="J11" pin="2"/>
+      <node ref="C3" pin="1"/>
+      <node ref="R1" pin="1"/>
+      <node ref="C4" pin="1"/>
+      <node ref="C5" pin="1"/>
+      <node ref="U6" pin="3"/>
+    </net>
+    <net code="28" name="/D0">
+      <node ref="U1" pin="2"/>
+    </net>
+    <net code="29" name="/D1">
+      <node ref="U1" pin="3"/>
+    </net>
+    <net code="30" name="/A3">
       <node ref="U1" pin="26"/>
+      <node ref="R2" pin="1"/>
     </net>
-    <net code="25" name="GND">
-      <node ref="U3" pin="10"/>
-      <node ref="U4" pin="2"/>
-      <node ref="U4" pin="4"/>
-      <node ref="J5" pin="9"/>
-      <node ref="J4" pin="9"/>
-      <node ref="U3" pin="19"/>
-      <node ref="U3" pin="11"/>
-      <node ref="U1" pin="8"/>
-      <node ref="U2" pin="19"/>
-      <node ref="U2" pin="11"/>
-      <node ref="U2" pin="10"/>
-      <node ref="C6" pin="1"/>
-      <node ref="C7" pin="1"/>
-      <node ref="Q12" pin="2"/>
-      <node ref="D2" pin="1"/>
-      <node ref="U1" pin="22"/>
-      <node ref="C5" pin="2"/>
-      <node ref="SW2" pin="1"/>
-      <node ref="C1" pin="2"/>
-      <node ref="Q9" pin="2"/>
-      <node ref="J10" pin="6"/>
-      <node ref="Q16" pin="2"/>
-      <node ref="J8" pin="1"/>
-      <node ref="J7" pin="1"/>
-      <node ref="C4" pin="2"/>
-      <node ref="J9" pin="1"/>
-      <node ref="U6" pin="2"/>
-      <node ref="SW1" pin="2"/>
-      <node ref="C3" pin="2"/>
-      <node ref="C2" pin="2"/>
-      <node ref="J1" pin="1"/>
-      <node ref="J3" pin="3"/>
-      <node ref="Q11" pin="2"/>
-      <node ref="D1" pin="1"/>
-      <node ref="Q13" pin="2"/>
-      <node ref="Q15" pin="2"/>
-      <node ref="Q10" pin="2"/>
-      <node ref="Q14" pin="2"/>
-      <node ref="J11" pin="1"/>
+    <net code="31" name="/A2">
+      <node ref="U1" pin="25"/>
     </net>
-    <net code="26" name="Net-(J3-Pad4)">
-      <node ref="J3" pin="4"/>
+    <net code="32" name="/A1">
+      <node ref="U1" pin="24"/>
     </net>
-    <net code="27" name="Net-(J3-Pad5)">
+    <net code="33" name="/A0">
+      <node ref="U1" pin="23"/>
+    </net>
+    <net code="34" name="Net-(J3-Pad5)">
       <node ref="J3" pin="5"/>
     </net>
-    <net code="28" name="Net-(J3-Pad6)">
+    <net code="35" name="/VINCPU">
+      <node ref="U6" pin="1"/>
+      <node ref="J1" pin="2"/>
+      <node ref="C2" pin="1"/>
+    </net>
+    <net code="36" name="Net-(J3-Pad4)">
+      <node ref="J3" pin="4"/>
+    </net>
+    <net code="37" name="Net-(J3-Pad6)">
       <node ref="J3" pin="6"/>
     </net>
-    <net code="29" name="/SDA">
-      <node ref="J11" pin="3"/>
-      <node ref="U1" pin="27"/>
-    </net>
-    <net code="30" name="/SCL">
-      <node ref="U1" pin="28"/>
-      <node ref="J11" pin="4"/>
-    </net>
-    <net code="31" name="Net-(U2-Pad18)">
-      <node ref="U2" pin="18"/>
-      <node ref="U3" pin="3"/>
-    </net>
-    <net code="32" name="Net-(R5-Pad2)">
-      <node ref="U4" pin="3"/>
-      <node ref="R5" pin="2"/>
-    </net>
-    <net code="33" name="Net-(R7-Pad2)">
+    <net code="38" name="Net-(R7-Pad2)">
       <node ref="R7" pin="2"/>
       <node ref="U2" pin="4"/>
     </net>
-    <net code="34" name="Net-(R14-Pad2)">
+    <net code="39" name="Net-(R14-Pad2)">
       <node ref="U2" pin="17"/>
       <node ref="R14" pin="2"/>
     </net>
-    <net code="35" name="Net-(R4-Pad2)">
-      <node ref="R4" pin="2"/>
-      <node ref="U4" pin="1"/>
+    <net code="40" name="/SCL">
+      <node ref="J11" pin="4"/>
+      <node ref="U1" pin="28"/>
     </net>
-    <net code="36" name="Net-(J2-Pad3)">
-      <node ref="J6" pin="1"/>
-      <node ref="U4" pin="7"/>
+    <net code="41" name="Net-(D1-Pad2)">
+      <node ref="J8" pin="2"/>
+      <node ref="D1" pin="2"/>
+      <node ref="R2" pin="2"/>
+    </net>
+    <net code="42" name="/D7">
+      <node ref="U1" pin="13"/>
+      <node ref="U2" pin="9"/>
+      <node ref="U3" pin="9"/>
+    </net>
+    <net code="43" name="Net-(R4-Pad2)">
+      <node ref="U4" pin="1"/>
+      <node ref="R4" pin="2"/>
+    </net>
+    <net code="44" name="Net-(R5-Pad2)">
+      <node ref="U4" pin="3"/>
+      <node ref="R5" pin="2"/>
+    </net>
+    <net code="45" name="Net-(J2-Pad3)">
       <node ref="U4" pin="5"/>
       <node ref="J2" pin="3"/>
+      <node ref="U4" pin="7"/>
+      <node ref="J6" pin="1"/>
     </net>
-    <net code="37" name="/VIN">
-      <node ref="U6" pin="1"/>
-      <node ref="U5" pin="3"/>
-      <node ref="C1" pin="1"/>
-      <node ref="J1" pin="2"/>
+    <net code="46" name="Net-(Q7-Pad3)">
+      <node ref="R13" pin="1"/>
+      <node ref="Q7" pin="3"/>
     </net>
-    <net code="38" name="/D8">
-      <node ref="J3" pin="2"/>
-      <node ref="U1" pin="14"/>
-      <node ref="J7" pin="2"/>
+    <net code="47" name="Net-(U2-Pad18)">
+      <node ref="U3" pin="3"/>
+      <node ref="U2" pin="18"/>
     </net>
-    <net code="39" name="Net-(J2-Pad1)">
+    <net code="48" name="Net-(J2-Pad4)">
+      <node ref="J2" pin="4"/>
+    </net>
+    <net code="49" name="Net-(J2-Pad6)">
+      <node ref="J2" pin="6"/>
+    </net>
+    <net code="50" name="Net-(J2-Pad2)">
+      <node ref="U4" pin="8"/>
+      <node ref="J2" pin="2"/>
+      <node ref="J6" pin="2"/>
+    </net>
+    <net code="51" name="Net-(J2-Pad1)">
       <node ref="U4" pin="6"/>
       <node ref="J2" pin="1"/>
       <node ref="J6" pin="3"/>
     </net>
-    <net code="40" name="Net-(J2-Pad4)">
-      <node ref="J2" pin="4"/>
-    </net>
-    <net code="41" name="Net-(J2-Pad5)">
+    <net code="52" name="Net-(J2-Pad5)">
       <node ref="J2" pin="5"/>
     </net>
-    <net code="42" name="Net-(J2-Pad6)">
-      <node ref="J2" pin="6"/>
+    <net code="53" name="/D8">
+      <node ref="U1" pin="14"/>
+      <node ref="J3" pin="2"/>
+      <node ref="J7" pin="2"/>
     </net>
-    <net code="43" name="/Cat3">
-      <node ref="Q12" pin="1"/>
-      <node ref="J5" pin="4"/>
+    <net code="54" name="/VINLED">
+      <node ref="U5" pin="3"/>
+      <node ref="J1" pin="1"/>
+      <node ref="C1" pin="1"/>
     </net>
-    <net code="44" name="/Cat4">
-      <node ref="Q13" pin="1"/>
-      <node ref="J5" pin="5"/>
-    </net>
-    <net code="45" name="/Cat5">
-      <node ref="Q14" pin="1"/>
-      <node ref="J5" pin="6"/>
-    </net>
-    <net code="46" name="/Cat6">
-      <node ref="J5" pin="7"/>
-      <node ref="Q15" pin="1"/>
-    </net>
-    <net code="47" name="/Cat7">
-      <node ref="J5" pin="8"/>
-      <node ref="Q16" pin="1"/>
-    </net>
-    <net code="48" name="+5V">
-      <node ref="J11" pin="2"/>
-      <node ref="J10" pin="2"/>
-      <node ref="U3" pin="8"/>
-      <node ref="U3" pin="2"/>
-      <node ref="C4" pin="1"/>
-      <node ref="U6" pin="3"/>
-      <node ref="C3" pin="1"/>
-      <node ref="R1" pin="1"/>
-      <node ref="C2" pin="1"/>
-      <node ref="U2" pin="2"/>
-      <node ref="U1" pin="7"/>
-      <node ref="U2" pin="8"/>
-      <node ref="U1" pin="20"/>
-    </net>
-    <net code="49" name="Net-(J2-Pad2)">
-      <node ref="U4" pin="8"/>
-      <node ref="J6" pin="2"/>
-      <node ref="J2" pin="2"/>
-    </net>
-    <net code="50" name="Net-(D2-Pad2)">
-      <node ref="J9" pin="2"/>
-      <node ref="D2" pin="2"/>
+    <net code="55" name="Net-(D2-Pad2)">
       <node ref="R3" pin="2"/>
+      <node ref="D2" pin="2"/>
+      <node ref="J9" pin="2"/>
     </net>
-    <net code="51" name="Net-(D1-Pad2)">
-      <node ref="D1" pin="2"/>
-      <node ref="R2" pin="2"/>
-      <node ref="J8" pin="2"/>
-    </net>
-    <net code="52" name="/~RESET">
-      <node ref="R1" pin="2"/>
+    <net code="56" name="/~RESET">
       <node ref="U1" pin="1"/>
-      <node ref="J10" pin="5"/>
-      <node ref="SW1" pin="1"/>
       <node ref="J8" pin="3"/>
+      <node ref="SW1" pin="2"/>
+      <node ref="R1" pin="2"/>
+      <node ref="J10" pin="5"/>
     </net>
-    <net code="53" name="/Cat2">
-      <node ref="J5" pin="3"/>
-      <node ref="Q11" pin="1"/>
-    </net>
-    <net code="54" name="Net-(Q1-Pad3)">
-      <node ref="R7" pin="1"/>
-      <node ref="Q1" pin="3"/>
-    </net>
-    <net code="55" name="Net-(Q2-Pad3)">
-      <node ref="Q2" pin="3"/>
-      <node ref="R8" pin="1"/>
-    </net>
-    <net code="56" name="Net-(Q3-Pad3)">
-      <node ref="Q3" pin="3"/>
-      <node ref="R9" pin="1"/>
-    </net>
-    <net code="57" name="Net-(Q4-Pad3)">
-      <node ref="Q4" pin="3"/>
-      <node ref="R10" pin="1"/>
-    </net>
-    <net code="58" name="/An0">
-      <node ref="J4" pin="1"/>
-      <node ref="Q1" pin="2"/>
-    </net>
-    <net code="59" name="/An2">
-      <node ref="Q3" pin="2"/>
-      <node ref="J4" pin="3"/>
-    </net>
-    <net code="60" name="Net-(Q5-Pad3)">
-      <node ref="R11" pin="1"/>
-      <node ref="Q5" pin="3"/>
-    </net>
-    <net code="61" name="Net-(Q7-Pad3)">
-      <node ref="R13" pin="1"/>
-      <node ref="Q7" pin="3"/>
-    </net>
-    <net code="62" name="Net-(Q6-Pad3)">
-      <node ref="Q6" pin="3"/>
-      <node ref="R12" pin="1"/>
-    </net>
-    <net code="63" name="Net-(Q8-Pad3)">
-      <node ref="Q8" pin="3"/>
-      <node ref="R14" pin="1"/>
-    </net>
-    <net code="64" name="/An1">
-      <node ref="Q2" pin="2"/>
-      <node ref="J4" pin="2"/>
-    </net>
-    <net code="65" name="Net-(Q16-Pad3)">
-      <node ref="U3" pin="17"/>
-      <node ref="Q16" pin="3"/>
-    </net>
-    <net code="66" name="Net-(Q14-Pad3)">
-      <node ref="Q14" pin="3"/>
-      <node ref="U3" pin="15"/>
-    </net>
-    <net code="67" name="/An3">
-      <node ref="J4" pin="4"/>
-      <node ref="Q4" pin="2"/>
-    </net>
-    <net code="68" name="/An4">
-      <node ref="J4" pin="5"/>
-      <node ref="Q5" pin="2"/>
-    </net>
-    <net code="69" name="/An5">
-      <node ref="Q6" pin="2"/>
-      <node ref="J4" pin="6"/>
-    </net>
-    <net code="70" name="/An6">
-      <node ref="Q7" pin="2"/>
-      <node ref="J4" pin="7"/>
-    </net>
-    <net code="71" name="/An7">
-      <node ref="J4" pin="8"/>
-      <node ref="Q8" pin="2"/>
-    </net>
-    <net code="72" name="/Cat0">
-      <node ref="Q9" pin="1"/>
-      <node ref="J5" pin="1"/>
-    </net>
-    <net code="73" name="/Cat1">
-      <node ref="Q10" pin="1"/>
-      <node ref="J5" pin="2"/>
-    </net>
-    <net code="74" name="Net-(Q9-Pad3)">
+    <net code="57" name="Net-(Q9-Pad3)">
       <node ref="U3" pin="4"/>
       <node ref="Q9" pin="3"/>
     </net>
-    <net code="75" name="Net-(Q10-Pad3)">
-      <node ref="Q10" pin="3"/>
-      <node ref="U3" pin="5"/>
+    <net code="58" name="Net-(Q6-Pad3)">
+      <node ref="R12" pin="1"/>
+      <node ref="Q6" pin="3"/>
     </net>
-    <net code="76" name="Net-(Q11-Pad3)">
+    <net code="59" name="Net-(Q8-Pad3)">
+      <node ref="Q8" pin="3"/>
+      <node ref="R14" pin="1"/>
+    </net>
+    <net code="60" name="/An1">
+      <node ref="Q2" pin="2"/>
+      <node ref="J4" pin="2"/>
+    </net>
+    <net code="61" name="/An3">
+      <node ref="Q4" pin="2"/>
+      <node ref="J4" pin="4"/>
+    </net>
+    <net code="62" name="/An5">
+      <node ref="Q6" pin="2"/>
+      <node ref="J4" pin="6"/>
+    </net>
+    <net code="63" name="/An7">
+      <node ref="J4" pin="8"/>
+      <node ref="Q8" pin="2"/>
+    </net>
+    <net code="64" name="Net-(Q10-Pad3)">
+      <node ref="U3" pin="5"/>
+      <node ref="Q10" pin="3"/>
+    </net>
+    <net code="65" name="/Cat1">
+      <node ref="J5" pin="2"/>
+      <node ref="Q10" pin="1"/>
+    </net>
+    <net code="66" name="/Cat2">
+      <node ref="J5" pin="3"/>
+      <node ref="Q11" pin="1"/>
+    </net>
+    <net code="67" name="/Cat3">
+      <node ref="J5" pin="4"/>
+      <node ref="Q12" pin="1"/>
+    </net>
+    <net code="68" name="/Cat4">
+      <node ref="Q13" pin="1"/>
+      <node ref="J5" pin="5"/>
+    </net>
+    <net code="69" name="/Cat5">
+      <node ref="Q14" pin="1"/>
+      <node ref="J5" pin="6"/>
+    </net>
+    <net code="70" name="/Cat6">
+      <node ref="Q15" pin="1"/>
+      <node ref="J5" pin="7"/>
+    </net>
+    <net code="71" name="/Cat7">
+      <node ref="J5" pin="8"/>
+      <node ref="Q16" pin="1"/>
+    </net>
+    <net code="72" name="/SDA">
+      <node ref="J11" pin="3"/>
+      <node ref="U1" pin="27"/>
+    </net>
+    <net code="73" name="Net-(Q11-Pad3)">
       <node ref="Q11" pin="3"/>
       <node ref="U3" pin="6"/>
     </net>
-    <net code="77" name="Net-(Q13-Pad3)">
+    <net code="74" name="Net-(Q13-Pad3)">
       <node ref="Q13" pin="3"/>
       <node ref="U3" pin="14"/>
     </net>
-    <net code="78" name="Net-(Q15-Pad3)">
+    <net code="75" name="Net-(Q15-Pad3)">
       <node ref="U3" pin="16"/>
       <node ref="Q15" pin="3"/>
     </net>
-    <net code="79" name="Net-(Q12-Pad3)">
+    <net code="76" name="Net-(Q12-Pad3)">
       <node ref="U3" pin="7"/>
       <node ref="Q12" pin="3"/>
     </net>
-    <net code="80" name="Net-(C6-Pad2)">
-      <node ref="U1" pin="9"/>
-      <node ref="Y1" pin="1"/>
-      <node ref="C6" pin="2"/>
+    <net code="77" name="Net-(Q14-Pad3)">
+      <node ref="Q14" pin="3"/>
+      <node ref="U3" pin="15"/>
     </net>
-    <net code="81" name="Net-(C7-Pad2)">
-      <node ref="U1" pin="10"/>
+    <net code="78" name="Net-(Q16-Pad3)">
+      <node ref="Q16" pin="3"/>
+      <node ref="U3" pin="17"/>
+    </net>
+    <net code="79" name="/Cat0">
+      <node ref="Q9" pin="1"/>
+      <node ref="J5" pin="1"/>
+    </net>
+    <net code="80" name="Net-(C7-Pad2)">
       <node ref="C7" pin="2"/>
+      <node ref="Y1" pin="1"/>
+      <node ref="U1" pin="9"/>
+    </net>
+    <net code="81" name="Net-(C8-Pad2)">
+      <node ref="C8" pin="2"/>
+      <node ref="U1" pin="10"/>
       <node ref="Y1" pin="2"/>
     </net>
     <net code="82" name="/+200mA">
-      <node ref="Q8" pin="1"/>
-      <node ref="U5" pin="1"/>
-      <node ref="R6" pin="1"/>
-      <node ref="Q6" pin="1"/>
-      <node ref="Q4" pin="1"/>
-      <node ref="Q2" pin="1"/>
-      <node ref="Q5" pin="1"/>
-      <node ref="Q7" pin="1"/>
-      <node ref="Q3" pin="1"/>
       <node ref="Q1" pin="1"/>
+      <node ref="Q4" pin="1"/>
+      <node ref="Q3" pin="1"/>
+      <node ref="Q7" pin="1"/>
+      <node ref="Q5" pin="1"/>
+      <node ref="Q2" pin="1"/>
+      <node ref="R6" pin="1"/>
+      <node ref="U5" pin="1"/>
+      <node ref="Q8" pin="1"/>
+      <node ref="Q6" pin="1"/>
     </net>
     <net code="83" name="Net-(U2-Pad20)">
       <node ref="U2" pin="20"/>
@@ -1266,6 +1781,327 @@
     <net code="88" name="/HC1">
       <node ref="U5" pin="2"/>
       <node ref="R6" pin="2"/>
+    </net>
+    <net code="89" name="Net-(Z6-Pad9)">
+      <node ref="Z6" pin="9"/>
+    </net>
+    <net code="90" name="Net-(Z6-Pad10)">
+      <node ref="Z6" pin="10"/>
+    </net>
+    <net code="91" name="Net-(Z6-Pad20)">
+      <node ref="Z6" pin="20"/>
+    </net>
+    <net code="92" name="Net-(Z6-Pad11)">
+      <node ref="Z6" pin="11"/>
+    </net>
+    <net code="93" name="Net-(Z6-Pad12)">
+      <node ref="Z6" pin="12"/>
+    </net>
+    <net code="94" name="Net-(Z6-Pad13)">
+      <node ref="Z6" pin="13"/>
+    </net>
+    <net code="95" name="Net-(Z6-Pad14)">
+      <node ref="Z6" pin="14"/>
+    </net>
+    <net code="96" name="Net-(Z6-Pad15)">
+      <node ref="Z6" pin="15"/>
+    </net>
+    <net code="97" name="Net-(Z6-Pad16)">
+      <node ref="Z6" pin="16"/>
+    </net>
+    <net code="98" name="Net-(Z6-Pad17)">
+      <node ref="Z6" pin="17"/>
+    </net>
+    <net code="99" name="Net-(Z6-Pad18)">
+      <node ref="Z6" pin="18"/>
+    </net>
+    <net code="100" name="Net-(Z6-Pad19)">
+      <node ref="Z6" pin="19"/>
+    </net>
+    <net code="101" name="Net-(Z7-Pad1)">
+      <node ref="Z7" pin="1"/>
+    </net>
+    <net code="102" name="Net-(Z7-Pad2)">
+      <node ref="Z7" pin="2"/>
+    </net>
+    <net code="103" name="Net-(Z7-Pad3)">
+      <node ref="Z7" pin="3"/>
+    </net>
+    <net code="104" name="Net-(Z7-Pad4)">
+      <node ref="Z7" pin="4"/>
+    </net>
+    <net code="105" name="Net-(Z7-Pad5)">
+      <node ref="Z7" pin="5"/>
+    </net>
+    <net code="106" name="Net-(Z4-Pad28)">
+      <node ref="Z4" pin="28"/>
+    </net>
+    <net code="107" name="Net-(Z4-Pad24)">
+      <node ref="Z4" pin="24"/>
+    </net>
+    <net code="108" name="Net-(Z4-Pad15)">
+      <node ref="Z4" pin="15"/>
+    </net>
+    <net code="109" name="Net-(Z4-Pad25)">
+      <node ref="Z4" pin="25"/>
+    </net>
+    <net code="110" name="Net-(Z4-Pad16)">
+      <node ref="Z4" pin="16"/>
+    </net>
+    <net code="111" name="Net-(Z4-Pad26)">
+      <node ref="Z4" pin="26"/>
+    </net>
+    <net code="112" name="Net-(Z4-Pad17)">
+      <node ref="Z4" pin="17"/>
+    </net>
+    <net code="113" name="Net-(Z4-Pad27)">
+      <node ref="Z4" pin="27"/>
+    </net>
+    <net code="114" name="Net-(Z4-Pad18)">
+      <node ref="Z4" pin="18"/>
+    </net>
+    <net code="115" name="Net-(Z6-Pad8)">
+      <node ref="Z6" pin="8"/>
+    </net>
+    <net code="116" name="Net-(Z4-Pad19)">
+      <node ref="Z4" pin="19"/>
+    </net>
+    <net code="117" name="Net-(Z6-Pad1)">
+      <node ref="Z6" pin="1"/>
+    </net>
+    <net code="118" name="Net-(Z6-Pad2)">
+      <node ref="Z6" pin="2"/>
+    </net>
+    <net code="119" name="Net-(Z6-Pad3)">
+      <node ref="Z6" pin="3"/>
+    </net>
+    <net code="120" name="Net-(Z6-Pad4)">
+      <node ref="Z6" pin="4"/>
+    </net>
+    <net code="121" name="Net-(Z6-Pad5)">
+      <node ref="Z6" pin="5"/>
+    </net>
+    <net code="122" name="Net-(Z6-Pad6)">
+      <node ref="Z6" pin="6"/>
+    </net>
+    <net code="123" name="Net-(Z6-Pad7)">
+      <node ref="Z6" pin="7"/>
+    </net>
+    <net code="124" name="Net-(Z5-Pad4)">
+      <node ref="Z5" pin="4"/>
+    </net>
+    <net code="125" name="Net-(Z5-Pad5)">
+      <node ref="Z5" pin="5"/>
+    </net>
+    <net code="126" name="Net-(Z5-Pad6)">
+      <node ref="Z5" pin="6"/>
+    </net>
+    <net code="127" name="Net-(Z5-Pad7)">
+      <node ref="Z5" pin="7"/>
+    </net>
+    <net code="128" name="Net-(Z5-Pad8)">
+      <node ref="Z5" pin="8"/>
+    </net>
+    <net code="129" name="Net-(Z5-Pad3)">
+      <node ref="Z5" pin="3"/>
+    </net>
+    <net code="130" name="/rti-case/VINCPU">
+      <node ref="J20" pin="1"/>
+    </net>
+    <net code="131" name="GND">
+      <node ref="J3" pin="3"/>
+      <node ref="SW1" pin="1"/>
+      <node ref="Q13" pin="2"/>
+      <node ref="Q12" pin="2"/>
+      <node ref="Q14" pin="2"/>
+      <node ref="Q16" pin="2"/>
+      <node ref="Q10" pin="2"/>
+      <node ref="Q15" pin="2"/>
+      <node ref="J20" pin="2"/>
+      <node ref="Q11" pin="2"/>
+      <node ref="C3" pin="2"/>
+      <node ref="U6" pin="2"/>
+      <node ref="C5" pin="2"/>
+      <node ref="C4" pin="2"/>
+      <node ref="C7" pin="1"/>
+      <node ref="J10" pin="6"/>
+      <node ref="C1" pin="2"/>
+      <node ref="J1" pin="3"/>
+      <node ref="U3" pin="11"/>
+      <node ref="U3" pin="10"/>
+      <node ref="U3" pin="19"/>
+      <node ref="U2" pin="19"/>
+      <node ref="U2" pin="11"/>
+      <node ref="Q9" pin="2"/>
+      <node ref="C8" pin="1"/>
+      <node ref="U2" pin="10"/>
+      <node ref="C2" pin="2"/>
+      <node ref="SW2" pin="1"/>
+      <node ref="C6" pin="2"/>
+      <node ref="J4" pin="9"/>
+      <node ref="U1" pin="22"/>
+      <node ref="D1" pin="1"/>
+      <node ref="U1" pin="8"/>
+      <node ref="J8" pin="1"/>
+      <node ref="J7" pin="1"/>
+      <node ref="J9" pin="1"/>
+      <node ref="J11" pin="1"/>
+      <node ref="D2" pin="1"/>
+      <node ref="J5" pin="9"/>
+      <node ref="U4" pin="2"/>
+      <node ref="U4" pin="4"/>
+    </net>
+    <net code="132" name="Net-(Z7-Pad14)">
+      <node ref="Z7" pin="14"/>
+    </net>
+    <net code="133" name="Net-(Z7-Pad7)">
+      <node ref="Z7" pin="7"/>
+    </net>
+    <net code="134" name="Net-(Z7-Pad8)">
+      <node ref="Z7" pin="8"/>
+    </net>
+    <net code="135" name="Net-(Z7-Pad9)">
+      <node ref="Z7" pin="9"/>
+    </net>
+    <net code="136" name="Net-(Z7-Pad10)">
+      <node ref="Z7" pin="10"/>
+    </net>
+    <net code="137" name="Net-(Z7-Pad20)">
+      <node ref="Z7" pin="20"/>
+    </net>
+    <net code="138" name="Net-(Z7-Pad11)">
+      <node ref="Z7" pin="11"/>
+    </net>
+    <net code="139" name="Net-(Z7-Pad12)">
+      <node ref="Z7" pin="12"/>
+    </net>
+    <net code="140" name="Net-(Z7-Pad13)">
+      <node ref="Z7" pin="13"/>
+    </net>
+    <net code="141" name="Net-(Z7-Pad6)">
+      <node ref="Z7" pin="6"/>
+    </net>
+    <net code="142" name="Net-(Z7-Pad15)">
+      <node ref="Z7" pin="15"/>
+    </net>
+    <net code="143" name="Net-(Z7-Pad16)">
+      <node ref="Z7" pin="16"/>
+    </net>
+    <net code="144" name="Net-(Z7-Pad17)">
+      <node ref="Z7" pin="17"/>
+    </net>
+    <net code="145" name="Net-(Z7-Pad18)">
+      <node ref="Z7" pin="18"/>
+    </net>
+    <net code="146" name="Net-(Z7-Pad19)">
+      <node ref="Z7" pin="19"/>
+    </net>
+    <net code="147" name="Net-(Z5-Pad1)">
+      <node ref="Z5" pin="1"/>
+    </net>
+    <net code="148" name="Net-(Z5-Pad2)">
+      <node ref="Z5" pin="2"/>
+    </net>
+    <net code="149" name="Net-(J13-Pad2)">
+      <node ref="SW4" pin="4"/>
+      <node ref="J13" pin="2"/>
+    </net>
+    <net code="150" name="Net-(J12-Pad3)">
+      <node ref="J12" pin="3"/>
+      <node ref="SW3" pin="2"/>
+    </net>
+    <net code="151" name="Net-(J13-Pad1)">
+      <node ref="SW4" pin="1"/>
+      <node ref="SW4" pin="3"/>
+      <node ref="J13" pin="1"/>
+    </net>
+    <net code="152" name="Net-(J12-Pad1)">
+      <node ref="SW3" pin="3"/>
+      <node ref="SW3" pin="1"/>
+      <node ref="J12" pin="1"/>
+    </net>
+    <net code="153" name="Net-(J12-Pad2)">
+      <node ref="J12" pin="2"/>
+      <node ref="SW3" pin="4"/>
+    </net>
+    <net code="154" name="Net-(J13-Pad3)">
+      <node ref="J13" pin="3"/>
+      <node ref="SW4" pin="2"/>
+    </net>
+    <net code="155" name="Net-(Z4-Pad9)">
+      <node ref="Z4" pin="9"/>
+    </net>
+    <net code="156" name="Net-(Z4-Pad1)">
+      <node ref="Z4" pin="1"/>
+    </net>
+    <net code="157" name="Net-(Z4-Pad2)">
+      <node ref="Z4" pin="2"/>
+    </net>
+    <net code="158" name="Net-(Z4-Pad3)">
+      <node ref="Z4" pin="3"/>
+    </net>
+    <net code="159" name="Net-(Z4-Pad4)">
+      <node ref="Z4" pin="4"/>
+    </net>
+    <net code="160" name="Net-(Z4-Pad5)">
+      <node ref="Z4" pin="5"/>
+    </net>
+    <net code="161" name="Net-(Z4-Pad6)">
+      <node ref="Z4" pin="6"/>
+    </net>
+    <net code="162" name="Net-(Z4-Pad7)">
+      <node ref="Z4" pin="7"/>
+    </net>
+    <net code="163" name="Net-(Z4-Pad8)">
+      <node ref="Z4" pin="8"/>
+    </net>
+    <net code="164" name="Net-(J20-Pad3)">
+      <node ref="J20" pin="3"/>
+    </net>
+    <net code="165" name="Net-(Z4-Pad10)">
+      <node ref="Z4" pin="10"/>
+    </net>
+    <net code="166" name="Net-(Z4-Pad20)">
+      <node ref="Z4" pin="20"/>
+    </net>
+    <net code="167" name="Net-(Z4-Pad11)">
+      <node ref="Z4" pin="11"/>
+    </net>
+    <net code="168" name="Net-(Z4-Pad21)">
+      <node ref="Z4" pin="21"/>
+    </net>
+    <net code="169" name="Net-(Z4-Pad12)">
+      <node ref="Z4" pin="12"/>
+    </net>
+    <net code="170" name="Net-(Z4-Pad22)">
+      <node ref="Z4" pin="22"/>
+    </net>
+    <net code="171" name="Net-(Z4-Pad13)">
+      <node ref="Z4" pin="13"/>
+    </net>
+    <net code="172" name="Net-(Z4-Pad23)">
+      <node ref="Z4" pin="23"/>
+    </net>
+    <net code="173" name="Net-(J17-Pad1)">
+      <node ref="J17" pin="1"/>
+    </net>
+    <net code="174" name="Net-(J18-Pad1)">
+      <node ref="J18" pin="1"/>
+    </net>
+    <net code="175" name="Net-(J19-Pad1)">
+      <node ref="J19" pin="1"/>
+    </net>
+    <net code="176" name="Net-(J14-Pad1)">
+      <node ref="J14" pin="1"/>
+    </net>
+    <net code="177" name="Net-(J15-Pad1)">
+      <node ref="J15" pin="1"/>
+    </net>
+    <net code="178" name="Net-(J16-Pad1)">
+      <node ref="J16" pin="1"/>
+    </net>
+    <net code="179" name="Net-(Z4-Pad14)">
+      <node ref="Z4" pin="14"/>
     </net>
   </nets>
 </export>
