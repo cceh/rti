@@ -1,4 +1,4 @@
-update=Fr 23 Jun 2017 22:57:11 CEST
+update=Mo 03 Jul 2017 17:05:10 CEST
 version=1
 last_client=kicad
 [pcbnew]
@@ -52,3 +52,4 @@ LibName10=regul
 LibName11=switches
 LibName12=transistors
 LibName13=graphic
+LibName14=lib/r_pack04_parallel

@@ -12,6 +12,7 @@ LIBS:regul
 LIBS:switches
 LIBS:transistors
 LIBS:graphic
+LIBS:r_pack04_parallel
 LIBS:rti-cache
 EELAYER 25 0
 EELAYER END

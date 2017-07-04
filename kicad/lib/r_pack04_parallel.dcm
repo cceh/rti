@@ -1,0 +1,8 @@
+EESchema-DOCLIB  Version 2.0
+#
+$CMP R_Pack04_Parallel
+D 4 Resistor network, parallel topology, SIP package
+K R Network parallel topology
+$ENDCMP
+#
+#End Doc Library
