@@ -823,12 +823,12 @@ $Comp
 L RJ45 J4
 U 1 1 5931BD12
 P 1850 9950
-F 0 "J4" H 2050 10450 50  0000 C CNN
+F 0 "J4" H 2200 10450 50  0000 C CNN
 F 1 "MEBP 8-8G" H 1700 10450 50  0001 C CNN
 F 2 "Connectors_Anonymous:MEBP_8-8G" H 1850 9950 50  0001 C CNN
 F 3 "" H 1850 9950 50  0001 C CNN
 F 4 "24975" H 1850 9950 60  0001 C CNN "Reichelt"
-F 5 "Anodes" H 1650 10450 60  0000 C CNN "Legend"
+F 5 "1-16" H 1450 10450 60  0000 L CNN "Legend"
 F 6 "important" H 1850 9950 60  0001 C CNN "Criticality"
 	1    1850 9950
 	1    0    0    -1  
@@ -837,11 +837,11 @@ $Comp
 L RJ45 J5
 U 1 1 5931DC2C
 P 3200 9950
-F 0 "J5" H 3400 10450 50  0000 C CNN
+F 0 "J5" H 3550 10450 50  0000 C CNN
 F 1 "MEBP 8-8G" H 3050 10450 50  0001 C CNN
 F 2 "Connectors_Anonymous:MEBP_8-8G" H 3200 9950 50  0001 C CNN
 F 3 "" H 3200 9950 50  0001 C CNN
-F 4 "Cathodes" H 3000 10450 60  0000 C CNN "Legend"
+F 4 "16-64" H 2800 10450 60  0000 L CNN "Legend"
 F 5 "important" H 3200 9950 60  0001 C CNN "Criticality"
 	1    3200 9950
 	1    0    0    -1  
@@ -888,21 +888,21 @@ Text Label 1700 10700 1    60   ~ 0
 An2
 Text Label 1800 10700 1    60   ~ 0
 An3
-Text Label 1900 10700 1    60   ~ 0
-An4
-Text Label 2000 10700 1    60   ~ 0
-An5
-Text Label 2100 10700 1    60   ~ 0
-An6
-Text Label 2200 10700 1    60   ~ 0
-An7
 Text Label 2850 10700 1    60   ~ 0
-Cat0
+An4
 Text Label 2950 10700 1    60   ~ 0
-Cat1
+An5
 Text Label 3050 10700 1    60   ~ 0
-Cat2
+An6
 Text Label 3150 10700 1    60   ~ 0
+An7
+Text Label 1900 10700 1    60   ~ 0
+Cat0
+Text Label 2000 10700 1    60   ~ 0
+Cat1
+Text Label 2100 10700 1    60   ~ 0
+Cat2
+Text Label 2200 10700 1    60   ~ 0
 Cat3
 Text Label 3250 10700 1    60   ~ 0
 Cat4
@@ -1492,14 +1492,6 @@ Wire Wire Line
 Wire Wire Line
 	1800 10400 1800 10700
 Wire Wire Line
-	1900 10400 1900 10700
-Wire Wire Line
-	2000 10400 2000 10700
-Wire Wire Line
-	2100 10400 2100 10700
-Wire Wire Line
-	2200 10400 2200 10700
-Wire Wire Line
 	2850 10400 2850 10700
 Wire Wire Line
 	2950 10400 2950 10700
@@ -1507,6 +1499,14 @@ Wire Wire Line
 	3050 10400 3050 10700
 Wire Wire Line
 	3150 10400 3150 10700
+Wire Wire Line
+	1900 10400 1900 10700
+Wire Wire Line
+	2000 10400 2000 10700
+Wire Wire Line
+	2100 10400 2100 10700
+Wire Wire Line
+	2200 10400 2200 10700
 Wire Wire Line
 	3250 10400 3250 10700
 Wire Wire Line
