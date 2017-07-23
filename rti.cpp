@@ -55,13 +55,13 @@
     // Consisting of one or more 595 shift registers.
 
     // How many LEDs do we have in how many columns?
-    #define LED_COUNT   4
-    #define LED_COLS    2
+    #define LED_COUNT   16
+    #define LED_COLS    4
 
     // Where do the rows and column bits start in the 595 shift registers?
     // Depends on the number of 595's and the wiring of the board (prototype).
-    #define MASK_595_COL 0x4000
-    #define MASK_595_ROW 0x40
+    #define MASK_595_COL 0x0100
+    #define MASK_595_ROW 0x0001
 
     #define SER_IN_PIN  D,4
     #define SRCK_PIN    D,5
