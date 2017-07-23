@@ -47,18 +47,21 @@ LOCAL_CPP_SRCS  = rti.cpp
 
 include $(ARDUINO_DIR)/Arduino.mk
 
+MY_AVRDUDE = /usr/bin/avrdude -q -v -p m328p -C /etc/avrdude.conf -c dragon_isp -P usb -b 57600
 
-myispload:
-	/usr/bin/avrdude -q -v -p m328p -C /etc/avrdude.conf -c dragon_isp -b 57600 -P usb -e \
-	-U lock:w:0xff:m -U efuse:w:0xfa:m -U hfuse:w:0xdf:m -U lfuse:w:0xff:m
+# Set the fuses for "Full Swing Crystal Oscillator".
+#
+# Atmel delivers the chips fused for "128kHz Internal Oscillator".  That is why
+# we have to slow down ISP clock frequency with the -i parameter.  This command
+# only needs to be run once on every microcontroller chip.
+
+my_init_fuses:
+	$(MY_AVRDUDE) -i 6 -e -U lock:w:0xff:m -U efuse:w:0xfa:m -U hfuse:w:0xdf:m -U lfuse:w:0xff:m
+
+# Upload a new image
+myispload: $(TARGET_HEX)
+	$(MY_AVRDUDE) -U flash:w:bin/nano328/rti.hex:i
 
 	sleep 1
 
-	# to get the -D flag, and, while we are at it, do verify
-	/usr/bin/avrdude -q -v -p m328p -C /etc/avrdude.conf -c dragon_isp -b 57600 -P usb -D \
-	-U flash:w:bin/nano328/rti.hex:i
-
-	sleep 1
-
-	/usr/bin/avrdude -q -v -p m328p -C /etc/avrdude.conf -c dragon_isp -b 57600 -P usb \
-	-U lock:w:0xcf:m
+	$(MY_AVRDUDE) -U lock:w:0xcf:m
