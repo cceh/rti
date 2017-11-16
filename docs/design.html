@@ -1,0 +1,467 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Electrical Design &mdash; RTI 0.1.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="_static/my_theme.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="RTI 0.1.1 documentation" href="index.html"/>
+        <link rel="prev" title="Reflectance Transformation Imaging (RTI)" href="rti.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> RTI
+          
+
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="rti.html">Reflectance Transformation Imaging (RTI)</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Electrical Design</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#leds">LEDs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#alternative-leds">Alternative LEDs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#led-driver">Led Driver</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#constant-current-source">Constant Current Source</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#microcontroller">Microcontroller</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#board-layout">Board Layout</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#case">Case</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">RTI</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Electrical Design</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/design.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="electrical-design">
+<h1>Electrical Design<a class="headerlink" href="#electrical-design" title="Permalink to this headline">¶</a></h1>
+<div class="figure" id="id1">
+<img alt="_images/board.jpg" src="_images/board.jpg" />
+<p class="caption"><span class="caption-text">A prototype of the RTI PCB.</span></p>
+</div>
+<p>The main goals of this design are:</p>
+<ul class="simple">
+<li>bright and affordable LEDs,</li>
+<li>user-solderable off-the-shelf components.</li>
+</ul>
+<div class="section" id="leds">
+<h2>LEDs<a class="headerlink" href="#leds" title="Permalink to this headline">¶</a></h2>
+<p>Consider following points before selecting the LED make.</p>
+<p>Performance:</p>
+<blockquote>
+<div>Luminous LEDs allow faster work.  Don’t consider LEDs with less than 100 lm
+(lumen) or without the lumens specified.</div></blockquote>
+<p>Light quality:</p>
+<blockquote>
+<div>Especially important if you want to take color pictures.</div></blockquote>
+<p>Price:</p>
+<blockquote>
+<div>High performance LEDs are (still) pretty expensive.</div></blockquote>
+<p>Mounting:</p>
+<blockquote>
+<div>High performance LEDs are designed for reflow soldering, which makes them hard
+to solder by hand.  Before use you must solder each LED to a small board or
+buy them pre-soldered (expensive).  Make sure you are able to solder the LED
+type before you buy lots of them.</div></blockquote>
+<p>For the prototype we selected LEDs of the make:</p>
+<p><em>Osram Duris S8 GW P9LMS1.EM-NSNU-57S5-0</em></p>
+<p>They come in 5 × 5 mm packages, which we hand-soldered onto a standard 2.54”
+striped PCB and then cut the board into little pieces.</p>
+</div>
+<div class="section" id="alternative-leds">
+<h2>Alternative LEDs<a class="headerlink" href="#alternative-leds" title="Permalink to this headline">¶</a></h2>
+<p>LED alternatives, since the original type might be discontinued.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="12%" />
+<col width="32%" />
+<col width="5%" />
+<col width="5%" />
+<col width="4%" />
+<col width="5%" />
+<col width="5%" />
+<col width="7%" />
+<col width="9%" />
+<col width="16%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Series</th>
+<th class="head">Part.No.</th>
+<th class="head">lm</th>
+<th class="head">V</th>
+<th class="head">mA</th>
+<th class="head">Case</th>
+<th class="head">€</th>
+<th class="head">MinQty</th>
+<th class="head">Distr.</th>
+<th class="head">No</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Duris S 10</td>
+<td>GW P7LP32.EM-RSRU-XX52-1</td>
+<td>1400</td>
+<td>38.0</td>
+<td>300</td>
+<td>7070</td>
+<td>1.90</td>
+<td>50</td>
+<td>RS</td>
+<td>8792889</td>
+</tr>
+<tr class="row-odd"><td>Duris S 10</td>
+<td>GW P7LM32.EM-QURQ-XX52-1</td>
+<td>1050</td>
+<td>28.5</td>
+<td>300</td>
+<td>7070</td>
+<td>1.72</td>
+<td>50</td>
+<td>Mouser</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>Duris S 8</td>
+<td>GW P9LT31.EM-PSPU-XX52-1</td>
+<td>610</td>
+<td>31.0</td>
+<td>150</td>
+<td>5050</td>
+<td>0.96</td>
+<td>25</td>
+<td>DigiKey</td>
+<td>475-3200-1-ND</td>
+</tr>
+<tr class="row-odd"><td>Duris S 8</td>
+<td>GW P9LT32.EM-PSPU-XX52-1</td>
+<td>610</td>
+<td>6.2</td>
+<td>750</td>
+<td>5050</td>
+<td>0.96</td>
+<td>25</td>
+<td>DigiKey</td>
+<td>475-3207-1-ND</td>
+</tr>
+<tr class="row-even"><td>Duris S 8</td>
+<td>GW P9LR31.EM-PQPS-XX52-1</td>
+<td>500</td>
+<td>24.8</td>
+<td>150</td>
+<td>5050</td>
+<td>0.76</td>
+<td>25</td>
+<td>DigiKey</td>
+<td>475-3187-1-ND</td>
+</tr>
+<tr class="row-odd"><td>Duris S 8</td>
+<td>GW P9LR32.EM-PQPS-XX52-1</td>
+<td>500</td>
+<td>6.2</td>
+<td>600</td>
+<td>5050</td>
+<td>0.80</td>
+<td>25</td>
+<td>DigiKey</td>
+<td>475-3193-1-ND</td>
+</tr>
+<tr class="row-even"><td>Duris S 8</td>
+<td>GW P9LMS1.EM-NSNU-57S5-0</td>
+<td>395</td>
+<td>19.8</td>
+<td>200</td>
+<td>4SMD</td>
+<td>0.91</td>
+<td>50</td>
+<td>RS</td>
+<td>8108054</td>
+</tr>
+<tr class="row-odd"><td>Duris S 8</td>
+<td>GW P9LMS2.EM-NQNS-57S5-0</td>
+<td>350</td>
+<td>19.8</td>
+<td>200</td>
+<td>4SMD</td>
+<td>0.60</td>
+<td>50</td>
+<td>RS</td>
+<td>8768969</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="led-driver">
+<h2>Led Driver<a class="headerlink" href="#led-driver" title="Permalink to this headline">¶</a></h2>
+<p>The LED driver section is very flexible.  Adjusting component values you can
+drive almost any LED up to 1.5A / 80V.  You’ll have to use separate power
+supplies for VLED and VCPU if VLED is over 35V, which is the max. the 7805 can
+handle.  Otherwise you can just tie VCPU to VLED.  The components you have to
+adjust are the resistor of the constant current source and the base resistors of
+the high-side BD140’s.</p>
+<p>The chosen LEDs have a forward voltage of:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="43%" />
+<col width="57%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">V_f</th>
+<th class="head">V</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>min</td>
+<td>18.6</td>
+</tr>
+<tr class="row-odd"><td>typ</td>
+<td>19.8</td>
+</tr>
+<tr class="row-even"><td>max</td>
+<td>22.2</td>
+</tr>
+</tbody>
+</table>
+<p>&#64; a forward current of 200mA.</p>
+<p>Cold LEDs have a higher forward voltage.  Ours are turned on for short periods
+only, so they will be cold.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>LM 317 Drop-Out Voltage  (@ I_O = 200mA, T_j = 25°C)       =  1.65V
+LM 317 V_adjust                                            =  1.25V
+BD 140 C-E Saturation Voltage (@ I_C = -0.5A, I_B = -50mA) = -0.5V
+</pre></div>
+</div>
+<p>This gives us a drop of at least 3.9V, ergo, the power supply should be at least
+V_f max + 3.9V = 26.1V.</p>
+</div>
+<div class="section" id="constant-current-source">
+<h2>Constant Current Source<a class="headerlink" href="#constant-current-source" title="Permalink to this headline">¶</a></h2>
+<p>To get even luminosity I use an LM 317 as constant current source.  The
+adjustment resistor value is given by:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">R_adj</span> <span class="o">=</span> <span class="mf">1.25</span><span class="n">V</span> <span class="o">/</span> <span class="n">I_O</span>
+<span class="n">R_adj</span> <span class="o">=</span> <span class="mf">1.25</span><span class="n">V</span> <span class="o">/</span> <span class="mi">200</span><span class="n">mA</span> <span class="o">=</span> <span class="mf">6.25</span><span class="n">ohm</span><span class="p">,</span> <span class="mf">0.25</span><span class="n">W</span>
+</pre></div>
+</div>
+<p>The nearest standard value is 6.2ohm E24 (or 4.7ohm + 1.5ohm E12).</p>
+<p>N.B. the constant current source also drives the bases of the high-side BD140
+transistors, which sink 10mA with the chosen resistors (but would need 40mA of
+base current to switch 1.5A LEDs).</p>
+</div>
+<div class="section" id="microcontroller">
+<h2>Microcontroller<a class="headerlink" href="#microcontroller" title="Permalink to this headline">¶</a></h2>
+<p>The project uses an ATmega328p microcontroller because it was prototyped on an
+Arduino Nano.</p>
+</div>
+<div class="section" id="board-layout">
+<h2>Board Layout<a class="headerlink" href="#board-layout" title="Permalink to this headline">¶</a></h2>
+<p>The board is layed out as 1/2 Eurocard (100 × 80 mm).</p>
+<p>The back of the board holds a few standard connectors and is designed to be
+flush against the back panel.  You may choose not to mount the connectors to the
+board, in which case you may select the connectors you want and wire them to the
+board.</p>
+</div>
+<div class="section" id="case">
+<h2>Case<a class="headerlink" href="#case" title="Permalink to this headline">¶</a></h2>
+<p>It is highly recommended to put the board into a case.  The make of the case is
+up to you.</p>
+<p>We used a case made of 2 <em>Fischer Elektronik KO H 2</em> halves, which offers room
+for a 100 × 100 mm PCB.  The CAD drawings of front and back panel where printed on
+paper and then spotted through with a scriber, drilled and filed to shape.</p>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="rti.html" class="btn btn-neutral" title="Reflectance Transformation Imaging (RTI)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017 CCeH - Licensed under the GNU GPL v3 or later.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.1.1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

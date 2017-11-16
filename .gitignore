@@ -5,6 +5,8 @@
 
 bin/*
 
+docs/.*
+
 kicad/*bin
 kicad/*dsn
 kicad/*ses

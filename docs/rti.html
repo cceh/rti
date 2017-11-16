@@ -1,0 +1,303 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Reflectance Transformation Imaging (RTI) &mdash; RTI 0.1.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="_static/my_theme.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="RTI 0.1.1 documentation" href="index.html"/>
+        <link rel="next" title="Electrical Design" href="design.html"/>
+        <link rel="prev" title="RTI Documentation" href="index.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> RTI
+          
+
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Reflectance Transformation Imaging (RTI)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="design.html">Electrical Design</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="design.html#leds">LEDs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="design.html#alternative-leds">Alternative LEDs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="design.html#led-driver">Led Driver</a></li>
+<li class="toctree-l2"><a class="reference internal" href="design.html#constant-current-source">Constant Current Source</a></li>
+<li class="toctree-l2"><a class="reference internal" href="design.html#microcontroller">Microcontroller</a></li>
+<li class="toctree-l2"><a class="reference internal" href="design.html#board-layout">Board Layout</a></li>
+<li class="toctree-l2"><a class="reference internal" href="design.html#case">Case</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">RTI</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Reflectance Transformation Imaging (RTI)</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/rti.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="reflectance-transformation-imaging-rti">
+<h1>Reflectance Transformation Imaging (RTI)<a class="headerlink" href="#reflectance-transformation-imaging-rti" title="Permalink to this headline">¶</a></h1>
+<p><em>Reflectance Transformation Imaging,</em> also known as <em>Polynomial Texture Mapping</em>
+(PTM), is a technique of imaging and interactively displaying objects under
+varying lighting conditions to reveal surface phenomena.</p>
+<p>N light sources of equal intensity are positioned on a half sphere (the dome).
+The object to image is positioned at the center of the half sphere.  The camera
+is positioned outside the dome and sees the object through a hole in the dome.</p>
+<p>The object is now illuminated once from every light source, yielding N pictures.</p>
+<p>Since the object and the camera are not moved, this procedure yields N samples
+for each pixel of the image.</p>
+<p>For each pixel of the image we fit the N samples to a model.  This reduces the
+volume of data and at the same time allows us to interpolate an arbitrary light
+direction at the cost of some small error in the pixel luminance.</p>
+<div class="math">
+\[b = x_0u^2 + x_1v^2 + x_2uv + x_3u + x_4v + x_5\]</div>
+<p>(u,v) are projections of the normalized light vector onto the object plane.  b
+is the resultant surface luminance. <a class="reference internal" href="#malzbender2001" id="id1">[Malzbender2001]</a></p>
+<p>To fit the N samples to this model we use a General Linear Least Squares method
+and solve it using Singular Value Decomposition (SVD). “In the case of an
+overdetermined system, SVD produces a solution that is the best approximation in
+the least-squares sense.” <a class="reference internal" href="#press2007" id="id2">[Press2007]</a> p. 793</p>
+<p>Our design matrix:</p>
+<div class="math">
+\[\begin{split}\mathbf{A} = \begin{bmatrix}
+                   u_0^2 &amp; v_0^2 &amp; u_0v_0 &amp; u_0 &amp; v_0 &amp; 1 \\
+                   u_1^2 &amp; v_1^2 &amp; u_1v_1 &amp; u_1 &amp; v_1 &amp; 1 \\
+                   u_2^2 &amp; v_2^2 &amp; u_2v_2 &amp; u_2 &amp; v_2 &amp; 1 \\
+                   \vdots &amp; \vdots &amp; \vdots &amp; \vdots &amp; \vdots &amp; \vdots \\
+                   u_{N-1}^2 &amp; v_{N-1}^2 &amp; u_{N-1}v_{N-1} &amp; u_{N-1} &amp; v_{N-1} &amp; 1
+             \end{bmatrix}\end{split}\]</div>
+<p>The vector of samples:</p>
+<div class="math">
+\[\mathbf{b} = b_0,\cdots,b_{N-1}\]</div>
+<p>The sought least-squares solution vector:</p>
+<div class="math">
+\[\mathbf{x} = x_0,\cdots,x_5\]</div>
+<p>For each pixel we have to solve:</p>
+<div class="math">
+\[\mathbf{A x} \approx \mathbf{b}\]</div>
+<p>We do a SVD of <span class="math">\(\mathbf{A}\)</span>:</p>
+<div class="math">
+\[\mathbf{A} = \mathbf{U} \boldsymbol{\Sigma} \mathbf{V}^T\]</div>
+<p>Then we approximate our linear system:</p>
+<div class="math">
+\[\mathbf{x} = \mathbf{V} \begin{bmatrix} diag (1/w_j) \end{bmatrix} \mathbf{U}^T \mathbf{b}\]</div>
+<p>See: <a class="reference internal" href="#press2007" id="id3">[Press2007]</a> p. 73.</p>
+<p>Note that the SVD needs to be computed only once for every different arrangement
+of light sources.  The only part of the above formula that varies for each pixel
+is <span class="math">\(\mathbf{b}\)</span>.</p>
+<table class="docutils citation" frame="void" id="malzbender2001" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id1">[Malzbender2001]</a></td><td>Malzbender, Tom [et al.]. Polynomial Texture Maps.
+<a class="reference external" href="http://www.hpl.hp.com/research/ptm/papers/ptm.pdf">http://www.hpl.hp.com/research/ptm/papers/ptm.pdf</a></td></tr>
+</tbody>
+</table>
+<table class="docutils citation" frame="void" id="press2007" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[Press2007]</td><td><em>(<a class="fn-backref" href="#id2">1</a>, <a class="fn-backref" href="#id3">2</a>)</em> Press, William H. [et al.]. Numerical recipes: the art of
+scientifical computing. 3rd edition 2007. University Printing
+House, Cambridge.</td></tr>
+</tbody>
+</table>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="design.html" class="btn btn-neutral float-right" title="Electrical Design" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral" title="RTI Documentation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017 CCeH - Licensed under the GNU GPL v3 or later.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.1.1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

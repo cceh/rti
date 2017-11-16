@@ -1,6 +1,11 @@
 Electrical Design
 =================
 
+.. figure:: board.jpg
+
+   A prototype of the RTI PCB.
+
+
 The main goals of this design are:
 
 - bright and affordable LEDs,
@@ -84,6 +89,9 @@ max 22.2
 === ====
 
 @ a forward current of 200mA.
+
+Cold LEDs have a higher forward voltage.  Ours are turned on for short periods
+only, so they will be cold.
 
 ::
 
