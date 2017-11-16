@@ -5,7 +5,8 @@
 
 bin/*
 
-docs/.*
+docs/.buildinfo
+docs/.doctrees/
 
 kicad/*bin
 kicad/*dsn
