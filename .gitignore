@@ -15,5 +15,8 @@ kicad/*rules
 kicad/gui_defaults.par
 kicad/*-cache.*
 
+rti-builder/test/
+rti-builder/bin/
+
 */gerber/*
 */__pycache__/*
