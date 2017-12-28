@@ -6,6 +6,11 @@
 Mapping* (PTM), is a technique of imaging and interactively displaying objects
 under varying lighting conditions to reveal surface phenomena.
 
+The original PTM method has been developed Tom Malzbender, Dan Gelb, and Hans
+Wolters at Hewlett-Packard Laboratories.  [Malzbender2001]_ Improvements have
+been suggested: [Drew2012]_, [Zhang2014]_.  We here describe the original
+method.
+
 N light sources of equal intensity are positioned on a hemisphere (the dome).
 The object to image is positioned at the center of the hemisphere.  The camera
 is positioned outside the dome and sees the object through a hole in the dome.
@@ -21,18 +26,57 @@ The file size of a PTM is roughly 3--6 times the file size of the corresponding
 JPEG file.
 
 
-Mathematical Background
-=======================
-
-The original PTM method has been developed Tom Malzbender, Dan Gelb, and Hans
-Wolters at Hewlett-Packard Laboratories.  [Malzbender2001]_ Improvements have
-been suggested: [Drew2012]_, [Zhang2014]_.  We here describe the original
-method.
+Outline
+=======
 
 The PTM consist in fitting the :math:`N` samples obtained of each pixel under
 varying lighting conditions to a biquadratic polynomial.  Then, for each pixel,
 we store the coefficients of the biquadratic polynomial.  Using the polynomial
 we can interpolate an arbitrary light direction.
+
+A number of lights are arranged on a hemisphere around the object so that the
+projections of the lights' positions onto the object plane are evenly spaced.
+
+.. figure:: light-3d.png
+   :align: center
+
+   The dome with lights.
+
+.. figure:: light-2d.png
+   :align: center
+
+   The positions of the lights projected onto the object plane.
+
+Then an exposure is taken from each light in turn yielding :math:`N` images and
+thus :math:`N` samples for every pixel position in the images.
+
+.. figure:: light-samples.png
+   :align: center
+
+   The intensity of one pixel when illuminated by the different lights.
+
+Then a curve is sought that best fits the observed intensities:
+
+.. figure:: light-samples-fit.png
+   :align: center
+
+   A curve that best fits the observed intensities.
+
+The observed intensities are not needed any more because all we store in the PTM
+file are the coefficients for the curve.
+
+.. figure:: light-fit.png
+   :align: center
+
+   The curve that is stored in the file.  A different one for each pixel.
+
+Because we store 6 coefficients for each pixel in the PTM file (instead of one
+value in a JPEG file), a PTM file is about 6 times the size of a corresponding
+JPEG file.
+
+
+The Math
+========
 
 The polynomial used for curve fitting is:
 
