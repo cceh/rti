@@ -1,16 +1,24 @@
 Electrical Design
 =================
 
-.. figure:: board.jpg
-
-   A prototype of the RTI PCB.
-
-
 The main goals of this design are:
 
 - bright and affordable LEDs,
 
 - user-solderable off-the-shelf components.
+
+.. figure:: ../images/DSC_2827.jpg
+
+   The front panel.
+
+.. figure:: ../images/DSC_2829.jpg
+
+   The back panel.
+
+.. figure:: ../images/DSC_2842.jpg
+
+   The mounted PCB.
+
 
 
 LEDs

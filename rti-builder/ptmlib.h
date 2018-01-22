@@ -79,6 +79,7 @@ typedef struct {
     /* auxiliary fields not used in the PTM file */
     ptm_unscaled_coefficients_t min_coefficients;
     ptm_unscaled_coefficients_t max_coefficients;
+    float inv_scale        [PTM_COEFFICIENTS];
 } ptm_header_t;
 
 typedef JSAMPLE *ptm_block_t;

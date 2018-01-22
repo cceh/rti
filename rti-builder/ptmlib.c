@@ -681,6 +681,7 @@ void ptm_calc_scale (ptm_header_t *ptm_header) {
     for (int i = 0; i < PTM_COEFFICIENTS; ++i) {
         // we have to fit the floating point range into the range 0-255
         ptm_header->scale[i] = (max[i] - min[i]) / 256.0;
+        ptm_header->inv_scale[i] = 1.0 / ptm_header->scale[i];
         ptm_header->bias[i] = -256.0 / (max[i] - min[i]) * min[i];
     }
 
@@ -699,10 +700,8 @@ void ptm_scale_coefficients (ptm_header_t *ptm_header,
     const size_t image_size = ptm_header->dimen[1] * ptm_header->dimen[0];
 
     // mul is faster than div on many cpus
-    float scale[PTM_COEFFICIENTS];
-    for (int n = 0; n < PTM_COEFFICIENTS; ++n)
-        scale[n] = 1.0 / ((float *) &ptm_header->scale)[n];
-    int *bias = ptm_header->bias;
+    float *inv_scale = ptm_header->inv_scale;
+    int   *bias      = ptm_header->bias;
 
     for (int i = 0; i < ptm_header->format->ptm_blocks; ++i) {
         // we are more probably memory-bound than cpu-bound here
@@ -713,7 +712,7 @@ void ptm_scale_coefficients (ptm_header_t *ptm_header,
             for (size_t x = 0; x < ptm_header->dimen[0]; ++x) {
                 for (int n = 0; n < PTM_COEFFICIENTS; ++n, ++s, ++u) {
                     /* Encode the PTM coefficients from floats to bytes */
-                    *s = CLIP ((*u * scale[n]) + bias[n]);
+                    *s = CLIP ((*u * inv_scale[n]) + bias[n]);
                 }
             }
         }
