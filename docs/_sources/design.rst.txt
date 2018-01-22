@@ -56,6 +56,10 @@ For the prototype we selected LEDs of the make:
 They come in 5 × 5 mm packages, which we hand-soldered onto a standard 2.54"
 striped PCB and then cut the board into little pieces.
 
+.. figure:: ../images/DSC_2886.jpg
+
+   Two LEDs soldered to a standard striped PCB.
+
 
 Alternative LEDs
 ----------------
