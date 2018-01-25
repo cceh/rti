@@ -7,19 +7,6 @@ The main goals of this design are:
 
 - user-solderable off-the-shelf components.
 
-.. figure:: ../images/DSC_2827.jpg
-
-   The front panel.
-
-.. figure:: ../images/DSC_2829.jpg
-
-   The back panel.
-
-.. figure:: ../images/DSC_2842.jpg
-
-   The mounted PCB.
-
-
 
 LEDs
 ----
@@ -57,6 +44,7 @@ They come in 5 × 5 mm packages, which we hand-soldered onto a standard 2.54"
 striped PCB and then cut the board into little pieces.
 
 .. figure:: ../images/DSC_2886.jpg
+   :align: center
 
    Two LEDs soldered to a standard striped PCB.
 
@@ -148,6 +136,21 @@ flush against the back panel.  You may choose not to mount the connectors to the
 board, in which case you may select the connectors you want and wire them to the
 board.
 
+.. figure:: ../images/DSC_2857.jpg
+   :align: center
+
+   The PCB component side front view.
+
+.. figure:: ../images/DSC_2858.jpg
+   :align: center
+
+   The PCB component side back view.
+
+.. figure:: ../images/DSC_2863.jpg
+   :align: center
+
+   The PCB solder side.
+
 
 Case
 ----
@@ -158,3 +161,18 @@ up to you.
 We used a case made of 2 *Fischer Elektronik KO H 2* halves, which offers room
 for a 100 × 100 mm PCB.  The CAD drawings of front and back panel where printed on
 paper and then spotted through with a scriber, drilled and filed to shape.
+
+.. figure:: ../images/DSC_2827.jpg
+   :align: center
+
+   The front panel.
+
+.. figure:: ../images/DSC_2829.jpg
+   :align: center
+
+   The back panel.
+
+.. figure:: ../images/DSC_2842.jpg
+   :align: center
+
+   The mounted PCB.
