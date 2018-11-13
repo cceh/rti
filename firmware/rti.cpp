@@ -88,21 +88,26 @@
     rgb_color colors[LED_COUNT];
 #endif
 
-volatile uint16_t led_index = 0;
-volatile uint8_t  led_index_changed = 0;
-volatile uint8_t  ready = 0;
-volatile uint8_t  ready_changed = 0;
+volatile unsigned long _millis = 0;  // incremented every 1 ms.
+
 volatile unsigned long last_change_flash_input = 0;
 volatile unsigned long last_change_start_button = 0;
 
-volatile unsigned long _millis = 0;  // incremented every 1 ms.
+volatile uint16_t led_index = 0;
+volatile uint8_t  led_index_changed = 0;
+volatile uint8_t  ready_status  = 0;
+volatile uint8_t  ready_changed = 0;
+volatile uint8_t  start_button_status = 0;
+volatile uint8_t  start_button_changed = 0;
+volatile uint8_t  focus_light_on = 0;
 
-uint16_t max_exposure = 1;  // in nth of a second.
+const uint16_t max_exposure = 1;  // in nth of a second.
 
 // Guards against recursive call of interrupt procedures on bounce.  Interrupt
 // procedures do their action only every debounce_delay.
-const unsigned long start_button_debounce_delay = 20; // in ms
-const unsigned long flash_input_debounce_delay =   2; // in ms
+const unsigned long start_button_debounce_delay      =   20; // in ms
+const unsigned long flash_input_debounce_delay       =    2; // in ms
+const unsigned long start_button_long_press_interval = 1000; // in ms
 
 unsigned long millis () {
 	unsigned long m;
@@ -178,14 +183,14 @@ void leds_on () {
 // Turns all LEDs off.
 
 void leds_off () {
-    SBI(G_PIN);
+    SBI(G_PIN);    // outputs high impedance
 }
 
 #endif
 
 void start_camera () {
     leds_off ();
-    ready = 0;
+    ready_status = 0;
     ready_changed = 1;
 
     SBI(WAKEUP_PIN);
@@ -197,31 +202,16 @@ void stop_camera () {
     CBI(TRIGGER_PIN);
     _delay_ms (10);
     CBI(WAKEUP_PIN);
-    ready = 1;
+    ready_status = 1;
     ready_changed = 1;
 }
 
 // Start Button interrupt routine (triggered on any edge)
-//
-// Turn focus aid LEDs on as long as the start button is pressed.  On button
-// release start cycle.
 
 ISR (INT0_vect) {
     if ((millis () - last_change_start_button) > start_button_debounce_delay) {
-        bool pressed = !READ(START_PIN);
-        if (pressed) {
-            stop_camera ();
-            _delay_ms (100);
-            SBI(WAKEUP_PIN); // turn on auto-focus
-            // turn some leds on to enable manual or camera focusing
-            write595 (FOCUS_595_MASK);
-            leds_on ();
-        } else {
-            leds_off ();
-            led_index = 0;
-            led_index_changed = 1;
-            start_camera ();
-        }
+        start_button_status = READ(START_PIN) ? 0 : 1;
+        start_button_changed = 1;
     }
     last_change_start_button = millis ();
 }
@@ -258,16 +248,21 @@ ISR (INT1_vect) {
 
 ISR (TIMER0_OVF_vect) {
     _millis++;
+
+    // detect long press of start button
+    if ((start_button_status == 1) &&
+        ((millis () - last_change_start_button) > start_button_long_press_interval)) {
+        start_button_status = 2;
+        start_button_changed = 1;
+    }
 }
 
 // Timer 1 compare interrupt routine
 //
 // Gets called when Timer 1 reaches the programmed threshold.
 //
-// Turn the LEDs off after exposure time elapsed.
-//
-// This is also a safeguard against overheating the LED if the camera gets stuck
-// and doesn't complete the cycle.
+// Turn the LEDs off after exposure time elapsed.  This is a safeguard against
+// overheating the LED if the camera gets stuck and doesn't complete the cycle.
 //
 // N.B. If the camera commands the next flash before the exposure timeout, the
 // flash interrupt routine will reset the timer 1 and this function will not get
@@ -332,6 +327,34 @@ int main () {
     sei ();
 
     while (1) {
+        if (start_button_changed) {
+            start_button_changed = 0;
+
+            // handle start button
+            if (start_button_status == 2) {
+                // on long press start an rti run
+                leds_off ();
+                led_index = 0;
+                led_index_changed = 1;
+                start_camera ();
+            }
+            if (start_button_status == 1) {
+                // on short press toggle focus lights
+                stop_camera ();
+                _delay_ms (10);
+                if (focus_light_on) {
+                    CBI(WAKEUP_PIN); // turn off auto-focus
+                    leds_off ();
+                } else {
+                    SBI(WAKEUP_PIN); // turn on auto-focus
+                    // turn some leds on to enable manual or camera focusing
+                    write595 (FOCUS_595_MASK);
+                    leds_on ();
+                }
+                focus_light_on = !focus_light_on;
+            }
+        }
+
         // Wake from sleep mode to program the next LED.  The firing of the LED
         // actually takes place in the flash interrupt routine, as commanded by
         // the camera.
@@ -354,10 +377,15 @@ int main () {
 #endif
 
         }
+
         if (ready_changed) {
-            ready ? SBI(READY_PIN) : CBI(READY_PIN);
             ready_changed = 0;
+
+            // green led on if ready
+            ready_status ? SBI(READY_PIN) : CBI(READY_PIN);
         }
+
+        // wait for next interrupt
         sleep_mode ();
     }
 }
