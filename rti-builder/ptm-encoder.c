@@ -127,8 +127,8 @@ int main (int argc, char *argv[]) {
         assert (dinfo2->output_components == dinfo->output_components);
     }
 
-    const size_t height     = dinfo->output_height;
-    const size_t width      = dinfo->output_height;
+    const size_t height         = dinfo->output_height;
+    const size_t width          = dinfo->output_width;
     const size_t row_stride     = width * dinfo->output_components;
     const size_t decoder_stride = height * row_stride;
 
