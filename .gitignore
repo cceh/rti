@@ -4,7 +4,7 @@
 *.pyc
 *.o
 
-bin/*
+firmware/bin/*
 
 docs/.buildinfo
 docs/.doctrees/
@@ -15,6 +15,8 @@ kicad/*ses
 kicad/*rules
 kicad/gui_defaults.par
 kicad/*-cache.*
+kicad/rescue-backup/
+kicad/remap-report.txt
 
 rti-builder/bin/
 rti-builder/test*/

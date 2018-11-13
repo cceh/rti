@@ -23,6 +23,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <libgen.h>
 #include <assert.h>
 #include <time.h>
 #include <omp.h>
@@ -50,6 +51,8 @@ int main (int argc, char *argv[]) {
         fprintf (stderr, "can't open %s\n", filename_lp);
         return 1;
     }
+    char *dirname_lp = strdup (filename_lp);
+    dirname_lp = dirname (dirname_lp);
 
     size_t max_decoders = 64; // start with 64, maybe double them later
     decoder_t **decoders = malloc (max_decoders * sizeof (decoder_t *));
@@ -68,12 +71,16 @@ int main (int argc, char *argv[]) {
                         filename, (double) u, (double) v, (double) w);
                fflush (stderr); */
 
+            char *path = malloc (strlen (dirname_lp) + strlen (filename) + 2);
+
+            sprintf (path, "%s/%s", dirname_lp, filename);
             FILE *fp_jpeg;
-            if ((fp_jpeg = fopen (filename, "rb")) == NULL) {
-                fprintf (stderr, "can't open %s\n", filename);
+            if ((fp_jpeg = fopen (path, "rb")) == NULL) {
+                fprintf (stderr, "can't open %s\n", path);
                 return 1;
             }
             free (filename);
+            free (path);
 
             decoder_t *decoder = malloc (sizeof (decoder_t));
             struct jpeg_decompress_struct *dinfo = &decoder->dinfo;
@@ -98,6 +105,7 @@ int main (int argc, char *argv[]) {
         }
     }
     free (line);
+    free (dirname_lp);
     fclose (fp_lp);
 
     if (n_decoders < 12) {

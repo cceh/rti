@@ -1,4 +1,4 @@
-update=Mo 03 Jul 2017 17:05:10 CEST
+update=Do 08 Nov 2018 11:09:25 CET
 version=1
 last_client=kicad
 [pcbnew]
@@ -37,19 +37,4 @@ SpiceUseNetNumbers=0
 LabSize=60
 [eeschema]
 version=1
-LibDir=lib;/home/highlander/kicad-sources/library-repos/kicad-library/library
-[eeschema/libraries]
-LibName1=lib/cceh-logo
-LibName2=lib/fischer-elektronik
-LibName3=lib/ic-sockets
-LibName4=lib/tpic6b595
-LibName5=atmel
-LibName6=conn
-LibName7=device
-LibName8=opto
-LibName9=power
-LibName10=regul
-LibName11=switches
-LibName12=transistors
-LibName13=graphic
-LibName14=lib/r_pack04_parallel
+LibDir=

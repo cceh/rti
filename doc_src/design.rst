@@ -136,12 +136,12 @@ flush against the back panel.  You may choose not to mount the connectors to the
 board, in which case you may select the connectors you want and wire them to the
 board.
 
-.. figure:: ../images/DSC_2857.jpg
+.. figure:: ../images/DSC_2858.jpg
    :align: center
 
    The PCB component side front view.
 
-.. figure:: ../images/DSC_2858.jpg
+.. figure:: ../images/DSC_2857.jpg
    :align: center
 
    The PCB component side back view.

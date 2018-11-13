@@ -1,20 +1,6 @@
-EESchema Schematic File Version 2
-LIBS:cceh-logo
-LIBS:fischer-elektronik
-LIBS:ic-sockets
-LIBS:tpic6b595
-LIBS:atmel
-LIBS:conn
-LIBS:device
-LIBS:opto
-LIBS:power
-LIBS:regul
-LIBS:switches
-LIBS:transistors
-LIBS:graphic
-LIBS:r_pack04_parallel
+EESchema Schematic File Version 4
 LIBS:rti-cache
-EELAYER 25 0
+EELAYER 26 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
@@ -29,7 +15,7 @@ Comment3 ""
 Comment4 ""
 $EndDescr
 $Comp
-L SW_Push_LED SW3
+L switches:SW_Push_LED SW3
 U 1 1 594E100C
 P 1250 2350
 F 0 "SW3" H 1300 2600 50  0000 L CNN
@@ -43,7 +29,7 @@ F 6 "Reset" H 1250 2150 60  0000 C CNN "Legend"
 	0    1    -1   0   
 $EndComp
 $Comp
-L SW_Push_LED SW4
+L switches:SW_Push_LED SW4
 U 1 1 594E1015
 P 1250 3550
 F 0 "SW4" H 1300 3800 50  0000 L CNN
@@ -57,7 +43,7 @@ F 6 "Start" H 1250 3350 60  0000 C CNN "Legend"
 	0    1    -1   0   
 $EndComp
 $Comp
-L CONN_01X03 J12
+L conn:CONN_01X03 J12
 U 1 1 594E101F
 P 2300 2350
 F 0 "J12" H 2300 2550 50  0000 C CNN
@@ -98,7 +84,7 @@ Wire Wire Line
 	1350 2550 1350 2750
 Connection ~ 1350 2750
 $Comp
-L CONN_01X03 J13
+L conn:CONN_01X03 J13
 U 1 1 594E1034
 P 2300 3550
 F 0 "J13" H 2300 3750 50  0000 C CNN
@@ -135,7 +121,7 @@ Wire Wire Line
 Wire Wire Line
 	1650 3250 1650 3450
 $Comp
-L CONN_01X01_MALE J17
+L conn:CONN_01X01_MALE J17
 U 1 1 594E1049
 P 3000 3350
 F 0 "J17" H 3000 3425 50  0000 C CNN
@@ -149,7 +135,7 @@ F 6 "important" H 3000 3350 60  0001 C CNN "Criticality"
 	1    0    0    -1  
 $EndComp
 $Comp
-L CONN_01X01_MALE J18
+L conn:CONN_01X01_MALE J18
 U 1 1 594E1051
 P 3000 3550
 F 0 "J18" H 3000 3625 50  0000 C CNN
@@ -162,7 +148,7 @@ F 5 "important" H 3000 3550 60  0001 C CNN "Criticality"
 	1    0    0    -1  
 $EndComp
 $Comp
-L CONN_01X01_MALE J19
+L conn:CONN_01X01_MALE J19
 U 1 1 594E1059
 P 3000 3750
 F 0 "J19" H 3000 3825 50  0000 C CNN
@@ -175,7 +161,7 @@ F 5 "important" H 3000 3750 60  0001 C CNN "Criticality"
 	1    0    0    -1  
 $EndComp
 $Comp
-L CONN_01X01_MALE J14
+L conn:CONN_01X01_MALE J14
 U 1 1 594E1061
 P 3000 2150
 F 0 "J14" H 3000 2225 50  0000 C CNN
@@ -191,7 +177,7 @@ F 8 "BPH-002T-P0.5S" H 3000 2150 60  0001 C CNN "PartNo"
 	1    0    0    -1  
 $EndComp
 $Comp
-L CONN_01X01_MALE J15
+L conn:CONN_01X01_MALE J15
 U 1 1 594E1069
 P 3000 2350
 F 0 "J15" H 3000 2425 50  0000 C CNN
@@ -204,7 +190,7 @@ F 5 "important" H 3000 2350 60  0001 C CNN "Criticality"
 	1    0    0    -1  
 $EndComp
 $Comp
-L CONN_01X01_MALE J16
+L conn:CONN_01X01_MALE J16
 U 1 1 594E1071
 P 3000 2550
 F 0 "J16" H 3000 2625 50  0000 C CNN
@@ -223,7 +209,7 @@ NoConn ~ 3300 2150
 NoConn ~ 3300 2350
 NoConn ~ 3300 2550
 $Comp
-L Barrel_Jack J20
+L conn:Barrel_Jack J20
 U 1 1 594E1080
 P 4950 2200
 F 0 "J20" H 4950 2410 50  0000 C CNN
@@ -236,7 +222,7 @@ F 5 "Power Jack Socket 5,5 / 2,1 mm" H 4950 2200 60  0001 C CNN "Description"
 	1    0    0    -1  
 $EndComp
 $Comp
-L SDIP28 Z4
+L ic-sockets:SDIP28 Z4
 U 1 1 594E108B
 P 8850 1900
 F 0 "Z4" H 8700 2700 50  0000 C CNN
@@ -248,7 +234,7 @@ F 4 "86281" H 8850 1000 60  0001 C CNN "Reichelt"
 	1    0    0    -1  
 $EndComp
 $Comp
-L SDIP20 Z6
+L ic-sockets:SDIP20 Z6
 U 1 1 594E1093
 P 9900 1700
 F 0 "Z6" H 9750 2300 50  0000 C CNN
@@ -260,7 +246,7 @@ F 4 "8212" H 9900 950 60  0001 C CNN "Reichelt"
 	1    0    0    -1  
 $EndComp
 $Comp
-L SDIP20 Z7
+L ic-sockets:SDIP20 Z7
 U 1 1 594E109B
 P 9900 3100
 F 0 "Z7" H 9750 3700 50  0000 C CNN
@@ -272,7 +258,7 @@ F 4 "8212" H 9900 2350 60  0001 C CNN "Reichelt"
 	1    0    0    -1  
 $EndComp
 $Comp
-L SDIP8 Z5
+L ic-sockets:SDIP8 Z5
 U 1 1 594E10A3
 P 8850 3400
 F 0 "Z5" H 8700 3700 50  0000 C CNN
@@ -292,7 +278,7 @@ Wire Wire Line
 Wire Wire Line
 	1750 3550 2100 3550
 $Comp
-L KO_H_2_100 Z2
+L fischer-elektronik:KO_H_2_100 Z2
 U 1 1 594E10B0
 P 1750 6550
 F 0 "Z2" H 1350 6650 60  0000 C CNN
@@ -305,7 +291,7 @@ F 5 "Half-Shell-Case 100×22mm" H 1750 6400 60  0001 C CNN "Description"
 	1    0    0    -1  
 $EndComp
 $Comp
-L KO_H_2_100 Z3
+L fischer-elektronik:KO_H_2_100 Z3
 U 1 1 594E10B9
 P 1750 6750
 F 0 "Z3" H 1350 6850 60  0000 C CNN
@@ -318,7 +304,7 @@ F 5 "Half-Shell-Case 100×22mm" H 1750 6600 60  0001 C CNN "Description"
 	-1   0    0    1   
 $EndComp
 $Comp
-L FRONT_PANEL_2_2 Z1
+L fischer-elektronik:FRONT_PANEL_2_2 Z1
 U 1 1 594E10C1
 P 1750 1350
 F 0 "Z1" H 1750 1450 60  0000 C CNN
@@ -331,7 +317,7 @@ F 5 "Front Panel" H 1750 1350 60  0000 C CNN "Legend"
 	1    0    0    -1  
 $EndComp
 $Comp
-L FRONT_PANEL_2_2 Z1
+L fischer-elektronik:FRONT_PANEL_2_2 Z1
 U 2 1 594E10C9
 P 5300 1350
 F 0 "Z1" H 5300 1450 60  0000 C CNN
@@ -359,7 +345,7 @@ Wire Wire Line
 Text Label 5800 2300 2    60   ~ 0
 GND
 $Comp
-L LOGO #G2
+L cceh-logo:LOGO #G2
 U 1 1 594D847A
 P 7250 6800
 F 0 "#G2" H 7250 6695 60  0001 C CNN
@@ -370,7 +356,7 @@ F 3 "" H 7250 6800 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L CIRCLE1 Z8
+L graphic:CIRCLE1 Z8
 U 1 1 594D86B5
 P 5300 2900
 F 0 "Z8" H 5050 3000 50  0000 C CNN
@@ -388,7 +374,7 @@ F 10 "NRJ-NUT-B" H 5300 2900 60  0001 C CNN "PartNo"
 	1    0    0    -1  
 $EndComp
 $Comp
-L CIRCLE1 Z9
+L graphic:CIRCLE1 Z9
 U 1 1 594D8AD4
 P 5300 3400
 F 0 "Z9" H 5050 3500 50  0000 C CNN
@@ -405,7 +391,7 @@ F 9 "NRJ-NUT-B" H 5300 3400 60  0001 C CNN "PartNo"
 	1    0    0    -1  
 $EndComp
 $Comp
-L SQUARE2 Z10
+L graphic:SQUARE2 Z10
 U 1 1 594DA464
 P 5300 4000
 F 0 "Z10" H 5100 4050 50  0000 C CNN

@@ -101,6 +101,12 @@
 <li class="toctree-l2"><a class="reference internal" href="design.html#case">Case</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="user_manual.html">RTI Dome User Manual</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="user_manual.html#camera-settings">Camera Settings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user_manual.html#dome-setup">Dome Setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user_manual.html#shooting">Shooting</a></li>
+</ul>
+</li>
 </ul>
 
             
@@ -185,7 +191,7 @@ javascript web viewer.</p>
 JPEG file.</p>
 <div class="section" id="outline">
 <h2>Outline<a class="headerlink" href="#outline" title="Permalink to this headline">¶</a></h2>
-<p>The PTM consist in fitting the <span class="math">\(N\)</span> samples obtained of each pixel under
+<p>The PTM consist in fitting the <span class="math notranslate nohighlight">\(N\)</span> samples obtained of each pixel under
 varying lighting conditions to a biquadratic polynomial.  Then, for each pixel,
 we store the coefficients of the biquadratic polynomial.  Using the polynomial
 we can interpolate an arbitrary light direction.</p>
@@ -199,8 +205,8 @@ projections of the lights’ positions onto the object plane are evenly spaced.<
 <img alt="_images/light-2d.png" src="_images/light-2d.png" />
 <p class="caption"><span class="caption-text">The positions of the lights projected onto the object plane.</span></p>
 </div>
-<p>Then an exposure is taken from each light in turn yielding <span class="math">\(N\)</span> images and
-thus <span class="math">\(N\)</span> samples for every pixel position in the images.</p>
+<p>Then an exposure is taken from each light in turn yielding <span class="math notranslate nohighlight">\(N\)</span> images and
+thus <span class="math notranslate nohighlight">\(N\)</span> samples for every pixel position in the images.</p>
 <div class="figure align-center" id="id10">
 <img alt="_images/light-samples.png" src="_images/light-samples.png" />
 <p class="caption"><span class="caption-text">The intensity of one pixel when illuminated by the different lights.</span></p>
@@ -223,16 +229,16 @@ JPEG file.</p>
 <div class="section" id="the-math">
 <h2>The Math<a class="headerlink" href="#the-math" title="Permalink to this headline">¶</a></h2>
 <p>The polynomial used for curve fitting is:</p>
-<div class="math" id="equation-poly">
+<div class="math notranslate nohighlight" id="equation-poly">
 <span class="eqno">(1)<a class="headerlink" href="#equation-poly" title="Permalink to this equation">¶</a></span>\[b = x_0u^2 + x_1v^2 + x_2uv + x_3u + x_4v + x_5\]</div>
-<p>where <span class="math">\((u,v,w)^T\)</span> is the normalized light vector and <span class="math">\(b\)</span> is the
+<p>where <span class="math notranslate nohighlight">\((u,v,w)^T\)</span> is the normalized light vector and <span class="math notranslate nohighlight">\(b\)</span> is the
 sampled surface luminance. <a class="reference internal" href="#malzbender2001" id="id4">[Malzbender2001]</a></p>
 <p>To fit the curve to the samples we use a Least Squares approximation and solve
 it using Singular Value Decomposition (SVD). “In the case of an overdetermined
 system, SVD produces a solution that is the best approximation in the
 least-squares sense.” <a class="reference internal" href="#press2007" id="id5">[Press2007]</a>, Chapter 15.4.2.</p>
 <p>Our design matrix:</p>
-<div class="math">
+<div class="math notranslate nohighlight">
 \[\begin{split}\mathbf{A}^{N\times6} =
 \begin{bmatrix}
   u_0^2 &amp; v_0^2 &amp; u_0v_0 &amp; u_0 &amp; v_0 &amp; 1 \\
@@ -242,34 +248,34 @@ least-squares sense.” <a class="reference internal" href="#press2007" id="id5"
   u_{N-1}^2 &amp; v_{N-1}^2 &amp; u_{N-1}v_{N-1} &amp; u_{N-1} &amp; v_{N-1} &amp; 1
 \end{bmatrix}\end{split}\]</div>
 <p>The vector of samples:</p>
-<div class="math">
+<div class="math notranslate nohighlight">
 \[\mathbf{b}^N = b_0,\dots,b_{N-1}\]</div>
 <p>The sought least-squares solution vector:</p>
-<div class="math">
+<div class="math notranslate nohighlight">
 \[\mathbf{x}^6 = x_0,\dots,x_5\]</div>
 <p>For each pixel we have to solve:</p>
-<div class="math" id="equation-axb">
+<div class="math notranslate nohighlight" id="equation-axb">
 <span class="eqno">(2)<a class="headerlink" href="#equation-axb" title="Permalink to this equation">¶</a></span>\[\mathbf{Ax} \approx \mathbf{b}\]</div>
-<p>We do a SVD of <span class="math">\(\mathbf{A}^{N\times6}\)</span> (See <a class="reference internal" href="#golub2013" id="id6">[Golub2013]</a>, Chapter 2.4):</p>
-<div class="math">
+<p>We do a SVD of <span class="math notranslate nohighlight">\(\mathbf{A}^{N\times6}\)</span> (See <a class="reference internal" href="#golub2013" id="id6">[Golub2013]</a>, Chapter 2.4):</p>
+<div class="math notranslate nohighlight">
 \[\mathbf{U}^T\mathbf{AV} = \boldsymbol{\Sigma} = \mathrm{diag}(\sigma_1,\dots,\sigma_6) \in \Bbb{R}^{N\times6}\]</div>
-<p>where <span class="math">\(\sigma_1\geq\sigma_2\geq\dots\geq\sigma_6\geq0.\)</span></p>
-<p><span class="math">\(\mathbf{U}^{N\times N}\)</span> and <span class="math">\(\mathbf{V}^{6\times6}\)</span> are orthogonal,
+<p>where <span class="math notranslate nohighlight">\(\sigma_1\geq\sigma_2\geq\dots\geq\sigma_6\geq0.\)</span></p>
+<p><span class="math notranslate nohighlight">\(\mathbf{U}^{N\times N}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{V}^{6\times6}\)</span> are orthogonal,
 so their inverses are equal to their transposes, and we can rearrange:</p>
-<div class="math">
+<div class="math notranslate nohighlight">
 \[\mathbf{A} = \mathbf{U} \boldsymbol{\Sigma} \mathbf{V}^T\]</div>
 <p>We replace into <a class="reference internal" href="#equation-axb">(2)</a>:</p>
-<div class="math">
+<div class="math notranslate nohighlight">
 \[\mathbf{U} \boldsymbol{\Sigma} \mathbf{V}^T \mathbf{x} \approx \mathbf{b}\]</div>
-<p><span class="math">\(\boldsymbol{\Sigma}\)</span> is diagonal, so its inverse is the diagonal matrix
+<p><span class="math notranslate nohighlight">\(\boldsymbol{\Sigma}\)</span> is diagonal, so its inverse is the diagonal matrix
 whose elements are the reciprocals of the elements
-<span class="math">\(\sigma_1,\dots,\sigma_6\)</span> and we can rearrange for the final least-squares
+<span class="math notranslate nohighlight">\(\sigma_1,\dots,\sigma_6\)</span> and we can rearrange for the final least-squares
 solution of <a class="reference internal" href="#equation-axb">(2)</a>:</p>
-<div class="math">
+<div class="math notranslate nohighlight">
 \[\mathbf{x}=\mathbf{V}\begin{bmatrix}\mathrm{diag}(1/\sigma_1,\dots,1/\sigma_6)\end{bmatrix}\mathbf{U}^T\mathbf{b}\]</div>
 <p>See: <a class="reference internal" href="#press2007" id="id7">[Press2007]</a>, Chapter 2.6.4.</p>
 <p>A naive GNU Octave implementation of the PTM is:</p>
-<div class="highlight-octave"><div class="highlight"><pre><span></span><span class="k">function</span><span class="w"> </span>X <span class="p">=</span><span class="w"> </span><span class="nf">ptm</span><span class="p">(</span>A,b<span class="p">)</span><span class="w"></span>
+<div class="highlight-octave notranslate"><div class="highlight"><pre><span></span><span class="k">function</span><span class="w"> </span>X <span class="p">=</span><span class="w"> </span><span class="nf">ptm</span><span class="p">(</span>A,b<span class="p">)</span><span class="w"></span>
 
 <span class="p">[</span><span class="n">U</span> <span class="n">S</span> <span class="n">V</span><span class="p">]</span> <span class="p">=</span> <span class="nb">svd</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>   <span class="c">% 0 requests thin SVD</span>
 <span class="n">M</span>       <span class="p">=</span> <span class="n">V</span> <span class="o">*</span> <span class="nb">diag</span> <span class="p">(</span><span class="mi">1</span> <span class="o">./</span> <span class="nb">diag</span> <span class="p">(</span><span class="n">S</span><span class="p">))</span> <span class="o">*</span> <span class="n">U</span><span class="o">&#39;</span>
@@ -280,7 +286,7 @@ solution of <a class="reference internal" href="#equation-axb">(2)</a>:</p>
 </div>
 <p>Note that the SVD needs to be computed only once for every different arrangement
 of light sources.  The only part of the above formula that varies for each pixel
-is <span class="math">\(\mathbf{b}\)</span>.</p>
+is <span class="math notranslate nohighlight">\(\mathbf{b}\)</span>.</p>
 <table class="docutils citation" frame="void" id="drew2012" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">

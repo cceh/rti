@@ -38,6 +38,7 @@
               href="genindex.html"/>
         <link rel="search" title="Search" href="search.html"/>
     <link rel="top" title="RTI 0.1.1 documentation" href="index.html"/>
+        <link rel="next" title="Dome User Manual" href="user_manual.html"/>
         <link rel="prev" title="Reflectance Transformation Imaging (RTI)" href="rti.html"/> 
 
   
@@ -98,6 +99,12 @@
 <li class="toctree-l2"><a class="reference internal" href="#microcontroller">Microcontroller</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#board-layout">Board Layout</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#case">Case</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="user_manual.html">Dome User Manual</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="user_manual.html#camera-settings">Camera Settings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user_manual.html#dome-setup">Dome Setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user_manual.html#shooting">Shooting</a></li>
 </ul>
 </li>
 </ul>
@@ -353,7 +360,7 @@ the high-side BD140’s.</p>
 <p>&#64; a forward current of 200mA.</p>
 <p>Cold LEDs have a higher forward voltage.  Ours are turned on for short periods
 only, so they will be cold.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>LM 317 Drop-Out Voltage  (@ I_O = 200mA, T_j = 25°C)       =  1.65V
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>LM 317 Drop-Out Voltage  (@ I_O = 200mA, T_j = 25°C)       =  1.65V
 LM 317 V_adjust                                            =  1.25V
 BD 140 C-E Saturation Voltage (@ I_C = -0.5A, I_B = -50mA) = -0.5V
 </pre></div>
@@ -365,7 +372,7 @@ V_f max + 3.9V = 26.1V.</p>
 <h2>Constant Current Source<a class="headerlink" href="#constant-current-source" title="Permalink to this headline">¶</a></h2>
 <p>To get even luminosity I use an LM 317 as constant current source.  The
 adjustment resistor value is given by:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">R_adj</span> <span class="o">=</span> <span class="mf">1.25</span><span class="n">V</span> <span class="o">/</span> <span class="n">I_O</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">R_adj</span> <span class="o">=</span> <span class="mf">1.25</span><span class="n">V</span> <span class="o">/</span> <span class="n">I_O</span>
 <span class="n">R_adj</span> <span class="o">=</span> <span class="mf">1.25</span><span class="n">V</span> <span class="o">/</span> <span class="mi">200</span><span class="n">mA</span> <span class="o">=</span> <span class="mf">6.25</span><span class="n">ohm</span><span class="p">,</span> <span class="mf">0.25</span><span class="n">W</span>
 </pre></div>
 </div>
@@ -387,11 +394,11 @@ flush against the back panel.  You may choose not to mount the connectors to the
 board, in which case you may select the connectors you want and wire them to the
 board.</p>
 <div class="figure align-center" id="id2">
-<img alt="_images/DSC_2857.jpg" src="_images/DSC_2857.jpg" />
+<img alt="_images/DSC_2858.jpg" src="_images/DSC_2858.jpg" />
 <p class="caption"><span class="caption-text">The PCB component side front view.</span></p>
 </div>
 <div class="figure align-center" id="id3">
-<img alt="_images/DSC_2858.jpg" src="_images/DSC_2858.jpg" />
+<img alt="_images/DSC_2857.jpg" src="_images/DSC_2857.jpg" />
 <p class="caption"><span class="caption-text">The PCB component side back view.</span></p>
 </div>
 <div class="figure align-center" id="id4">
@@ -430,6 +437,8 @@ paper and then spotted through with a scriber, drilled and filed to shape.</p>
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="user_manual.html" class="btn btn-neutral float-right" title="Dome User Manual" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="rti.html" class="btn btn-neutral" title="Reflectance Transformation Imaging (RTI)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

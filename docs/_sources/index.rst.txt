@@ -10,3 +10,4 @@
 
    rti
    design
+   user_manual
