@@ -63,20 +63,36 @@ Turn the camera on.
 Shooting
 --------
 
-Put the object under the dome in the exact center.
+1. Put the object under the dome in the exact center.
+
+2. Short press the green button for focus light. Focus the object.
+
+3. Short press the green button again to turn the focus light off.
+
+4. Long press the green button to start the picture run.
+
+5. The red button resets the CRM.  Use it to abort a shooting run.
+
+
+Various Notes
+-------------
+
+The speed depends on how fast the camera can save the pictures to the memory
+card.  RAW files are much bigger and thus slower than JPEGs, but RAW files
+contain more information which may be valuable in postprocessing.
+
+Camera vibrations caused by mirror movement can impair the results.  To
+reduce camera vibrations use exposure delay mode or live view.
+
+.. note::
+
+   For greater focus depth use the smallest aperture (that is the *highest*
+   aperture number) that you can manage.  Most cameras use the largest aperture
+   for viewing, the focus depth you see in the viewfinder is much less than the
+   depth you will get on the picture.  In case of a 3D object focus on the
+   middle ground.
 
 .. note::
 
    If you want color, place the object onto a grey card.  This will make it a
    lot easier to find the correct white balance in the raw converter software.
-
-Short press the green button for focus light. Focus the object.  Most cameras use the
-largest aperture for viewing, the depth of focus you see is much less than the
-depth you get on the picture.  In case of a 3D object focus on the middle
-ground.
-
-Short press the green button again to turn the focus light off.
-
-Long press the green button to start the picture run.
-
-The red button resets the CRM.  Use it to abort a shooting run.

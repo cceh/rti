@@ -43,6 +43,7 @@ ISP_EXT_FUSE  = 0xfa
 ISP_HIGH_FUSE = 0xdf
 ISP_LOW_FUSE  = 0xff
 
+TARGET = rti
 LOCAL_CPP_SRCS  = rti.cpp
 
 include $(ARDUINO_DIR)/Arduino.mk
@@ -60,7 +61,7 @@ my_init_fuses:
 
 # Upload a new image
 myispload: $(TARGET_HEX)
-	$(MY_AVRDUDE) -U flash:w:bin/nano328/rti.hex:i
+	$(MY_AVRDUDE) -U flash:w:bin/nano328/$(TARGET).hex:i
 
 	sleep 1
 
