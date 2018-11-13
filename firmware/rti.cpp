@@ -9,9 +9,6 @@
 #ifdef LED_STRIP
     #include "ledstrip.h"
 #endif
-#ifdef IR_LED
-    #include "canon.h"
-#endif
 
 // Macros to allow use of Atmel pin names.
 
@@ -101,7 +98,7 @@ volatile uint8_t  start_button_status = 0;
 volatile uint8_t  start_button_changed = 0;
 volatile uint8_t  focus_light_on = 0;
 
-const uint16_t max_exposure = 1;  // in nth of a second.
+const uint16_t max_exposure = 4;  // in seconds
 
 // Guards against recursive call of interrupt procedures on bounce.  Interrupt
 // procedures do their action only every debounce_delay.
@@ -120,8 +117,8 @@ unsigned long millis () {
 	return m;
 }
 
-void initMs () {
-    // Init the timer to interrupt once every 1ms.
+void init_ms () {
+    // Init the timer to interrupt once every 1 ms (actually 1.024 ms)
 
     // Normal mode: WGM02, WGM01, WGM00 = 0, 0, 0
     TCCR0A = 0;
@@ -135,12 +132,12 @@ void initMs () {
     TCCR0B = _BV(CS01) | _BV(CS00);
 }
 
-void setTimeout (uint16_t nth_of_second) {
+void set_timeout (uint16_t seconds) {
     // CTC (Clear Timer on Compare Match) mode: WGM13, WGM12, WGM11, WGM10 = 0, 1, 0, 0
     TCCR1A = 0;
     TCNT1  = 0; // initialize counter value to 0
     // Set compare match register
-    OCR1A = 15625 / nth_of_second; // = 16MHz / 1024 (prescaler) (must be <65536)
+    OCR1A = 15625 * seconds; // 15625 = 16MHz / 1024 (prescaler) (product must be <65536)
     // Enable output compare match interrupt
     TIMSK1 |= (1 << OCIE1A);
     // Set CS12, CS11, CS10 = 1, 0, 1 for a prescaler of 1024
@@ -210,6 +207,7 @@ void stop_camera () {
 
 ISR (INT0_vect) {
     if ((millis () - last_change_start_button) > start_button_debounce_delay) {
+        _delay_ms (1);
         start_button_status = READ(START_PIN) ? 0 : 1;
         start_button_changed = 1;
     }
@@ -228,7 +226,7 @@ ISR (INT1_vect) {
         bool flash = !READ(FLASH_PIN);
         if (flash) {
             leds_on ();
-            setTimeout (max_exposure);
+            set_timeout (max_exposure);
             ++led_index;
             led_index_changed = 1;
             // Stop the camera one shot early
@@ -261,8 +259,9 @@ ISR (TIMER0_OVF_vect) {
 //
 // Gets called when Timer 1 reaches the programmed threshold.
 //
-// Turn the LEDs off after exposure time elapsed.  This is a safeguard against
-// overheating the LED if the camera gets stuck and doesn't complete the cycle.
+// Turn the LEDs off after max_exposure time elapsed.  This is a safeguard
+// against overheating the LED if the camera gets stuck and doesn't complete the
+// cycle.
 //
 // N.B. If the camera commands the next flash before the exposure timeout, the
 // flash interrupt routine will reset the timer 1 and this function will not get
@@ -316,13 +315,10 @@ int main () {
     writeStrip (LED_STRIP_PIN, colors, LED_COUNT);
 #endif
 
-    EIMSK |= (1 << START_INT);   // enable interrupt
-    EICRA |= (1 << ISC00);       // 1 == on ANY edge
+    EIMSK = (1 << START_INT) + (1 << FLASH_INT);  // enable INT0 and INT1
+    EICRA = (1 << ISC00)     + (1 << ISC10);      // on ANY edge, FIXME use macro
 
-    EIMSK |= (1 << FLASH_INT) ;
-    EICRA |= (1 << ISC10);       // 1 == on ANY edge, FIXME use macro
-
-    initMs ();
+    init_ms ();
 
     sei ();
 
