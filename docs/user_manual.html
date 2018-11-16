@@ -24,28 +24,21 @@
 
   
 
-  
-  
-    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-  
-
-  
-    <link rel="stylesheet" href="_static/my_theme.css" type="text/css" />
-  
-
-  
-        <link rel="index" title="Index"
-              href="genindex.html"/>
-        <link rel="search" title="Search" href="search.html"/>
-    <link rel="top" title="RTI 0.1.1 documentation" href="index.html"/>
-        <link rel="prev" title="Electrical Design" href="design.html"/> 
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/graphviz.css" type="text/css" />
+  <link rel="stylesheet" href="_static/my_theme.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Lens Selection" href="lens_selection.html" />
+    <link rel="prev" title="Electrical Design" href="design.html" /> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
@@ -105,6 +98,13 @@
 <li class="toctree-l2"><a class="reference internal" href="#dome-setup">Dome Setup</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#shooting">Shooting</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#various-notes">Various Notes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#footnotes">Footnotes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#glossary">Glossary</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="lens_selection.html">Lens Selection</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="lens_selection.html#buying-lenses">Buying lenses</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lens_selection.html#object-sizes">Object Sizes</a></li>
 </ul>
 </li>
 </ul>
@@ -118,7 +118,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+      <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="index.html">RTI</a>
@@ -126,9 +126,10 @@
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
 
@@ -172,29 +173,49 @@
             
   <div class="section" id="rti-dome-user-manual">
 <h1>RTI Dome User Manual<a class="headerlink" href="#rti-dome-user-manual" title="Permalink to this headline">¶</a></h1>
+<p>Before taking an RTI image you must <a class="reference internal" href="lens_selection.html#lenses"><span class="std std-ref">decide on which lens to use</span></a>
+and if you will be shooting <a class="reference internal" href="#term-raw"><span class="xref std std-term">RAW</span></a> images or JPEGs.</p>
+<p>Use <a class="reference internal" href="#term-raw"><span class="xref std std-term">RAW</span></a> files for highest quality or use JPEG files for speed and
+convenience.</p>
+<p>RAW files are much bigger and thus slower to work with than JPEGs.  But much
+information is lost in the JPEG files that is in the RAW files.  RAW files are
+losslessly compressed and retain the full sensor resolution of 12 or 14 bits per
+RGB channel.  JPEG files are lossily compressed and have only 8 bits resolution
+per RGB channel.</p>
+<p>You must post-process RAW files in a raw converter software, but you can make
+many corrections in the process, like setting the white point on each picture
+individually for best color fidelity.</p>
+<p>If you shoot JPEG the camera will post-process the files for you, but you cannot
+make corrections afterwards.</p>
 <div class="section" id="camera-settings">
 <h2>Camera Settings<a class="headerlink" href="#camera-settings" title="Permalink to this headline">¶</a></h2>
-<ol class="arabic simple">
-<li><strong>Set the file format to RAW or JPEG.</strong> Nikon: <span class="guilabel">QUAL</span> +
-<span class="guilabel">rear dial</span>.</li>
-<li><strong>Set the white balance.</strong> If you are not shooting RAW set the white balance
-to incandescent light.  Nikon: <span class="guilabel">WB</span> + <span class="guilabel">rear dial</span>.  If
-you shoot RAW this setting is not used by the camera.</li>
-<li><strong>Set the ISO sensitivity.</strong> Use the ISO setting with least noise.  Nikon:
+<ol class="arabic">
+<li><p class="first"><strong>Choose RAW or JPEG.</strong> Nikon: <span class="guilabel">QUAL</span> + <span class="guilabel">rear dial</span>.</p>
+</li>
+<li><p class="first"><strong>Set the white balance</strong> to incandescent light if you are shooting JPEG.
+Nikon: <span class="guilabel">WB</span> + <span class="guilabel">rear dial</span>.  This setting has no effect on
+RAW images.</p>
+</li>
+<li><p class="first"><strong>Set the ISO sensitivity.</strong> Use the ISO setting with least noise.  Nikon:
 <span class="guilabel">ISO</span> + <span class="guilabel">rear dial</span>.  All cameras have one ISO setting
 where the sensor noise is minimal, usually the lowest, but you should check
-with your camera manual.</li>
-<li><strong>Set the camera to manual focus.</strong> Nikon: Push the switch on the lens from
-<span class="guilabel">M/A</span> to <span class="guilabel">M</span>.</li>
-<li><strong>Set the camera to manual exposure.</strong> Nikon: <span class="guilabel">MODE</span> +
-<span class="guilabel">rear dial</span>.  Use the smallest aperture for maximum focus depth.
-Nikon: <span class="guilabel">front dial</span>.  Set the time.  Nikon: <span class="guilabel">rear dial</span>.
-You’ll have to adjust the settings after taking test run.  The focus light
-has not the same intensity as the flash light.  Check for overexposure
-especially with shiny objects.</li>
-<li><strong>Turn on exposure delay mode.</strong> Nikon D700: menu <span class="menuselection">d9</span>.  This
+with your camera manual or the internet.</p>
+</li>
+<li><p class="first"><strong>Set the lens to manual focus.</strong> Nikon: Push the switch on the lens from
+<span class="guilabel">M/A</span> to <span class="guilabel">M</span>.</p>
+</li>
+<li><p class="first"><strong>Set the camera to manual exposure.</strong> Nikon: <span class="guilabel">MODE</span> +
+<span class="guilabel">rear dial</span>.  Use the smallest aperture for maximum depth of field (<a class="reference internal" href="#term-dof"><span class="xref std std-term">DOF</span></a>).
+Nikon: <span class="guilabel">front dial</span>.  Set the exposure time.  Nikon: <span class="guilabel">rear dial</span>.</p>
+<p>You’ll have to iteratively adjust the aperture, time and maybe ISO settings
+after taking test runs.  The focus light alone does not give enough guidance
+to set exposure parameters <a class="footnote-reference" href="#id2" id="id1">[1]</a>.  Check for overexposure especially with shiny
+objects.</p>
+</li>
+<li><p class="first"><strong>Turn on exposure delay mode.</strong> Nikon D700: menu <span class="menuselection">d9</span>.  This
 mode waits 1 second after lifting the mirror and before actually taking the
-picture thus reducing vibrations.</li>
+picture thus reducing vibrations.</p>
+</li>
 </ol>
 </div>
 <div class="section" id="dome-setup">
@@ -236,40 +257,61 @@ to turn the focus light off.</li>
 </div>
 <div class="section" id="various-notes">
 <h2>Various Notes<a class="headerlink" href="#various-notes" title="Permalink to this headline">¶</a></h2>
-<p>Your mileage will mostly depend on how fast the camera can save the pictures
-to the memory card.  Many cameras have an internal buffer, which fills up
-after a short burst.</p>
-<p>Shoot RAW for highest quality.  If you shoot RAW you have to post-process the
-files in a raw converter software, but you can make corrections in the
-process.</p>
-<p>If you shoot JPEG the camera will post-process the files for you, and you
-cannot make corrections.</p>
-<p>RAW files are much bigger and thus slower than JPEGs.</p>
+<p>Your mileage will depend on how fast the camera can save the pictures to the
+memory card.  Many cameras have a small internal buffer, which fills up after a
+short burst, and after that the speed of the memory card limits the frame rate.</p>
 <p>Camera vibrations caused by mirror movement can impair the results.  To
 reduce camera vibrations use exposure delay mode or live view.</p>
 <p>Exposure delay mode does not incur a penalty of one second per exposure.
 Depending on the speed of the memory card it may be much less.  If shooting
 RAW with a slow memory card the camera will need more than one second to
 write the file, thus the penalty will be zero.</p>
-<p>For greater focus depth use the smallest aperture (that is the <em>highest</em>
-aperture number) that you can manage.  Most cameras use the largest aperture
-for viewing, the focus depth you see in the viewfinder is much less than the
-depth you will get on the picture.  In case of a 3D object focus on the
-middle ground.</p>
-<p>If you want color, place the object onto a grey card.  This will make it a
-lot easier to find the correct white balance in the raw converter software.</p>
+<p>For greatest depth of field (<a class="reference internal" href="#term-dof"><span class="xref std std-term">DOF</span></a>) use the smallest aperture (that is the
+<em>highest</em> aperture number) that you can manage.  Most cameras use the largest
+aperture for viewing, the DOF you see in the viewfinder is much less than the
+DOF you will get on the picture.  In case of a 3D object focus on the middle
+ground.</p>
+<p>If you want color, place the object onto a <a class="reference internal" href="#term-grey-card"><span class="xref std std-term">grey card</span></a>.  This will make it
+a lot easier to find the correct white balance in the raw converter software.</p>
+</div>
+<div class="section" id="footnotes">
+<h2>Footnotes<a class="headerlink" href="#footnotes" title="Permalink to this headline">¶</a></h2>
+<table class="docutils footnote" frame="void" id="id2" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td>The focus light (current shared by N LEDs) has not the same intensity as
+the individual LED (current used by one LED) because LED emission is not
+linear with current.  Also specular lights will be N times brighter if
+the object is lighted by one LED only.</td></tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="glossary">
+<h2>Glossary<a class="headerlink" href="#glossary" title="Permalink to this headline">¶</a></h2>
+<dl class="glossary docutils">
+<dt id="term-dof">DOF</dt>
+<dd>Depth of field.  Range of distances where objects appear acceptabliy sharp.
+See: <a class="reference external" href="https://en.wikipedia.org/wiki/Depth_of_field">https://en.wikipedia.org/wiki/Depth_of_field</a></dd>
+<dt id="term-grey-card">grey card</dt>
+<dd>A piece of cardboard that is exactly 18% reflecting neutral grey. See:
+<a class="reference external" href="https://en.wikipedia.org/wiki/Gray_card">https://en.wikipedia.org/wiki/Gray_card</a></dd>
+<dt id="term-raw">RAW</dt>
+<dd>RAW image file format.  A file format that contains the unprocessed values
+read from the camera sensor.  See:
+<a class="reference external" href="https://en.wikipedia.org/wiki/Raw_image_format">https://en.wikipedia.org/wiki/Raw_image_format</a></dd>
+</dl>
 </div>
 </div>
 
 
            </div>
-           <div class="articleComments">
-            
-           </div>
+           
           </div>
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="lens_selection.html" class="btn btn-neutral float-right" title="Lens Selection" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="design.html" class="btn btn-neutral" title="Electrical Design" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
@@ -281,11 +323,11 @@ lot easier to find the correct white balance in the raw converter software.</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2017 CCeH - Licensed under the GNU GPL v3 or later.
+        &copy; Copyright 2017 CCeH - Licensed under the GNU GPL v3 or later
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -300,36 +342,24 @@ lot easier to find the correct white balance in the raw converter software.</p>
 
   
 
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'./',
-            VERSION:'0.1.1',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="_static/jquery.js"></script>
-      <script type="text/javascript" src="_static/underscore.js"></script>
-      <script type="text/javascript" src="_static/doctools.js"></script>
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
 
   
 
-  
-  
-    <script type="text/javascript" src="_static/js/theme.js"></script>
-  
+  <script type="text/javascript" src="_static/js/theme.js"></script>
 
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-   
+  </script> 
 
 </body>
 </html>

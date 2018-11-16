@@ -1,0 +1,289 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Scripts &mdash; RTI 0.1.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/graphviz.css" type="text/css" />
+  <link rel="stylesheet" href="_static/my_theme.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Glossary" href="glossary.html" />
+    <link rel="prev" title="Vibration Reduction" href="vibrations.html" /> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> RTI
+          
+
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="rti.html">Reflectance Transformation Imaging (RTI)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="rti.html#outline">Outline</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rti.html#the-math">The Math</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="builder.html">Builder Manual</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="design.html">Electrical Design</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="design.html#choice-of-led">Choice of LED</a></li>
+<li class="toctree-l3"><a class="reference internal" href="design.html#led-driver">Led Driver</a></li>
+<li class="toctree-l3"><a class="reference internal" href="design.html#constant-current-source">Constant Current Source</a></li>
+<li class="toctree-l3"><a class="reference internal" href="design.html#microcontroller">Microcontroller</a></li>
+<li class="toctree-l3"><a class="reference internal" href="design.html#board-layout">Board Layout</a></li>
+<li class="toctree-l3"><a class="reference internal" href="design.html#case">Case</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="user.html">User Manual</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="shooting.html">Shooting Manual</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="shooting.html#camera-settings">Camera Settings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="shooting.html#dome-setup">Dome Setup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="shooting.html#shooting">Shooting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="shooting.html#various-notes">Various Notes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="shooting.html#footnotes">Footnotes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="lens_selection.html">Lens Selection</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="lens_selection.html#buying-lenses">Buying Lenses</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lens_selection.html#object-sizes">Object Sizes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="raw_or_jpeg.html">RAW or JPEG?</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="raw_or_jpeg.html#raw">RAW</a></li>
+<li class="toctree-l3"><a class="reference internal" href="raw_or_jpeg.html#jpeg">JPEG</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="vibrations.html">Vibration Reduction</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="vibrations.html#live-view">Live View</a></li>
+<li class="toctree-l3"><a class="reference internal" href="vibrations.html#exposure-delay-mode">Exposure Delay Mode</a></li>
+<li class="toctree-l3"><a class="reference internal" href="vibrations.html#mirrorless-cameras">Mirrorless Cameras</a></li>
+<li class="toctree-l3"><a class="reference internal" href="vibrations.html#footnotes">Footnotes</a></li>
+</ul>
+</li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Scripts</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#scripts-image-filer-py">scripts/image_filer.py</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="glossary.html">Glossary</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">RTI</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="user.html">User Manual</a> &raquo;</li>
+        
+      <li>Scripts</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/user_scripts.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="scripts">
+<h1>Scripts<a class="headerlink" href="#scripts" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="scripts-image-filer-py">
+<span id="image-filer-py"></span><h2>scripts/image_filer.py<a class="headerlink" href="#scripts-image-filer-py" title="Permalink to this headline">¶</a></h2>
+<p>File image runs into subdirectories.</p>
+<p>Reads images from a camera’s memory card and files them into directories.  All
+images with near enough timestamps get filed into the same directory.  It also
+builds a sample.lp file in the directory containing a light position map for the
+PTM builder.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">usage: scripts/image_filer.py [-h] [-v] FILE [FILE ...]</span>
+</pre></div>
+</div>
+<dl class="option">
+<dt id="cmdoption-scripts-image-filer-py-arg-file">
+<code class="descname">file</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-scripts-image-filer-py-arg-file" title="Permalink to this definition">¶</a></dt>
+<dd><p>the image files to file</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-scripts-image-filer-py-h">
+<code class="descname">-h</code><code class="descclassname"></code><code class="descclassname">, </code><code class="descname">--help</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-scripts-image-filer-py-h" title="Permalink to this definition">¶</a></dt>
+<dd><p>show this help message and exit</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-scripts-image-filer-py-v">
+<code class="descname">-v</code><code class="descclassname"></code><code class="descclassname">, </code><code class="descname">--verbose</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-scripts-image-filer-py-v" title="Permalink to this definition">¶</a></dt>
+<dd><p>increase output verbosity</p>
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="glossary.html" class="btn btn-neutral float-right" title="Glossary" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="vibrations.html" class="btn btn-neutral" title="Vibration Reduction" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017-18 CCeH - Licensed under the GNU GPL v3 or later
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+
+  
+
+  <script type="text/javascript" src="_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

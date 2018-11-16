@@ -9,5 +9,14 @@
    :maxdepth: 2
 
    rti
-   design
-   user_manual
+   builder
+   user
+   glossary
+
+
+Indices and tables
+==================
+
+* :ref:`genindex`
+* :ref:`modindex`
+* :ref:`search`

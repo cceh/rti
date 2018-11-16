@@ -24,29 +24,21 @@
 
   
 
-  
-  
-    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-  
-
-  
-    <link rel="stylesheet" href="_static/my_theme.css" type="text/css" />
-  
-
-  
-        <link rel="index" title="Index"
-              href="genindex.html"/>
-        <link rel="search" title="Search" href="search.html"/>
-    <link rel="top" title="RTI 0.1.1 documentation" href="index.html"/>
-        <link rel="next" title="Dome User Manual" href="user_manual.html"/>
-        <link rel="prev" title="Reflectance Transformation Imaging (RTI)" href="rti.html"/> 
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/graphviz.css" type="text/css" />
+  <link rel="stylesheet" href="_static/my_theme.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="User Manual" href="user.html" />
+    <link rel="prev" title="Builder Manual" href="builder.html" /> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
@@ -91,22 +83,51 @@
 <li class="toctree-l2"><a class="reference internal" href="rti.html#the-math">The Math</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Electrical Design</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#leds">LEDs</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#alternative-leds">Alternative LEDs</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#led-driver">Led Driver</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#constant-current-source">Constant Current Source</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#microcontroller">Microcontroller</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#board-layout">Board Layout</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#case">Case</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="builder.html">Builder Manual</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Electrical Design</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#choice-of-led">Choice of LED</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#led-driver">Led Driver</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#constant-current-source">Constant Current Source</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#microcontroller">Microcontroller</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#board-layout">Board Layout</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#case">Case</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="user_manual.html">Dome User Manual</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="user_manual.html#camera-settings">Camera Settings</a></li>
-<li class="toctree-l2"><a class="reference internal" href="user_manual.html#dome-setup">Dome Setup</a></li>
-<li class="toctree-l2"><a class="reference internal" href="user_manual.html#shooting">Shooting</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="user.html">User Manual</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="shooting.html">Shooting Manual</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="shooting.html#camera-settings">Camera Settings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="shooting.html#dome-setup">Dome Setup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="shooting.html#shooting">Shooting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="shooting.html#various-notes">Various Notes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="shooting.html#footnotes">Footnotes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="lens_selection.html">Lens Selection</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="lens_selection.html#buying-lenses">Buying Lenses</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lens_selection.html#object-sizes">Object Sizes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="raw_or_jpeg.html">RAW or JPEG?</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="raw_or_jpeg.html#raw">RAW</a></li>
+<li class="toctree-l3"><a class="reference internal" href="raw_or_jpeg.html#jpeg">JPEG</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="vibrations.html">Vibration Reduction</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="vibrations.html#live-view">Live View</a></li>
+<li class="toctree-l3"><a class="reference internal" href="vibrations.html#exposure-delay-mode">Exposure Delay Mode</a></li>
+<li class="toctree-l3"><a class="reference internal" href="vibrations.html#mirrorless-cameras">Mirrorless Cameras</a></li>
+<li class="toctree-l3"><a class="reference internal" href="vibrations.html#footnotes">Footnotes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="user_scripts.html">Scripts</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="user_scripts.html#scripts-image-filer-py">scripts/image_filer.py</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="glossary.html">Glossary</a></li>
 </ul>
 
             
@@ -118,7 +139,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+      <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="index.html">RTI</a>
@@ -126,9 +147,10 @@
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
 
@@ -151,6 +173,8 @@
     
       <li><a href="index.html">Docs</a> &raquo;</li>
         
+          <li><a href="builder.html">Builder Manual</a> &raquo;</li>
+        
       <li>Electrical Design</li>
     
     
@@ -172,42 +196,34 @@
             
   <div class="section" id="electrical-design">
 <h1>Electrical Design<a class="headerlink" href="#electrical-design" title="Permalink to this headline">¶</a></h1>
-<p>The main goals of this design are:</p>
+<p>The main goals of this design were:</p>
 <ul class="simple">
-<li>bright and affordable LEDs,</li>
-<li>user-solderable off-the-shelf components.</li>
+<li>to use bright and affordable LEDs, and</li>
+<li>to use only user-solderable off-the-shelf components.</li>
 </ul>
-<div class="section" id="leds">
-<h2>LEDs<a class="headerlink" href="#leds" title="Permalink to this headline">¶</a></h2>
-<p>Consider following points before selecting the LED make.</p>
+<div class="section" id="choice-of-led">
+<h2>Choice of LED<a class="headerlink" href="#choice-of-led" title="Permalink to this headline">¶</a></h2>
+<p>The performance LED market has short product cycles.  You must buy enough LEDs
+for replacement purposes.</p>
+<p>Consider the following points before selecting an LED make.</p>
 <p>Performance:</p>
 <blockquote>
-<div>Luminous LEDs allow faster work.  Don’t consider LEDs with less than 100 lm
-(lumen) or without the lumens specified.</div></blockquote>
+<div>Luminous LEDs allow fast work and great focal depth.  Look for LEDs specified
+to 100 lm (lumen) or more.</div></blockquote>
 <p>Light quality:</p>
 <blockquote>
-<div>Especially important if you want to take color pictures.</div></blockquote>
+<div>Especially important if you want to take color pictures.  Look for a Color
+Rendering Index (CRI) of 90 or more.</div></blockquote>
 <p>Price:</p>
 <blockquote>
-<div>High performance LEDs are (still) pretty expensive.</div></blockquote>
+<div>High performance LEDs are expensive.</div></blockquote>
 <p>Mounting:</p>
 <blockquote>
 <div>High performance LEDs are designed for reflow soldering, which makes them hard
-to solder by hand.  Before use you must solder each LED to a small board or
-buy them pre-soldered (expensive).  Make sure you are able to solder the LED
-type before you buy lots of them.</div></blockquote>
-<p>For the prototype we selected LEDs of the make:</p>
-<p><em>Osram Duris S8 GW P9LMS1.EM-NSNU-57S5-0</em></p>
-<p>They come in 5 × 5 mm packages, which we hand-soldered onto a standard 2.54”
-striped PCB and then cut the board into little pieces.</p>
-<div class="figure align-center" id="id1">
-<img alt="_images/DSC_2886.jpg" src="_images/DSC_2886.jpg" />
-<p class="caption"><span class="caption-text">Two LEDs soldered to a standard striped PCB.</span></p>
-</div>
-</div>
-<div class="section" id="alternative-leds">
-<h2>Alternative LEDs<a class="headerlink" href="#alternative-leds" title="Permalink to this headline">¶</a></h2>
-<p>LED alternatives, since the original type might be discontinued.</p>
+to solder by hand.  You must solder each LED to a small board before you can
+use them or buy them pre-soldered (expensive).  Test your ability to solder
+the LED make before buying quantities.</div></blockquote>
+<p>This is a choice of LED makes (as of 2017).</p>
 <table border="1" class="docutils">
 <colgroup>
 <col width="12%" />
@@ -325,16 +341,25 @@ striped PCB and then cut the board into little pieces.</p>
 </tr>
 </tbody>
 </table>
+<p>For our dome we selected the make: <em>Osram Duris S8 GW P9LMS1.EM-NSNU-57S5-0</em>
+mainly because they were comparatively easy to solder by hand.  They come in 5 ×
+5 mm (4SMD) packages, which we then soldered onto postage-stamp sized pieces we
+cut out of a standard 2.54” striped PCB.</p>
+<div class="figure align-center" id="id1">
+<img alt="_images/DSC_2886.jpg" src="_images/DSC_2886.jpg" />
+<p class="caption"><span class="caption-text">Two LEDs soldered to a standard striped PCB.</span></p>
+</div>
 </div>
 <div class="section" id="led-driver">
 <h2>Led Driver<a class="headerlink" href="#led-driver" title="Permalink to this headline">¶</a></h2>
-<p>The LED driver section is very flexible.  Adjusting component values you can
-drive almost any LED up to 1.5A / 80V.  You’ll have to use separate power
-supplies for VLED and VCPU if VLED is over 35V, which is the max. the 7805 can
-handle.  Otherwise you can just tie VCPU to VLED.  The components you have to
-adjust are the resistor of the constant current source and the base resistors of
-the high-side BD140’s.</p>
-<p>The chosen LEDs have a forward voltage of:</p>
+<p>The LED driver section we designed is very flexible.  Adjusting component values
+you can drive almost any LED up to 1.5A / 80V.  The components you have to
+adjust are the resistor of the LM317 constant current source and the base
+resistors of the high-side BD140 PNP transistors.</p>
+<p>With VLED up to 35V you can use a single power supply.  Over that value you must
+use separate power supplies for VLED and VCPU.  Separate batteries for VLED and
+VCPU are also advisable for battery-powered operation.</p>
+<p>Now we calculate VLED.  The chosen LEDs have a forward voltage of:</p>
 <table border="1" class="docutils">
 <colgroup>
 <col width="43%" />
@@ -370,7 +395,7 @@ V_f max + 3.9V = 26.1V.</p>
 </div>
 <div class="section" id="constant-current-source">
 <h2>Constant Current Source<a class="headerlink" href="#constant-current-source" title="Permalink to this headline">¶</a></h2>
-<p>To get even luminosity I use an LM 317 as constant current source.  The
+<p>To get even luminosity we use an LM317 as constant current source.  The
 adjustment resistor value is given by:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">R_adj</span> <span class="o">=</span> <span class="mf">1.25</span><span class="n">V</span> <span class="o">/</span> <span class="n">I_O</span>
 <span class="n">R_adj</span> <span class="o">=</span> <span class="mf">1.25</span><span class="n">V</span> <span class="o">/</span> <span class="mi">200</span><span class="n">mA</span> <span class="o">=</span> <span class="mf">6.25</span><span class="n">ohm</span><span class="p">,</span> <span class="mf">0.25</span><span class="n">W</span>
@@ -389,10 +414,9 @@ Arduino Nano.</p>
 <div class="section" id="board-layout">
 <h2>Board Layout<a class="headerlink" href="#board-layout" title="Permalink to this headline">¶</a></h2>
 <p>The board is layed out as 1/2 Eurocard (100 × 80 mm).</p>
-<p>The back of the board holds a few standard connectors and is designed to be
-flush against the back panel.  You may choose not to mount the connectors to the
-board, in which case you may select the connectors you want and wire them to the
-board.</p>
+<p>The back of the board holds a few standard connectors and can be mounted flush
+against the back panel.  You may choose different connectors if you don’t mount
+them directly to the PCB board.</p>
 <div class="figure align-center" id="id2">
 <img alt="_images/DSC_2858.jpg" src="_images/DSC_2858.jpg" />
 <p class="caption"><span class="caption-text">The PCB component side front view.</span></p>
@@ -409,7 +433,8 @@ board.</p>
 <div class="section" id="case">
 <h2>Case<a class="headerlink" href="#case" title="Permalink to this headline">¶</a></h2>
 <p>It is highly recommended to put the board into a case.  The make of the case is
-up to you.</p>
+up to you.  (You can also try to place the board inside the dome if there is
+room.)</p>
 <p>We used a case made of 2 <em>Fischer Elektronik KO H 2</em> halves, which offers room
 for a 100 × 100 mm PCB.  The CAD drawings of front and back panel where printed on
 paper and then spotted through with a scriber, drilled and filed to shape.</p>
@@ -430,18 +455,16 @@ paper and then spotted through with a scriber, drilled and filed to shape.</p>
 
 
            </div>
-           <div class="articleComments">
-            
-           </div>
+           
           </div>
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="user_manual.html" class="btn btn-neutral float-right" title="Dome User Manual" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="user.html" class="btn btn-neutral float-right" title="User Manual" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="rti.html" class="btn btn-neutral" title="Reflectance Transformation Imaging (RTI)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="builder.html" class="btn btn-neutral" title="Builder Manual" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -450,11 +473,11 @@ paper and then spotted through with a scriber, drilled and filed to shape.</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2017 CCeH - Licensed under the GNU GPL v3 or later.
+        &copy; Copyright 2017-18 CCeH - Licensed under the GNU GPL v3 or later
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -469,36 +492,24 @@ paper and then spotted through with a scriber, drilled and filed to shape.</p>
 
   
 
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'./',
-            VERSION:'0.1.1',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="_static/jquery.js"></script>
-      <script type="text/javascript" src="_static/underscore.js"></script>
-      <script type="text/javascript" src="_static/doctools.js"></script>
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
 
   
 
-  
-  
-    <script type="text/javascript" src="_static/js/theme.js"></script>
-  
+  <script type="text/javascript" src="_static/js/theme.js"></script>
 
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-   
+  </script> 
 
 </body>
 </html>

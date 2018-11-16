@@ -4,18 +4,14 @@
 """File image runs into subdirectories.
 
 Reads images from a camera's memory card and files them into directories.  All
-images with near enough timestamps get filed into the same directory.
-
-Builds a sample.lp file containing a light position map for the ptm builder.
-
-Usage:
-
-  image_filer.py /mount/sdcard/dcim/*.jpeg
+images with near enough timestamps get filed into the same directory.  It also
+builds a sample.lp file in the directory containing a light position map for the
+PTM builder.
 
 """
 
+import argparse
 import datetime
-import glob
 import math
 import itertools
 import operator
@@ -52,37 +48,54 @@ def pairwise (iterable):
     return itertools.zip_longest (a, b)
 
 
-files = [ (fn, get_datetime (fn)) for fn in glob.glob (sys.argv[1]) ]
-files.sort (key = operator.itemgetter (1)) # sort by time
+def build_parser ():
+    parser = argparse.ArgumentParser (description = __doc__)
 
-grouped_files = []
-last_group = []
-for pair in pairwise (files):
-    if not grouper (pair):
-        last_group.append (pair[0])
-        grouped_files.append (last_group)
-        last_group = []
-    else:
-        last_group.append (pair[0])
+    parser.add_argument('files', metavar='FILE', type=str, nargs='+',
+                        help='the image files to file')
+    parser.add_argument ('-v', '--verbose', dest='verbose', action='count',
+                         help='increase output verbosity', default=0)
+    return parser
 
-for files in grouped_files:
-    i = 0
-    run = 'runs/' + files[0][1].strftime ('%Y-%m-%d-%H-%M-%S')
-    print (run)
-    os.makedirs (run, exist_ok = True)
 
-    with open ("%s/sample.lp" % run, 'w') as fp:
-        fp.write ("# run of %s\n" % files[0][1].isoformat ())
-        fp.write ("%d\n" % len (files))
-        for num_leds, diameter in RINGS:
-            phi = 1.0 / 8.0 * twopi                 # start each ring at 45°
-            step_phi = -twopi / num_leds
-            dia = diameter / DOME_DIAMETER
-            z = math.sqrt (1 - dia ** 2)
+if __name__ == '__main__':
 
-            for n in range (0, num_leds):
-                filename = files[i][0]
-                shutil.copy2 (filename, run)
-                fp.write ("%s %f %f %f\n" % (os.path.basename (filename), dia * math.sin (phi), dia * math.cos (phi), z))
-                phi += step_phi
-                i += 1
+    parser = build_parser ()
+    args = parser.parse_args ()
+
+    files = [ (fn, get_datetime (fn)) for fn in args.files ]
+    files.sort (key = operator.itemgetter (1)) # sort by time
+
+    grouped_files = []
+    last_group = []
+    for pair in pairwise (files):
+        if not grouper (pair):
+            last_group.append (pair[0])
+            grouped_files.append (last_group)
+            last_group = []
+        else:
+            last_group.append (pair[0])
+
+    for files in grouped_files:
+        i = 0
+        run = 'runs/' + files[0][1].strftime ('%Y-%m-%d-%H-%M-%S')
+        os.makedirs (run, exist_ok = True)
+
+        if args.verbose:
+            print ("filing into %s\n" % run)
+
+        with open ("%s/sample.lp" % run, 'w') as fp:
+            fp.write ("# run of %s\n" % files[0][1].isoformat ())
+            fp.write ("%d\n" % len (files))
+            for num_leds, diameter in RINGS:
+                phi = 1.0 / 8.0 * twopi                 # start each ring at 45°
+                step_phi = -twopi / num_leds
+                dia = diameter / DOME_DIAMETER
+                z = math.sqrt (1 - dia ** 2)
+
+                for n in range (0, num_leds):
+                    filename = files[i][0]
+                    shutil.copy2 (filename, run)
+                    fp.write ("%s %f %f %f\n" % (os.path.basename (filename), dia * math.sin (phi), dia * math.cos (phi), z))
+                    phi += step_phi
+                    i += 1

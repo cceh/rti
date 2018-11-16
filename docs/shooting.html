@@ -1,0 +1,359 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Shooting Manual &mdash; RTI 0.1.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/graphviz.css" type="text/css" />
+  <link rel="stylesheet" href="_static/my_theme.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Lens Selection" href="lens_selection.html" />
+    <link rel="prev" title="User Manual" href="user.html" /> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> RTI
+          
+
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="rti.html">Reflectance Transformation Imaging (RTI)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="rti.html#outline">Outline</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rti.html#the-math">The Math</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="builder.html">Builder Manual</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="design.html">Electrical Design</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="design.html#choice-of-led">Choice of LED</a></li>
+<li class="toctree-l3"><a class="reference internal" href="design.html#led-driver">Led Driver</a></li>
+<li class="toctree-l3"><a class="reference internal" href="design.html#constant-current-source">Constant Current Source</a></li>
+<li class="toctree-l3"><a class="reference internal" href="design.html#microcontroller">Microcontroller</a></li>
+<li class="toctree-l3"><a class="reference internal" href="design.html#board-layout">Board Layout</a></li>
+<li class="toctree-l3"><a class="reference internal" href="design.html#case">Case</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="user.html">User Manual</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Shooting Manual</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#camera-settings">Camera Settings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#dome-setup">Dome Setup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#shooting">Shooting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#various-notes">Various Notes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#footnotes">Footnotes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="lens_selection.html">Lens Selection</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="lens_selection.html#buying-lenses">Buying Lenses</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lens_selection.html#object-sizes">Object Sizes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="raw_or_jpeg.html">RAW or JPEG?</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="raw_or_jpeg.html#raw">RAW</a></li>
+<li class="toctree-l3"><a class="reference internal" href="raw_or_jpeg.html#jpeg">JPEG</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="vibrations.html">Vibration Reduction</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="vibrations.html#live-view">Live View</a></li>
+<li class="toctree-l3"><a class="reference internal" href="vibrations.html#exposure-delay-mode">Exposure Delay Mode</a></li>
+<li class="toctree-l3"><a class="reference internal" href="vibrations.html#mirrorless-cameras">Mirrorless Cameras</a></li>
+<li class="toctree-l3"><a class="reference internal" href="vibrations.html#footnotes">Footnotes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="user_scripts.html">Scripts</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="user_scripts.html#scripts-image-filer-py">scripts/image_filer.py</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="glossary.html">Glossary</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">RTI</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="user.html">User Manual</a> &raquo;</li>
+        
+      <li>Shooting Manual</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/shooting.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="shooting-manual">
+<h1>Shooting Manual<a class="headerlink" href="#shooting-manual" title="Permalink to this headline">¶</a></h1>
+<p>Before taking an RTI image you must decide on <a class="reference internal" href="lens_selection.html#lenses"><span class="std std-ref">which lens to use</span></a>
+and if you will be shooting <a class="reference internal" href="raw_or_jpeg.html#raw-or-jpeg"><span class="std std-ref">RAW images or JPEGs</span></a>.  Also look
+into <a class="reference internal" href="vibrations.html#vibration-reduction"><span class="std std-ref">vibration reduction</span></a> techniques.</p>
+<div class="section" id="camera-settings">
+<h2>Camera Settings<a class="headerlink" href="#camera-settings" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li><strong>Choose RAW or JPEG.</strong> Nikon: <span class="guilabel">QUAL</span> + <span class="guilabel">rear dial</span>.</li>
+<li><strong>Set the white balance</strong> to incandescent light if you are shooting JPEG.
+Nikon: <span class="guilabel">WB</span> + <span class="guilabel">rear dial</span>.  This setting has no effect on
+RAW images.</li>
+<li><strong>Set the ISO sensitivity.</strong> Use the ISO setting with least noise.  Nikon:
+<span class="guilabel">ISO</span> + <span class="guilabel">rear dial</span>.  All cameras have one ISO setting
+where the sensor noise is minimal, usually the lowest, but you should check
+with your camera manual or the internet.</li>
+<li><strong>Set the lens to manual focus.</strong> Nikon: Push the switch on the lens from
+<span class="guilabel">M/A</span> to <span class="guilabel">M</span>.</li>
+<li><strong>Set the camera to manual exposure.</strong> Nikon: <span class="guilabel">MODE</span> +
+<span class="guilabel">rear dial</span>.  Use the smallest aperture for maximum depth of field (<a class="reference internal" href="glossary.html#term-dof"><span class="xref std std-term">DOF</span></a>).
+Nikon: <span class="guilabel">front dial</span>.  Set the exposure time.  Nikon: <span class="guilabel">rear dial</span>.</li>
+<li>Either:<ol class="loweralpha">
+<li><strong>Turn on live view</strong>.  Nikon D850: <kbd class="kbd docutils literal notranslate">Lv</kbd>  Or</li>
+<li><strong>Turn on exposure delay mode.</strong> Nikon D700: menu <span class="menuselection">d9</span>.</li>
+</ol>
+</li>
+</ol>
+</div>
+<div class="section" id="dome-setup">
+<h2>Dome Setup<a class="headerlink" href="#dome-setup" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><p class="first"><strong>Connect the RTI dome to the CRM 114</strong> (Camera to RTI Module) using two
+Cat.5 or better Ethernet cables.</p>
+</li>
+<li><p class="first"><strong>Fit lens and camera to the dome.</strong> Align the camera’s vertical axis with
+the 0° axis of dome.  A polarizing filter between dome and lens will allow
+you to turn the camera with more ease.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">You will not get working RTI pictures without correct alignment of dome
+and camera.</p>
+</div>
+</li>
+<li><p class="first"><strong>Connect the camera to the CRM</strong> using two interface cables.  Connect the
+PC-Flash output on the camera with the flash input on the CRM.  Connect the
+trigger input on the camera with the trigger output on the CRM.</p>
+</li>
+<li><p class="first"><strong>Connect the AC/DC adaptor to the CRM</strong> and plug it into a wall socket.  The
+green light on the CRM should come on.</p>
+</li>
+<li><p class="first"><strong>Turn the camera on.</strong></p>
+</li>
+</ol>
+</div>
+<div class="section" id="shooting">
+<h2>Shooting<a class="headerlink" href="#shooting" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><p class="first"><strong>Put the object under the dome</strong> in the exact center.</p>
+</li>
+<li><p class="first"><strong>Short press the green button</strong> for focus light.  You can short press again
+to turn the focus light off.</p>
+</li>
+<li><p class="first"><strong>Focus the object.</strong>  Close the viewfinder.  If you are using live view,
+press <kbd class="kbd docutils literal notranslate">Lv</kbd> to exit and re-enter live view mode.</p>
+</li>
+<li><p class="first"><strong>Long press the green button</strong> to start the picture run.  The red button
+resets the CRM.  Use it to abort a shooting run.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Check your pictures for over- (specular lights) or under-exposure.  Adjust
+the aperture, time and maybe ISO settings and repeat the run.  The focus
+light alone does not give enough guidance to set exposure parameters <a class="footnote-reference" href="#id2" id="id1">[1]</a>.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="section" id="various-notes">
+<h2>Various Notes<a class="headerlink" href="#various-notes" title="Permalink to this headline">¶</a></h2>
+<p>Your mileage will depend on how fast the camera can save the pictures to the
+memory card.  Many cameras have a small internal buffer, which fills up after a
+short burst, and after that the speed of the memory card limits the frame rate.</p>
+<p>For greatest depth of field (<a class="reference internal" href="glossary.html#term-dof"><span class="xref std std-term">DOF</span></a>) use the smallest aperture (that is the
+<em>highest</em> aperture number) that you can manage.  Most cameras use the largest
+aperture for viewing, the DOF you see in the viewfinder is much less than the
+DOF you will get on the picture.  In case of a 3D object focus on the middle
+ground.</p>
+<p>If you want color, place the object onto a <a class="reference internal" href="glossary.html#term-grey-card"><span class="xref std std-term">grey card</span></a>.  This will make it
+a lot easier to find the correct white balance in the raw converter software.</p>
+</div>
+<div class="section" id="footnotes">
+<h2>Footnotes<a class="headerlink" href="#footnotes" title="Permalink to this headline">¶</a></h2>
+<table class="docutils footnote" frame="void" id="id2" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td>The focus light (current shared by N LEDs) has not the same intensity as
+the individual LED (current used by one LED) because LED emission is not
+linear with current.  Also specular lights will be N times brighter if
+the object is lighted by one LED only.</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="lens_selection.html" class="btn btn-neutral float-right" title="Lens Selection" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="user.html" class="btn btn-neutral" title="User Manual" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017-18 CCeH - Licensed under the GNU GPL v3 or later
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+
+  
+
+  <script type="text/javascript" src="_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

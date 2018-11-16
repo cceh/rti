@@ -37,6 +37,8 @@ extensions = [
     'sphinx.ext.mathjax',
     'sphinx.ext.imgconverter',
     'sphinx.ext.githubpages',
+    'sphinxcontrib.autoprogram',
+    'sphinxcontrib.plantuml',
 ]
 
 # Add any paths that contain templates here, relative to this directory.
@@ -55,7 +57,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = 'RTI'
-copyright = '2017 CCeH - Licensed under the GNU GPL v3 or later'
+copyright = '2017-18 CCeH - Licensed under the GNU GPL v3 or later'
 author = 'Marcello Perathoner'
 
 # The version info for the project you're documenting, acts as replacement for

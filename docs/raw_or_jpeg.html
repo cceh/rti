@@ -1,0 +1,282 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>RAW or JPEG? &mdash; RTI 0.1.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/graphviz.css" type="text/css" />
+  <link rel="stylesheet" href="_static/my_theme.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Vibration Reduction" href="vibrations.html" />
+    <link rel="prev" title="Lens Selection" href="lens_selection.html" /> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> RTI
+          
+
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="rti.html">Reflectance Transformation Imaging (RTI)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="rti.html#outline">Outline</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rti.html#the-math">The Math</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="builder.html">Builder Manual</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="design.html">Electrical Design</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="design.html#choice-of-led">Choice of LED</a></li>
+<li class="toctree-l3"><a class="reference internal" href="design.html#led-driver">Led Driver</a></li>
+<li class="toctree-l3"><a class="reference internal" href="design.html#constant-current-source">Constant Current Source</a></li>
+<li class="toctree-l3"><a class="reference internal" href="design.html#microcontroller">Microcontroller</a></li>
+<li class="toctree-l3"><a class="reference internal" href="design.html#board-layout">Board Layout</a></li>
+<li class="toctree-l3"><a class="reference internal" href="design.html#case">Case</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="user.html">User Manual</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="shooting.html">Shooting Manual</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="shooting.html#camera-settings">Camera Settings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="shooting.html#dome-setup">Dome Setup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="shooting.html#shooting">Shooting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="shooting.html#various-notes">Various Notes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="shooting.html#footnotes">Footnotes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="lens_selection.html">Lens Selection</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="lens_selection.html#buying-lenses">Buying Lenses</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lens_selection.html#object-sizes">Object Sizes</a></li>
+</ul>
+</li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">RAW or JPEG?</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#raw">RAW</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#jpeg">JPEG</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="vibrations.html">Vibration Reduction</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="vibrations.html#live-view">Live View</a></li>
+<li class="toctree-l3"><a class="reference internal" href="vibrations.html#exposure-delay-mode">Exposure Delay Mode</a></li>
+<li class="toctree-l3"><a class="reference internal" href="vibrations.html#mirrorless-cameras">Mirrorless Cameras</a></li>
+<li class="toctree-l3"><a class="reference internal" href="vibrations.html#footnotes">Footnotes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="user_scripts.html">Scripts</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="user_scripts.html#scripts-image-filer-py">scripts/image_filer.py</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="glossary.html">Glossary</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">RTI</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="user.html">User Manual</a> &raquo;</li>
+        
+      <li>RAW or JPEG?</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/raw_or_jpeg.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="raw-or-jpeg">
+<span id="id1"></span><h1>RAW or JPEG?<a class="headerlink" href="#raw-or-jpeg" title="Permalink to this headline">¶</a></h1>
+<p>Use <a class="reference internal" href="glossary.html#term-raw"><span class="xref std std-term">RAW</span></a> files for highest quality or use JPEG files for speed and
+convenience.</p>
+<div class="section" id="raw">
+<h2>RAW<a class="headerlink" href="#raw" title="Permalink to this headline">¶</a></h2>
+<p>RAW files are much bigger and thus slower to work with than JPEGs.  RAW files are
+losslessly compressed and retain the full sensor resolution of 12 or 14 bits per
+RGB channel.</p>
+<p>RAW files must be post-processed in a raw converter software, which is
+time-consuming, but you can make many corrections in the process, like setting
+the white point on each picture individually for best color fidelity.</p>
+<p>Prefer RAW if no other pictures exist of the object you are imaging.  RAW files
+convert to TIFF for archival purposes.</p>
+</div>
+<div class="section" id="jpeg">
+<h2>JPEG<a class="headerlink" href="#jpeg" title="Permalink to this headline">¶</a></h2>
+<p>JPEG files are smaller and thus faster to work with than RAW files.  JPEGs are
+lossily compressed and have only 8 bits resolution per RGB channel.</p>
+<p>If you shoot JPEG the camera will post-process the files for you, but you cannot
+make corrections afterwards.</p>
+<p>Use JPEG if the only purpose of taking these images is to build an RTI image and
+there exist other images of the object for archival purposes.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="vibrations.html" class="btn btn-neutral float-right" title="Vibration Reduction" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="lens_selection.html" class="btn btn-neutral" title="Lens Selection" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017-18 CCeH - Licensed under the GNU GPL v3 or later
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+
+  
+
+  <script type="text/javascript" src="_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

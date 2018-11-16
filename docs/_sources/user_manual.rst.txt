@@ -1,31 +1,52 @@
 RTI Dome User Manual
 ====================
 
+Before taking an RTI image you must :ref:`decide on which lens to use <lenses>`
+and if you will be shooting :term:`RAW` images or JPEGs.
+
+Use :term:`RAW` files for highest quality or use JPEG files for speed and
+convenience.
+
+RAW files are much bigger and thus slower to work with than JPEGs.  But much
+information is lost in the JPEG files that is in the RAW files.  RAW files are
+losslessly compressed and retain the full sensor resolution of 12 or 14 bits per
+RGB channel.  JPEG files are lossily compressed and have only 8 bits resolution
+per RGB channel.
+
+You must post-process RAW files in a raw converter software, but you can make
+many corrections in the process, like setting the white point on each picture
+individually for best color fidelity.
+
+If you shoot JPEG the camera will post-process the files for you, but you cannot
+make corrections afterwards.
+
+
 
 Camera Settings
 ---------------
 
-1. **Set the file format to RAW or JPEG.** Nikon: :guilabel:`QUAL` +
-   :guilabel:`rear dial`.
+1. **Choose RAW or JPEG.** Nikon: :guilabel:`QUAL` + :guilabel:`rear dial`.
 
-2. **Set the white balance.** If you are not shooting RAW set the white balance
-   to incandescent light.  Nikon: :guilabel:`WB` + :guilabel:`rear dial`.  If
-   you shoot RAW this setting is not used by the camera.
+2. **Set the white balance** to incandescent light if you are shooting JPEG.
+   Nikon: :guilabel:`WB` + :guilabel:`rear dial`.  This setting has no effect on
+   RAW images.
 
 3. **Set the ISO sensitivity.** Use the ISO setting with least noise.  Nikon:
    :guilabel:`ISO` + :guilabel:`rear dial`.  All cameras have one ISO setting
    where the sensor noise is minimal, usually the lowest, but you should check
-   with your camera manual.
+   with your camera manual or the internet.
 
-4. **Set the camera to manual focus.** Nikon: Push the switch on the lens from
+4. **Set the lens to manual focus.** Nikon: Push the switch on the lens from
    :guilabel:`M/A` to :guilabel:`M`.
 
 5. **Set the camera to manual exposure.** Nikon: :guilabel:`MODE` +
-   :guilabel:`rear dial`.  Use the smallest aperture for maximum focus depth.
-   Nikon: :guilabel:`front dial`.  Set the time.  Nikon: :guilabel:`rear dial`.
-   You'll have to adjust the settings after taking test run.  The focus light
-   has not the same intensity as the flash light.  Check for overexposure
-   especially with shiny objects.
+   :guilabel:`rear dial`.  Use the smallest aperture for maximum depth of field (:term:`DOF`).
+   Nikon: :guilabel:`front dial`.  Set the exposure time.  Nikon: :guilabel:`rear dial`.
+
+   You'll have to iteratively adjust the aperture, time and maybe ISO settings
+   after taking test runs.  The focus light alone does not give enough guidance
+   to set exposure parameters [#]_.  Check for overexposure especially with shiny
+   objects.
 
 6. **Turn on exposure delay mode.** Nikon D700: menu :menuselection:`d9`.  This
    mode waits 1 second after lifting the mirror and before actually taking the
@@ -75,18 +96,9 @@ The red button resets the CRM.  Use it to abort a shooting run.
 Various Notes
 -------------
 
-Your mileage will mostly depend on how fast the camera can save the pictures
-to the memory card.  Many cameras have an internal buffer, which fills up
-after a short burst.
-
-Shoot RAW for highest quality.  If you shoot RAW you have to post-process the
-files in a raw converter software, but you can make corrections in the
-process.
-
-If you shoot JPEG the camera will post-process the files for you, and you
-cannot make corrections.
-
-RAW files are much bigger and thus slower than JPEGs.
+Your mileage will depend on how fast the camera can save the pictures to the
+memory card.  Many cameras have a small internal buffer, which fills up after a
+short burst, and after that the speed of the memory card limits the frame rate.
 
 Camera vibrations caused by mirror movement can impair the results.  To
 reduce camera vibrations use exposure delay mode or live view.
@@ -96,11 +108,42 @@ Depending on the speed of the memory card it may be much less.  If shooting
 RAW with a slow memory card the camera will need more than one second to
 write the file, thus the penalty will be zero.
 
-For greater focus depth use the smallest aperture (that is the *highest*
-aperture number) that you can manage.  Most cameras use the largest aperture
-for viewing, the focus depth you see in the viewfinder is much less than the
-depth you will get on the picture.  In case of a 3D object focus on the
-middle ground.
+For greatest depth of field (:term:`DOF`) use the smallest aperture (that is the
+*highest* aperture number) that you can manage.  Most cameras use the largest
+aperture for viewing, the DOF you see in the viewfinder is much less than the
+DOF you will get on the picture.  In case of a 3D object focus on the middle
+ground.
 
-If you want color, place the object onto a grey card.  This will make it a
-lot easier to find the correct white balance in the raw converter software.
+If you want color, place the object onto a :term:`grey card`.  This will make it
+a lot easier to find the correct white balance in the raw converter software.
+
+
+Footnotes
+---------
+
+.. [#] The focus light (current shared by N LEDs) has not the same intensity as
+       the individual LED (current used by one LED) because LED emission is not
+       linear with current.  Also specular lights will be N times brighter if
+       the object is lighted by one LED only.
+
+
+Glossary
+--------
+
+.. glossary::
+
+   DOF
+
+      Depth of field.  Range of distances where objects appear acceptabliy sharp.
+      See: https://en.wikipedia.org/wiki/Depth_of_field
+
+   grey card
+
+      A piece of cardboard that is exactly 18% reflecting neutral grey. See:
+      https://en.wikipedia.org/wiki/Gray_card
+
+   RAW
+
+      RAW image file format.  A file format that contains the unprocessed values
+      read from the camera sensor.  See:
+      https://en.wikipedia.org/wiki/Raw_image_format

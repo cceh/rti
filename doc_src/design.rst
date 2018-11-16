@@ -1,58 +1,44 @@
 Electrical Design
 =================
 
-The main goals of this design are:
+The main goals of this design were:
 
-- bright and affordable LEDs,
+- to use bright and affordable LEDs, and
 
-- user-solderable off-the-shelf components.
+- to use only user-solderable off-the-shelf components.
 
 
-LEDs
-----
+Choice of LED
+-------------
 
-Consider following points before selecting the LED make.
+The performance LED market has short product cycles.  You must buy enough LEDs
+for replacement purposes.
+
+Consider the following points before selecting an LED make.
 
 Performance:
 
-  Luminous LEDs allow faster work.  Don't consider LEDs with less than 100 lm
-  (lumen) or without the lumens specified.
+  Luminous LEDs allow fast work and great focal depth.  Look for LEDs specified
+  to 100 lm (lumen) or more.
 
 Light quality:
 
-  Especially important if you want to take color pictures.
+  Especially important if you want to take color pictures.  Look for a Color
+  Rendering Index (CRI) of 90 or more.
 
 Price:
 
-  High performance LEDs are (still) pretty expensive.
+  High performance LEDs are expensive.
 
 Mounting:
 
   High performance LEDs are designed for reflow soldering, which makes them hard
-  to solder by hand.  Before use you must solder each LED to a small board or
-  buy them pre-soldered (expensive).  Make sure you are able to solder the LED
-  type before you buy lots of them.
+  to solder by hand.  You must solder each LED to a small board before you can
+  use them or buy them pre-soldered (expensive).  Test your ability to solder
+  the LED make before buying quantities.
 
 
-For the prototype we selected LEDs of the make:
-
-*Osram Duris S8 GW P9LMS1.EM-NSNU-57S5-0*
-
-.. _P9LMS1.EM-NSNU-57S5-0: http://www.osram-os.com/Graphics/XPic8/00199270_0.pdf
-
-They come in 5 × 5 mm packages, which we hand-soldered onto a standard 2.54"
-striped PCB and then cut the board into little pieces.
-
-.. figure:: ../images/DSC_2886.jpg
-   :align: center
-
-   Two LEDs soldered to a standard striped PCB.
-
-
-Alternative LEDs
-----------------
-
-LED alternatives, since the original type might be discontinued.
+This is a choice of LED makes (as of 2017).
 
 ========== ========================== ====  ==== === ==== ==== ====== ======= =============
 Series     Part.No.                     lm     V  mA Case    € MinQty Distr.  No
@@ -67,18 +53,32 @@ Duris S 8  GW P9LMS1.EM-NSNU-57S5-0    395  19.8 200 4SMD 0.91     50 RS      81
 Duris S 8  GW P9LMS2.EM-NQNS-57S5-0    350  19.8 200 4SMD 0.60     50 RS      8768969
 ========== ========================== ====  ==== === ==== ==== ====== ======= =============
 
+.. _P9LMS1.EM-NSNU-57S5-0: http://www.osram-os.com/Graphics/XPic8/00199270_0.pdf
+
+For our dome we selected the make: *Osram Duris S8 GW P9LMS1.EM-NSNU-57S5-0*
+mainly because they were comparatively easy to solder by hand.  They come in 5 ×
+5 mm (4SMD) packages, which we then soldered onto postage-stamp sized pieces we
+cut out of a standard 2.54" striped PCB.
+
+.. figure:: ../images/DSC_2886.jpg
+   :align: center
+
+   Two LEDs soldered to a standard striped PCB.
+
 
 Led Driver
 ----------
 
-The LED driver section is very flexible.  Adjusting component values you can
-drive almost any LED up to 1.5A / 80V.  You'll have to use separate power
-supplies for VLED and VCPU if VLED is over 35V, which is the max. the 7805 can
-handle.  Otherwise you can just tie VCPU to VLED.  The components you have to
-adjust are the resistor of the constant current source and the base resistors of
-the high-side BD140's.
+The LED driver section we designed is very flexible.  Adjusting component values
+you can drive almost any LED up to 1.5A / 80V.  The components you have to
+adjust are the resistor of the LM317 constant current source and the base
+resistors of the high-side BD140 PNP transistors.
 
-The chosen LEDs have a forward voltage of:
+With VLED up to 35V you can use a single power supply.  Over that value you must
+use separate power supplies for VLED and VCPU.  Separate batteries for VLED and
+VCPU are also advisable for battery-powered operation.
+
+Now we calculate VLED.  The chosen LEDs have a forward voltage of:
 
 === ====
 V_f    V
@@ -106,7 +106,7 @@ V_f max + 3.9V = 26.1V.
 Constant Current Source
 -----------------------
 
-To get even luminosity I use an LM 317 as constant current source.  The
+To get even luminosity we use an LM317 as constant current source.  The
 adjustment resistor value is given by::
 
   R_adj = 1.25V / I_O
@@ -131,10 +131,9 @@ Board Layout
 
 The board is layed out as 1/2 Eurocard (100 × 80 mm).
 
-The back of the board holds a few standard connectors and is designed to be
-flush against the back panel.  You may choose not to mount the connectors to the
-board, in which case you may select the connectors you want and wire them to the
-board.
+The back of the board holds a few standard connectors and can be mounted flush
+against the back panel.  You may choose different connectors if you don't mount
+them directly to the PCB board.
 
 .. figure:: ../images/DSC_2858.jpg
    :align: center
@@ -156,7 +155,8 @@ Case
 ----
 
 It is highly recommended to put the board into a case.  The make of the case is
-up to you.
+up to you.  (You can also try to place the board inside the dome if there is
+room.)
 
 We used a case made of 2 *Fischer Elektronik KO H 2* halves, which offers room
 for a 100 × 100 mm PCB.  The CAD drawings of front and back panel where printed on
