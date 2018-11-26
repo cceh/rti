@@ -78,24 +78,25 @@
             
             
               <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="rti.html">Reflectance Transformation Imaging (RTI)</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="rti.html#outline">Outline</a></li>
-<li class="toctree-l2"><a class="reference internal" href="rti.html#the-math">The Math</a></li>
+<li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction to RTI</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="intro.html#outline">Outline</a></li>
+<li class="toctree-l2"><a class="reference internal" href="intro.html#the-math">The Math</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="builder.html">Builder Manual</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="builder.html">Dome Builder Manual</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="design.html">Electrical Design</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="design.html#choice-of-led">Choice of LED</a></li>
 <li class="toctree-l3"><a class="reference internal" href="design.html#led-driver">Led Driver</a></li>
 <li class="toctree-l3"><a class="reference internal" href="design.html#constant-current-source">Constant Current Source</a></li>
 <li class="toctree-l3"><a class="reference internal" href="design.html#microcontroller">Microcontroller</a></li>
+<li class="toctree-l3"><a class="reference internal" href="design.html#connectors">Connectors</a></li>
 <li class="toctree-l3"><a class="reference internal" href="design.html#board-layout">Board Layout</a></li>
 <li class="toctree-l3"><a class="reference internal" href="design.html#case">Case</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l1 current"><a class="reference internal" href="user.html">User Manual</a><ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="user.html">Dome User Manual</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="shooting.html">Shooting Manual</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="shooting.html#camera-settings">Camera Settings</a></li>
 <li class="toctree-l3"><a class="reference internal" href="shooting.html#dome-setup">Dome Setup</a></li>
@@ -122,9 +123,18 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="user_scripts.html">Scripts</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="user_scripts.html#scripts-image-filer-py">scripts/image_filer.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_scripts.html#scripts-image-filer-py">scripts/image-filer.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_scripts.html#bin-ptm-encoder">bin/ptm-encoder</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_scripts.html#bin-ptm-decoder">bin/ptm-decoder</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_scripts.html#bin-ptm-exploder">bin/ptm-exploder</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_scripts.html#sample-lp-file-format">sample.lp file format</a></li>
 </ul>
 </li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="developer.html">Software Developer Manual</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="firmware.html">Firmware</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ptmlib.html">ptmlib</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="glossary.html">Glossary</a></li>
@@ -173,7 +183,7 @@
     
       <li><a href="index.html">Docs</a> &raquo;</li>
         
-          <li><a href="user.html">User Manual</a> &raquo;</li>
+          <li><a href="user.html">Dome User Manual</a> &raquo;</li>
         
       <li>Lens Selection</li>
     
@@ -207,16 +217,16 @@ coin-sized objects and a 60mm macro for objects up to 10cm diagonal.</p>
 <h2>Buying Lenses<a class="headerlink" href="#buying-lenses" title="Permalink to this headline">¶</a></h2>
 <p>Before you buy a lens make sure that it will focus down to the object distance.
 For domes smaller than 1 m in diameter you will probably have to buy macro
-lenses.  The minimun focal distance is stated on the datasheet of the lens and
-is measured from the sensor plane.  A Plimsoll Mark (a circle with a horizontal
-line through it) on your camera shows where the sensor plane is.</p>
+lenses.  The minimum focal distance is stated on the datasheet of the lens and
+is measured from the focal plane.  A Plimsoll Mark (a circle with a horizontal
+line through it) on your camera shows where the focal plane is.</p>
 <p>If the front thread of the lens turns while focusing you will not be able to
 mount the lens on the dome by the front thread, instead you’ll have to use a
-tripod to suspend the camera above the dome.  Better buy a lens whose front does
-not turn when focusing.</p>
+tripod to suspend the camera above the dome.  We advise buying a lens whose
+front does not turn when focusing.</p>
 <p>Some lenses will extend when focusing, this is unpractical when mounted on the
-dome by the front thread.  Better buy a lens that does not extend.  Nikon calls
-this “internal focusing”.</p>
+dome by the front thread.  We advise buying lens that does not extend.  Nikon
+calls this “internal focusing”.</p>
 <p>With some lenses the focus will wander if the lens is pointed up or down,
 depending on the quality and the weight of the internal mechanics.  Avoid those
 lenses as they are useless for RTI.</p>

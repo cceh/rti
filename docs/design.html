@@ -30,8 +30,8 @@
   <link rel="stylesheet" href="_static/my_theme.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="User Manual" href="user.html" />
-    <link rel="prev" title="Builder Manual" href="builder.html" /> 
+    <link rel="next" title="Dome User Manual" href="user.html" />
+    <link rel="prev" title="Dome Builder Manual" href="builder.html" /> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -78,24 +78,25 @@
             
             
               <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="rti.html">Reflectance Transformation Imaging (RTI)</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="rti.html#outline">Outline</a></li>
-<li class="toctree-l2"><a class="reference internal" href="rti.html#the-math">The Math</a></li>
+<li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction to RTI</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="intro.html#outline">Outline</a></li>
+<li class="toctree-l2"><a class="reference internal" href="intro.html#the-math">The Math</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current"><a class="reference internal" href="builder.html">Builder Manual</a><ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="builder.html">Dome Builder Manual</a><ul class="current">
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Electrical Design</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#choice-of-led">Choice of LED</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#led-driver">Led Driver</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#constant-current-source">Constant Current Source</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#microcontroller">Microcontroller</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#connectors">Connectors</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#board-layout">Board Layout</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#case">Case</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="user.html">User Manual</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="user.html">Dome User Manual</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="shooting.html">Shooting Manual</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="shooting.html#camera-settings">Camera Settings</a></li>
 <li class="toctree-l3"><a class="reference internal" href="shooting.html#dome-setup">Dome Setup</a></li>
@@ -122,9 +123,18 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="user_scripts.html">Scripts</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="user_scripts.html#scripts-image-filer-py">scripts/image_filer.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_scripts.html#scripts-image-filer-py">scripts/image-filer.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_scripts.html#bin-ptm-encoder">bin/ptm-encoder</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_scripts.html#bin-ptm-decoder">bin/ptm-decoder</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_scripts.html#bin-ptm-exploder">bin/ptm-exploder</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_scripts.html#sample-lp-file-format">sample.lp file format</a></li>
 </ul>
 </li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="developer.html">Software Developer Manual</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="firmware.html">Firmware</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ptmlib.html">ptmlib</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="glossary.html">Glossary</a></li>
@@ -173,7 +183,7 @@
     
       <li><a href="index.html">Docs</a> &raquo;</li>
         
-          <li><a href="builder.html">Builder Manual</a> &raquo;</li>
+          <li><a href="builder.html">Dome Builder Manual</a> &raquo;</li>
         
       <li>Electrical Design</li>
     
@@ -198,13 +208,13 @@
 <h1>Electrical Design<a class="headerlink" href="#electrical-design" title="Permalink to this headline">¶</a></h1>
 <p>The main goals of this design were:</p>
 <ul class="simple">
-<li>to use bright and affordable LEDs, and</li>
-<li>to use only user-solderable off-the-shelf components.</li>
+<li>to use bright and affordable LEDs,</li>
+<li>to use only user-solderable off-the-shelf components,</li>
+<li>the dome should look to the camera like an ordinary flash gun,</li>
+<li>the dome should work with any camera using standard interfaces.</li>
 </ul>
 <div class="section" id="choice-of-led">
 <h2>Choice of LED<a class="headerlink" href="#choice-of-led" title="Permalink to this headline">¶</a></h2>
-<p>The performance LED market has short product cycles.  You must buy enough LEDs
-for replacement purposes.</p>
 <p>Consider the following points before selecting an LED make.</p>
 <p>Performance:</p>
 <blockquote>
@@ -349,6 +359,11 @@ cut out of a standard 2.54” striped PCB.</p>
 <img alt="_images/DSC_2886.jpg" src="_images/DSC_2886.jpg" />
 <p class="caption"><span class="caption-text">Two LEDs soldered to a standard striped PCB.</span></p>
 </div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">The power-LED market has short product cycles.  You must buy enough
+LEDs for replacement purposes.</p>
+</div>
 </div>
 <div class="section" id="led-driver">
 <h2>Led Driver<a class="headerlink" href="#led-driver" title="Permalink to this headline">¶</a></h2>
@@ -411,6 +426,17 @@ base current to switch 1.5A LEDs).</p>
 <p>The project uses an ATmega328p microcontroller because it was prototyped on an
 Arduino Nano.</p>
 </div>
+<div class="section" id="connectors">
+<h2>Connectors<a class="headerlink" href="#connectors" title="Permalink to this headline">¶</a></h2>
+<p>The device commands the camera through the remote control interface which is
+found on most camera models.  Interface cables for Nikon, Canon and all other
+major brands are also available at low cost from third party suppliers.  The
+cables have a standard 3-way jack at one side and the proprietary camera
+connector at the other.</p>
+<p>The camera commands the flash through a <a class="reference internal" href="glossary.html#term-pc-sync"><span class="xref std std-term">PC Sync</span></a> connector. PC Sync
+cables are standard photografic gear and are available at low cost from many
+manufacturers.</p>
+</div>
 <div class="section" id="board-layout">
 <h2>Board Layout<a class="headerlink" href="#board-layout" title="Permalink to this headline">¶</a></h2>
 <p>The board is layed out as 1/2 Eurocard (100 × 80 mm).</p>
@@ -461,10 +487,10 @@ paper and then spotted through with a scriber, drilled and filed to shape.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="user.html" class="btn btn-neutral float-right" title="User Manual" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="user.html" class="btn btn-neutral float-right" title="Dome User Manual" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="builder.html" class="btn btn-neutral" title="Builder Manual" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="builder.html" class="btn btn-neutral" title="Dome Builder Manual" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

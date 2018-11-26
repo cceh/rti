@@ -3,11 +3,12 @@
 *bck
 *.pyc
 *.o
-
-firmware/bin/*
+*.ptm
 
 docs/.buildinfo
 docs/.doctrees/
+docs/latex/
+docs/breathe/
 
 kicad/*bin
 kicad/*dsn
@@ -22,5 +23,7 @@ rti-builder/bin/
 rti-builder/test*/
 rti-builder/tmp/
 
+bin/*
+*/bin/*
 */gerber/*
 */__pycache__/*

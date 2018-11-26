@@ -5,12 +5,16 @@
  RTI Documentation
 ===================
 
+This is the documentation for the RTI (Reflectance Transformation Imaging)
+project at CCeH.
+
 .. toctree::
    :maxdepth: 2
 
-   rti
+   intro
    builder
    user
+   developer
    glossary
 
 

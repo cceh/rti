@@ -78,24 +78,25 @@
             
             
               <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="rti.html">Reflectance Transformation Imaging (RTI)</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="rti.html#outline">Outline</a></li>
-<li class="toctree-l2"><a class="reference internal" href="rti.html#the-math">The Math</a></li>
+<li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction to RTI</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="intro.html#outline">Outline</a></li>
+<li class="toctree-l2"><a class="reference internal" href="intro.html#the-math">The Math</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="builder.html">Builder Manual</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="builder.html">Dome Builder Manual</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="design.html">Electrical Design</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="design.html#choice-of-led">Choice of LED</a></li>
 <li class="toctree-l3"><a class="reference internal" href="design.html#led-driver">Led Driver</a></li>
 <li class="toctree-l3"><a class="reference internal" href="design.html#constant-current-source">Constant Current Source</a></li>
 <li class="toctree-l3"><a class="reference internal" href="design.html#microcontroller">Microcontroller</a></li>
+<li class="toctree-l3"><a class="reference internal" href="design.html#connectors">Connectors</a></li>
 <li class="toctree-l3"><a class="reference internal" href="design.html#board-layout">Board Layout</a></li>
 <li class="toctree-l3"><a class="reference internal" href="design.html#case">Case</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l1 current"><a class="reference internal" href="user.html">User Manual</a><ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="user.html">Dome User Manual</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="shooting.html">Shooting Manual</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="shooting.html#camera-settings">Camera Settings</a></li>
 <li class="toctree-l3"><a class="reference internal" href="shooting.html#dome-setup">Dome Setup</a></li>
@@ -122,9 +123,18 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="user_scripts.html">Scripts</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="user_scripts.html#scripts-image-filer-py">scripts/image_filer.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_scripts.html#scripts-image-filer-py">scripts/image-filer.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_scripts.html#bin-ptm-encoder">bin/ptm-encoder</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_scripts.html#bin-ptm-decoder">bin/ptm-decoder</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_scripts.html#bin-ptm-exploder">bin/ptm-exploder</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_scripts.html#sample-lp-file-format">sample.lp file format</a></li>
 </ul>
 </li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="developer.html">Software Developer Manual</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="firmware.html">Firmware</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ptmlib.html">ptmlib</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="glossary.html">Glossary</a></li>
@@ -173,7 +183,7 @@
     
       <li><a href="index.html">Docs</a> &raquo;</li>
         
-          <li><a href="user.html">User Manual</a> &raquo;</li>
+          <li><a href="user.html">Dome User Manual</a> &raquo;</li>
         
       <li>Vibration Reduction</li>
     
@@ -198,43 +208,48 @@
 <span id="id1"></span><h1>Vibration Reduction<a class="headerlink" href="#vibration-reduction" title="Permalink to this headline">¶</a></h1>
 <p>Camera vibrations caused by mirror movement can reduce sharpness.  The effect is
 the more noticeable the longer the exposure time becomes.  To reduce these
-vibrations use exposure delay mode or live view.</p>
-<p>Single-lens reflex (SLR) cameras use a mirror system to deflect the light from
-the sensor and into the viewfinder when not taking an exposure.  This mirror
-must be lifted before the camera can take an exposure.  The lifting of the
-mirror causes the camera to vibrate slightly even if the camera is mounted on a
-tripod.  Cameras offer modes to reduce the vibrations associated with mirror
-movement.</p>
-<p>N.B. The shutter movement also causes the camera to vibrate, but the shutter is
-much lighter than the mirror assembly and cannot be avoided.</p>
+vibrations use live view or exposure delay mode.</p>
+<p>Single-lens reflex (SLR) cameras use a mirror to deflect the light into the
+viewfinder.  This mirror obscures the sensor and therefore must be lifted before
+the camera can take an exposure.  The lifting of the mirror causes the camera to
+vibrate slightly, even if the camera is mounted on a tripod<a class="footnote-reference" href="#id4" id="id2">[1]</a>.</p>
 <div class="section" id="live-view">
 <h2>Live View<a class="headerlink" href="#live-view" title="Permalink to this headline">¶</a></h2>
 <p>In live view mode the camera does not use the viewfinder at all and the mirror
-will be locked in the <em>up</em> position.  This mode, when implemented correctly
-<a class="footnote-reference" href="#id3" id="id2">[1]</a>, can greatly reduce camera vibrations.</p>
+will be locked in the <em>up</em> position.  This mode, when implemented correctly<a class="footnote-reference" href="#id5" id="id3">[2]</a>, can greatly reduce camera vibrations.</p>
+<p>Another advantage of live view ist that you can attach a HDMI monitor to your
+camera and preview the picture on a big screen.</p>
 </div>
 <div class="section" id="exposure-delay-mode">
 <h2>Exposure Delay Mode<a class="headerlink" href="#exposure-delay-mode" title="Permalink to this headline">¶</a></h2>
-<p>This mode waits 1 second after lifting the mirror and before actually taking the
-picture thus reducing vibrations.</p>
+<p>Use this mode is live view is not available or broken.  This mode waits 1 second
+after lifting the mirror and before actually taking the picture.  Most of the
+vibration has damped by then.</p>
 <p>Exposure delay mode does incur a speed penalty but this penalty is less than one
-second per exposure.  Depending on the speed of the memory card it may be much
-less.  If shooting RAW with a slow memory card the camera will need more than
-one second to write the file, thus the penalty will be zero.</p>
+second per exposure because you must subtract the time it takes the camera to
+write the picture to the memory card.</p>
 </div>
 <div class="section" id="mirrorless-cameras">
 <h2>Mirrorless Cameras<a class="headerlink" href="#mirrorless-cameras" title="Permalink to this headline">¶</a></h2>
 <p>Mirrorless Interchangeable-Lens Cameras (MILC) do not have a mirror and thus are
 for RTI imaging a suitable alternative to the more common (as of 2018) SLR type.
 The lenses for MILC cameras are not compatible with SLR type lenses and being
-comparatively new the choice of lenses is more limited.</p>
+comparatively new the choice of lenses is more limited (but there are adapters).</p>
 </div>
 <div class="section" id="footnotes">
 <h2>Footnotes<a class="headerlink" href="#footnotes" title="Permalink to this headline">¶</a></h2>
-<table class="docutils footnote" frame="void" id="id3" rules="none">
+<table class="docutils footnote" frame="void" id="id4" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id2">[1]</a></td><td>Live view on the Nikon D700 is useless as it does not keep the mirror up
+<tr><td class="label"><a class="fn-backref" href="#id2">[1]</a></td><td>The shutter movement also causes the camera to vibrate, but the shutter
+is much lighter than the mirror assembly.  The shutter is essential to
+camera operation and thus cannot be avoided.</td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id5" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id3">[2]</a></td><td>Live view on the Nikon D700 is useless as it does not keep the mirror up
 between shots.</td></tr>
 </tbody>
 </table>

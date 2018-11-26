@@ -1,10 +1,10 @@
-==========================================
- Reflectance Transformation Imaging (RTI)
-==========================================
+=====================
+ Introduction to RTI
+=====================
 
-*Reflectance Transformation Imaging,* formerly known as *Polynomial Texture
-Mapping* (PTM), is a technique of imaging and interactively displaying objects
-under varying lighting conditions to reveal surface phenomena.
+*Reflectance Transformation Imaging* (RTI), formerly known as *Polynomial
+Texture Mapping* (PTM), is a technique of imaging and interactively displaying
+objects under varying lighting conditions to reveal surface phenomena.
 
 The original PTM method has been developed Tom Malzbender, Dan Gelb, and Hans
 Wolters at Hewlett-Packard Laboratories.  [Malzbender2001]_ Improvements have
@@ -180,6 +180,9 @@ is :math:`\mathbf{b}`.
 
 .. [Golub2013] Golub, G.H., and Van Loan, C.F. 2013, *Matrix Computations,* 4th
                edition, (John Hopkins University Press, Baltimore)
+
+.. [Lyon2004] A Java implementation of the PTM viewer.
+              https://github.com/clifflyon/ptmviewer
 
 .. [Malzbender2001] Malzbender, T., Gelb, D., and Wolters, H. 2001, *Polynomial
                     Texture Maps,*

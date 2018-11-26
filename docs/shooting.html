@@ -31,7 +31,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Lens Selection" href="lens_selection.html" />
-    <link rel="prev" title="User Manual" href="user.html" /> 
+    <link rel="prev" title="Dome User Manual" href="user.html" /> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -78,24 +78,25 @@
             
             
               <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="rti.html">Reflectance Transformation Imaging (RTI)</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="rti.html#outline">Outline</a></li>
-<li class="toctree-l2"><a class="reference internal" href="rti.html#the-math">The Math</a></li>
+<li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction to RTI</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="intro.html#outline">Outline</a></li>
+<li class="toctree-l2"><a class="reference internal" href="intro.html#the-math">The Math</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="builder.html">Builder Manual</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="builder.html">Dome Builder Manual</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="design.html">Electrical Design</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="design.html#choice-of-led">Choice of LED</a></li>
 <li class="toctree-l3"><a class="reference internal" href="design.html#led-driver">Led Driver</a></li>
 <li class="toctree-l3"><a class="reference internal" href="design.html#constant-current-source">Constant Current Source</a></li>
 <li class="toctree-l3"><a class="reference internal" href="design.html#microcontroller">Microcontroller</a></li>
+<li class="toctree-l3"><a class="reference internal" href="design.html#connectors">Connectors</a></li>
 <li class="toctree-l3"><a class="reference internal" href="design.html#board-layout">Board Layout</a></li>
 <li class="toctree-l3"><a class="reference internal" href="design.html#case">Case</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l1 current"><a class="reference internal" href="user.html">User Manual</a><ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="user.html">Dome User Manual</a><ul class="current">
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Shooting Manual</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#camera-settings">Camera Settings</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#dome-setup">Dome Setup</a></li>
@@ -122,7 +123,25 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="user_scripts.html">Scripts</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="user_scripts.html#scripts-image-filer-py">scripts/image_filer.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_scripts.html#scripts-image-filer-py">scripts/image-filer.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_scripts.html#bin-ptm-encoder">bin/ptm-encoder</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_scripts.html#bin-ptm-decoder">bin/ptm-decoder</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_scripts.html#bin-ptm-exploder">bin/ptm-exploder</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_scripts.html#sample-lp-file-format">sample.lp file format</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="developer.html">Software Developer Manual</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="firmware.html">Firmware</a></li>
+<li class="toctree-l2"><a class="reference internal" href="programming.html">Programming the AVR-Microcontroller</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="programming.html#prerequisites">Prerequisites</a></li>
+<li class="toctree-l3"><a class="reference internal" href="programming.html#initialize-a-new-microcontroller">Initialize a New Microcontroller</a></li>
+<li class="toctree-l3"><a class="reference internal" href="programming.html#program">Program</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ptmlib.html">ptmlib</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ptmlib.html#ptmlib-h">ptmlib.h</a></li>
 </ul>
 </li>
 </ul>
@@ -173,7 +192,7 @@
     
       <li><a href="index.html">Docs</a> &raquo;</li>
         
-          <li><a href="user.html">User Manual</a> &raquo;</li>
+          <li><a href="user.html">Dome User Manual</a> &raquo;</li>
         
       <li>Shooting Manual</li>
     
@@ -215,11 +234,13 @@ with your camera manual or the internet.</li>
 <li><strong>Set the camera to manual exposure.</strong> Nikon: <span class="guilabel">MODE</span> +
 <span class="guilabel">rear dial</span>.  Use the smallest aperture for maximum depth of field (<a class="reference internal" href="glossary.html#term-dof"><span class="xref std std-term">DOF</span></a>).
 Nikon: <span class="guilabel">front dial</span>.  Set the exposure time.  Nikon: <span class="guilabel">rear dial</span>.</li>
+<li><strong>Set the camera to Continuous High Speed Mode</strong> Nikon: <span class="guilabel">left dial</span>.</li>
 <li>Either:<ol class="loweralpha">
-<li><strong>Turn on live view</strong>.  Nikon D850: <kbd class="kbd docutils literal notranslate">Lv</kbd>  Or</li>
+<li><strong>Turn on live view</strong>.  Nikon D850: <span class="guilabel">Lv</span>.  Or</li>
 <li><strong>Turn on exposure delay mode.</strong> Nikon D700: menu <span class="menuselection">d9</span>.</li>
 </ol>
 </li>
+<li>Check the clock of the camera. Nikon: <span class="guilabel">info</span>.</li>
 </ol>
 </div>
 <div class="section" id="dome-setup">
@@ -253,18 +274,18 @@ green light on the CRM should come on.</p>
 <ol class="arabic">
 <li><p class="first"><strong>Put the object under the dome</strong> in the exact center.</p>
 </li>
-<li><p class="first"><strong>Short press the green button</strong> for focus light.  You can short press again
-to turn the focus light off.</p>
+<li><p class="first"><strong>Short press the green button</strong> for pilot light.  You can short press again
+to turn the pilot light off.</p>
 </li>
 <li><p class="first"><strong>Focus the object.</strong>  Close the viewfinder.  If you are using live view,
-press <kbd class="kbd docutils literal notranslate">Lv</kbd> to exit and re-enter live view mode.</p>
+press <span class="guilabel">Lv</span> to exit and re-enter live view mode.</p>
 </li>
 <li><p class="first"><strong>Long press the green button</strong> to start the picture run.  The red button
 resets the CRM.  Use it to abort a shooting run.</p>
 <div class="admonition warning">
 <p class="first admonition-title">Warning</p>
 <p class="last">Check your pictures for over- (specular lights) or under-exposure.  Adjust
-the aperture, time and maybe ISO settings and repeat the run.  The focus
+the aperture, time and maybe ISO settings and repeat the run.  The pilot
 light alone does not give enough guidance to set exposure parameters <a class="footnote-reference" href="#id2" id="id1">[1]</a>.</p>
 </div>
 </li>
@@ -272,23 +293,24 @@ light alone does not give enough guidance to set exposure parameters <a class="f
 </div>
 <div class="section" id="various-notes">
 <h2>Various Notes<a class="headerlink" href="#various-notes" title="Permalink to this headline">¶</a></h2>
-<p>Your mileage will depend on how fast the camera can save the pictures to the
-memory card.  Many cameras have a small internal buffer, which fills up after a
-short burst, and after that the speed of the memory card limits the frame rate.</p>
+<p>Working speed: Your mileage may vary depending on the exposure time you have to
+select and on the speed of the memory card in the camera.  Cameras have an
+internal buffer, which fills up after a short burst, after that the speed of the
+memory card may limit the frame rate.  If your exposure time is longer than the
+writing time the speed of the memory card may not matter.</p>
 <p>For greatest depth of field (<a class="reference internal" href="glossary.html#term-dof"><span class="xref std std-term">DOF</span></a>) use the smallest aperture (that is the
-<em>highest</em> aperture number) that you can manage.  Most cameras use the largest
-aperture for viewing, the DOF you see in the viewfinder is much less than the
-DOF you will get on the picture.  In case of a 3D object focus on the middle
-ground.</p>
+<em>highest</em> aperture number).  When you look through the viewfinder you see the
+DOF of the largest aperture, which is much less than the DOF you will get on the
+picture.  For best results focus on the middle ground.</p>
 <p>If you want color, place the object onto a <a class="reference internal" href="glossary.html#term-grey-card"><span class="xref std std-term">grey card</span></a>.  This will make it
-a lot easier to find the correct white balance in the raw converter software.</p>
+easier to find the correct white balance in the raw converter software.</p>
 </div>
 <div class="section" id="footnotes">
 <h2>Footnotes<a class="headerlink" href="#footnotes" title="Permalink to this headline">¶</a></h2>
 <table class="docutils footnote" frame="void" id="id2" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td>The focus light (current shared by N LEDs) has not the same intensity as
+<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td>The pilot light (current shared by N LEDs) has not the same intensity as
 the individual LED (current used by one LED) because LED emission is not
 linear with current.  Also specular lights will be N times brighter if
 the object is lighted by one LED only.</td></tr>
@@ -308,7 +330,7 @@ the object is lighted by one LED only.</td></tr>
         <a href="lens_selection.html" class="btn btn-neutral float-right" title="Lens Selection" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="user.html" class="btn btn-neutral" title="User Manual" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="user.html" class="btn btn-neutral" title="Dome User Manual" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

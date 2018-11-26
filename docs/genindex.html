@@ -77,24 +77,25 @@
             
             
               <ul>
-<li class="toctree-l1"><a class="reference internal" href="rti.html">Reflectance Transformation Imaging (RTI)</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="rti.html#outline">Outline</a></li>
-<li class="toctree-l2"><a class="reference internal" href="rti.html#the-math">The Math</a></li>
+<li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction to RTI</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="intro.html#outline">Outline</a></li>
+<li class="toctree-l2"><a class="reference internal" href="intro.html#the-math">The Math</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="builder.html">Builder Manual</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="builder.html">Dome Builder Manual</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="design.html">Electrical Design</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="design.html#choice-of-led">Choice of LED</a></li>
 <li class="toctree-l3"><a class="reference internal" href="design.html#led-driver">Led Driver</a></li>
 <li class="toctree-l3"><a class="reference internal" href="design.html#constant-current-source">Constant Current Source</a></li>
 <li class="toctree-l3"><a class="reference internal" href="design.html#microcontroller">Microcontroller</a></li>
+<li class="toctree-l3"><a class="reference internal" href="design.html#connectors">Connectors</a></li>
 <li class="toctree-l3"><a class="reference internal" href="design.html#board-layout">Board Layout</a></li>
 <li class="toctree-l3"><a class="reference internal" href="design.html#case">Case</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="user.html">User Manual</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="user.html">Dome User Manual</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="shooting.html">Shooting Manual</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="shooting.html#camera-settings">Camera Settings</a></li>
 <li class="toctree-l3"><a class="reference internal" href="shooting.html#dome-setup">Dome Setup</a></li>
@@ -121,7 +122,25 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="user_scripts.html">Scripts</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="user_scripts.html#scripts-image-filer-py">scripts/image_filer.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_scripts.html#scripts-image-filer-py">scripts/image-filer.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_scripts.html#bin-ptm-encoder">bin/ptm-encoder</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_scripts.html#bin-ptm-decoder">bin/ptm-decoder</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_scripts.html#bin-ptm-exploder">bin/ptm-exploder</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_scripts.html#sample-lp-file-format">sample.lp file format</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="developer.html">Software Developer Manual</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="firmware.html">Firmware</a></li>
+<li class="toctree-l2"><a class="reference internal" href="programming.html">Programming the AVR-Microcontroller</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="programming.html#prerequisites">Prerequisites</a></li>
+<li class="toctree-l3"><a class="reference internal" href="programming.html#initialize-a-new-microcontroller">Initialize a New Microcontroller</a></li>
+<li class="toctree-l3"><a class="reference internal" href="programming.html#program">Program</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ptmlib.html">ptmlib</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ptmlib.html#ptmlib-h">ptmlib.h</a></li>
 </ul>
 </li>
 </ul>
@@ -194,39 +213,142 @@
 
 <div class="genindex-jumpbox">
  <a href="#Symbols"><strong>Symbols</strong></a>
+ | <a href="#A"><strong>A</strong></a>
+ | <a href="#C"><strong>C</strong></a>
  | <a href="#D"><strong>D</strong></a>
+ | <a href="#E"><strong>E</strong></a>
  | <a href="#F"><strong>F</strong></a>
  | <a href="#G"><strong>G</strong></a>
+ | <a href="#I"><strong>I</strong></a>
+ | <a href="#L"><strong>L</strong></a>
+ | <a href="#M"><strong>M</strong></a>
+ | <a href="#P"><strong>P</strong></a>
  | <a href="#R"><strong>R</strong></a>
  | <a href="#S"><strong>S</strong></a>
+ | <a href="#U"><strong>U</strong></a>
+ | <a href="#Y"><strong>Y</strong></a>
  
 </div>
 <h2 id="Symbols">Symbols</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li>
+    --usage
+
+      <ul>
+        <li><a href="user_scripts.html#cmdoption-ptm-encoder-usage">ptm-encoder command line option</a>
+</li>
+      </ul></li>
+      <li>
+    -?, --help
+
+      <ul>
+        <li><a href="user_scripts.html#cmdoption-ptm-encoder">ptm-encoder command line option</a>
+</li>
+      </ul></li>
+      <li>
+    -f, --format
+
+      <ul>
+        <li><a href="user_scripts.html#cmdoption-ptm-encoder-f">ptm-encoder command line option</a>
+</li>
+      </ul></li>
+      <li>
     -h, --help
 
       <ul>
-        <li><a href="user_scripts.html#cmdoption-scripts-image-filer-py-h">scripts/image_filer.py command line option</a>
+        <li><a href="user_scripts.html#cmdoption-scripts-image-filer-py-h">scripts/image-filer.py command line option</a>
 </li>
       </ul></li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li>
+    -l, --list
+
+      <ul>
+        <li><a href="user_scripts.html#cmdoption-ptm-encoder-l">ptm-encoder command line option</a>
+</li>
+      </ul></li>
+      <li>
+    -o, --output=&lt;FILE&gt;
+
+      <ul>
+        <li><a href="user_scripts.html#cmdoption-ptm-encoder-o">ptm-encoder command line option</a>
+</li>
+      </ul></li>
+      <li>
     -v, --verbose
 
       <ul>
-        <li><a href="user_scripts.html#cmdoption-scripts-image-filer-py-v">scripts/image_filer.py command line option</a>
+        <li><a href="user_scripts.html#cmdoption-ptm-encoder-v">ptm-encoder command line option</a>
+</li>
+        <li><a href="user_scripts.html#cmdoption-scripts-image-filer-py-v">scripts/image-filer.py command line option</a>
 </li>
       </ul></li>
+      <li>
+    -V, --version
+
+      <ul>
+        <li><a href="user_scripts.html#cmdoption-ptm-encoder-version">ptm-encoder command line option</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="A">A</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="ptmlib.html#c.AVG">AVG (C macro)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="C">C</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="ptmlib.html#c.CBCR_COEFFICIENTS">CBCR_COEFFICIENTS (C macro)</a>
+</li>
+      <li><a href="ptmlib.html#_CPPv319cbcr_coefficients_t">cbcr_coefficients_t (C++ class)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="ptmlib.html#_CPPv3N19cbcr_coefficients_t2cbE">cbcr_coefficients_t::cb (C++ member)</a>
+</li>
+      <li><a href="ptmlib.html#_CPPv3N19cbcr_coefficients_t2crE">cbcr_coefficients_t::cr (C++ member)</a>
+</li>
+      <li><a href="ptmlib.html#_CPPv34CLIPf">CLIP (C++ function)</a>
+</li>
   </ul></td>
 </tr></table>
 
 <h2 id="D">D</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="ptmlib.html#_CPPv39decoder_t">decoder_t (C++ class)</a>
+</li>
+      <li><a href="ptmlib.html#_CPPv3N9decoder_t5dinfoE">decoder_t::dinfo (C++ member)</a>
+</li>
+      <li><a href="ptmlib.html#_CPPv3N9decoder_t8filenameE">decoder_t::filename (C++ member)</a>
+</li>
+      <li><a href="ptmlib.html#_CPPv3N9decoder_t2fpE">decoder_t::fp (C++ member)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="ptmlib.html#_CPPv3N9decoder_t1uE">decoder_t::u (C++ member)</a>
+</li>
+      <li><a href="ptmlib.html#_CPPv3N9decoder_t1vE">decoder_t::v (C++ member)</a>
+</li>
+      <li><a href="ptmlib.html#_CPPv3N9decoder_t1wE">decoder_t::w (C++ member)</a>
+</li>
       <li><a href="glossary.html#term-dof"><strong>DOF</strong></a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="E">E</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="glossary.html#term-exif"><strong>EXIF</strong></a>
 </li>
   </ul></td>
 </tr></table>
@@ -238,7 +360,7 @@
     file
 
       <ul>
-        <li><a href="user_scripts.html#cmdoption-scripts-image-filer-py-arg-file">scripts/image_filer.py command line option</a>
+        <li><a href="user_scripts.html#cmdoption-scripts-image-filer-py-arg-file">scripts/image-filer.py command line option</a>
 </li>
       </ul></li>
   </ul></td>
@@ -252,10 +374,230 @@
   </ul></td>
 </tr></table>
 
+<h2 id="I">I</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="ptmlib.html#_CPPv312image_info_t">image_info_t (C++ class)</a>
+</li>
+      <li><a href="ptmlib.html#_CPPv3N12image_info_t14decoder_strideE">image_info_t::decoder_stride (C++ member)</a>
+</li>
+      <li><a href="ptmlib.html#_CPPv3N12image_info_t6heightE">image_info_t::height (C++ member)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="ptmlib.html#_CPPv3N12image_info_t10n_decodersE">image_info_t::n_decoders (C++ member)</a>
+</li>
+      <li><a href="ptmlib.html#_CPPv3N12image_info_t6pixelsE">image_info_t::pixels (C++ member)</a>
+</li>
+      <li><a href="ptmlib.html#_CPPv3N12image_info_t10row_strideE">image_info_t::row_stride (C++ member)</a>
+</li>
+      <li><a href="ptmlib.html#_CPPv3N12image_info_t5widthE">image_info_t::width (C++ member)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="L">L</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="ptmlib.html#c.LUMA">LUMA (C macro)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="M">M</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="ptmlib.html#c.MAX_COLOR_COMPONENTS">MAX_COLOR_COMPONENTS (C macro)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="ptmlib.html#c.MAX_JPEG_STREAMS">MAX_JPEG_STREAMS (C macro)</a>
+</li>
+      <li><a href="ptmlib.html#c.MAX_PTM_BLOCKS">MAX_PTM_BLOCKS (C macro)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="P">P</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="glossary.html#term-pc-sync"><strong>PC Sync</strong></a>
+</li>
+      <li>
+    ptm-decoder command line option
+
+      <ul>
+        <li><a href="user_scripts.html#cmdoption-ptm-decoder-arg-u">u v</a>
+</li>
+      </ul></li>
+      <li>
+    ptm-encoder command line option
+
+      <ul>
+        <li><a href="user_scripts.html#cmdoption-ptm-encoder-usage">--usage</a>
+</li>
+        <li><a href="user_scripts.html#cmdoption-ptm-encoder">-?, --help</a>
+</li>
+        <li><a href="user_scripts.html#cmdoption-ptm-encoder-version">-V, --version</a>
+</li>
+        <li><a href="user_scripts.html#cmdoption-ptm-encoder-f">-f, --format</a>
+</li>
+        <li><a href="user_scripts.html#cmdoption-ptm-encoder-l">-l, --list</a>
+</li>
+        <li><a href="user_scripts.html#cmdoption-ptm-encoder-o">-o, --output=&lt;FILE&gt;</a>
+</li>
+        <li><a href="user_scripts.html#cmdoption-ptm-encoder-v">-v, --verbose</a>
+</li>
+      </ul></li>
+      <li><a href="ptmlib.html#_CPPv316ptm_alloc_blocksP12ptm_header_t">ptm_alloc_blocks (C++ function)</a>
+</li>
+      <li><a href="ptmlib.html#_CPPv316ptm_alloc_headerv">ptm_alloc_header (C++ function)</a>
+</li>
+      <li><a href="ptmlib.html#_CPPv311ptm_block_t">ptm_block_t (C++ type)</a>
+</li>
+      <li><a href="ptmlib.html#_CPPv329ptm_calc_min_max_coefficientsP12ptm_header_tPK27ptm_unscaled_coefficients_t">ptm_calc_min_max_coefficients (C++ function)</a>
+</li>
+      <li><a href="ptmlib.html#_CPPv314ptm_calc_scaleP12ptm_header_t">ptm_calc_scale (C++ function)</a>
+</li>
+      <li><a href="ptmlib.html#_CPPv312ptm_cbcr_avgPK12image_info_tPK20ycbcr_coefficients_tP20ycbcr_coefficients_t">ptm_cbcr_avg (C++ function)</a>
+</li>
+      <li><a href="ptmlib.html#c.PTM_COEFFICIENTS">PTM_COEFFICIENTS (C macro)</a>
+</li>
+      <li><a href="ptmlib.html#_CPPv318ptm_coefficients_t">ptm_coefficients_t (C++ class)</a>
+</li>
+      <li><a href="ptmlib.html#_CPPv3N18ptm_coefficients_t2c1E">ptm_coefficients_t::c1 (C++ member)</a>
+</li>
+      <li><a href="ptmlib.html#_CPPv3N18ptm_coefficients_t2cuE">ptm_coefficients_t::cu (C++ member)</a>
+</li>
+      <li><a href="ptmlib.html#_CPPv3N18ptm_coefficients_t3cu2E">ptm_coefficients_t::cu2 (C++ member)</a>
+</li>
+      <li><a href="ptmlib.html#_CPPv3N18ptm_coefficients_t3cuvE">ptm_coefficients_t::cuv (C++ member)</a>
+</li>
+      <li><a href="ptmlib.html#_CPPv3N18ptm_coefficients_t2cvE">ptm_coefficients_t::cv (C++ member)</a>
+</li>
+      <li><a href="ptmlib.html#_CPPv3N18ptm_coefficients_t3cv2E">ptm_coefficients_t::cv2 (C++ member)</a>
+</li>
+      <li><a href="ptmlib.html#_CPPv316ptm_fit_poly_rgbP12ptm_header_tPK7JSAMPLE6size_t6size_tPfP27ptm_unscaled_coefficients_t">ptm_fit_poly_rgb (C++ function)</a>
+</li>
+      <li><a href="ptmlib.html#_CPPv320PTM_FORMAT_JPEG_LRGB">PTM_FORMAT_JPEG_LRGB (C++ enumerator)</a>
+</li>
+      <li><a href="ptmlib.html#_CPPv319PTM_FORMAT_JPEG_RGB">PTM_FORMAT_JPEG_RGB (C++ enumerator)</a>
+</li>
+      <li><a href="ptmlib.html#_CPPv315PTM_FORMAT_LRGB">PTM_FORMAT_LRGB (C++ enumerator)</a>
+</li>
+      <li><a href="ptmlib.html#_CPPv314PTM_FORMAT_LUM">PTM_FORMAT_LUM (C++ enumerator)</a>
+</li>
+      <li><a href="ptmlib.html#_CPPv314PTM_FORMAT_RGB">PTM_FORMAT_RGB (C++ enumerator)</a>
+</li>
+      <li><a href="ptmlib.html#_CPPv312ptm_format_t">ptm_format_t (C++ class)</a>
+</li>
+      <li><a href="ptmlib.html#_CPPv3N12ptm_format_t6blocksE">ptm_format_t::blocks (C++ member)</a>
+</li>
+      <li><a href="ptmlib.html#_CPPv3N12ptm_format_t16color_componentsE">ptm_format_t::color_components (C++ member)</a>
+</li>
+      <li><a href="ptmlib.html#_CPPv3N12ptm_format_t2idE">ptm_format_t::id (C++ member)</a>
+</li>
+      <li><a href="ptmlib.html#_CPPv3N12ptm_format_t12jpeg_streamsE">ptm_format_t::jpeg_streams (C++ member)</a>
+</li>
+      <li><a href="ptmlib.html#_CPPv3N12ptm_format_t4nameE">ptm_format_t::name (C++ member)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="ptmlib.html#_CPPv3N12ptm_format_t10ptm_blocksE">ptm_format_t::ptm_blocks (C++ member)</a>
+</li>
+      <li><a href="ptmlib.html#_CPPv311ptm_formats">ptm_formats (C++ member)</a>
+</li>
+      <li><a href="ptmlib.html#_CPPv318ptm_formats_enum_t">ptm_formats_enum_t (C++ type)</a>
+</li>
+      <li><a href="ptmlib.html#_CPPv315ptm_free_blocksP12ptm_header_tP11ptm_block_t">ptm_free_blocks (C++ function)</a>
+</li>
+      <li><a href="ptmlib.html#_CPPv314ptm_get_formatPKc">ptm_get_format (C++ function)</a>
+</li>
+      <li><a href="ptmlib.html#_CPPv312ptm_header_t">ptm_header_t (C++ class)</a>
+</li>
+      <li><a href="ptmlib.html#_CPPv3N12ptm_header_t4biasE">ptm_header_t::bias (C++ member)</a>
+</li>
+      <li><a href="ptmlib.html#_CPPv3N12ptm_header_t15compressed_sizeE">ptm_header_t::compressed_size (C++ member)</a>
+</li>
+      <li><a href="ptmlib.html#_CPPv3N12ptm_header_t17compression_paramE">ptm_header_t::compression_param (C++ member)</a>
+</li>
+      <li><a href="ptmlib.html#_CPPv3N12ptm_header_t5dimenE">ptm_header_t::dimen (C++ member)</a>
+</li>
+      <li><a href="ptmlib.html#_CPPv3N12ptm_header_t6formatE">ptm_header_t::format (C++ member)</a>
+</li>
+      <li><a href="ptmlib.html#_CPPv3N12ptm_header_t9inv_scaleE">ptm_header_t::inv_scale (C++ member)</a>
+</li>
+      <li><a href="ptmlib.html#_CPPv3N12ptm_header_t16max_coefficientsE">ptm_header_t::max_coefficients (C++ member)</a>
+</li>
+      <li><a href="ptmlib.html#_CPPv3N12ptm_header_t16min_coefficientsE">ptm_header_t::min_coefficients (C++ member)</a>
+</li>
+      <li><a href="ptmlib.html#_CPPv3N12ptm_header_t15motion_vector_xE">ptm_header_t::motion_vector_x (C++ member)</a>
+</li>
+      <li><a href="ptmlib.html#_CPPv3N12ptm_header_t15motion_vector_yE">ptm_header_t::motion_vector_y (C++ member)</a>
+</li>
+      <li><a href="ptmlib.html#_CPPv3N12ptm_header_t5orderE">ptm_header_t::order (C++ member)</a>
+</li>
+      <li><a href="ptmlib.html#_CPPv3N12ptm_header_t16reference_planesE">ptm_header_t::reference_planes (C++ member)</a>
+</li>
+      <li><a href="ptmlib.html#_CPPv3N12ptm_header_t5scaleE">ptm_header_t::scale (C++ member)</a>
+</li>
+      <li><a href="ptmlib.html#_CPPv3N12ptm_header_t15side_info_sizesE">ptm_header_t::side_info_sizes (C++ member)</a>
+</li>
+      <li><a href="ptmlib.html#_CPPv3N12ptm_header_t10transformsE">ptm_header_t::transforms (C++ member)</a>
+</li>
+      <li><a href="ptmlib.html#_CPPv310ptm_normalPK27ptm_unscaled_coefficients_tPfPfPf">ptm_normal (C++ function)</a>
+</li>
+      <li><a href="ptmlib.html#_CPPv316ptm_print_matrixPKcPfii">ptm_print_matrix (C++ function)</a>
+</li>
+      <li><a href="ptmlib.html#_CPPv315ptm_read_headerP4FILE">ptm_read_header (C++ function)</a>
+</li>
+      <li><a href="ptmlib.html#_CPPv312ptm_read_ptmP4FILEP12ptm_header_tP11ptm_block_t">ptm_read_ptm (C++ function)</a>
+</li>
+      <li><a href="ptmlib.html#_CPPv322ptm_scale_coefficientsP12ptm_header_tP11ptm_block_tPK27ptm_unscaled_coefficients_t">ptm_scale_coefficients (C++ function)</a>
+</li>
+      <li><a href="ptmlib.html#_CPPv37ptm_svdPP9decoder_ti">ptm_svd (C++ function)</a>
+</li>
+      <li><a href="ptmlib.html#_CPPv327ptm_unscaled_coefficients_t">ptm_unscaled_coefficients_t (C++ class)</a>
+</li>
+      <li><a href="ptmlib.html#_CPPv3N27ptm_unscaled_coefficients_t2c1E">ptm_unscaled_coefficients_t::c1 (C++ member)</a>
+</li>
+      <li><a href="ptmlib.html#_CPPv3N27ptm_unscaled_coefficients_t2cuE">ptm_unscaled_coefficients_t::cu (C++ member)</a>
+</li>
+      <li><a href="ptmlib.html#_CPPv3N27ptm_unscaled_coefficients_t3cu2E">ptm_unscaled_coefficients_t::cu2 (C++ member)</a>
+</li>
+      <li><a href="ptmlib.html#_CPPv3N27ptm_unscaled_coefficients_t3cuvE">ptm_unscaled_coefficients_t::cuv (C++ member)</a>
+</li>
+      <li><a href="ptmlib.html#_CPPv3N27ptm_unscaled_coefficients_t2cvE">ptm_unscaled_coefficients_t::cv (C++ member)</a>
+</li>
+      <li><a href="ptmlib.html#_CPPv3N27ptm_unscaled_coefficients_t3cv2E">ptm_unscaled_coefficients_t::cv2 (C++ member)</a>
+</li>
+      <li><a href="ptmlib.html#_CPPv316ptm_write_headerP4FILEP12ptm_header_t">ptm_write_header (C++ function)</a>
+</li>
+      <li><a href="ptmlib.html#_CPPv314ptm_write_jpegP4FILEP12ptm_header_tP11ptm_block_tff">ptm_write_jpeg (C++ function)</a>
+</li>
+      <li><a href="ptmlib.html#_CPPv313ptm_write_ptmP4FILEP12ptm_header_tP11ptm_block_t">ptm_write_ptm (C++ function)</a>
+</li>
+  </ul></td>
+</tr></table>
+
 <h2 id="R">R</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="glossary.html#term-raw"><strong>RAW</strong></a>
+</li>
+      <li><a href="ptmlib.html#_CPPv36REC709">REC709 (C++ member)</a>
+</li>
+      <li><a href="ptmlib.html#c.RGB_COEFFICIENTS">RGB_COEFFICIENTS (C macro)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="ptmlib.html#_CPPv318rgb_coefficients_t">rgb_coefficients_t (C++ class)</a>
+</li>
+      <li><a href="ptmlib.html#_CPPv3N18rgb_coefficients_t1bE">rgb_coefficients_t::b (C++ member)</a>
+</li>
+      <li><a href="ptmlib.html#_CPPv3N18rgb_coefficients_t1gE">rgb_coefficients_t::g (C++ member)</a>
+</li>
+      <li><a href="ptmlib.html#_CPPv3N18rgb_coefficients_t1rE">rgb_coefficients_t::r (C++ member)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -264,7 +606,7 @@
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li>
-    scripts/image_filer.py command line option
+    scripts/image-filer.py command line option
 
       <ul>
         <li><a href="user_scripts.html#cmdoption-scripts-image-filer-py-h">-h, --help</a>
@@ -274,6 +616,35 @@
         <li><a href="user_scripts.html#cmdoption-scripts-image-filer-py-arg-file">file</a>
 </li>
       </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="U">U</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li>
+    u v
+
+      <ul>
+        <li><a href="user_scripts.html#cmdoption-ptm-decoder-arg-u">ptm-decoder command line option</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="Y">Y</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="ptmlib.html#_CPPv320ycbcr_coefficients_t">ycbcr_coefficients_t (C++ class)</a>
+</li>
+      <li><a href="ptmlib.html#_CPPv3N20ycbcr_coefficients_t2cbE">ycbcr_coefficients_t::cb (C++ member)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="ptmlib.html#_CPPv3N20ycbcr_coefficients_t2crE">ycbcr_coefficients_t::cr (C++ member)</a>
+</li>
+      <li><a href="ptmlib.html#_CPPv3N20ycbcr_coefficients_t1yE">ycbcr_coefficients_t::y (C++ member)</a>
+</li>
   </ul></td>
 </tr></table>
 

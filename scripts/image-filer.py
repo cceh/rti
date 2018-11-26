@@ -1,12 +1,13 @@
 #!/usr/bin/python3
 # -*- encoding: utf-8 -*-
 
-"""File image runs into subdirectories.
+"""Group image runs and file them into subdirectories.
 
-Reads images from a camera's memory card and files them into directories.  All
-images with near enough timestamps get filed into the same directory.  It also
-builds a sample.lp file in the directory containing a light position map for the
-PTM builder.
+Reads images from a camera's memory card or other flat directory structure, and
+groups them into subdirectories.  A group is found by the :term:`EXIF` timestamp
+in the image files.  The script also builds a :file:`sample.lp` file in the
+directory that contains a :ref:`light position map <sample.lp>` for the
+:ref:`PTM encoder <ptm-encoder>`.
 
 """
 
@@ -52,7 +53,7 @@ def build_parser ():
     parser = argparse.ArgumentParser (description = __doc__)
 
     parser.add_argument('files', metavar='FILE', type=str, nargs='+',
-                        help='the image files to file')
+                        help='the image files to file (wildcards supported)')
     parser.add_argument ('-v', '--verbose', dest='verbose', action='count',
                          help='increase output verbosity', default=0)
     return parser

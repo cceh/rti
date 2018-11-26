@@ -30,7 +30,7 @@
   <link rel="stylesheet" href="_static/my_theme.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Glossary" href="glossary.html" />
+    <link rel="next" title="Software Developer Manual" href="developer.html" />
     <link rel="prev" title="Vibration Reduction" href="vibrations.html" /> 
 
   
@@ -78,24 +78,25 @@
             
             
               <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="rti.html">Reflectance Transformation Imaging (RTI)</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="rti.html#outline">Outline</a></li>
-<li class="toctree-l2"><a class="reference internal" href="rti.html#the-math">The Math</a></li>
+<li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction to RTI</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="intro.html#outline">Outline</a></li>
+<li class="toctree-l2"><a class="reference internal" href="intro.html#the-math">The Math</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="builder.html">Builder Manual</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="builder.html">Dome Builder Manual</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="design.html">Electrical Design</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="design.html#choice-of-led">Choice of LED</a></li>
 <li class="toctree-l3"><a class="reference internal" href="design.html#led-driver">Led Driver</a></li>
 <li class="toctree-l3"><a class="reference internal" href="design.html#constant-current-source">Constant Current Source</a></li>
 <li class="toctree-l3"><a class="reference internal" href="design.html#microcontroller">Microcontroller</a></li>
+<li class="toctree-l3"><a class="reference internal" href="design.html#connectors">Connectors</a></li>
 <li class="toctree-l3"><a class="reference internal" href="design.html#board-layout">Board Layout</a></li>
 <li class="toctree-l3"><a class="reference internal" href="design.html#case">Case</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l1 current"><a class="reference internal" href="user.html">User Manual</a><ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="user.html">Dome User Manual</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="shooting.html">Shooting Manual</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="shooting.html#camera-settings">Camera Settings</a></li>
 <li class="toctree-l3"><a class="reference internal" href="shooting.html#dome-setup">Dome Setup</a></li>
@@ -122,9 +123,18 @@
 </ul>
 </li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Scripts</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#scripts-image-filer-py">scripts/image_filer.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#scripts-image-filer-py">scripts/image-filer.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#bin-ptm-encoder">bin/ptm-encoder</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#bin-ptm-decoder">bin/ptm-decoder</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#bin-ptm-exploder">bin/ptm-exploder</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#sample-lp-file-format">sample.lp file format</a></li>
 </ul>
 </li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="developer.html">Software Developer Manual</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="firmware.html">Firmware</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ptmlib.html">ptmlib</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="glossary.html">Glossary</a></li>
@@ -173,7 +183,7 @@
     
       <li><a href="index.html">Docs</a> &raquo;</li>
         
-          <li><a href="user.html">User Manual</a> &raquo;</li>
+          <li><a href="user.html">Dome User Manual</a> &raquo;</li>
         
       <li>Scripts</li>
     
@@ -197,19 +207,20 @@
   <div class="section" id="scripts">
 <h1>Scripts<a class="headerlink" href="#scripts" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="scripts-image-filer-py">
-<span id="image-filer-py"></span><h2>scripts/image_filer.py<a class="headerlink" href="#scripts-image-filer-py" title="Permalink to this headline">¶</a></h2>
-<p>File image runs into subdirectories.</p>
-<p>Reads images from a camera’s memory card and files them into directories.  All
-images with near enough timestamps get filed into the same directory.  It also
-builds a sample.lp file in the directory containing a light position map for the
-PTM builder.</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">usage: scripts/image_filer.py [-h] [-v] FILE [FILE ...]</span>
+<span id="image-filer-py"></span><h2>scripts/image-filer.py<a class="headerlink" href="#scripts-image-filer-py" title="Permalink to this headline">¶</a></h2>
+<p>Group image runs and file them into subdirectories.</p>
+<p>Reads images from a camera’s memory card or other flat directory structure, and
+groups them into subdirectories.  A group is found by the <a class="reference internal" href="glossary.html#term-exif"><span class="xref std std-term">EXIF</span></a> timestamp
+in the image files.  The script also builds a <code class="file docutils literal notranslate"><span class="pre">sample.lp</span></code> file in the
+directory that contains a <a class="reference internal" href="#sample-lp"><span class="std std-ref">light position map</span></a> for the
+<a class="reference internal" href="#ptm-encoder"><span class="std std-ref">PTM encoder</span></a>.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">usage: scripts/image-filer.py [-h] [-v] FILE [FILE ...]</span>
 </pre></div>
 </div>
 <dl class="option">
 <dt id="cmdoption-scripts-image-filer-py-arg-file">
 <code class="descname">file</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-scripts-image-filer-py-arg-file" title="Permalink to this definition">¶</a></dt>
-<dd><p>the image files to file</p>
+<dd><p>the image files to file (wildcards supported)</p>
 </dd></dl>
 
 <dl class="option">
@@ -225,6 +236,109 @@ PTM builder.</p>
 </dd></dl>
 
 </div>
+<div class="section" id="bin-ptm-encoder">
+<span id="ptm-encoder"></span><h2>bin/ptm-encoder<a class="headerlink" href="#bin-ptm-encoder" title="Permalink to this headline">¶</a></h2>
+<p>Encode a series of JPEG files into one PTM file.</p>
+<p>Reads a <code class="file docutils literal notranslate"><span class="pre">sample.lp</span></code> file with a list of the JPEG files to encode.  You can
+build a <code class="file docutils literal notranslate"><span class="pre">sample.lp</span></code> file using the <a class="reference internal" href="#image-filer-py"><span class="std std-ref">image filer</span></a>
+script.</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>usage: ptm-encoder <span class="o">[</span>OPTION...<span class="o">]</span> sample.lp
+</pre></div>
+</div>
+<dl class="option">
+<dt id="cmdoption-ptm-encoder-f">
+<code class="descname">-f</code><code class="descclassname"></code><code class="descclassname">, </code><code class="descname">--format</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-ptm-encoder-f" title="Permalink to this definition">¶</a></dt>
+<dd><p>Which PTM format to output (default: PTM_FORMAT_RGB).</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-ptm-encoder-l">
+<code class="descname">-l</code><code class="descclassname"></code><code class="descclassname">, </code><code class="descname">--list</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-ptm-encoder-l" title="Permalink to this definition">¶</a></dt>
+<dd><p>Output a list of supported PTM formats, eg:</p>
+<ul class="simple">
+<li>PTM_FORMAT_RGB,</li>
+<li>PTM_FORMAT_LUM,</li>
+<li>PTM_FORMAT_LRGB,</li>
+<li>PTM_FORMAT_JPEG_RGB,</li>
+<li>PTM_FORMAT_JPEG_LRGB.</li>
+</ul>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-ptm-encoder-o">
+<code class="descname">-o</code><code class="descclassname"></code><code class="descclassname">, </code><code class="descname">--output</code><code class="descclassname">=&lt;FILE&gt;</code><a class="headerlink" href="#cmdoption-ptm-encoder-o" title="Permalink to this definition">¶</a></dt>
+<dd><p>Output to FILE instead of STDOUT.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-ptm-encoder-v">
+<code class="descname">-v</code><code class="descclassname"></code><code class="descclassname">, </code><code class="descname">--verbose</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-ptm-encoder-v" title="Permalink to this definition">¶</a></dt>
+<dd><p>Produce verbose output.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-ptm-encoder">
+<code class="descname">-</code><code class="descclassname">?</code><code class="descclassname">, </code><code class="descname">--help</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-ptm-encoder" title="Permalink to this definition">¶</a></dt>
+<dd><p>Give this help list.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-ptm-encoder-usage">
+<code class="descname">--usage</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-ptm-encoder-usage" title="Permalink to this definition">¶</a></dt>
+<dd><p>Give a short usage message.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-ptm-encoder-version">
+<code class="descname">-V</code><code class="descclassname"></code><code class="descclassname">, </code><code class="descname">--version</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-ptm-encoder-version" title="Permalink to this definition">¶</a></dt>
+<dd><p>Print program version.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="bin-ptm-decoder">
+<span id="ptm-decoder"></span><h2>bin/ptm-decoder<a class="headerlink" href="#bin-ptm-decoder" title="Permalink to this headline">¶</a></h2>
+<p>Extract one JPEG out of a PTM file.</p>
+<p>The output goes to stdout, so the program is easy to use in a web server.</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>usage: ptm-decoder filename.ptm <span class="o">[</span>u v<span class="o">]</span> &gt; filename.jpg
+</pre></div>
+</div>
+<dl class="option">
+<dt id="cmdoption-ptm-decoder-arg-u">
+<code class="descname">u</code><code class="descclassname"> v</code><a class="headerlink" href="#cmdoption-ptm-decoder-arg-u" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the light position for the JPEG.  Defaults to 0.5 and 0.5, that is,
+lighted from top right.  See: <a class="reference internal" href="#sample-lp"><span class="std std-ref">sample.lp</span></a>.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="bin-ptm-exploder">
+<span id="ptm-exploder"></span><h2>bin/ptm-exploder<a class="headerlink" href="#bin-ptm-exploder" title="Permalink to this headline">¶</a></h2>
+<p>Explode one PTM into multiple JPEGs lighted from different angles.</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>usage: ptm-exploder filename.ptm sample.lp filename.jpeg
+</pre></div>
+</div>
+<p>The <code class="file docutils literal notranslate"><span class="pre">sample.lp</span></code> file should be of the same <a class="reference internal" href="#sample-lp"><span class="std std-ref">format</span></a> used
+by the <a class="reference internal" href="#ptm-encoder"><span class="std std-ref">PTM encoder script</span></a>, although the filename part is not
+used by the exploder.  Instead the filename to use is provided in the 3rd
+argument and is changed into into filename-NNN.jpeg for each image.</p>
+</div>
+<div class="section" id="sample-lp-file-format">
+<span id="sample-lp"></span><h2>sample.lp file format<a class="headerlink" href="#sample-lp-file-format" title="Permalink to this headline">¶</a></h2>
+<p>The <code class="file docutils literal notranslate"><span class="pre">sample.lp</span></code> file contains a light position map that relates picture
+files to lighting positions.  It is needed by the <a class="reference internal" href="#ptm-encoder"><span class="std std-ref">PTM encoder</span></a> program.</p>
+<p>The format of this file is:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>filename01 u01 v01 w01
+filename02 u02 v02 w02
+filename03 u03 v03 w03
+...
+filenameNN uNN vNN wNN
+</pre></div>
+</div>
+<p>The filenames are relative to the <code class="file docutils literal notranslate"><span class="pre">sample.lp</span></code> file.  <span class="math notranslate nohighlight">\(u\)</span>, <span class="math notranslate nohighlight">\(v\)</span>
+and <span class="math notranslate nohighlight">\(w\)</span> are the cartesian coordinates of the light source from the center
+of the dome and lie on the unity sphere, ie. the radius of the dome is defined
+as 1.  Every pair of <span class="math notranslate nohighlight">\(u\)</span> and <span class="math notranslate nohighlight">\(v\)</span> values must obey <span class="math notranslate nohighlight">\(u^2 + v^2
+\le 1\)</span>. <span class="math notranslate nohighlight">\(w\)</span> may be specified, but is not used since it is redundant.</p>
+</div>
 </div>
 
 
@@ -235,7 +349,7 @@ PTM builder.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="glossary.html" class="btn btn-neutral float-right" title="Glossary" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="developer.html" class="btn btn-neutral float-right" title="Software Developer Manual" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="vibrations.html" class="btn btn-neutral" title="Vibration Reduction" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

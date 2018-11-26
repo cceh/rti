@@ -70,8 +70,8 @@
 
     const int LED_COUNT = sizeof (LED_595_MASK) / sizeof (uint16_t);
 
-// const uint16_t FOCUS_595_MASK = 0xFF0C;
-    const uint16_t FOCUS_595_MASK = 0xFFFF;
+// const uint16_t PILOT_595_MASK = 0xFF0C;
+    const uint16_t PILOT_595_MASK = 0xFFFF;
 
     #define SER_IN_PIN  D,4
     #define SRCK_PIN    D,5
@@ -96,7 +96,7 @@ volatile uint8_t  ready_status  = 0;
 volatile uint8_t  ready_changed = 0;
 volatile uint8_t  start_button_status = 0;
 volatile uint8_t  start_button_changed = 0;
-volatile uint8_t  focus_light_on = 0;
+volatile uint8_t  pilot_light_on = 0;
 
 const uint16_t max_exposure = 4;  // in seconds
 
@@ -335,19 +335,19 @@ int main () {
                 start_camera ();
             }
             if (start_button_status == 1) {
-                // on short press toggle focus lights
+                // on short press toggle pilot lights
                 stop_camera ();
                 _delay_ms (10);
-                if (focus_light_on) {
-                    CBI(WAKEUP_PIN); // turn off auto-focus
+                if (pilot_light_on) {
                     leds_off ();
                 } else {
-                    SBI(WAKEUP_PIN); // turn on auto-focus
                     // turn some leds on to enable manual or camera focusing
-                    write595 (FOCUS_595_MASK);
+                    write595 (PILOT_595_MASK);
                     leds_on ();
+                    // DO NOT turn on pre-focus on camera because it prevents
+                    // you from entering live view on the D800
                 }
-                focus_light_on = !focus_light_on;
+                pilot_light_on = !pilot_light_on;
             }
         }
 

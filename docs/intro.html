@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Reflectance Transformation Imaging (RTI) &mdash; RTI 0.1.1 documentation</title>
+  <title>Introduction to RTI &mdash; RTI 0.1.1 documentation</title>
   
 
   
@@ -30,7 +30,7 @@
   <link rel="stylesheet" href="_static/my_theme.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Builder Manual" href="builder.html" />
+    <link rel="next" title="Dome Builder Manual" href="builder.html" />
     <link rel="prev" title="RTI Documentation" href="index.html" /> 
 
   
@@ -78,12 +78,12 @@
             
             
               <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Reflectance Transformation Imaging (RTI)</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Introduction to RTI</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#outline">Outline</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#the-math">The Math</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="builder.html">Builder Manual</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="builder.html">Dome Builder Manual</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="design.html">Electrical Design</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="design.html#choice-of-led">Choice of LED</a></li>
 <li class="toctree-l3"><a class="reference internal" href="design.html#led-driver">Led Driver</a></li>
@@ -96,7 +96,7 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="user.html">User Manual</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="user.html">Dome User Manual</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="shooting.html">Shooting Manual</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="shooting.html#camera-settings">Camera Settings</a></li>
 <li class="toctree-l3"><a class="reference internal" href="shooting.html#dome-setup">Dome Setup</a></li>
@@ -128,6 +128,20 @@
 <li class="toctree-l3"><a class="reference internal" href="user_scripts.html#bin-ptm-decoder">bin/ptm-decoder</a></li>
 <li class="toctree-l3"><a class="reference internal" href="user_scripts.html#bin-ptm-exploder">bin/ptm-exploder</a></li>
 <li class="toctree-l3"><a class="reference internal" href="user_scripts.html#sample-lp-file-format">sample.lp file format</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="developer.html">Software Developer Manual</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="firmware.html">Firmware</a></li>
+<li class="toctree-l2"><a class="reference internal" href="programming.html">Programming the AVR-Microcontroller</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="programming.html#prerequisites">Prerequisites</a></li>
+<li class="toctree-l3"><a class="reference internal" href="programming.html#initialize-a-new-microcontroller">Initialize a New Microcontroller</a></li>
+<li class="toctree-l3"><a class="reference internal" href="programming.html#program">Program</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ptmlib.html">ptmlib</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ptmlib.html#ptmlib-h">ptmlib.h</a></li>
 </ul>
 </li>
 </ul>
@@ -178,13 +192,13 @@
     
       <li><a href="index.html">Docs</a> &raquo;</li>
         
-      <li>Reflectance Transformation Imaging (RTI)</li>
+      <li>Introduction to RTI</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="_sources/rti.rst.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/intro.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -197,11 +211,11 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="reflectance-transformation-imaging-rti">
-<h1>Reflectance Transformation Imaging (RTI)<a class="headerlink" href="#reflectance-transformation-imaging-rti" title="Permalink to this headline">¶</a></h1>
-<p><em>Reflectance Transformation Imaging,</em> formerly known as <em>Polynomial Texture
-Mapping</em> (PTM), is a technique of imaging and interactively displaying objects
-under varying lighting conditions to reveal surface phenomena.</p>
+  <div class="section" id="introduction-to-rti">
+<h1>Introduction to RTI<a class="headerlink" href="#introduction-to-rti" title="Permalink to this headline">¶</a></h1>
+<p><em>Reflectance Transformation Imaging</em> (RTI), formerly known as <em>Polynomial
+Texture Mapping</em> (PTM), is a technique of imaging and interactively displaying
+objects under varying lighting conditions to reveal surface phenomena.</p>
 <p>The original PTM method has been developed Tom Malzbender, Dan Gelb, and Hans
 Wolters at Hewlett-Packard Laboratories.  <a class="reference internal" href="#malzbender2001" id="id1">[Malzbender2001]</a> Improvements have
 been suggested: <a class="reference internal" href="#drew2012" id="id2">[Drew2012]</a>, <a class="reference internal" href="#zhang2014" id="id3">[Zhang2014]</a>.  We here describe the original
@@ -329,6 +343,13 @@ and Interpolation of Shadow/Specularity Components</em>
 edition, (John Hopkins University Press, Baltimore)</td></tr>
 </tbody>
 </table>
+<table class="docutils citation" frame="void" id="lyon2004" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[Lyon2004]</td><td>A Java implementation of the PTM viewer.
+<a class="reference external" href="https://github.com/clifflyon/ptmviewer">https://github.com/clifflyon/ptmviewer</a></td></tr>
+</tbody>
+</table>
 <table class="docutils citation" frame="void" id="malzbender2001" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
@@ -387,7 +408,7 @@ mapping,</em> (EURASIP Journal on Image and Video Processing)
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="builder.html" class="btn btn-neutral float-right" title="Builder Manual" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="builder.html" class="btn btn-neutral float-right" title="Dome Builder Manual" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="index.html" class="btn btn-neutral" title="RTI Documentation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

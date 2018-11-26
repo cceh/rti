@@ -30,7 +30,7 @@
   <link rel="stylesheet" href="_static/my_theme.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Reflectance Transformation Imaging (RTI)" href="rti.html" /> 
+    <link rel="next" title="Introduction to RTI" href="intro.html" /> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -77,24 +77,25 @@
             
             
               <ul>
-<li class="toctree-l1"><a class="reference internal" href="rti.html">Reflectance Transformation Imaging (RTI)</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="rti.html#outline">Outline</a></li>
-<li class="toctree-l2"><a class="reference internal" href="rti.html#the-math">The Math</a></li>
+<li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction to RTI</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="intro.html#outline">Outline</a></li>
+<li class="toctree-l2"><a class="reference internal" href="intro.html#the-math">The Math</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="builder.html">Builder Manual</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="builder.html">Dome Builder Manual</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="design.html">Electrical Design</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="design.html#choice-of-led">Choice of LED</a></li>
 <li class="toctree-l3"><a class="reference internal" href="design.html#led-driver">Led Driver</a></li>
 <li class="toctree-l3"><a class="reference internal" href="design.html#constant-current-source">Constant Current Source</a></li>
 <li class="toctree-l3"><a class="reference internal" href="design.html#microcontroller">Microcontroller</a></li>
+<li class="toctree-l3"><a class="reference internal" href="design.html#connectors">Connectors</a></li>
 <li class="toctree-l3"><a class="reference internal" href="design.html#board-layout">Board Layout</a></li>
 <li class="toctree-l3"><a class="reference internal" href="design.html#case">Case</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="user.html">User Manual</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="user.html">Dome User Manual</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="shooting.html">Shooting Manual</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="shooting.html#camera-settings">Camera Settings</a></li>
 <li class="toctree-l3"><a class="reference internal" href="shooting.html#dome-setup">Dome Setup</a></li>
@@ -121,7 +122,25 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="user_scripts.html">Scripts</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="user_scripts.html#scripts-image-filer-py">scripts/image_filer.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_scripts.html#scripts-image-filer-py">scripts/image-filer.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_scripts.html#bin-ptm-encoder">bin/ptm-encoder</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_scripts.html#bin-ptm-decoder">bin/ptm-decoder</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_scripts.html#bin-ptm-exploder">bin/ptm-exploder</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_scripts.html#sample-lp-file-format">sample.lp file format</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="developer.html">Software Developer Manual</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="firmware.html">Firmware</a></li>
+<li class="toctree-l2"><a class="reference internal" href="programming.html">Programming the AVR-Microcontroller</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="programming.html#prerequisites">Prerequisites</a></li>
+<li class="toctree-l3"><a class="reference internal" href="programming.html#initialize-a-new-microcontroller">Initialize a New Microcontroller</a></li>
+<li class="toctree-l3"><a class="reference internal" href="programming.html#program">Program</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ptmlib.html">ptmlib</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ptmlib.html#ptmlib-h">ptmlib.h</a></li>
 </ul>
 </li>
 </ul>
@@ -193,23 +212,31 @@
             
   <div class="section" id="rti-documentation">
 <span id="contents"></span><h1>RTI Documentation<a class="headerlink" href="#rti-documentation" title="Permalink to this headline">¶</a></h1>
+<p>This is the documentation for the RTI (Reflectance Transformation Imaging)
+project at CCeH.</p>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="rti.html">Reflectance Transformation Imaging (RTI)</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="rti.html#outline">Outline</a></li>
-<li class="toctree-l2"><a class="reference internal" href="rti.html#the-math">The Math</a></li>
+<li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction to RTI</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="intro.html#outline">Outline</a></li>
+<li class="toctree-l2"><a class="reference internal" href="intro.html#the-math">The Math</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="builder.html">Builder Manual</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="builder.html">Dome Builder Manual</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="design.html">Electrical Design</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="user.html">User Manual</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="user.html">Dome User Manual</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="shooting.html">Shooting Manual</a></li>
 <li class="toctree-l2"><a class="reference internal" href="lens_selection.html">Lens Selection</a></li>
 <li class="toctree-l2"><a class="reference internal" href="raw_or_jpeg.html">RAW or JPEG?</a></li>
 <li class="toctree-l2"><a class="reference internal" href="vibrations.html">Vibration Reduction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="user_scripts.html">Scripts</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="developer.html">Software Developer Manual</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="firmware.html">Firmware</a></li>
+<li class="toctree-l2"><a class="reference internal" href="programming.html">Programming the AVR-Microcontroller</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ptmlib.html">ptmlib</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="glossary.html">Glossary</a></li>
@@ -233,7 +260,7 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="rti.html" class="btn btn-neutral float-right" title="Reflectance Transformation Imaging (RTI)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="intro.html" class="btn btn-neutral float-right" title="Introduction to RTI" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
     </div>

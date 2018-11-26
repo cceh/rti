@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>RAW or JPEG? &mdash; RTI 0.1.1 documentation</title>
+  <title>Software Developer Manual &mdash; RTI 0.1.1 documentation</title>
   
 
   
@@ -30,8 +30,8 @@
   <link rel="stylesheet" href="_static/my_theme.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Vibration Reduction" href="vibrations.html" />
-    <link rel="prev" title="Lens Selection" href="lens_selection.html" /> 
+    <link rel="next" title="Firmware" href="firmware.html" />
+    <link rel="prev" title="Scripts" href="user_scripts.html" /> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -96,7 +96,7 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l1 current"><a class="reference internal" href="user.html">Dome User Manual</a><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="user.html">Dome User Manual</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="shooting.html">Shooting Manual</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="shooting.html#camera-settings">Camera Settings</a></li>
 <li class="toctree-l3"><a class="reference internal" href="shooting.html#dome-setup">Dome Setup</a></li>
@@ -110,9 +110,9 @@
 <li class="toctree-l3"><a class="reference internal" href="lens_selection.html#object-sizes">Object Sizes</a></li>
 </ul>
 </li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">RAW or JPEG?</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#raw">RAW</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#jpeg">JPEG</a></li>
+<li class="toctree-l2"><a class="reference internal" href="raw_or_jpeg.html">RAW or JPEG?</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="raw_or_jpeg.html#raw">RAW</a></li>
+<li class="toctree-l3"><a class="reference internal" href="raw_or_jpeg.html#jpeg">JPEG</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="vibrations.html">Vibration Reduction</a><ul>
@@ -132,9 +132,18 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="developer.html">Software Developer Manual</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Software Developer Manual</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="firmware.html">Firmware</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ptmlib.html">ptmlib</a></li>
+<li class="toctree-l2"><a class="reference internal" href="programming.html">Programming the AVR-Microcontroller</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="programming.html#prerequisites">Prerequisites</a></li>
+<li class="toctree-l3"><a class="reference internal" href="programming.html#initialize-a-new-microcontroller">Initialize a New Microcontroller</a></li>
+<li class="toctree-l3"><a class="reference internal" href="programming.html#program">Program</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ptmlib.html">ptmlib</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ptmlib.html#ptmlib-h">ptmlib.h</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="glossary.html">Glossary</a></li>
@@ -183,15 +192,13 @@
     
       <li><a href="index.html">Docs</a> &raquo;</li>
         
-          <li><a href="user.html">Dome User Manual</a> &raquo;</li>
-        
-      <li>RAW or JPEG?</li>
+      <li>Software Developer Manual</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="_sources/raw_or_jpeg.rst.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/developer.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -204,29 +211,23 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="raw-or-jpeg">
-<span id="id1"></span><h1>RAW or JPEG?<a class="headerlink" href="#raw-or-jpeg" title="Permalink to this headline">¶</a></h1>
-<p>Use <a class="reference internal" href="glossary.html#term-raw"><span class="xref std std-term">RAW</span></a> files for highest quality or use JPEG files for speed and
-convenience.</p>
-<div class="section" id="raw">
-<h2>RAW<a class="headerlink" href="#raw" title="Permalink to this headline">¶</a></h2>
-<p>RAW files are much bigger and thus slower to work with than JPEGs.  RAW files are
-losslessly compressed and retain the full sensor resolution of 12 or 14 bits per
-RGB channel.</p>
-<p>RAW files must be post-processed in a raw converter software, which is
-time-consuming, but you can make many corrections in the process, like setting
-the white point on each picture individually for best color fidelity.</p>
-<p>Prefer RAW if no other pictures exist of the object you are imaging.  RAW files
-convert to TIFF for archival purposes.</p>
-</div>
-<div class="section" id="jpeg">
-<h2>JPEG<a class="headerlink" href="#jpeg" title="Permalink to this headline">¶</a></h2>
-<p>JPEG files are smaller and thus faster to work with than RAW files.  JPEGs are
-lossily compressed and have only 8 bits resolution per RGB channel.</p>
-<p>If you shoot JPEG the camera will post-process the files for you, but you cannot
-make corrections afterwards.</p>
-<p>Use JPEG if the only purpose of taking these images is to build an RTI image and
-there exist other images of the object for archival purposes.</p>
+  <div class="section" id="software-developer-manual">
+<h1>Software Developer Manual<a class="headerlink" href="#software-developer-manual" title="Permalink to this headline">¶</a></h1>
+<p>Read this if you want to hack the software of the project.</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="firmware.html">Firmware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="programming.html">Programming the AVR-Microcontroller</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="programming.html#prerequisites">Prerequisites</a></li>
+<li class="toctree-l2"><a class="reference internal" href="programming.html#initialize-a-new-microcontroller">Initialize a New Microcontroller</a></li>
+<li class="toctree-l2"><a class="reference internal" href="programming.html#program">Program</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="ptmlib.html">ptmlib</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ptmlib.html#ptmlib-h">ptmlib.h</a></li>
+</ul>
+</li>
+</ul>
 </div>
 </div>
 
@@ -238,10 +239,10 @@ there exist other images of the object for archival purposes.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="vibrations.html" class="btn btn-neutral float-right" title="Vibration Reduction" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="firmware.html" class="btn btn-neutral float-right" title="Firmware" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="lens_selection.html" class="btn btn-neutral" title="Lens Selection" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="user_scripts.html" class="btn btn-neutral" title="Scripts" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

@@ -28,11 +28,15 @@ Camera Settings
    :guilabel:`rear dial`.  Use the smallest aperture for maximum depth of field (:term:`DOF`).
    Nikon: :guilabel:`front dial`.  Set the exposure time.  Nikon: :guilabel:`rear dial`.
 
-6. Either:
+6. **Set the camera to Continuous High Speed Mode** Nikon: :guilabel:`left dial`.
 
-   a) **Turn on live view**.  Nikon D850: :kbd:`Lv`  Or
+7. Either:
+
+   a) **Turn on live view**.  Nikon D850: :guilabel:`Lv`.  Or
 
    b) **Turn on exposure delay mode.** Nikon D700: menu :menuselection:`d9`.
+
+8. Check the clock of the camera. Nikon: :guilabel:`info`.
 
 
 Dome Setup
@@ -65,11 +69,11 @@ Shooting
 
 1. **Put the object under the dome** in the exact center.
 
-2. **Short press the green button** for focus light.  You can short press again
-   to turn the focus light off.
+2. **Short press the green button** for pilot light.  You can short press again
+   to turn the pilot light off.
 
 3. **Focus the object.**  Close the viewfinder.  If you are using live view,
-   press :kbd:`Lv` to exit and re-enter live view mode.
+   press :guilabel:`Lv` to exit and re-enter live view mode.
 
 4. **Long press the green button** to start the picture run.  The red button
    resets the CRM.  Use it to abort a shooting run.
@@ -77,31 +81,32 @@ Shooting
    .. warning::
 
       Check your pictures for over- (specular lights) or under-exposure.  Adjust
-      the aperture, time and maybe ISO settings and repeat the run.  The focus
+      the aperture, time and maybe ISO settings and repeat the run.  The pilot
       light alone does not give enough guidance to set exposure parameters [#]_.
 
 
 Various Notes
 =============
 
-Your mileage will depend on how fast the camera can save the pictures to the
-memory card.  Many cameras have a small internal buffer, which fills up after a
-short burst, and after that the speed of the memory card limits the frame rate.
+Working speed: Your mileage may vary depending on the exposure time you have to
+select and on the speed of the memory card in the camera.  Cameras have an
+internal buffer, which fills up after a short burst, after that the speed of the
+memory card may limit the frame rate.  If your exposure time is longer than the
+writing time the speed of the memory card may not matter.
 
 For greatest depth of field (:term:`DOF`) use the smallest aperture (that is the
-*highest* aperture number) that you can manage.  Most cameras use the largest
-aperture for viewing, the DOF you see in the viewfinder is much less than the
-DOF you will get on the picture.  In case of a 3D object focus on the middle
-ground.
+*highest* aperture number).  When you look through the viewfinder you see the
+DOF of the largest aperture, which is much less than the DOF you will get on the
+picture.  For best results focus on the middle ground.
 
 If you want color, place the object onto a :term:`grey card`.  This will make it
-a lot easier to find the correct white balance in the raw converter software.
+easier to find the correct white balance in the raw converter software.
 
 
 Footnotes
 =========
 
-.. [#] The focus light (current shared by N LEDs) has not the same intensity as
+.. [#] The pilot light (current shared by N LEDs) has not the same intensity as
        the individual LED (current used by one LED) because LED emission is not
        linear with current.  Also specular lights will be N times brighter if
        the object is lighted by one LED only.

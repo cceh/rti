@@ -20,18 +20,18 @@ Buying Lenses
 
 Before you buy a lens make sure that it will focus down to the object distance.
 For domes smaller than 1 m in diameter you will probably have to buy macro
-lenses.  The minimun focal distance is stated on the datasheet of the lens and
-is measured from the sensor plane.  A Plimsoll Mark (a circle with a horizontal
-line through it) on your camera shows where the sensor plane is.
+lenses.  The minimum focal distance is stated on the datasheet of the lens and
+is measured from the focal plane.  A Plimsoll Mark (a circle with a horizontal
+line through it) on your camera shows where the focal plane is.
 
 If the front thread of the lens turns while focusing you will not be able to
 mount the lens on the dome by the front thread, instead you'll have to use a
-tripod to suspend the camera above the dome.  Better buy a lens whose front does
-not turn when focusing.
+tripod to suspend the camera above the dome.  We advise buying a lens whose
+front does not turn when focusing.
 
 Some lenses will extend when focusing, this is unpractical when mounted on the
-dome by the front thread.  Better buy a lens that does not extend.  Nikon calls
-this "internal focusing".
+dome by the front thread.  We advise buying lens that does not extend.  Nikon
+calls this "internal focusing".
 
 With some lenses the focus will wander if the lens is pointed up or down,
 depending on the quality and the weight of the internal mechanics.  Avoid those

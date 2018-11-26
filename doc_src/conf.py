@@ -39,7 +39,15 @@ extensions = [
     'sphinx.ext.githubpages',
     'sphinxcontrib.autoprogram',
     'sphinxcontrib.plantuml',
+    'breathe',
 ]
+
+breathe_projects = { "ptmlib": "../rti-builder/" }
+# breathe_default_project = "ptmlib"
+
+breathe_projects_source = {
+    "ptmlib" : ( "../rti-builder", ["ptmlib.c", "ptmlib.h"] )
+}
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']

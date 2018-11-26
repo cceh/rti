@@ -3,16 +3,15 @@ Electrical Design
 
 The main goals of this design were:
 
-- to use bright and affordable LEDs, and
+- to use bright and affordable LEDs,
+- to use only user-solderable off-the-shelf components,
+- the dome should look to the camera like an ordinary flash gun,
+- the dome should work with any camera using standard interfaces.
 
-- to use only user-solderable off-the-shelf components.
 
 
 Choice of LED
 -------------
-
-The performance LED market has short product cycles.  You must buy enough LEDs
-for replacement purposes.
 
 Consider the following points before selecting an LED make.
 
@@ -64,6 +63,11 @@ cut out of a standard 2.54" striped PCB.
    :align: center
 
    Two LEDs soldered to a standard striped PCB.
+
+.. warning::
+
+   The power-LED market has short product cycles.  You must buy enough
+   LEDs for replacement purposes.
 
 
 Led Driver
@@ -124,6 +128,20 @@ Microcontroller
 
 The project uses an ATmega328p microcontroller because it was prototyped on an
 Arduino Nano.
+
+
+Connectors
+----------
+
+The device commands the camera through the remote control interface which is
+found on most camera models.  Interface cables for Nikon, Canon and all other
+major brands are also available at low cost from third party suppliers.  The
+cables have a standard 3-way jack at one side and the proprietary camera
+connector at the other.
+
+The camera commands the flash through a :term:`PC Sync` connector. PC Sync
+cables are standard photografic gear and are available at low cost from many
+manufacturers.
 
 
 Board Layout

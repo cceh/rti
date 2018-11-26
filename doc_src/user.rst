@@ -1,6 +1,8 @@
-=============
- User Manual
-=============
+==================
+ Dome User Manual
+==================
+
+Read this if you already have a dome and now want to take RTI images.
 
 .. toctree::
    :maxdepth: 2
