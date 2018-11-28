@@ -141,7 +141,7 @@ int main (int argc, char *argv[]) {
 
     size_t max_decoders = 64; // start with 64, maybe double them later
     decoder_t **decoders = malloc (max_decoders * sizeof (decoder_t *));
-    image_info_t info;
+    ptm_image_info_t info;
     info.n_decoders = 0;
 
     struct jpeg_error_mgr jerr;
@@ -181,8 +181,8 @@ int main (int argc, char *argv[]) {
             jpeg_stdio_src (dinfo, decoder->fp);
             (void) jpeg_read_header (dinfo, TRUE);
 
-            // use YCbCr color space for LRGB PTM files
-            dinfo->out_color_space = (ptm_header->format->color_components == 3) ? JCS_YCbCr : JCS_RGB;
+            // use YCbCr color space for PTM_LUM files
+            dinfo->out_color_space = (ptm_header->format->color_components > 0) ? JCS_YCbCr : JCS_RGB;
 
             (void) jpeg_start_decompress (dinfo);
 
@@ -263,8 +263,43 @@ int main (int argc, char *argv[]) {
     TIME ("time for decoding %lu JPEGs = %lums\n", info.n_decoders);
 
     // float[rgb][y][x][coeffs]
-    ptm_unscaled_coefficients_t *coeffs;
+    ptm_unscaled_coefficients_t *coeffs = NULL;
     ptm_block_t *blocks = ptm_alloc_blocks (ptm_header);
+
+    if (ptm_header->format->color_components == 0) {
+        // a PTM_RGB format
+        coeffs = calloc (RGB_COEFFICIENTS * info.pixels, sizeof (ptm_unscaled_coefficients_t));
+
+        // fit each of the color channels to the polynomes
+        for (int r = 0; r < ptm_header->format->ptm_blocks; ++r) {
+            ptm_fit_poly_jsample (&info,
+                                  buffer + r,
+                                  RGB_COEFFICIENTS,
+                                  M,
+                                  coeffs + (r * info.pixels));
+        }
+    }
+
+    if (ptm_header->format->color_components == 2) {
+        // a PTM_LUM format
+        //
+        // N.B. the PTM_LUM formats are largely undocumented.  The following is
+        // based on some educated guess but is probably not quite correct.
+
+        coeffs = calloc (info.pixels, sizeof (ptm_unscaled_coefficients_t));
+
+        // fit polynomes to the Y (of YCbCr)
+        ptm_fit_poly_jsample (&info,
+                              buffer,
+                              3,
+                              M,
+                              coeffs);
+
+        // then average Cb and Cr over all images
+        ptm_cbcr_avg (&info,
+                      (const ycbcr_coefficients_t *) buffer,
+                      (ycbcr_coefficients_t *) blocks[ptm_header->format->ptm_blocks]);
+    }
 
     if (ptm_header->format->color_components == 3) {
         // an LRGB format
@@ -275,12 +310,11 @@ int main (int argc, char *argv[]) {
         coeffs = calloc (info.pixels, sizeof (ptm_unscaled_coefficients_t));
 
         // fit polynomes to the Y (of YCbCr)
-        ptm_fit_poly_rgb (ptm_header,
-                          buffer,
-                          3,
-                          info.n_decoders,
-                          M,
-                          coeffs);
+        ptm_fit_poly_jsample (&info,
+                              buffer,
+                              3,
+                              M,
+                              coeffs);
 
         // then average Cb and Cr over all images
         ptm_cbcr_avg (&info,
@@ -314,28 +348,59 @@ int main (int argc, char *argv[]) {
             ++ycbcr;
             ++cfs;
         }
-
-    } else {
-        // an RGB format
-        coeffs = calloc (RGB_COEFFICIENTS * info.pixels, sizeof (ptm_unscaled_coefficients_t));
-
-        // fit each of the color channels to the polynomes
-        for (int r = 0; r < ptm_header->format->ptm_blocks; ++r) {
-            ptm_fit_poly_rgb (ptm_header,
-                              buffer + r,
-                              RGB_COEFFICIENTS,
-                              info.n_decoders,
-                              M,
-                              coeffs + (r * info.pixels));
-        }
     }
+
+    if (ptm_header->format->color_components == 666) {
+        // an LRGB format
+        //
+        // The algorithm alluded to in [Zhang2012]_ uses the median, which is a
+        // bear to compute.
+
+        coeffs = calloc (info.pixels, sizeof (ptm_unscaled_coefficients_t));
+
+        // calculate L = R + G + B for all pixels in all images
+        unsigned int *L = calloc (info.n_decoders * info.pixels, sizeof (int));
+        {
+            const rgb_coefficients_t *rgb = (rgb_coefficients_t *) buffer;
+            unsigned int *l = L;
+            for (size_t i = 0; i < info.n_decoders * info.pixels; ++i) {
+                *l = rgb->r + rgb->g + rgb->b;
+                ++rgb;
+                ++l;
+            }
+        }
+        // fit polynomes to the L
+        ptm_fit_poly_uint (&info,
+                           L,
+                           1,
+                           M,
+                           coeffs);
+
+        // then average RGB over all images
+        // FIXME should use median here!
+        ptm_cbcr_avg (&info,
+                      (const ycbcr_coefficients_t *) buffer,
+                      (ycbcr_coefficients_t *) blocks[ptm_header->format->ptm_blocks]);
+
+        // scale RGB according to L
+        rgb_coefficients_t *rgb = (rgb_coefficients_t *) blocks[ptm_header->format->ptm_blocks];
+        const unsigned int *l = L;
+        for (size_t i = 0; i < info.pixels; ++i) {
+            rgb->r = 256 * (int) rgb->r / *l;
+            rgb->g = 256 * (int) rgb->g / *l;
+            rgb->b = 256 * (int) rgb->b / *l;
+            ++rgb;
+            ++l;
+        }
+
+        free (L);
+    }
+
     free (buffer);
 
-    TIME ("time for ptm_fit_poly_rgb = %lums\n");
+    TIME ("time for ptm_fit_poly_jsample = %lums\n");
 
-    ptm_calc_min_max_coefficients (ptm_header, coeffs);
-    ptm_calc_scale (ptm_header);
-    ptm_scale_coefficients (ptm_header, blocks, coeffs);
+    ptm_scale_coefficients (ptm_header, coeffs, blocks);
 
     TIME ("time for ptm_scale_coefficients = %lums\n");
 

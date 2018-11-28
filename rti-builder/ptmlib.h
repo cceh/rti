@@ -68,11 +68,11 @@ typedef struct {
     JSAMPLE cr;
 } ycbcr_coefficients_t;
 
-/** CBCR coefficients as found in PTMs. */
+/** CrCb coefficients as found in PTMs.  Note the inversion from above! */
 typedef struct {
-    JSAMPLE cb;
     JSAMPLE cr;
-} cbcr_coefficients_t;
+    JSAMPLE cb;
+} crcb_coefficients_t;
 
 /** An enumeration of the supported formats. */
 typedef enum {
@@ -101,7 +101,7 @@ typedef struct {
 /** An array containing the PTM file formats we support. */
 const ptm_format_t ptm_formats[6];
 
-/** Holds infomation about the input images. */
+/** Holds information about the input images and other. */
 typedef struct {
     size_t width;           /**< The width of the input images. */
     size_t height;          /**< The height of the input images. */
@@ -112,7 +112,7 @@ typedef struct {
                                much to jump to get from one image to the
                                next. */
     size_t n_decoders;      /**< The no. of decoders == no. of images. */
-} image_info_t;
+} ptm_image_info_t;
 
 /** This struct contains all information that goes into the PTM header.
 
@@ -135,11 +135,6 @@ typedef struct {
     int reference_planes   [MAX_JPEG_STREAMS];
     size_t compressed_size [MAX_JPEG_STREAMS];
     size_t side_info_sizes [MAX_JPEG_STREAMS];
-
-    /* auxiliary fields not used in the PTM file */
-    ptm_unscaled_coefficients_t min_coefficients;
-    ptm_unscaled_coefficients_t max_coefficients;
-    float inv_scale        [PTM_COEFFICIENTS];
 } ptm_header_t;
 
 /** An array holding one block of either scaled PTM coefficients or RGB
@@ -162,12 +157,7 @@ inline JSAMPLE CLIP (float f) {
     return f > 255.0 ? 255.0 : (f < 0.0 ? 0.0 : f);
 }
 
-extern float REC709[3];
-
-/** Convert RGB to L (luma). */
-#define LUMA(r,g,b) (REC709[0] * r + REC709[1] * g + REC709[2] * b)
-
-#define AVG(r,g,b) (((unsigned int) r + (unsigned int) g + (unsigned int) b) / 3)
+#define LUM(r,g,b) ((unsigned int) r + (unsigned int) g + (unsigned int) b)
 
 
 /**
@@ -254,12 +244,6 @@ void ptm_write_ptm (FILE *fp, ptm_header_t *ptm_header, ptm_block_t *blocks);
  */
 void ptm_write_jpeg (FILE *fp, ptm_header_t *ptm_header, ptm_block_t *blocks, float u, float v);
 
-void ptm_print_matrix (const char *name, float* M, int m, int n);
-
-void ptm_cbcr_avg (const image_info_t *info,
-                   const ycbcr_coefficients_t *buffer,
-                   ycbcr_coefficients_t *block);
-
 /**
  * Does the singular value decomposition.
  *
@@ -270,20 +254,62 @@ void ptm_cbcr_avg (const image_info_t *info,
  */
 float *ptm_svd (decoder_t **decoders, int n_decoders);
 
+
 /**
  * Do the polynomial fit for all pixels in the image.
  *
- * @param ptm_header
- * @param buffer
- * @param n_decoders  The number of images / lights.
- * @param M           The SVD
- * @param block
+ * With pixel_stride set to 3 you can process one color component out of an RGB
+ * buffer like the buffer returned by libjpeg.  The output PTM coefficients
+ * buffer can contain one color component only (R, G, B, or Y).
+ *
+ * @param info
+ * @param buffer       The input buffer (filled by libjpeg).
+ * @param pixel_stride The spacing of the pixels in buffer.
+ * @param M            The SVD matrix.
+ * @param output       The output PTM coefficients.
  */
-void ptm_fit_poly_rgb (ptm_header_t *ptm_header,
-                       const JSAMPLE *buffer,
-                       size_t pixel_stride,
-                       size_t n_decoders,
-                       float *M, ptm_unscaled_coefficients_t *block);
+void ptm_fit_poly_jsample (const ptm_image_info_t *info,
+                           const JSAMPLE *buffer,
+                           size_t pixel_stride,
+                           const float *M,
+                           ptm_unscaled_coefficients_t *output);
+
+void ptm_fit_poly_uint (const ptm_image_info_t *info,
+                        const unsigned int *buffer,
+                        size_t pixel_stride,
+                        const float *M,
+                        ptm_unscaled_coefficients_t *output);
+
+/**
+ * Find the average YCbCr values of a pixel in all images.
+ *
+ * Use this to find the best chroma for each pixel when generating an LRGB
+ * image.  Here we assume that the chroma of a pixel does not change too much
+ * between exposures.  This is true for diffuse objects.  If this is not the
+ * case you'd better use RGB formats.
+ *
+ * @param info    An info struct containing the buffer size.
+ * @param buffer  Source buffer of YCbCr values.
+ * @param block   The destination buffer for the average YCbCr values.
+ */
+void ptm_cbcr_avg (const ptm_image_info_t *info,
+                   const ycbcr_coefficients_t *buffer,
+                   ycbcr_coefficients_t *block);
+
+/**
+ * Scale the float coefficients into unsigned chars.
+ *
+ * Scales the coefficients and also sets the parameters in the PTM header.
+ *
+ * See: [Malzbender2001]_ §3.3 Scale and Bias
+ *
+ * @param ptm_header The PTM header.
+ * @param unscaled   The unscaled (float) coefficients.
+ * @param scaled     The scaled (unsigned char) coefficients.
+ */
+void ptm_scale_coefficients (ptm_header_t *ptm_header,
+                             const ptm_unscaled_coefficients_t *unscaled,
+                             ptm_block_t *scaled);
 
 /**
  * Find the surface normal from the PTM coefficients.
@@ -295,14 +321,16 @@ void ptm_fit_poly_rgb (ptm_header_t *ptm_header,
  */
 void ptm_normal (const ptm_unscaled_coefficients_t *coeffs, float *nu, float *nv, float *nw);
 
-void ptm_calc_min_max_coefficients (ptm_header_t *ptm_header,
-                                    const ptm_unscaled_coefficients_t *coeffs);
 
-void ptm_calc_scale (ptm_header_t *ptm_header);
-
-void ptm_scale_coefficients (ptm_header_t *ptm_header,
-                             ptm_block_t *scaled,
-                             const ptm_unscaled_coefficients_t *unscaled);
+/**
+ * Prints a matrix for debugging.
+ *
+ * @param name
+ * @param M
+ * @param m
+ * @param n
+ */
+void ptm_print_matrix (const char *name, float* M, int m, int n);
 
 
 #endif

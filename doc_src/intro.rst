@@ -174,6 +174,12 @@ of light sources.  The only part of the above formula that varies for each pixel
 is :math:`\mathbf{b}`.
 
 
+
+
+.. [Drew2009] Drew, M.S. [et al.] 2009, *Specularity and Shadow Interpolation
+              via Robust Polynomial Texture Maps*
+              https://www.cs.sfu.ca/~mark/ftp/Bmvc09/bmvc09.pdf
+
 .. [Drew2012] Drew, M.S. [et al.] 2012, *Robust Estimation of Surface Properties
               and Interpolation of Shadow/Specularity Components*
               http://www.cs.sfu.ca/~mark/ftp/Ivc2012/ivc2012.pdf
@@ -201,6 +207,12 @@ is :math:`\mathbf{b}`.
                Press, Cambridge)
 
 .. [Wikipedia] https://en.wikipedia.org/wiki/Polynomial_texture_mapping
+
+.. [Zhang2012] Zhang, M., and Drew, M.S. 2012, *Robust Luminance and
+               Chromaticity for Matte Regression in Polynomial Texture Mapping*
+               in Fusiello, A. [et al.] (Eds.): ECCV 2012 Ws/Demos, Part II,
+               LNCS 7584, pp. 360–369, 2012. Springer, 2012
+               http://www.cs.sfu.ca/people/Faculty/Drew/ftp/Cpcv2012/cpcv2012a.pdf
 
 .. [Zhang2014] Zhang, M., and Drew, M.S. 2014, *Efficient robust image
                interpolation and surface properties using polynomial texture

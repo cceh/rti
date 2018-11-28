@@ -38,13 +38,15 @@
 #include <cblas.h>
 #include <lapacke.h>
 
-/** Parameters of the supported formats. */
+/** Parameters of the supported formats.
+    id, blocks, ptm_blocks, color_components, jpeg_streams, name
+*/
 const ptm_format_t ptm_formats[] = {
     { PTM_FORMAT_RGB,       3, 3, 0,  0, "PTM_FORMAT_RGB"       },
-    { PTM_FORMAT_LUM,       2, 1, 2,  0, "PTM_FORMAT_LUM"       },
-    { PTM_FORMAT_LRGB,      2, 1, 3,  0, "PTM_FORMAT_LRGB"      },
     { PTM_FORMAT_JPEG_RGB,  3, 3, 0, 18, "PTM_FORMAT_JPEG_RGB"  },
+    { PTM_FORMAT_LRGB,      2, 1, 3,  0, "PTM_FORMAT_LRGB"      },
     { PTM_FORMAT_JPEG_LRGB, 2, 1, 3,  9, "PTM_FORMAT_JPEG_LRGB" },
+    { PTM_FORMAT_LUM,       2, 1, 2,  0, "PTM_FORMAT_LUM"       },
     { 0,                    0, 0, 0,  0, NULL },
 };
 
@@ -60,8 +62,23 @@ const ptm_format_t ptm_formats[] = {
                  UNSCALE (p->cv,  4) * light.cv  + \
                  UNSCALE (p->c1,  5))
 
-/** Rec. 709 conversion factors. */
-float REC709[3] = { 0.2126, 0.7152, 0.0722 };
+// This is gray only but at least it works.
+float COLOR_MATRIX[] = {
+    0,  1,  0,  0,
+    0,  1,  0,  0,
+    0,  1,  0,  0,
+    0,  0,  0,  1
+};
+
+// FIXME: does not work.  If we could find just *one* example of a LUM PTM we
+// could fix this.
+float COLOR_MATRIX_[] = {
+//   Cr       Y   Cb
+     1.40200, 1,  0,          0,   // R
+    -0.71414, 1, -0.34414,    0,   // G
+     0,       1,  1.77200,    0,   // B
+     0,       0,  0,          1
+};
 
 void set_coeffs (ptm_unscaled_coefficients_t *c, float f) {
     float *pc = (float *) c;
@@ -204,6 +221,9 @@ void ptm_write_header (FILE *fp, ptm_header_t *ptm_header) {
     fprintf (fp, "%lu %lu\n", ptm_header->dimen[0], ptm_header->dimen[1]);
     write_floats (fp, PTM_COEFFICIENTS, ptm_header->scale);
     write_ints   (fp, PTM_COEFFICIENTS, ptm_header->bias);
+    if (ptm_header->format->id == PTM_FORMAT_LUM) {
+        write_floats (fp, 16, COLOR_MATRIX);
+    }
     if (ptm_header->format->jpeg_streams) {
         int n = ptm_header->format->jpeg_streams;
         write_ints  (fp, 1, ptm_header->compression_param);
@@ -263,14 +283,13 @@ void apply_side_info (struct jpeg_decompress_struct *dinfo,
 }
 
 int get_sample_size (ptm_header_t *ptm_header, int n_block) {
-    return (n_block < ptm_header->format->ptm_blocks) ? PTM_COEFFICIENTS : ptm_header->format->color_components;
+    // Always assume 3 color components because the extra buffer space is very
+    // convenient for YCbCr conversion etc.
+    return (n_block < ptm_header->format->ptm_blocks) ? PTM_COEFFICIENTS : RGB_COEFFICIENTS;
 }
 
 ptm_header_t *ptm_alloc_header () {
-    ptm_header_t *h = calloc (sizeof (ptm_header_t), 1);
-    set_coeffs (&h->min_coefficients,  FLT_MAX);
-    set_coeffs (&h->max_coefficients, -FLT_MAX);
-    return h;
+    return (ptm_header_t *) calloc (sizeof (ptm_header_t), 1);
 }
 
 ptm_block_t *ptm_alloc_blocks (ptm_header_t *ptm_header) {
@@ -311,10 +330,28 @@ void ptm_read_uncompressed_blocks (FILE *fp, ptm_header_t *ptm_header, ptm_block
  * @param blocks     A pointer to an initialized ptm_block_t struct.
  */
 void ptm_write_uncompressed_blocks (FILE *fp, ptm_header_t *ptm_header, ptm_block_t *blocks) {
-    int image_size = ptm_header->dimen[0] * ptm_header->dimen[1];
-    for (int i = 0; i < ptm_header->format->blocks; ++i) {
-        fwrite (blocks[i], get_sample_size (ptm_header, i), image_size, fp);
+    size_t image_size = ptm_header->dimen[0] * ptm_header->dimen[1];
+    if (ptm_header->format->id == PTM_FORMAT_LUM) {
+        ptm_coefficients_t   *coeffs = (ptm_coefficients_t *)   blocks[0];
+        ycbcr_coefficients_t *ycbcr  = (ycbcr_coefficients_t *) blocks[1];
+        struct {
+            ptm_coefficients_t c;
+            crcb_coefficients_t crcb;
+        } tmp;
+        for (size_t i = 0; i < image_size; ++i) {
+            tmp.c = *coeffs;
+            tmp.crcb.cr = ycbcr->cr;
+            tmp.crcb.cb = ycbcr->cb;
+            fwrite (&tmp, sizeof (tmp), 1, fp);
+            ++ycbcr;
+            ++coeffs;
+        }
+    } else {
+        for (int i = 0; i < ptm_header->format->blocks; ++i) {
+            fwrite (blocks[i], get_sample_size (ptm_header, i), image_size, fp);
+        }
     }
+
 }
 
 /**
@@ -532,7 +569,7 @@ void ptm_write_jpeg (FILE *fp, ptm_header_t *ptm_header, ptm_block_t *blocks, fl
     cinfo.image_width  = ptm_header->dimen[0];      /* image width and height, in pixels */
     cinfo.image_height = ptm_header->dimen[1];
     cinfo.input_components = 3;             /* # of color components per pixel */
-    cinfo.in_color_space = (ptm_header->format->color_components == 2) ? JCS_YCbCr : JCS_RGB;  /* colorspace of input image */
+    cinfo.in_color_space = (ptm_header->format->color_components > 0) ? JCS_YCbCr : JCS_RGB;  /* colorspace of input image */
     jpeg_set_defaults (&cinfo);
     jpeg_set_quality (&cinfo, ptm_header->compression_param[0], TRUE /* limit to baseline-JPEG values */);
 
@@ -560,11 +597,11 @@ void ptm_write_jpeg (FILE *fp, ptm_header_t *ptm_header, ptm_block_t *blocks, fl
         }
         if (ptm_header->format->color_components == 2) {  /* PTM_FORMAT_LUM not tested !*/
             ptm_coefficients_t  *l    = (ptm_coefficients_t *)  blocks[0] + yoffs;
-            cbcr_coefficients_t *cbcr = (cbcr_coefficients_t *) blocks[1] + yoffs;
-            for (size_t x = 0; x < ptm_header->dimen[0]; ++x, ++l, ++cbcr) {
+            crcb_coefficients_t *crcb = (crcb_coefficients_t *) blocks[1] + yoffs;
+            for (size_t x = 0; x < ptm_header->dimen[0]; ++x, ++l, ++crcb) {
                 *p_out++ = CLIP (POLY (l));
-                *p_out++ = CLIP (cbcr->cb);
-                *p_out++ = CLIP (cbcr->cr);
+                *p_out++ = CLIP (crcb->cb);
+                *p_out++ = CLIP (crcb->cr);
             }
         }
         if (ptm_header->format->color_components == 0) {  /* PTM_FORMAT_*_RGB */
@@ -586,18 +623,6 @@ void ptm_write_jpeg (FILE *fp, ptm_header_t *ptm_header, ptm_block_t *blocks, fl
 
     jpeg_destroy_compress (&cinfo);
 }
-
-void ptm_print_matrix (const char *name, float* M, int m, int n) {
-    int i, j;
-    fprintf (stderr, "\n%s = [", name);
-    for (i = 0; i < m; i++) {
-        for (j = 0; j < n; j++)
-            fprintf (stderr, " %3.6f", M[i * n + j]);
-        fprintf (stderr, ";\n");
-    }
-    fprintf (stderr, "]\n");
-}
-
 
 float *ptm_svd (decoder_t **decoders, int n_decoders) {
     lapack_int n_lights = n_decoders;
@@ -661,34 +686,33 @@ float *ptm_svd (decoder_t **decoders, int n_decoders) {
 }
 
 
-void ptm_fit_poly_rgb (ptm_header_t *ptm_header,
-                       const JSAMPLE *buffer,
-                       size_t pixel_stride,
-                       size_t n_decoders,
-                       float *M,
-                       ptm_unscaled_coefficients_t *block) {
+void ptm_fit_poly_jsample (const ptm_image_info_t *info,
+                           const JSAMPLE *buffer,
+                           size_t pixel_stride,
+                           const float *M,
+                           ptm_unscaled_coefficients_t *output) {
 
     // buffer = JSAMPLE[image][y][x][rgb]
-    // block  = float[y][x][cu²..c1]
+    // output = float[y][x][cu²..c1]
 
-    const size_t row_stride   = ptm_header->dimen[0] * pixel_stride;
-    const size_t image_stride = ptm_header->dimen[1] * row_stride;
+    const size_t row_stride   = info->width  * pixel_stride;
+    const size_t image_stride = info->height * row_stride;
 
     #pragma omp parallel for schedule(dynamic)
-    for (size_t y = 0; y < ptm_header->dimen[1]; ++y) {
-        ptm_unscaled_coefficients_t *bl = block + (y * ptm_header->dimen[0]);
-        float *b = calloc (n_decoders, sizeof (float)); // vector of samples
+    for (size_t y = 0; y < info->height; ++y) {
+        ptm_unscaled_coefficients_t *bl = output + (y * info->width);
+        float *b = calloc (info->n_decoders, sizeof (float)); // vector of samples as floats
 
-        for (size_t x = 0; x < ptm_header->dimen[0]; ++x) {
+        for (size_t x = 0; x < info->width; ++x) {
             const JSAMPLE *buf = buffer + (y * row_stride) + (x * pixel_stride);
             // copy vector b into floats
-            for (size_t n = 0; n < n_decoders; ++n) {
+            for (size_t n = 0; n < info->n_decoders; ++n) {
                 b[n] = (float) *buf;
                 buf += image_stride;
             }
             // X = M * b
-            cblas_sgemv (CblasRowMajor, CblasNoTrans, PTM_COEFFICIENTS, n_decoders,
-                         1.0, M, n_decoders,
+            cblas_sgemv (CblasRowMajor, CblasNoTrans, PTM_COEFFICIENTS, info->n_decoders,
+                         1.0, M, info->n_decoders,
                          b, 1,
                          0.0, (float *) bl, 1);
             ++bl;
@@ -697,45 +721,42 @@ void ptm_fit_poly_rgb (ptm_header_t *ptm_header,
     }
 }
 
-/**
- * Convert RGB color channels to a luma channel.
- *
- * @param info        An info struct containing the buffer size.
- * @param rgb_buffer  Source buffer of RGB values.
- * @param luma_buffer Destination buffer for luma values.
- */
-void ptm_rgb_to_lum (const image_info_t *info,
-                      const rgb_coefficients_t *rgb_buffer,
-                      JSAMPLE *luma_buffer) {
+void ptm_fit_poly_uint (const ptm_image_info_t *info,
+                        const unsigned int *buffer,
+                        size_t pixel_stride,
+                        const float *M,
+                        ptm_unscaled_coefficients_t *output) {
 
-    /* perform a multiplication A * x where A is n_pixels by 3 and x is 3 by 1.
-    cblas_sgemv (CblasRowMajor, CblasNoTrans, n_pixels, 3,
-                 1.0, buffer, n_pixels,
-                 REC709, 1,
-                 0.0, luma_buffer, 1);
-    */
+    // buffer = JSAMPLE[image][y][x][L]
+    // output = float[y][x][cu²..c1]
 
-    float norm = 255.0 / sqrt (255.0 * 255.0 + 255.0 * 255.0  + 255.0 * 255.0);
-    for (size_t i = 0; i < info->pixels; ++i) {
-        unsigned int sum =
-            rgb_buffer->r * rgb_buffer->r +
-            rgb_buffer->g * rgb_buffer->g +
-            rgb_buffer->b * rgb_buffer->b;
-        *luma_buffer++ = sqrt (sum) * norm;
-        // *luma_buffer++ = LUMA (rgb_buffer->r, rgb_buffer->g, rgb_buffer->b);
-        ++rgb_buffer;
+    const size_t row_stride   = info->width  * pixel_stride;
+    const size_t image_stride = info->height * row_stride;
+
+    #pragma omp parallel for schedule(dynamic)
+    for (size_t y = 0; y < info->height; ++y) {
+        ptm_unscaled_coefficients_t *bl = output + (y * info->width);
+        float *b = calloc (info->n_decoders, sizeof (float)); // vector of samples
+
+        for (size_t x = 0; x < info->width; ++x) {
+            const unsigned int *buf = buffer + (y * row_stride) + (x * pixel_stride);
+            // copy vector b into floats
+            for (size_t n = 0; n < info->n_decoders; ++n) {
+                b[n] = (float) *buf;
+                buf += image_stride;
+            }
+            // X = M * b
+            cblas_sgemv (CblasRowMajor, CblasNoTrans, PTM_COEFFICIENTS, info->n_decoders,
+                         1.0, M, info->n_decoders,
+                         b, 1,
+                         0.0, (float *) bl, 1);
+            ++bl;
+        }
+        free (b);
     }
 }
 
-
-/**
- * Find the average Cb and Cr values of a pixel in all images.
- *
- * @param info    An info struct containing the buffer size.
- * @param buffer  Source buffer of YCbCr values.
- * @param block   The destination buffer for the calculated CbCr values.
- */
-void ptm_cbcr_avg (const image_info_t *info,
+void ptm_cbcr_avg (const ptm_image_info_t *info,
                    const ycbcr_coefficients_t *buffer,
                    ycbcr_coefficients_t *block) {
 
@@ -747,29 +768,32 @@ void ptm_cbcr_avg (const image_info_t *info,
 
     cbcr_sums_t *sums = calloc (info->pixels, sizeof (cbcr_sums_t));
 
-    // Find the avg. YCbCr values of all pixels in all images.  Here we assume
-    // that the chroma of a pixel does not change between exposures.  If that is
-    // not the case use PTM_RGB formats.
-
-    for (size_t d = 0; d < info->n_decoders; ++d) {
-        const ycbcr_coefficients_t *buf = buffer + d * info->pixels;
-        cbcr_sums_t *s = sums;
-        for (size_t i = 0; i < info->pixels; ++i) {
-            s->y  += buf->y;
-            s->cb += buf->cb;
-            s->cr += buf->cr;
-            ++buf;
-            ++s;
+    #pragma omp parallel for schedule(dynamic)
+    for (size_t y = 0; y < info->height; ++y) {
+        for (size_t d = 0; d < info->n_decoders; ++d) {
+            const ycbcr_coefficients_t *row = buffer + (d * info->pixels) + (y * info->width);
+            cbcr_sums_t *s = sums + (y * info->width);
+            for (size_t i = 0; i < info->width; ++i) {
+                s->y  += row->y;
+                s->cb += row->cb;
+                s->cr += row->cr;
+                ++row;
+                ++s;
+            }
         }
     }
-    const cbcr_sums_t *s = sums;
-    ycbcr_coefficients_t *bl = block;
-    for (size_t i = 0; i < info->pixels; ++i) {
-        bl->y  = s->y  / info->n_decoders;
-        bl->cb = s->cb / info->n_decoders;
-        bl->cr = s->cr / info->n_decoders;
-        ++s;
-        ++bl;
+
+    #pragma omp parallel for schedule(dynamic)
+    for (size_t y = 0; y < info->height; ++y) {
+        cbcr_sums_t *s = sums + (y * info->width);
+        ycbcr_coefficients_t *bl = block + (y * info->width);
+        for (size_t i = 0; i < info->width; ++i) {
+            bl->y  = s->y  / info->n_decoders;
+            bl->cb = s->cb / info->n_decoders;
+            bl->cr = s->cr / info->n_decoders;
+            ++s;
+            ++bl;
+        }
     }
     free (sums);
 }
@@ -786,14 +810,22 @@ void ptm_normal (const ptm_unscaled_coefficients_t *coeffs, float *nu, float *nv
     *nw = sqrt (1 - *nu * *nu + *nv * *nv);
 }
 
-void ptm_calc_min_max_coefficients (ptm_header_t *ptm_header,
-                                    const ptm_unscaled_coefficients_t *coeffs) {
-    set_coeffs (&ptm_header->min_coefficients,  FLT_MAX);
-    set_coeffs (&ptm_header->max_coefficients, -FLT_MAX);
+void ptm_scale_coefficients (ptm_header_t *ptm_header,
+                             const ptm_unscaled_coefficients_t *unscaled,
+                             ptm_block_t *scaled) {
+
+    const size_t image_size = ptm_header->dimen[1] * ptm_header->dimen[0];
+
+    // get the minimum and maximum coefficients
+    ptm_unscaled_coefficients_t min_coefficients;
+    ptm_unscaled_coefficients_t max_coefficients;
+
+    set_coeffs (&min_coefficients,  FLT_MAX);
+    set_coeffs (&max_coefficients, -FLT_MAX);
 
     #pragma omp parallel for schedule(dynamic)
     for (size_t y = 0; y < ptm_header->dimen[1]; ++y) {
-        const ptm_unscaled_coefficients_t *c = coeffs + (y * ptm_header->dimen[0]);
+        const ptm_unscaled_coefficients_t *c = unscaled + (y * ptm_header->dimen[0]);
         ptm_unscaled_coefficients_t min, max;
         set_coeffs (&min,  FLT_MAX);
         set_coeffs (&max, -FLT_MAX);
@@ -805,43 +837,28 @@ void ptm_calc_min_max_coefficients (ptm_header_t *ptm_header,
         #pragma omp critical (min_max_coeffs)
         {
             // update the global min/max coefficients
-            min_coeffs (&ptm_header->min_coefficients, &min);
-            max_coeffs (&ptm_header->max_coefficients, &max);
+            min_coeffs (&min_coefficients, &min);
+            max_coeffs (&max_coefficients, &max);
         }
     }
-}
 
-void ptm_calc_scale (ptm_header_t *ptm_header) {
-    float *min = (float *) &ptm_header->min_coefficients;
-    float *max = (float *) &ptm_header->max_coefficients;
+    float *min = (float *) &min_coefficients;
+    float *max = (float *) &max_coefficients;
 
-    ptm_print_matrix ("max_coeffs", max, 1, PTM_COEFFICIENTS);
-    ptm_print_matrix ("min_coeffs", min, 1, PTM_COEFFICIENTS);
+    // mul is faster than div on many cpus
+    float inv_scale [PTM_COEFFICIENTS];
+
+    // ptm_print_matrix ("max_coeffs", max, 1, PTM_COEFFICIENTS);
+    // ptm_print_matrix ("min_coeffs", min, 1, PTM_COEFFICIENTS);
 
     for (int i = 0; i < PTM_COEFFICIENTS; ++i) {
         // we have to fit the floating point range into the range 0-255
         ptm_header->scale[i] = (max[i] - min[i]) / 256.0;
-        ptm_header->inv_scale[i] = 1.0 / ptm_header->scale[i];
-        ptm_header->bias[i] = -256.0 / (max[i] - min[i]) * min[i];
+        ptm_header->bias[i]  = -256.0 / (max[i] - min[i]) * min[i];
+        inv_scale[i] = 1.0 / ptm_header->scale[i];
     }
 
-    ptm_print_matrix ("scale", (float *) &ptm_header->scale, 1, PTM_COEFFICIENTS);
-    fprintf (stderr, "bias  = [");
-    for (int i = 0; i < PTM_COEFFICIENTS; ++i) {
-        fprintf (stderr, " %d", ptm_header->bias[i]);
-    }
-    fprintf (stderr, " ]\n");
-}
-
-void ptm_scale_coefficients (ptm_header_t *ptm_header,
-                             ptm_block_t *scaled,
-                             const ptm_unscaled_coefficients_t *unscaled) {
-
-    const size_t image_size = ptm_header->dimen[1] * ptm_header->dimen[0];
-
-    // mul is faster than div on many cpus
-    float *inv_scale = ptm_header->inv_scale;
-    int   *bias      = ptm_header->bias;
+    int *bias = ptm_header->bias;
 
     for (int i = 0; i < ptm_header->format->ptm_blocks; ++i) {
         // we are more probably memory-bound than cpu-bound here
@@ -857,4 +874,26 @@ void ptm_scale_coefficients (ptm_header_t *ptm_header,
             }
         }
     }
+}
+
+void ptm_print_matrix (const char *name, float* M, int m, int n) {
+    int i, j;
+    fprintf (stderr, "\n%s = [", name);
+    for (i = 0; i < m; i++) {
+        for (j = 0; j < n; j++)
+            fprintf (stderr, " %3.6f", M[i * n + j]);
+        fprintf (stderr, ";\n");
+    }
+    fprintf (stderr, "]\n");
+}
+
+
+void print_scale_bias_coefficients (const ptm_header_t *ptm_header) {
+    ptm_print_matrix ("scale", (float *) &ptm_header->scale, 1, PTM_COEFFICIENTS);
+
+    fprintf (stderr, "bias  = [");
+    for (int i = 0; i < PTM_COEFFICIENTS; ++i) {
+        fprintf (stderr, " %d", ptm_header->bias[i]);
+    }
+    fprintf (stderr, " ]\n");
 }

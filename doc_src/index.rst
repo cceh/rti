@@ -6,7 +6,8 @@
 ===================
 
 This is the documentation for the RTI (Reflectance Transformation Imaging)
-project at CCeH.
+project at CCeH.  The RTI project aims to build a complete open sourced RTI
+toolchain in hardware and software.
 
 .. toctree::
    :maxdepth: 2
