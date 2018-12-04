@@ -124,6 +124,8 @@
 </li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Scripts</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#scripts-image-filer-py">scripts/image-filer.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#scripts-image-converter-py">scripts/image-converter.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#scripts-lp-builder-py">scripts/lp-builder.py</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#bin-ptm-encoder">bin/ptm-encoder</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#bin-ptm-decoder">bin/ptm-decoder</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#bin-ptm-exploder">bin/ptm-exploder</a></li>
@@ -217,18 +219,21 @@
 <h1>Scripts<a class="headerlink" href="#scripts" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="scripts-image-filer-py">
 <span id="image-filer-py"></span><h2>scripts/image-filer.py<a class="headerlink" href="#scripts-image-filer-py" title="Permalink to this headline">¶</a></h2>
-<p>Group image runs and file them into subdirectories.</p>
-<p>Reads images from a camera’s memory card or other flat directory structure, and
-groups them into subdirectories.  A group is found by the <a class="reference internal" href="glossary.html#term-exif"><span class="xref std std-term">EXIF</span></a> timestamp
-in the image files.  The script also builds a <code class="file docutils literal notranslate"><span class="pre">sample.lp</span></code> file in the
-directory that contains a <a class="reference internal" href="#sample-lp"><span class="std std-ref">light position map</span></a> for the
-<a class="reference internal" href="#ptm-encoder"><span class="std std-ref">PTM encoder</span></a>.</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">usage: scripts/image-filer.py [-h] [-v] FILE [FILE ...]</span>
+<p>Reads images from a camera’s memory card or other flat directory structure,
+finds runs of images and files them into subdirectories.  A run is found by the
+<a class="reference internal" href="glossary.html#term-exif"><span class="xref std std-term">EXIF</span></a> timestamp in the image files.</p>
+<p>The script also builds a full <a class="reference internal" href="#sample-lp"><span class="std std-ref">light position map</span></a>
+<code class="file docutils literal notranslate"><span class="pre">sample.lp</span></code> from a light position skeleton file and files it alongside the
+images files.</p>
+<p>Some cameras put a maximum of 1000 pictures into a folder.  After that they
+automatically open a new folder.  If this happened during a shooting, include
+both directories on the commandline.  The script will sort it out for you.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">usage: scripts/image-filer.py [-h] [-v] [-l LP] FILES [FILES ...]</span>
 </pre></div>
 </div>
 <dl class="option">
-<dt id="cmdoption-scripts-image-filer-py-arg-file">
-<code class="descname">file</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-scripts-image-filer-py-arg-file" title="Permalink to this definition">¶</a></dt>
+<dt id="cmdoption-scripts-image-filer-py-arg-files">
+<code class="descname">files</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-scripts-image-filer-py-arg-files" title="Permalink to this definition">¶</a></dt>
 <dd><p>the image files to file (wildcards supported)</p>
 </dd></dl>
 
@@ -244,6 +249,112 @@ directory that contains a <a class="reference internal" href="#sample-lp"><span 
 <dd><p>increase output verbosity</p>
 </dd></dl>
 
+<dl class="option">
+<dt id="cmdoption-scripts-image-filer-py-l">
+<code class="descname">-l</code><code class="descclassname"> &lt;lp&gt;</code><code class="descclassname">, </code><code class="descname">--lights</code><code class="descclassname"> &lt;lp&gt;</code><a class="headerlink" href="#cmdoption-scripts-image-filer-py-l" title="Permalink to this definition">¶</a></dt>
+<dd><p>the skeleton light positions file (default: skeleton.lp)</p>
+</dd></dl>
+
+</div>
+<div class="section" id="scripts-image-converter-py">
+<span id="image-converter-py"></span><h2>scripts/image-converter.py<a class="headerlink" href="#scripts-image-converter-py" title="Permalink to this headline">¶</a></h2>
+<p>This script is a wrapper that can pass image files through a converter before
+calling the <a class="reference internal" href="#ptm-encoder"><span class="std std-ref">ptm-encoder</span></a>.</p>
+<p>With the help of this script you may crop / resize / rotate your images before
+processing them with the ptm-encoder.  Temporary files are created for the
+encoder, the original files are kept intact.</p>
+<p>Write a shell script and <strong class="command">chmod +x</strong> it.  The shell script must process
+the source image, apply all wanted transformations and save the destination
+image.  The source image path and filename will be $1 and the destination path
+and filename will be $2.  The destination will point to a temp directory.</p>
+<p>An example of a shell script follows:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+convert <span class="s2">&quot;</span><span class="nv">$1</span><span class="s2">&quot;</span> -crop 2800x2800+2236+1064 -resize 2000x2000 <span class="s2">&quot;</span><span class="nv">$2</span><span class="s2">&quot;</span>
+</pre></div>
+</div>
+<p>An example of a command to build one PTM is then:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">scripts/image-converter.py -f runs/a/convert.sh \</span>
+<span class="go">   bin/ptm-encoder -f PTM_FORMAT_JPEG_LRGB -o a.ptm runs/a/sample.lp</span>
+</pre></div>
+</div>
+<p>Alternatively you can do without the shell script and put the contents of the
+script in the command line.  The placeholders “{source}” and “{dest}” will be
+replaced by the source and destination filenames.</p>
+<p>The command to build one PTM is then:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">scripts/image-converter.py -e &#39;convert &quot;{source}&quot; -crop 2800x2800+2236+1064 -resize 2000x2000 &quot;{dest}&quot;&#39; \</span>
+<span class="go">   bin/ptm-encoder -f PTM_FORMAT_JPEG_LRGB -o a.ptm runs/a/sample.lp</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">usage: scripts/image-converter.py [-h] [-v]</span>
+<span class="go">                                  (-e &quot;COMMANDLINE&quot; | -f SCRIPT-FILE)</span>
+<span class="go">                                  ENCODER ...</span>
+</pre></div>
+</div>
+<dl class="option">
+<dt id="cmdoption-scripts-image-converter-py-arg-encoder">
+<code class="descname">encoder</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-scripts-image-converter-py-arg-encoder" title="Permalink to this definition">¶</a></dt>
+<dd><p>the PTM encoder executable</p>
+</dd></dl>
+
+<dl class="option">
+<dt>
+<code class="descname">...</code></dt>
+<dd><p>arguments to the PTM encoder</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-scripts-image-converter-py-h">
+<code class="descname">-h</code><code class="descclassname"></code><code class="descclassname">, </code><code class="descname">--help</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-scripts-image-converter-py-h" title="Permalink to this definition">¶</a></dt>
+<dd><p>show this help message and exit</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-scripts-image-converter-py-v">
+<code class="descname">-v</code><code class="descclassname"></code><code class="descclassname">, </code><code class="descname">--verbose</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-scripts-image-converter-py-v" title="Permalink to this definition">¶</a></dt>
+<dd><p>increase output verbosity</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-scripts-image-converter-py-e">
+<code class="descname">-e</code><code class="descclassname"> &lt;&quot;commandline&quot;&gt;</code><code class="descclassname">, </code><code class="descname">--exec</code><code class="descclassname"> &lt;&quot;commandline&quot;&gt;</code><a class="headerlink" href="#cmdoption-scripts-image-converter-py-e" title="Permalink to this definition">¶</a></dt>
+<dd><p>execute COMMANDLINE with every image</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-scripts-image-converter-py-f">
+<code class="descname">-f</code><code class="descclassname"> &lt;script-file&gt;</code><code class="descclassname">, </code><code class="descname">--file</code><code class="descclassname"> &lt;script-file&gt;</code><a class="headerlink" href="#cmdoption-scripts-image-converter-py-f" title="Permalink to this definition">¶</a></dt>
+<dd><p>execute SCRIPT-FILE with every image</p>
+</dd></dl>
+
+</div>
+<div class="section" id="scripts-lp-builder-py">
+<span id="lp-builder-py"></span><h2>scripts/lp-builder.py<a class="headerlink" href="#scripts-lp-builder-py" title="Permalink to this headline">¶</a></h2>
+<p>Build the light position file for Dome 1.</p>
+<p>Outputs to stdout a skeleton sample.lp file with light positions according to
+the Ø 50cm prototype dome at CCeH.</p>
+<p>This script is hard-coded to one specific dome but it may serve as example for
+writing a more general script for other domes.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">usage: scripts/lp-builder.py [-h] [-a ANGLE] [-v]</span>
+</pre></div>
+</div>
+<dl class="option">
+<dt id="cmdoption-scripts-lp-builder-py-h">
+<code class="descname">-h</code><code class="descclassname"></code><code class="descclassname">, </code><code class="descname">--help</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-scripts-lp-builder-py-h" title="Permalink to this definition">¶</a></dt>
+<dd><p>show this help message and exit</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-scripts-lp-builder-py-a">
+<code class="descname">-a</code><code class="descclassname"> &lt;angle&gt;</code><code class="descclassname">, </code><code class="descname">--angle</code><code class="descclassname"> &lt;angle&gt;</code><a class="headerlink" href="#cmdoption-scripts-lp-builder-py-a" title="Permalink to this definition">¶</a></dt>
+<dd><p>the rotation angle of the camera on the Dome (default 0°)</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-scripts-lp-builder-py-v">
+<code class="descname">-v</code><code class="descclassname"></code><code class="descclassname">, </code><code class="descname">--verbose</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-scripts-lp-builder-py-v" title="Permalink to this definition">¶</a></dt>
+<dd><p>increase output verbosity</p>
+</dd></dl>
+
 </div>
 <div class="section" id="bin-ptm-encoder">
 <span id="ptm-encoder"></span><h2>bin/ptm-encoder<a class="headerlink" href="#bin-ptm-encoder" title="Permalink to this headline">¶</a></h2>
@@ -251,7 +362,7 @@ directory that contains a <a class="reference internal" href="#sample-lp"><span 
 <p>Reads a <code class="file docutils literal notranslate"><span class="pre">sample.lp</span></code> file with a list of the JPEG files to encode.  You can
 build a <code class="file docutils literal notranslate"><span class="pre">sample.lp</span></code> file using the <a class="reference internal" href="#image-filer-py"><span class="std std-ref">image filer</span></a>
 script.</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>usage: ptm-encoder <span class="o">[</span>OPTION...<span class="o">]</span> sample.lp
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">usage: ptm-encoder [OPTION...] sample.lp</span>
 </pre></div>
 </div>
 <dl class="option">
@@ -266,7 +377,6 @@ script.</p>
 <dd><p>Output a list of supported PTM formats, eg:</p>
 <ul class="simple">
 <li>PTM_FORMAT_RGB,</li>
-<li>PTM_FORMAT_LUM,</li>
 <li>PTM_FORMAT_LRGB,</li>
 <li>PTM_FORMAT_JPEG_RGB,</li>
 <li>PTM_FORMAT_JPEG_LRGB.</li>
@@ -308,7 +418,7 @@ script.</p>
 <span id="ptm-decoder"></span><h2>bin/ptm-decoder<a class="headerlink" href="#bin-ptm-decoder" title="Permalink to this headline">¶</a></h2>
 <p>Extract one JPEG out of a PTM file.</p>
 <p>The output goes to stdout, so the program is easy to use in a web server.</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>usage: ptm-decoder filename.ptm <span class="o">[</span>u v<span class="o">]</span> &gt; filename.jpg
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">usage: ptm-decoder filename.ptm [u v] &gt; filename.jpg</span>
 </pre></div>
 </div>
 <dl class="option">
@@ -322,7 +432,7 @@ lighted from top right.  See: <a class="reference internal" href="#sample-lp"><s
 <div class="section" id="bin-ptm-exploder">
 <span id="ptm-exploder"></span><h2>bin/ptm-exploder<a class="headerlink" href="#bin-ptm-exploder" title="Permalink to this headline">¶</a></h2>
 <p>Explode one PTM into multiple JPEGs lighted from different angles.</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>usage: ptm-exploder filename.ptm sample.lp filename.jpeg
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">usage: ptm-exploder filename.ptm sample.lp filename.jpeg</span>
 </pre></div>
 </div>
 <p>The <code class="file docutils literal notranslate"><span class="pre">sample.lp</span></code> file should be of the same <a class="reference internal" href="#sample-lp"><span class="std std-ref">format</span></a> used

@@ -9,6 +9,18 @@
    :prog: scripts/image-filer.py
 
 
+.. _image-converter.py:
+
+.. autoprogram:: scripts.image-converter:build_parser()
+   :prog: scripts/image-converter.py
+
+
+.. _lp-builder.py:
+
+.. autoprogram:: scripts.lp-builder:build_parser()
+   :prog: scripts/lp-builder.py
+
+
 .. _ptm-encoder:
 
 bin/ptm-encoder
@@ -22,7 +34,7 @@ Reads a :file:`sample.lp` file with a list of the JPEG files to encode.  You can
 build a :file:`sample.lp` file using the :ref:`image filer <image-filer.py>`
 script.
 
-.. code-block:: shell
+.. code-block:: console
 
    usage: ptm-encoder [OPTION...] sample.lp
 
@@ -35,7 +47,6 @@ script.
    Output a list of supported PTM formats, eg:
 
    - PTM_FORMAT_RGB,
-   - PTM_FORMAT_LUM,
    - PTM_FORMAT_LRGB,
    - PTM_FORMAT_JPEG_RGB,
    - PTM_FORMAT_JPEG_LRGB.
@@ -72,7 +83,7 @@ Extract one JPEG out of a PTM file.
 
 The output goes to stdout, so the program is easy to use in a web server.
 
-.. code-block:: shell
+.. code-block:: console
 
    usage: ptm-decoder filename.ptm [u v] > filename.jpg
 
@@ -91,7 +102,7 @@ bin/ptm-exploder
 
 Explode one PTM into multiple JPEGs lighted from different angles.
 
-.. code-block:: shell
+.. code-block:: console
 
    usage: ptm-exploder filename.ptm sample.lp filename.jpeg
 

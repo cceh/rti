@@ -123,6 +123,8 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="user_scripts.html">Scripts</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="user_scripts.html#scripts-image-filer-py">scripts/image-filer.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_scripts.html#scripts-image-converter-py">scripts/image-converter.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_scripts.html#scripts-lp-builder-py">scripts/lp-builder.py</a></li>
 <li class="toctree-l3"><a class="reference internal" href="user_scripts.html#bin-ptm-encoder">bin/ptm-encoder</a></li>
 <li class="toctree-l3"><a class="reference internal" href="user_scripts.html#bin-ptm-decoder">bin/ptm-decoder</a></li>
 <li class="toctree-l3"><a class="reference internal" href="user_scripts.html#bin-ptm-exploder">bin/ptm-exploder</a></li>
@@ -245,6 +247,27 @@
 </li>
       </ul></li>
       <li>
+    -a &lt;angle&gt;, --angle &lt;angle&gt;
+
+      <ul>
+        <li><a href="user_scripts.html#cmdoption-scripts-lp-builder-py-a">scripts/lp-builder.py command line option</a>
+</li>
+      </ul></li>
+      <li>
+    -e &lt;&#34;commandline&#34;&gt;, --exec &lt;&#34;commandline&#34;&gt;
+
+      <ul>
+        <li><a href="user_scripts.html#cmdoption-scripts-image-converter-py-e">scripts/image-converter.py command line option</a>
+</li>
+      </ul></li>
+      <li>
+    -f &lt;script-file&gt;, --file &lt;script-file&gt;
+
+      <ul>
+        <li><a href="user_scripts.html#cmdoption-scripts-image-converter-py-f">scripts/image-converter.py command line option</a>
+</li>
+      </ul></li>
+      <li>
     -f, --format
 
       <ul>
@@ -255,11 +278,22 @@
     -h, --help
 
       <ul>
+        <li><a href="user_scripts.html#cmdoption-scripts-image-converter-py-h">scripts/image-converter.py command line option</a>
+</li>
         <li><a href="user_scripts.html#cmdoption-scripts-image-filer-py-h">scripts/image-filer.py command line option</a>
+</li>
+        <li><a href="user_scripts.html#cmdoption-scripts-lp-builder-py-h">scripts/lp-builder.py command line option</a>
 </li>
       </ul></li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li>
+    -l &lt;lp&gt;, --lights &lt;lp&gt;
+
+      <ul>
+        <li><a href="user_scripts.html#cmdoption-scripts-image-filer-py-l">scripts/image-filer.py command line option</a>
+</li>
+      </ul></li>
       <li>
     -l, --list
 
@@ -280,7 +314,11 @@
       <ul>
         <li><a href="user_scripts.html#cmdoption-ptm-encoder-v">ptm-encoder command line option</a>
 </li>
+        <li><a href="user_scripts.html#cmdoption-scripts-image-converter-py-v">scripts/image-converter.py command line option</a>
+</li>
         <li><a href="user_scripts.html#cmdoption-scripts-image-filer-py-v">scripts/image-filer.py command line option</a>
+</li>
+        <li><a href="user_scripts.html#cmdoption-scripts-lp-builder-py-v">scripts/lp-builder.py command line option</a>
 </li>
       </ul></li>
       <li>
@@ -338,6 +376,15 @@
 <h2 id="E">E</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li>
+    encoder
+
+      <ul>
+        <li><a href="user_scripts.html#cmdoption-scripts-image-converter-py-arg-encoder">scripts/image-converter.py command line option</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="glossary.html#term-exif"><strong>EXIF</strong></a>
 </li>
   </ul></td>
@@ -347,10 +394,10 @@
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li>
-    file
+    files
 
       <ul>
-        <li><a href="user_scripts.html#cmdoption-scripts-image-filer-py-arg-file">scripts/image-filer.py command line option</a>
+        <li><a href="user_scripts.html#cmdoption-scripts-image-filer-py-arg-files">scripts/image-filer.py command line option</a>
 </li>
       </ul></li>
   </ul></td>
@@ -578,14 +625,44 @@
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li>
+    scripts/image-converter.py command line option
+
+      <ul>
+        <li><a href="user_scripts.html#cmdoption-scripts-image-converter-py-e">-e &lt;&#34;commandline&#34;&gt;, --exec &lt;&#34;commandline&#34;&gt;</a>
+</li>
+        <li><a href="user_scripts.html#cmdoption-scripts-image-converter-py-f">-f &lt;script-file&gt;, --file &lt;script-file&gt;</a>
+</li>
+        <li><a href="user_scripts.html#cmdoption-scripts-image-converter-py-h">-h, --help</a>
+</li>
+        <li><a href="user_scripts.html#cmdoption-scripts-image-converter-py-v">-v, --verbose</a>
+</li>
+        <li><a href="user_scripts.html#cmdoption-scripts-image-converter-py-arg-encoder">encoder</a>
+</li>
+      </ul></li>
+      <li>
     scripts/image-filer.py command line option
 
       <ul>
         <li><a href="user_scripts.html#cmdoption-scripts-image-filer-py-h">-h, --help</a>
 </li>
+        <li><a href="user_scripts.html#cmdoption-scripts-image-filer-py-l">-l &lt;lp&gt;, --lights &lt;lp&gt;</a>
+</li>
         <li><a href="user_scripts.html#cmdoption-scripts-image-filer-py-v">-v, --verbose</a>
 </li>
-        <li><a href="user_scripts.html#cmdoption-scripts-image-filer-py-arg-file">file</a>
+        <li><a href="user_scripts.html#cmdoption-scripts-image-filer-py-arg-files">files</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li>
+    scripts/lp-builder.py command line option
+
+      <ul>
+        <li><a href="user_scripts.html#cmdoption-scripts-lp-builder-py-a">-a &lt;angle&gt;, --angle &lt;angle&gt;</a>
+</li>
+        <li><a href="user_scripts.html#cmdoption-scripts-lp-builder-py-h">-h, --help</a>
+</li>
+        <li><a href="user_scripts.html#cmdoption-scripts-lp-builder-py-v">-v, --verbose</a>
 </li>
       </ul></li>
   </ul></td>
