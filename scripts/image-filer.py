@@ -1,13 +1,17 @@
 #!/usr/bin/python3
 # -*- encoding: utf-8 -*-
 
-"""Group image runs and file them into subdirectories.
+"""Reads images from a camera's memory card or other flat directory structure,
+finds runs of images and files them into subdirectories.  A run is found by the
+:term:`EXIF` timestamp in the image files.
 
-Reads images from a camera's memory card or other flat directory structure, and
-groups them into subdirectories.  A group is found by the :term:`EXIF` timestamp
-in the image files.  The script also builds a :file:`sample.lp` file in the
-directory that contains a :ref:`light position map <sample.lp>` for the
-:ref:`PTM encoder <ptm-encoder>`.
+The script also builds a full :ref:`light position map <sample.lp>`
+:file:`sample.lp` from a light position skeleton file and files it alongside the
+images files.
+
+Some cameras put a maximum of 1000 pictures into a folder.  After that they
+automatically open a new folder.  If this happened during a shooting, include
+both directories on the commandline.  The script will sort it out for you.
 
 """
 
@@ -19,14 +23,11 @@ import operator
 import os
 import shutil
 import sys
+import textwrap
 
 from PIL import Image
 from PIL.ExifTags import TAGS, GPSTAGS
 
-DOME_DIAMETER = 490.0 - (2 * 13.0)
-RINGS = [ (4, 85.0), (8, 218.0), (16, 330.0), (16, 416.0), (16, 457.0) ]
-
-twopi = 2.0 * math.pi
 thres = datetime.timedelta (seconds = 5)
 
 
@@ -50,12 +51,18 @@ def pairwise (iterable):
 
 
 def build_parser ():
-    parser = argparse.ArgumentParser (description = __doc__)
+    parser = argparse.ArgumentParser (
+        formatter_class=argparse.RawDescriptionHelpFormatter,
+        description=textwrap.dedent (__doc__)
+    )
 
-    parser.add_argument('files', metavar='FILE', type=str, nargs='+',
-                        help='the image files to file (wildcards supported)')
     parser.add_argument ('-v', '--verbose', dest='verbose', action='count',
                          help='increase output verbosity', default=0)
+    parser.add_argument ('-l', '--lights', metavar='LP', type=str, default='skeleton.lp',
+                         help='the skeleton light positions file (default: skeleton.lp)')
+
+    parser.add_argument ('files', metavar='FILES', type=str, nargs='+',
+                         help='the image files to file (wildcards supported)')
     return parser
 
 
@@ -64,6 +71,14 @@ if __name__ == '__main__':
     parser = build_parser ()
     args = parser.parse_args ()
 
+    # read lights file
+    lights = []
+    with open (args.lights, 'r') as fp_lights:
+        for line in fp_lights:
+            x, y, z = line.split ()
+            lights.append ( (float (x), float (y), float (z)) )
+
+    # get timestamps from images
     files = [ (fn, get_datetime (fn)) for fn in args.files ]
     files.sort (key = operator.itemgetter (1)) # sort by time
 
@@ -78,25 +93,28 @@ if __name__ == '__main__':
             last_group.append (pair[0])
 
     for files in grouped_files:
-        i = 0
         run = 'runs/' + files[0][1].strftime ('%Y-%m-%d-%H-%M-%S')
         os.makedirs (run, exist_ok = True)
 
+        if len (files) < len (lights):
+            print ("error: not enough files in %s\n" % run)
+            break
+        if len (files) > len (lights):
+            print ("error: too many files in %s\n" % run)
+            break
+
         if args.verbose:
-            print ("filing into %s\n" % run)
+            print ("filing into %s" % run)
 
         with open ("%s/sample.lp" % run, 'w') as fp:
-            fp.write ("# run of %s\n" % files[0][1].isoformat ())
             fp.write ("%d\n" % len (files))
-            for num_leds, diameter in RINGS:
-                phi = 1.0 / 8.0 * twopi                 # start each ring at 45°
-                step_phi = -twopi / num_leds
-                dia = diameter / DOME_DIAMETER
-                z = math.sqrt (1 - dia ** 2)
+            for l, f in zip (lights, files):
+                filename = f[0]
+                x, y, z = l
+                shutil.copy2 (filename, run)
+                fp.write ("%s %f %f %f\n" % (os.path.basename (filename), x, y, z))
+                if args.verbose:
+                    print (".", end = '')
 
-                for n in range (0, num_leds):
-                    filename = files[i][0]
-                    shutil.copy2 (filename, run)
-                    fp.write ("%s %f %f %f\n" % (os.path.basename (filename), dia * math.sin (phi), dia * math.cos (phi), z))
-                    phi += step_phi
-                    i += 1
+        if args.verbose:
+            print ("")

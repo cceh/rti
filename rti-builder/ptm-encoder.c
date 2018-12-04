@@ -158,20 +158,19 @@ int main (int argc, char *argv[]) {
                fflush (stderr); */
 
             char *path = malloc (strlen (dirname_lp) + strlen (filename) + 2);
-
             sprintf (path, "%s/%s", dirname_lp, filename);
+
             FILE *fp_jpeg;
             if ((fp_jpeg = fopen (path, "rb")) == NULL) {
                 fprintf (stderr, "can't open %s\n", path);
                 return 1;
             }
-            free (filename);
             free (path);
 
             decoder_t *decoder = malloc (sizeof (decoder_t));
             struct jpeg_decompress_struct *dinfo = &decoder->dinfo;
             decoder->fp = fp_jpeg;
-            decoder->filename = strdup (filename);
+            decoder->filename = filename;
             decoder->u = u;
             decoder->v = v;
             decoder->w = w;
