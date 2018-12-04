@@ -6,3 +6,6 @@ docs:
 
 builder:
 	cd rti-builder; make ; cd ..
+
+view:
+	wine64 ~/.wine/drive_c/Program\ Files/RTIViewer/RTIViewer.exe

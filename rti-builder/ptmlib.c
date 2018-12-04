@@ -218,7 +218,8 @@ ptm_header_t *ptm_read_header (FILE *fp) {
 void ptm_write_header (FILE *fp, ptm_header_t *ptm_header) {
     fprintf (fp, "PTM_1.2\n");
     fprintf (fp, "%s\n", ptm_header->format->name);
-    fprintf (fp, "%lu %lu\n", ptm_header->dimen[0], ptm_header->dimen[1]);
+    // RTIViewer needs newline between w and h?
+    fprintf (fp, "%lu\n%lu\n", ptm_header->dimen[0], ptm_header->dimen[1]);
     write_floats (fp, PTM_COEFFICIENTS, ptm_header->scale);
     write_ints   (fp, PTM_COEFFICIENTS, ptm_header->bias);
     if (ptm_header->format->id == PTM_FORMAT_LUM) {
