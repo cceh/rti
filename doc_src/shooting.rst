@@ -16,17 +16,17 @@ Camera Settings
    Nikon: :guilabel:`WB` + :guilabel:`rear dial`.  This setting has no effect on
    RAW images.
 
-3. **Set the ISO sensitivity.** Use the ISO setting with least noise.  Nikon:
-   :guilabel:`ISO` + :guilabel:`rear dial`.  All cameras have one ISO setting
-   where the sensor noise is minimal, usually the lowest, but you should check
-   with your camera manual or the internet.
+3. **Set the ISO sensitivity.** Use the ISO sensitivity with least noise.
+   Nikon: :guilabel:`ISO` + :guilabel:`rear dial`.  All cameras have one ISO
+   sensitivity where the sensor noise is minimal, usually the lowest, but you
+   should check with your camera manual or the internet.
 
 4. **Set the lens to manual focus.** Nikon: Push the switch on the lens from
    :guilabel:`M/A` to :guilabel:`M`.
 
 5. **Set the camera to manual exposure.** Nikon: :guilabel:`MODE` +
    :guilabel:`rear dial`.  Use the smallest aperture for maximum depth of field (:term:`DOF`).
-   Nikon: :guilabel:`front dial`.  Set the exposure time.  Nikon: :guilabel:`rear dial`.
+   Nikon: :guilabel:`front dial`.  Set the shutter speed.  Nikon: :guilabel:`rear dial`.
 
 6. **Set the camera to Continuous High Speed Mode** Nikon: :guilabel:`left dial`.
 
@@ -58,37 +58,74 @@ Dome Setup
    PC-Flash output on the camera with the flash input on the CRM.  Connect the
    trigger input on the camera with the trigger output on the CRM.
 
-4. **Connect the AC/DC adaptor to the CRM** and plug it into a wall socket.  The
+4. **Connect an external monitor to the camera** using a cable with a mini-HDMI
+   plug at one end.  You may skip this step if you don't want to use an external
+   monitor.
+
+5. **Connect the AC/DC adaptor to the CRM** and plug it into a wall socket.  The
    green light on the CRM should come on.
 
-5. **Turn the camera on.**
+6. **Turn the camera on.**
 
 
 Shooting
 ========
 
-1. **Put the object under the dome** in the exact center.
+1. **Put the object under the dome** in the approximate center of the dome. You
+   will find the exact position later.
 
-2. **Short press the green button** for pilot light.  You can short press again
-   to turn the pilot light off.
+2. **Turn the pilot light on.** Short press the green button to turn the pilot
+   lights on.  You can also use this button to turn the lights off again.
 
-3. **Focus the object.**  Close the viewfinder.  If you are using live view,
-   press :guilabel:`Lv` to exit and re-enter live view mode.
+3. **Focus and center the object.** Look through the viewfinder and use the
+   focus ring on the lens to put the object into focus.  Move the dome or the
+   object around until the object is in the exact center of the picture.  Be
+   careful not to rotate the camera from the 0° position.
 
-4. **Long press the green button** to start the picture run.  The red button
-   resets the CRM.  Use it to abort a shooting run.
+   If you want to use live view, press :guilabel:`Lv` to enter (and exit) live
+   view mode.  This will show the picture on the camera monitor.  If you have an
+   external monitor attached to the camera you will also see the picture there.
+
+4. **Press the shutter-release button** to make a test exposure.
+
+   Review the picture and check the histogram.  Press :guilabel:`▶` and then
+   press what Nikon calls the multi selector in the down direction until you get
+   to the histogram view.  Adjust the lens aperture (:guilabel:`front dial`)
+   and/or the shutter speed (:guilabel:`rear dial`) (and maybe also the ISO
+   sensitivity).  Repeat this step until you are satisfied with the picture
+   histogram.
+
+5. **Close the viewfinder.** This avoids stray light falling into the camera
+   from above.
+
+6. **Press** :guilabel:`Lv` **to enter live view mode.**
+
+7. **Long press the green button** to start the shooting run.  The camera will
+   start taking exposures.
+
+   During a shooting run don't touch the camera or dome and avoid anything that
+   may cause vibration.
+
+   The red button resets the CRM.  Use it to abort a shooting run.
+
+   The shooting run is done when the green light comes on again.
+
+   Remove the object from under the dome, open the camera viewfinder and repeat
+   from step 1.
 
    .. warning::
 
-      Check your pictures for over- (specular lights) or under-exposure.  Adjust
-      the aperture, time and maybe ISO settings and repeat the run.  The pilot
-      light alone does not give enough guidance to set exposure parameters [#]_.
+      After every shooting run check all your pictures' histograms for over-
+      (specular lights) or under-exposure.  If unsatisfied adjust the aperture,
+      shutter speed and maybe ISO sensitivity and repeat the shooting run.  The
+      pilot light alone does not give you complete guidance to set exposure
+      parameters [#]_.
 
 
 Various Notes
 =============
 
-Working speed: Your mileage may vary depending on the exposure time you have to
+Working speed: Your mileage may vary depending on the shutter speed you have to
 select and on the speed of the memory card in the camera.  Cameras have an
 internal buffer, which fills up after a short burst, after that the speed of the
 memory card may limit the frame rate.  If your exposure time is longer than the

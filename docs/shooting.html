@@ -17,13 +17,21 @@
   
 
   
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
   <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="_static/graphviz.css" type="text/css" />
@@ -32,21 +40,16 @@
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Lens Selection" href="lens_selection.html" />
     <link rel="prev" title="Dome User Manual" href="user.html" /> 
-
-  
-  <script src="_static/js/modernizr.min.js"></script>
-
 </head>
 
 <body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -124,6 +127,8 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="user_scripts.html">Scripts</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="user_scripts.html#scripts-image-filer-py">scripts/image-filer.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_scripts.html#scripts-image-converter-py">scripts/image-converter.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_scripts.html#scripts-lp-builder-py">scripts/lp-builder.py</a></li>
 <li class="toctree-l3"><a class="reference internal" href="user_scripts.html#bin-ptm-encoder">bin/ptm-encoder</a></li>
 <li class="toctree-l3"><a class="reference internal" href="user_scripts.html#bin-ptm-decoder">bin/ptm-decoder</a></li>
 <li class="toctree-l3"><a class="reference internal" href="user_scripts.html#bin-ptm-exploder">bin/ptm-exploder</a></li>
@@ -136,8 +141,8 @@
 <li class="toctree-l2"><a class="reference internal" href="firmware.html">Firmware</a></li>
 <li class="toctree-l2"><a class="reference internal" href="programming.html">Programming the AVR-Microcontroller</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="programming.html#prerequisites">Prerequisites</a></li>
+<li class="toctree-l3"><a class="reference internal" href="programming.html#program-the-microcontroller">Program the Microcontroller</a></li>
 <li class="toctree-l3"><a class="reference internal" href="programming.html#initialize-a-new-microcontroller">Initialize a New Microcontroller</a></li>
-<li class="toctree-l3"><a class="reference internal" href="programming.html#program">Program</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="ptmlib.html">ptmlib</a><ul>
@@ -225,15 +230,15 @@ into <a class="reference internal" href="vibrations.html#vibration-reduction"><s
 <li><strong>Set the white balance</strong> to incandescent light if you are shooting JPEG.
 Nikon: <span class="guilabel">WB</span> + <span class="guilabel">rear dial</span>.  This setting has no effect on
 RAW images.</li>
-<li><strong>Set the ISO sensitivity.</strong> Use the ISO setting with least noise.  Nikon:
-<span class="guilabel">ISO</span> + <span class="guilabel">rear dial</span>.  All cameras have one ISO setting
-where the sensor noise is minimal, usually the lowest, but you should check
-with your camera manual or the internet.</li>
+<li><strong>Set the ISO sensitivity.</strong> Use the ISO sensitivity with least noise.
+Nikon: <span class="guilabel">ISO</span> + <span class="guilabel">rear dial</span>.  All cameras have one ISO
+sensitivity where the sensor noise is minimal, usually the lowest, but you
+should check with your camera manual or the internet.</li>
 <li><strong>Set the lens to manual focus.</strong> Nikon: Push the switch on the lens from
 <span class="guilabel">M/A</span> to <span class="guilabel">M</span>.</li>
 <li><strong>Set the camera to manual exposure.</strong> Nikon: <span class="guilabel">MODE</span> +
 <span class="guilabel">rear dial</span>.  Use the smallest aperture for maximum depth of field (<a class="reference internal" href="glossary.html#term-dof"><span class="xref std std-term">DOF</span></a>).
-Nikon: <span class="guilabel">front dial</span>.  Set the exposure time.  Nikon: <span class="guilabel">rear dial</span>.</li>
+Nikon: <span class="guilabel">front dial</span>.  Set the shutter speed.  Nikon: <span class="guilabel">rear dial</span>.</li>
 <li><strong>Set the camera to Continuous High Speed Mode</strong> Nikon: <span class="guilabel">left dial</span>.</li>
 <li>Either:<ol class="loweralpha">
 <li><strong>Turn on live view</strong>.  Nikon D850: <span class="guilabel">Lv</span>.  Or</li>
@@ -262,6 +267,10 @@ and camera.</p>
 PC-Flash output on the camera with the flash input on the CRM.  Connect the
 trigger input on the camera with the trigger output on the CRM.</p>
 </li>
+<li><p class="first"><strong>Connect an external monitor to the camera</strong> using a cable with a mini-HDMI
+plug at one end.  You may skip this step if you don’t want to use an external
+monitor.</p>
+</li>
 <li><p class="first"><strong>Connect the AC/DC adaptor to the CRM</strong> and plug it into a wall socket.  The
 green light on the CRM should come on.</p>
 </li>
@@ -272,28 +281,55 @@ green light on the CRM should come on.</p>
 <div class="section" id="shooting">
 <h2>Shooting<a class="headerlink" href="#shooting" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic">
-<li><p class="first"><strong>Put the object under the dome</strong> in the exact center.</p>
+<li><p class="first"><strong>Put the object under the dome</strong> in the approximate center of the dome. You
+will find the exact position later.</p>
 </li>
-<li><p class="first"><strong>Short press the green button</strong> for pilot light.  You can short press again
-to turn the pilot light off.</p>
+<li><p class="first"><strong>Turn the pilot light on.</strong> Short press the green button to turn the pilot
+lights on.  You can also use this button to turn the lights off again.</p>
 </li>
-<li><p class="first"><strong>Focus the object.</strong>  Close the viewfinder.  If you are using live view,
-press <span class="guilabel">Lv</span> to exit and re-enter live view mode.</p>
+<li><p class="first"><strong>Focus and center the object.</strong> Look through the viewfinder and use the
+focus ring on the lens to put the object into focus.  Move the dome or the
+object around until the object is in the exact center of the picture.  Be
+careful not to rotate the camera from the 0° position.</p>
+<p>If you want to use live view, press <span class="guilabel">Lv</span> to enter (and exit) live
+view mode.  This will show the picture on the camera monitor.  If you have an
+external monitor attached to the camera you will also see the picture there.</p>
 </li>
-<li><p class="first"><strong>Long press the green button</strong> to start the picture run.  The red button
-resets the CRM.  Use it to abort a shooting run.</p>
+<li><p class="first"><strong>Press the shutter-release button</strong> to make a test exposure.</p>
+<p>Review the picture and check the histogram.  Press <span class="guilabel">▶</span> and then
+press what Nikon calls the multi selector in the down direction until you get
+to the histogram view.  Adjust the lens aperture (<span class="guilabel">front dial</span>)
+and/or the shutter speed (<span class="guilabel">rear dial</span>) (and maybe also the ISO
+sensitivity).  Repeat this step until you are satisfied with the picture
+histogram.</p>
+</li>
+<li><p class="first"><strong>Close the viewfinder.</strong> This avoids stray light falling into the camera
+from above.</p>
+</li>
+<li><p class="first"><strong>Press</strong> <span class="guilabel">Lv</span> <strong>to enter live view mode.</strong></p>
+</li>
+<li><p class="first"><strong>Long press the green button</strong> to start the shooting run.  The camera will
+start taking exposures.</p>
+<p>During a shooting run don’t touch the camera or dome and avoid anything that
+may cause vibration.</p>
+<p>The red button resets the CRM.  Use it to abort a shooting run.</p>
+<p>The shooting run is done when the green light comes on again.</p>
+<p>Remove the object from under the dome, open the camera viewfinder and repeat
+from step 1.</p>
 <div class="admonition warning">
 <p class="first admonition-title">Warning</p>
-<p class="last">Check your pictures for over- (specular lights) or under-exposure.  Adjust
-the aperture, time and maybe ISO settings and repeat the run.  The pilot
-light alone does not give enough guidance to set exposure parameters <a class="footnote-reference" href="#id2" id="id1">[1]</a>.</p>
+<p class="last">After every shooting run check all your pictures’ histograms for over-
+(specular lights) or under-exposure.  If unsatisfied adjust the aperture,
+shutter speed and maybe ISO sensitivity and repeat the shooting run.  The
+pilot light alone does not give you complete guidance to set exposure
+parameters <a class="footnote-reference" href="#id2" id="id1">[1]</a>.</p>
 </div>
 </li>
 </ol>
 </div>
 <div class="section" id="various-notes">
 <h2>Various Notes<a class="headerlink" href="#various-notes" title="Permalink to this headline">¶</a></h2>
-<p>Working speed: Your mileage may vary depending on the exposure time you have to
+<p>Working speed: Your mileage may vary depending on the shutter speed you have to
 select and on the speed of the memory card in the camera.  Cameras have an
 internal buffer, which fills up after a short burst, after that the speed of the
 memory card may limit the frame rate.  If your exposure time is longer than the
@@ -330,7 +366,7 @@ the object is lighted by one LED only.</td></tr>
         <a href="lens_selection.html" class="btn btn-neutral float-right" title="Lens Selection" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="user.html" class="btn btn-neutral" title="Dome User Manual" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="user.html" class="btn btn-neutral float-left" title="Dome User Manual" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -356,26 +392,16 @@ the object is lighted by one LED only.</td></tr>
   
 
 
-  
-
-    
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-        <script type="text/javascript" src="_static/jquery.js"></script>
-        <script type="text/javascript" src="_static/underscore.js"></script>
-        <script type="text/javascript" src="_static/doctools.js"></script>
-        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    
-
-  
-
-  <script type="text/javascript" src="_static/js/theme.js"></script>
-
   <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script> 
+  </script>
+
+  
+  
+    
+   
 
 </body>
 </html>
