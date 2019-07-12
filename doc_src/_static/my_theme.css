@@ -1,3 +1,15 @@
 span.eqno { float: right }
 
 span.eqno a.headerlink { display: none }
+
+.rst-content .menuselection
+{
+    margin: auto 2px;
+    border: 1px solid black;
+    border-radius: 4px;
+    padding: 2.4px 6px;
+    font-size: 80%;
+    font-weight: 700;
+    background-color: rgb(255, 237, 204);
+    white-space: nowrap;
+}

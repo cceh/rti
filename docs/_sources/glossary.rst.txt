@@ -19,6 +19,11 @@
       A piece of cardboard that is exactly 18% reflecting neutral grey. See:
       https://en.wikipedia.org/wiki/Gray_card
 
+   color reference chart
+
+      A card that has many different color samples on it.  See:
+      https://en.wikipedia.org/wiki/Color_chart
+
    PC Sync
 
       A standard connector used in photography to synchronize the flash to the
