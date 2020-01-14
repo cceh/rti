@@ -97,11 +97,11 @@ if __name__ == '__main__':
         os.makedirs (run, exist_ok = True)
 
         if len (files) < len (lights):
-            print ("error: not enough files in %s\n" % run)
-            break
+            print ("error: not enough files in %s (%d/%d)\n" % (run, len (files), len (lights)))
+            continue
         if len (files) > len (lights):
-            print ("error: too many files in %s\n" % run)
-            break
+            print ("error: too many files in %s (%d/%d)\n" % (run, len (files), len (lights)))
+            continue
 
         if args.verbose:
             print ("filing into %s" % run)
