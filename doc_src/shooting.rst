@@ -18,7 +18,7 @@ Always refer to the online `camera manuals`_ for more details.
 Camera Settings
 ===============
 
-#. **Turn the camera on.**  Turn the power switch to :guilabel:`On`.
+#. **Turn the camera on.**  Turn the power switch to :guilabel:`ON`.
 
 #. **Check the clock of the camera.** Press :guilabel:`MENU`, then select
    :menuselection:`SETUP MENU`, :menuselection:`Time zone and date`,
@@ -53,7 +53,7 @@ Camera Settings
 #. **D700 only: Turn on exposure delay mode.** Press :guilabel:`MENU` and select
    :menuselection:`CUSTOM SETTINGS MENU`, :menuselection:`d9`.
 
-#. **Turn the camera off.**  Turn the power switch to :guilabel:`Off`.
+#. **Turn the camera off.**  Turn the power switch to :guilabel:`OFF`.
 
 
 Dome Setup
@@ -63,7 +63,11 @@ Dome Setup
    Cat.5 or better Ethernet cables.  Don't swap the cables: make sure to connect
    socket 1 on the CRM 114 with socket 1 on the dome.
 
-2. **Fit the lens and camera to the dome.** Align the camera's vertical axis
+2. **Connect the camera to the CRM** using two interface cables.  Connect the
+   PC-Sync output on the camera with the flash input on the CRM.  Connect the
+   trigger input on the camera with the trigger output on the CRM.
+
+3. **Fit the lens and camera to the dome.** Align the camera's vertical axis
    with the 0° axis of dome.  The tripod socket on the camera should be near to
    the 0° marking on the dome while the bottom plate of the camera should be at
    exactly 90° angle to that mark.  Note: A polarizing filter between dome and
@@ -73,17 +77,13 @@ Dome Setup
 
       A correct alignment of dome and camera is essential to RTI.
 
-3. **Connect the camera to the CRM** using two interface cables.  Connect the
-   PC-Sync output on the camera with the flash input on the CRM.  Connect the
-   trigger input on the camera with the trigger output on the CRM.
-
 4. **Optionally connect an external monitor to the camera** using a cable with a
    mini-HDMI plug at one end.
 
 5. **Connect the AC/DC adaptor to the CRM** and plug it into a wall socket.  The
    green light on the CRM should come on.
 
-6. **Turn the camera on.**  Turn the power switch to :guilabel:`On`.
+6. **Turn the camera on.**  Turn the power switch to :guilabel:`ON`.
 
 
 Shooting

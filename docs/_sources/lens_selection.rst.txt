@@ -8,8 +8,8 @@ You must use a lens that has a minimum focal distance equal to or less than the
 distance between camera sensor plane and object.
 
 You must also select a lens with the right focal length.  Too small a focal
-length will make the pictured object tiny and too big a focal length will image
-only a part of the object.
+length will make the pictured object tiny and too large a focal length will
+image only a part of the object.
 
 With the Ø 50cm dome at CCeH, as a rule of thumb we use a 105mm macro lens for
 coin-sized objects and a 60mm macro for objects up to 10cm diagonal.

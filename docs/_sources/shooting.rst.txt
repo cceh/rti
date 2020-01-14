@@ -18,7 +18,7 @@ Always refer to the online `camera manuals`_ for more details.
 Camera Settings
 ===============
 
-#. **Turn the camera on.**  Turn the power switch to :guilabel:`On`.
+#. **Turn the camera on.**  Turn the power switch to :guilabel:`ON`.
 
 #. **Check the clock of the camera.** Press :guilabel:`MENU`, then select
    :menuselection:`SETUP MENU`, :menuselection:`Time zone and date`,
@@ -53,7 +53,7 @@ Camera Settings
 #. **D700 only: Turn on exposure delay mode.** Press :guilabel:`MENU` and select
    :menuselection:`CUSTOM SETTINGS MENU`, :menuselection:`d9`.
 
-#. **Turn the camera off.**  Turn the power switch to :guilabel:`Off`.
+#. **Turn the camera off.**  Turn the power switch to :guilabel:`OFF`.
 
 
 Dome Setup
@@ -83,7 +83,7 @@ Dome Setup
 5. **Connect the AC/DC adaptor to the CRM** and plug it into a wall socket.  The
    green light on the CRM should come on.
 
-6. **Turn the camera on.**  Turn the power switch to :guilabel:`On`.
+6. **Turn the camera on.**  Turn the power switch to :guilabel:`ON`.
 
 
 Shooting

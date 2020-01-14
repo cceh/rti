@@ -11,5 +11,9 @@ span.eqno a.headerlink { display: none }
     font-size: 80%;
     font-weight: 700;
     background-color: rgb(255, 237, 204);
+}
+
+.rst-content .guilabel,
+.rst-content .menuselection {
     white-space: nowrap;
 }
