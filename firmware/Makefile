@@ -56,11 +56,11 @@ MY_AVRDUDE = /usr/bin/avrdude -q -v -p m328p -C /etc/avrdude.conf -c dragon_isp 
 # we have to slow down ISP clock frequency with the -i parameter.  This command
 # only needs to be run once on every microcontroller chip.
 
-my_init_fuses:
+my_initfuses:
 	$(MY_AVRDUDE) -i 6 -e -U lock:w:0xff:m -U efuse:w:0xfa:m -U hfuse:w:0xdf:m -U lfuse:w:0xff:m
 
 # Upload a new image
-myispload: $(TARGET_HEX)
+my_ispload: $(TARGET_HEX)
 	$(MY_AVRDUDE) -U flash:w:bin/nano328/$(TARGET).hex:i
 
 	sleep 1
