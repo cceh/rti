@@ -65,8 +65,6 @@ int main (int argc, char *argv[]) {
         return 1;
     }
 
-    char *line = NULL;
-    size_t len = 0;
     float u = 0.0, v = 0.0;
     int n = 0;
     char *filename = malloc (strlen (filename_out) + 20);
@@ -75,9 +73,11 @@ int main (int argc, char *argv[]) {
     if (!ext)
         ext = filename + strlen (filename_out);
 
-    char *buffer;
+    char *line = NULL;
+    size_t len = 0;
     while (getline (&line, &len, fp_lp) != -1) {
-        if (sscanf (line, "%ms %f %f", &buffer, &u, &v) == 3) {
+        char *buffer = malloc (len + 1);
+        if (sscanf (line, "%s %f %f", buffer, &u, &v) == 3) {
             free (buffer);
             ++n;
             sprintf (ext, "%03d.jpeg", n);

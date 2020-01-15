@@ -149,9 +149,9 @@ int main (int argc, char *argv[]) {
     char *line = NULL;
     size_t len = 0;
     while (getline (&line, &len, fp_lp) != -1) {
-        char *filename = NULL;
+        char *filename = malloc (len + 1);
         float u = 0.0, v = 0.0, w = 0.0;
-        if (sscanf (line, "%ms %f %f %f", &filename, &u, &v, &w) >= 3) {
+        if (sscanf (line, "%s %f %f %f", filename, &u, &v, &w) >= 3) {
 
             /* fprintf (stderr, "reading %s %f %f %f ...\n",
                         filename, (double) u, (double) v, (double) w);
