@@ -105,6 +105,7 @@
 <li class="toctree-l3"><a class="reference internal" href="shooting.html#dome-setup">Dome Setup</a></li>
 <li class="toctree-l3"><a class="reference internal" href="shooting.html#shooting">Shooting</a></li>
 <li class="toctree-l3"><a class="reference internal" href="shooting.html#various-notes">Various Notes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="shooting.html#camera-manuals">Camera Manuals</a></li>
 <li class="toctree-l3"><a class="reference internal" href="shooting.html#footnotes">Footnotes</a></li>
 </ul>
 </li>
@@ -241,34 +242,29 @@ file <code class="file docutils literal notranslate"><span class="pre">firmware/
 <p>To program or reprogram a microcontroller chip, when it is already mounted in
 the CRM Module:</p>
 <ol class="arabic" start="0">
-<li><p class="first">Open the case.</p>
-</li>
-<li><p class="first">Connect the AVR-Dragon programmer with the CRM Module using a 6-way ribbon
-cable.  Make sure to connect pin 1 on the Dragon to pin 1 on the CRM!</p>
-</li>
-<li><p class="first">Connect the AVR-Dragon with the PC using an USB cable.</p>
-</li>
-<li><p class="first">Connect the power source to the CRM.</p>
-</li>
-<li><p class="first">Change into the <code class="file docutils literal notranslate"><span class="pre">firmware</span></code> directory.</p>
+<li><p>Open the case.</p></li>
+<li><p>Connect the AVR-Dragon programmer with the CRM Module using a 6-way ribbon
+cable.  Make sure to connect pin 1 on the Dragon to pin 1 on the CRM!</p></li>
+<li><p>Connect the AVR-Dragon with the PC using an USB cable.</p></li>
+<li><p>Connect the power source to the CRM.</p></li>
+<li><p>Change into the <code class="file docutils literal notranslate"><span class="pre">firmware</span></code> directory.</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">cd firmware</span>
 </pre></div>
 </div>
 </li>
-<li><p class="first">If this is the first time you prgram this microcontroller <a class="reference internal" href="#c-init"><span class="std std-ref">initialize
+<li><p>If this is the first time you prgram this microcontroller <a class="reference internal" href="#c-init"><span class="std std-ref">initialize
 it</span></a>:</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">make my_initfuses</span>
 </pre></div>
 </div>
 </li>
-<li><p class="first">Program the microcontroller:</p>
+<li><p>Program the microcontroller:</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">make my_ispload</span>
 </pre></div>
 </div>
 </li>
-<li><p class="first">Disconnect the 6-way cable from the CRM, remove the power cord and close the
-case.</p>
-</li>
+<li><p>Disconnect the 6-way cable from the CRM, remove the power cord and close the
+case.</p></li>
 </ol>
 </div>
 <div class="section" id="initialize-a-new-microcontroller">

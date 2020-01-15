@@ -48,7 +48,7 @@ Camera Settings
 
 #. **Set the camera and lens to manual focus.** Set the focus-mode
    selector on the camera to :guilabel:`M`.  Also set the focus mode switch on
-   the lens (if present) to :guilabel:`M`.
+   the lens (if present) to :guilabel:`M`. [#]_
 
 #. **D700 only: Turn on exposure delay mode.** Press :guilabel:`MENU` and select
    :menuselection:`CUSTOM SETTINGS MENU`, :menuselection:`d9`.
@@ -183,6 +183,10 @@ Camera Manuals
 
 Footnotes
 =========
+
+.. [#] Manual focus mode makes sure the camera does not attempt to focus during
+       a dark interval.  You may use autofocus if you configure the camera to
+       focus on a different button than the trigger release button.
 
 .. [#] The pilot light (current shared by N LEDs) has not the same intensity as
        the individual LED (current used by one LED) because LED emission is not

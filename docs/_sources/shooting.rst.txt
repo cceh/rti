@@ -48,7 +48,7 @@ Camera Settings
 
 #. **Set the camera and lens to manual focus.** Set the focus-mode
    selector on the camera to :guilabel:`M`.  Also set the focus mode switch on
-   the lens (if present) to :guilabel:`M`.
+   the lens (if present) to :guilabel:`M`. [#]_
 
 #. **D700 only: Turn on exposure delay mode.** Press :guilabel:`MENU` and select
    :menuselection:`CUSTOM SETTINGS MENU`, :menuselection:`d9`.
@@ -63,7 +63,11 @@ Dome Setup
    Cat.5 or better Ethernet cables.  Don't swap the cables: make sure to connect
    socket 1 on the CRM 114 with socket 1 on the dome.
 
-2. **Fit the lens and camera to the dome.** Align the camera's vertical axis
+2. **Connect the camera to the CRM** using two interface cables.  Connect the
+   PC-Sync output on the camera with the flash input on the CRM.  Connect the
+   trigger input on the camera with the trigger output on the CRM.
+
+3. **Fit the lens and camera to the dome.** Align the camera's vertical axis
    with the 0° axis of dome.  The tripod socket on the camera should be near to
    the 0° marking on the dome while the bottom plate of the camera should be at
    exactly 90° angle to that mark.  Note: A polarizing filter between dome and
@@ -72,10 +76,6 @@ Dome Setup
    .. warning::
 
       A correct alignment of dome and camera is essential to RTI.
-
-3. **Connect the camera to the CRM** using two interface cables.  Connect the
-   PC-Sync output on the camera with the flash input on the CRM.  Connect the
-   trigger input on the camera with the trigger output on the CRM.
 
 4. **Optionally connect an external monitor to the camera** using a cable with a
    mini-HDMI plug at one end.
@@ -183,6 +183,10 @@ Camera Manuals
 
 Footnotes
 =========
+
+.. [#] Manual focus mode makes sure the camera does not attempt to focus during
+       a dark interval.  You may use autofocus if you configure the camera to
+       focus on a different button than the trigger release button.
 
 .. [#] The pilot light (current shared by N LEDs) has not the same intensity as
        the individual LED (current used by one LED) because LED emission is not

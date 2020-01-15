@@ -23,55 +23,6 @@
 
 .. _ptm-encoder:
 
-bin/ptm-encoder
-===============
-
-.. program:: ptm-encoder
-
-Encode a series of JPEG files into one PTM file.
-
-Reads a :file:`sample.lp` file with a list of the JPEG files to encode.  You can
-build a :file:`sample.lp` file using the :ref:`image filer <image-filer.py>`
-script.
-
-.. code-block:: console
-
-   usage: ptm-encoder [OPTION...] sample.lp
-
-.. option:: -f, --format
-
-   Which PTM format to output (default: PTM_FORMAT_RGB).
-
-.. option:: -l, --list
-
-   Output a list of supported PTM formats, eg:
-
-   - PTM_FORMAT_RGB,
-   - PTM_FORMAT_LRGB,
-   - PTM_FORMAT_JPEG_RGB,
-   - PTM_FORMAT_JPEG_LRGB.
-
-.. option:: -o, --output=<FILE>
-
-   Output to FILE instead of STDOUT.
-
-.. option:: -v, --verbose
-
-   Produce verbose output.
-
-.. option:: -?, --help
-
-   Give this help list.
-
-.. option:: --usage
-
-   Give a short usage message.
-
-.. option:: -V, --version
-
-   Print program version.
-
-
 .. _ptm-decoder:
 
 bin/ptm-decoder

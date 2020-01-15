@@ -130,7 +130,6 @@
 <li class="toctree-l3"><a class="reference internal" href="user_scripts.html#scripts-image-filer-py">scripts/image-filer.py</a></li>
 <li class="toctree-l3"><a class="reference internal" href="user_scripts.html#scripts-image-converter-py">scripts/image-converter.py</a></li>
 <li class="toctree-l3"><a class="reference internal" href="user_scripts.html#scripts-lp-builder-py">scripts/lp-builder.py</a></li>
-<li class="toctree-l3"><a class="reference internal" href="user_scripts.html#bin-ptm-encoder">bin/ptm-encoder</a></li>
 <li class="toctree-l3"><a class="reference internal" href="user_scripts.html#bin-ptm-decoder">bin/ptm-decoder</a></li>
 <li class="toctree-l3"><a class="reference internal" href="user_scripts.html#bin-ptm-exploder">bin/ptm-exploder</a></li>
 <li class="toctree-l3"><a class="reference internal" href="user_scripts.html#sample-lp-file-format">sample.lp file format</a></li>
@@ -223,8 +222,8 @@
 Texture Mapping</em> (PTM), is a technique of imaging and interactively displaying
 objects under varying lighting conditions to reveal surface phenomena.</p>
 <p>The original PTM method has been developed Tom Malzbender, Dan Gelb, and Hans
-Wolters at Hewlett-Packard Laboratories.  <a class="reference internal" href="#malzbender2001" id="id1">[Malzbender2001]</a> Improvements have
-been suggested: <a class="reference internal" href="#drew2012" id="id2">[Drew2012]</a>, <a class="reference internal" href="#zhang2014" id="id3">[Zhang2014]</a>.  We here describe the original
+Wolters at Hewlett-Packard Laboratories.  <a class="reference internal" href="#malzbender2001" id="id1"><span>[Malzbender2001]</span></a> Improvements have
+been suggested: <a class="reference internal" href="#drew2012" id="id2"><span>[Drew2012]</span></a>, <a class="reference internal" href="#zhang2014" id="id3"><span>[Zhang2014]</span></a>.  We here describe the original
 method.</p>
 <p>N light sources of equal intensity are positioned on a hemisphere (the dome).
 The object to image is positioned at the center of the hemisphere.  The camera
@@ -246,28 +245,28 @@ we can interpolate an arbitrary light direction.</p>
 projections of the lights’ positions onto the object plane are evenly spaced.</p>
 <div class="figure align-center" id="id8">
 <img alt="_images/light-3d.png" src="_images/light-3d.png" />
-<p class="caption"><span class="caption-text">The dome with lights.</span></p>
+<p class="caption"><span class="caption-text">The dome with lights.</span><a class="headerlink" href="#id8" title="Permalink to this image">¶</a></p>
 </div>
 <div class="figure align-center" id="id9">
 <img alt="_images/light-2d.png" src="_images/light-2d.png" />
-<p class="caption"><span class="caption-text">The positions of the lights projected onto the object plane.</span></p>
+<p class="caption"><span class="caption-text">The positions of the lights projected onto the object plane.</span><a class="headerlink" href="#id9" title="Permalink to this image">¶</a></p>
 </div>
 <p>Then an exposure is taken from each light in turn yielding <span class="math notranslate nohighlight">\(N\)</span> images and
 thus <span class="math notranslate nohighlight">\(N\)</span> samples for every pixel position in the images.</p>
 <div class="figure align-center" id="id10">
 <img alt="_images/light-samples.png" src="_images/light-samples.png" />
-<p class="caption"><span class="caption-text">The intensity of one pixel when illuminated by the different lights.</span></p>
+<p class="caption"><span class="caption-text">The intensity of one pixel when illuminated by the different lights.</span><a class="headerlink" href="#id10" title="Permalink to this image">¶</a></p>
 </div>
 <p>Then a curve is sought that best fits the observed intensities:</p>
 <div class="figure align-center" id="id11">
 <img alt="_images/light-samples-fit.png" src="_images/light-samples-fit.png" />
-<p class="caption"><span class="caption-text">A curve that best fits the observed intensities.</span></p>
+<p class="caption"><span class="caption-text">A curve that best fits the observed intensities.</span><a class="headerlink" href="#id11" title="Permalink to this image">¶</a></p>
 </div>
 <p>The observed intensities are not needed any more because all we store in the PTM
 file are the coefficients for the curve.</p>
 <div class="figure align-center" id="id12">
 <img alt="_images/light-fit.png" src="_images/light-fit.png" />
-<p class="caption"><span class="caption-text">The curve that is stored in the file.  A different one for each pixel.</span></p>
+<p class="caption"><span class="caption-text">The curve that is stored in the file.  A different one for each pixel.</span><a class="headerlink" href="#id12" title="Permalink to this image">¶</a></p>
 </div>
 <p>Because we store 6 coefficients for each pixel in the PTM file (instead of one
 value in a JPEG file), a PTM file is about 6 times the size of a corresponding
@@ -279,11 +278,11 @@ JPEG file.</p>
 <div class="math notranslate nohighlight" id="equation-poly">
 <span class="eqno">(1)<a class="headerlink" href="#equation-poly" title="Permalink to this equation">¶</a></span>\[b = x_0u^2 + x_1v^2 + x_2uv + x_3u + x_4v + x_5\]</div>
 <p>where <span class="math notranslate nohighlight">\((u,v,w)^T\)</span> is the normalized light vector and <span class="math notranslate nohighlight">\(b\)</span> is the
-sampled surface luminance. <a class="reference internal" href="#malzbender2001" id="id4">[Malzbender2001]</a></p>
+sampled surface luminance. <a class="reference internal" href="#malzbender2001" id="id4"><span>[Malzbender2001]</span></a></p>
 <p>To fit the curve to the samples we use a Least Squares approximation and solve
 it using Singular Value Decomposition (SVD). “In the case of an overdetermined
 system, SVD produces a solution that is the best approximation in the
-least-squares sense.” <a class="reference internal" href="#press2007" id="id5">[Press2007]</a>, Chapter 15.4.2.</p>
+least-squares sense.” <a class="reference internal" href="#press2007" id="id5"><span>[Press2007]</span></a>, Chapter 15.4.2.</p>
 <p>Our design matrix:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}\mathbf{A}^{N\times6} =
@@ -303,7 +302,7 @@ least-squares sense.” <a class="reference internal" href="#press2007" id="id5"
 <p>For each pixel we have to solve:</p>
 <div class="math notranslate nohighlight" id="equation-axb">
 <span class="eqno">(2)<a class="headerlink" href="#equation-axb" title="Permalink to this equation">¶</a></span>\[\mathbf{Ax} \approx \mathbf{b}\]</div>
-<p>We do a SVD of <span class="math notranslate nohighlight">\(\mathbf{A}^{N\times6}\)</span> (See <a class="reference internal" href="#golub2013" id="id6">[Golub2013]</a>, Chapter 2.4):</p>
+<p>We do a SVD of <span class="math notranslate nohighlight">\(\mathbf{A}^{N\times6}\)</span> (See <a class="reference internal" href="#golub2013" id="id6"><span>[Golub2013]</span></a>, Chapter 2.4):</p>
 <div class="math notranslate nohighlight">
 \[\mathbf{U}^T\mathbf{AV} = \boldsymbol{\Sigma} = \mathrm{diag}(\sigma_1,\dots,\sigma_6) \in \Bbb{R}^{N\times6}\]</div>
 <p>where <span class="math notranslate nohighlight">\(\sigma_1\geq\sigma_2\geq\dots\geq\sigma_6\geq0.\)</span></p>
@@ -320,7 +319,7 @@ whose elements are the reciprocals of the elements
 solution of <a class="reference internal" href="#equation-axb">(2)</a>:</p>
 <div class="math notranslate nohighlight">
 \[\mathbf{x}=\mathbf{V}\begin{bmatrix}\mathrm{diag}(1/\sigma_1,\dots,1/\sigma_6)\end{bmatrix}\mathbf{U}^T\mathbf{b}\]</div>
-<p>See: <a class="reference internal" href="#press2007" id="id7">[Press2007]</a>, Chapter 2.6.4.</p>
+<p>See: <a class="reference internal" href="#press2007" id="id7"><span>[Press2007]</span></a>, Chapter 2.6.4.</p>
 <p>A naive GNU Octave implementation of the PTM is:</p>
 <div class="highlight-octave notranslate"><div class="highlight"><pre><span></span><span class="k">function</span><span class="w"> </span>X <span class="p">=</span><span class="w"> </span><span class="nf">ptm</span><span class="p">(</span>A,b<span class="p">)</span><span class="w"></span>
 
@@ -334,93 +333,62 @@ solution of <a class="reference internal" href="#equation-axb">(2)</a>:</p>
 <p>Note that the SVD needs to be computed only once for every different arrangement
 of light sources.  The only part of the above formula that varies for each pixel
 is <span class="math notranslate nohighlight">\(\mathbf{b}\)</span>.</p>
-<table class="docutils citation" frame="void" id="drew2009" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label">[Drew2009]</td><td>Drew, M.S. [et al.] 2009, <em>Specularity and Shadow Interpolation
+<dl class="citation">
+<dt class="label" id="drew2009"><span class="brackets">Drew2009</span></dt>
+<dd><p>Drew, M.S. [et al.] 2009, <em>Specularity and Shadow Interpolation
 via Robust Polynomial Texture Maps</em>
-<a class="reference external" href="https://www.cs.sfu.ca/~mark/ftp/Bmvc09/bmvc09.pdf">https://www.cs.sfu.ca/~mark/ftp/Bmvc09/bmvc09.pdf</a></td></tr>
-</tbody>
-</table>
-<table class="docutils citation" frame="void" id="drew2012" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id2">[Drew2012]</a></td><td>Drew, M.S. [et al.] 2012, <em>Robust Estimation of Surface Properties
+<a class="reference external" href="https://www.cs.sfu.ca/~mark/ftp/Bmvc09/bmvc09.pdf">https://www.cs.sfu.ca/~mark/ftp/Bmvc09/bmvc09.pdf</a></p>
+</dd>
+<dt class="label" id="drew2012"><span class="brackets"><a class="fn-backref" href="#id2">Drew2012</a></span></dt>
+<dd><p>Drew, M.S. [et al.] 2012, <em>Robust Estimation of Surface Properties
 and Interpolation of Shadow/Specularity Components</em>
-<a class="reference external" href="http://www.cs.sfu.ca/~mark/ftp/Ivc2012/ivc2012.pdf">http://www.cs.sfu.ca/~mark/ftp/Ivc2012/ivc2012.pdf</a></td></tr>
-</tbody>
-</table>
-<table class="docutils citation" frame="void" id="golub2013" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id6">[Golub2013]</a></td><td>Golub, G.H., and Van Loan, C.F. 2013, <em>Matrix Computations,</em> 4th
-edition, (John Hopkins University Press, Baltimore)</td></tr>
-</tbody>
-</table>
-<table class="docutils citation" frame="void" id="lyon2004" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label">[Lyon2004]</td><td>A Java implementation of the PTM viewer.
-<a class="reference external" href="https://github.com/clifflyon/ptmviewer">https://github.com/clifflyon/ptmviewer</a></td></tr>
-</tbody>
-</table>
-<table class="docutils citation" frame="void" id="malzbender2001" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label">[Malzbender2001]</td><td><em>(<a class="fn-backref" href="#id1">1</a>, <a class="fn-backref" href="#id4">2</a>)</em> Malzbender, T., Gelb, D., and Wolters, H. 2001, <em>Polynomial
+<a class="reference external" href="http://www.cs.sfu.ca/~mark/ftp/Ivc2012/ivc2012.pdf">http://www.cs.sfu.ca/~mark/ftp/Ivc2012/ivc2012.pdf</a></p>
+</dd>
+<dt class="label" id="golub2013"><span class="brackets"><a class="fn-backref" href="#id6">Golub2013</a></span></dt>
+<dd><p>Golub, G.H., and Van Loan, C.F. 2013, <em>Matrix Computations,</em> 4th
+edition, (John Hopkins University Press, Baltimore)</p>
+</dd>
+<dt class="label" id="lyon2004"><span class="brackets">Lyon2004</span></dt>
+<dd><p>A Java implementation of the PTM viewer.
+<a class="reference external" href="https://github.com/clifflyon/ptmviewer">https://github.com/clifflyon/ptmviewer</a></p>
+</dd>
+<dt class="label" id="malzbender2001"><span class="brackets">Malzbender2001</span><span class="fn-backref">(<a href="#id1">1</a>,<a href="#id4">2</a>)</span></dt>
+<dd><p>Malzbender, T., Gelb, D., and Wolters, H. 2001, <em>Polynomial
 Texture Maps,</em>
-<a class="reference external" href="http://www.hpl.hp.com/research/ptm/papers/ptm.pdf">http://www.hpl.hp.com/research/ptm/papers/ptm.pdf</a></td></tr>
-</tbody>
-</table>
-<table class="docutils citation" frame="void" id="malzbender2001a" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label">[Malzbender2001a]</td><td>Malzbender, T., and Gelb, D. 2001, <em>Polynomial Texture Map
+<a class="reference external" href="http://www.hpl.hp.com/research/ptm/papers/ptm.pdf">http://www.hpl.hp.com/research/ptm/papers/ptm.pdf</a></p>
+</dd>
+<dt class="label" id="malzbender2001a"><span class="brackets">Malzbender2001a</span></dt>
+<dd><p>Malzbender, T., and Gelb, D. 2001, <em>Polynomial Texture Map
 (.ptm) File Format,</em> Version 1.2,
-<a class="reference external" href="http://www.hpl.hp.com/research/ptm/downloads/PtmFormat12.pdf">http://www.hpl.hp.com/research/ptm/downloads/PtmFormat12.pdf</a></td></tr>
-</tbody>
-</table>
-<table class="docutils citation" frame="void" id="motta2001" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label">[Motta2001]</td><td>Motta, G., Winberger, M.J. 2001, <em>Compression of Polynomial
+<a class="reference external" href="http://www.hpl.hp.com/research/ptm/downloads/PtmFormat12.pdf">http://www.hpl.hp.com/research/ptm/downloads/PtmFormat12.pdf</a></p>
+</dd>
+<dt class="label" id="motta2001"><span class="brackets">Motta2001</span></dt>
+<dd><p>Motta, G., Winberger, M.J. 2001, <em>Compression of Polynomial
 Texture Maps,</em> (HP Laboratories, Palo Alto)
-<a class="reference external" href="http://www.hpl.hp.com/techreports/2000/HPL-2000-143R2.pdf">http://www.hpl.hp.com/techreports/2000/HPL-2000-143R2.pdf</a></td></tr>
-</tbody>
-</table>
-<table class="docutils citation" frame="void" id="press2007" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label">[Press2007]</td><td><em>(<a class="fn-backref" href="#id5">1</a>, <a class="fn-backref" href="#id7">2</a>)</em> Press, W.H. [et al.] 2007, <em>Numerical recipes: the art of
+<a class="reference external" href="http://www.hpl.hp.com/techreports/2000/HPL-2000-143R2.pdf">http://www.hpl.hp.com/techreports/2000/HPL-2000-143R2.pdf</a></p>
+</dd>
+<dt class="label" id="press2007"><span class="brackets">Press2007</span><span class="fn-backref">(<a href="#id5">1</a>,<a href="#id7">2</a>)</span></dt>
+<dd><p>Press, W.H. [et al.] 2007, <em>Numerical recipes: the art of
 scientifical computing,</em> 3rd edition, (Cambridge University
-Press, Cambridge)</td></tr>
-</tbody>
-</table>
-<table class="docutils citation" frame="void" id="wikipedia" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label">[Wikipedia]</td><td><a class="reference external" href="https://en.wikipedia.org/wiki/Polynomial_texture_mapping">https://en.wikipedia.org/wiki/Polynomial_texture_mapping</a></td></tr>
-</tbody>
-</table>
-<table class="docutils citation" frame="void" id="zhang2012" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label">[Zhang2012]</td><td>Zhang, M., and Drew, M.S. 2012, <em>Robust Luminance and
+Press, Cambridge)</p>
+</dd>
+<dt class="label" id="wikipedia"><span class="brackets">Wikipedia</span></dt>
+<dd><p><a class="reference external" href="https://en.wikipedia.org/wiki/Polynomial_texture_mapping">https://en.wikipedia.org/wiki/Polynomial_texture_mapping</a></p>
+</dd>
+<dt class="label" id="zhang2012"><span class="brackets">Zhang2012</span></dt>
+<dd><p>Zhang, M., and Drew, M.S. 2012, <em>Robust Luminance and
 Chromaticity for Matte Regression in Polynomial Texture Mapping</em>
 in Fusiello, A. [et al.] (Eds.): ECCV 2012 Ws/Demos, Part II,
 LNCS 7584, pp. 360–369, 2012. Springer, 2012
-<a class="reference external" href="http://www.cs.sfu.ca/people/Faculty/Drew/ftp/Cpcv2012/cpcv2012a.pdf">http://www.cs.sfu.ca/people/Faculty/Drew/ftp/Cpcv2012/cpcv2012a.pdf</a></td></tr>
-</tbody>
-</table>
-<table class="docutils citation" frame="void" id="zhang2014" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id3">[Zhang2014]</a></td><td>Zhang, M., and Drew, M.S. 2014, <em>Efficient robust image
+<a class="reference external" href="http://www.cs.sfu.ca/people/Faculty/Drew/ftp/Cpcv2012/cpcv2012a.pdf">http://www.cs.sfu.ca/people/Faculty/Drew/ftp/Cpcv2012/cpcv2012a.pdf</a></p>
+</dd>
+<dt class="label" id="zhang2014"><span class="brackets"><a class="fn-backref" href="#id3">Zhang2014</a></span></dt>
+<dd><p>Zhang, M., and Drew, M.S. 2014, <em>Efficient robust image
 interpolation and surface properties using polynomial texture
 mapping,</em> (EURASIP Journal on Image and Video Processing)
-<a class="reference external" href="https://doi.org/10.1186/1687-5281-2014-25">https://doi.org/10.1186/1687-5281-2014-25</a></td></tr>
-</tbody>
-</table>
+<a class="reference external" href="https://doi.org/10.1186/1687-5281-2014-25">https://doi.org/10.1186/1687-5281-2014-25</a></p>
+</dd>
+</dl>
 </div>
 </div>
 

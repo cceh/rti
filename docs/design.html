@@ -105,6 +105,7 @@
 <li class="toctree-l3"><a class="reference internal" href="shooting.html#dome-setup">Dome Setup</a></li>
 <li class="toctree-l3"><a class="reference internal" href="shooting.html#shooting">Shooting</a></li>
 <li class="toctree-l3"><a class="reference internal" href="shooting.html#various-notes">Various Notes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="shooting.html#camera-manuals">Camera Manuals</a></li>
 <li class="toctree-l3"><a class="reference internal" href="shooting.html#footnotes">Footnotes</a></li>
 </ul>
 </li>
@@ -222,146 +223,150 @@
 <h1>Electrical Design<a class="headerlink" href="#electrical-design" title="Permalink to this headline">¶</a></h1>
 <p>The main goals of this design were:</p>
 <ul class="simple">
-<li>to use bright and affordable LEDs,</li>
-<li>to use only user-solderable off-the-shelf components,</li>
-<li>the dome should look to the camera like an ordinary flash gun,</li>
-<li>the dome should work with any camera using standard interfaces.</li>
+<li><p>to use bright and affordable LEDs,</p></li>
+<li><p>to use only user-solderable off-the-shelf components,</p></li>
+<li><p>the dome should look to the camera like an ordinary flash gun,</p></li>
+<li><p>the dome should work with any camera using standard interfaces.</p></li>
 </ul>
 <div class="section" id="choice-of-led">
 <h2>Choice of LED<a class="headerlink" href="#choice-of-led" title="Permalink to this headline">¶</a></h2>
 <p>Consider the following points before selecting an LED make.</p>
 <p>Performance:</p>
 <blockquote>
-<div>Luminous LEDs allow fast work and great focal depth.  Look for LEDs specified
-to 100 lm (lumen) or more.</div></blockquote>
+<div><p>Luminous LEDs allow fast work and great focal depth.  Look for LEDs specified
+to 100 lm (lumen) or more.</p>
+</div></blockquote>
 <p>Light quality:</p>
 <blockquote>
-<div>Especially important if you want to take color pictures.  Look for a Color
-Rendering Index (CRI) of 90 or more.</div></blockquote>
+<div><p>Especially important if you want to take color pictures.  Look for a Color
+Rendering Index (CRI) of 90 or more.</p>
+</div></blockquote>
 <p>Price:</p>
 <blockquote>
-<div>High performance LEDs are expensive.</div></blockquote>
+<div><p>High performance LEDs are expensive.</p>
+</div></blockquote>
 <p>Mounting:</p>
 <blockquote>
-<div>High performance LEDs are designed for reflow soldering, which makes them hard
+<div><p>High performance LEDs are designed for reflow soldering, which makes them hard
 to solder by hand.  You must solder each LED to a small board before you can
 use them or buy them pre-soldered (expensive).  Test your ability to solder
-the LED make before buying quantities.</div></blockquote>
+the LED make before buying quantities.</p>
+</div></blockquote>
 <p>This is a choice of LED makes (as of 2017).</p>
-<table border="1" class="docutils">
+<table class="docutils align-default">
 <colgroup>
-<col width="12%" />
-<col width="32%" />
-<col width="5%" />
-<col width="5%" />
-<col width="4%" />
-<col width="5%" />
-<col width="5%" />
-<col width="7%" />
-<col width="9%" />
-<col width="16%" />
+<col style="width: 12%" />
+<col style="width: 32%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 4%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 7%" />
+<col style="width: 9%" />
+<col style="width: 16%" />
 </colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Series</th>
-<th class="head">Part.No.</th>
-<th class="head">lm</th>
-<th class="head">V</th>
-<th class="head">mA</th>
-<th class="head">Case</th>
-<th class="head">€</th>
-<th class="head">MinQty</th>
-<th class="head">Distr.</th>
-<th class="head">No</th>
+<thead>
+<tr class="row-odd"><th class="head"><p>Series</p></th>
+<th class="head"><p>Part.No.</p></th>
+<th class="head"><p>lm</p></th>
+<th class="head"><p>V</p></th>
+<th class="head"><p>mA</p></th>
+<th class="head"><p>Case</p></th>
+<th class="head"><p>€</p></th>
+<th class="head"><p>MinQty</p></th>
+<th class="head"><p>Distr.</p></th>
+<th class="head"><p>No</p></th>
 </tr>
 </thead>
-<tbody valign="top">
-<tr class="row-even"><td>Duris S 10</td>
-<td>GW P7LP32.EM-RSRU-XX52-1</td>
-<td>1400</td>
-<td>38.0</td>
-<td>300</td>
-<td>7070</td>
-<td>1.90</td>
-<td>50</td>
-<td>RS</td>
-<td>8792889</td>
+<tbody>
+<tr class="row-even"><td><p>Duris S 10</p></td>
+<td><p>GW P7LP32.EM-RSRU-XX52-1</p></td>
+<td><p>1400</p></td>
+<td><p>38.0</p></td>
+<td><p>300</p></td>
+<td><p>7070</p></td>
+<td><p>1.90</p></td>
+<td><p>50</p></td>
+<td><p>RS</p></td>
+<td><p>8792889</p></td>
 </tr>
-<tr class="row-odd"><td>Duris S 10</td>
-<td>GW P7LM32.EM-QURQ-XX52-1</td>
-<td>1050</td>
-<td>28.5</td>
-<td>300</td>
-<td>7070</td>
-<td>1.72</td>
-<td>50</td>
-<td>Mouser</td>
-<td>&#160;</td>
+<tr class="row-odd"><td><p>Duris S 10</p></td>
+<td><p>GW P7LM32.EM-QURQ-XX52-1</p></td>
+<td><p>1050</p></td>
+<td><p>28.5</p></td>
+<td><p>300</p></td>
+<td><p>7070</p></td>
+<td><p>1.72</p></td>
+<td><p>50</p></td>
+<td><p>Mouser</p></td>
+<td></td>
 </tr>
-<tr class="row-even"><td>Duris S 8</td>
-<td>GW P9LT31.EM-PSPU-XX52-1</td>
-<td>610</td>
-<td>31.0</td>
-<td>150</td>
-<td>5050</td>
-<td>0.96</td>
-<td>25</td>
-<td>DigiKey</td>
-<td>475-3200-1-ND</td>
+<tr class="row-even"><td><p>Duris S 8</p></td>
+<td><p>GW P9LT31.EM-PSPU-XX52-1</p></td>
+<td><p>610</p></td>
+<td><p>31.0</p></td>
+<td><p>150</p></td>
+<td><p>5050</p></td>
+<td><p>0.96</p></td>
+<td><p>25</p></td>
+<td><p>DigiKey</p></td>
+<td><p>475-3200-1-ND</p></td>
 </tr>
-<tr class="row-odd"><td>Duris S 8</td>
-<td>GW P9LT32.EM-PSPU-XX52-1</td>
-<td>610</td>
-<td>6.2</td>
-<td>750</td>
-<td>5050</td>
-<td>0.96</td>
-<td>25</td>
-<td>DigiKey</td>
-<td>475-3207-1-ND</td>
+<tr class="row-odd"><td><p>Duris S 8</p></td>
+<td><p>GW P9LT32.EM-PSPU-XX52-1</p></td>
+<td><p>610</p></td>
+<td><p>6.2</p></td>
+<td><p>750</p></td>
+<td><p>5050</p></td>
+<td><p>0.96</p></td>
+<td><p>25</p></td>
+<td><p>DigiKey</p></td>
+<td><p>475-3207-1-ND</p></td>
 </tr>
-<tr class="row-even"><td>Duris S 8</td>
-<td>GW P9LR31.EM-PQPS-XX52-1</td>
-<td>500</td>
-<td>24.8</td>
-<td>150</td>
-<td>5050</td>
-<td>0.76</td>
-<td>25</td>
-<td>DigiKey</td>
-<td>475-3187-1-ND</td>
+<tr class="row-even"><td><p>Duris S 8</p></td>
+<td><p>GW P9LR31.EM-PQPS-XX52-1</p></td>
+<td><p>500</p></td>
+<td><p>24.8</p></td>
+<td><p>150</p></td>
+<td><p>5050</p></td>
+<td><p>0.76</p></td>
+<td><p>25</p></td>
+<td><p>DigiKey</p></td>
+<td><p>475-3187-1-ND</p></td>
 </tr>
-<tr class="row-odd"><td>Duris S 8</td>
-<td>GW P9LR32.EM-PQPS-XX52-1</td>
-<td>500</td>
-<td>6.2</td>
-<td>600</td>
-<td>5050</td>
-<td>0.80</td>
-<td>25</td>
-<td>DigiKey</td>
-<td>475-3193-1-ND</td>
+<tr class="row-odd"><td><p>Duris S 8</p></td>
+<td><p>GW P9LR32.EM-PQPS-XX52-1</p></td>
+<td><p>500</p></td>
+<td><p>6.2</p></td>
+<td><p>600</p></td>
+<td><p>5050</p></td>
+<td><p>0.80</p></td>
+<td><p>25</p></td>
+<td><p>DigiKey</p></td>
+<td><p>475-3193-1-ND</p></td>
 </tr>
-<tr class="row-even"><td>Duris S 8</td>
-<td>GW P9LMS1.EM-NSNU-57S5-0</td>
-<td>395</td>
-<td>19.8</td>
-<td>200</td>
-<td>4SMD</td>
-<td>0.91</td>
-<td>50</td>
-<td>RS</td>
-<td>8108054</td>
+<tr class="row-even"><td><p>Duris S 8</p></td>
+<td><p>GW P9LMS1.EM-NSNU-57S5-0</p></td>
+<td><p>395</p></td>
+<td><p>19.8</p></td>
+<td><p>200</p></td>
+<td><p>4SMD</p></td>
+<td><p>0.91</p></td>
+<td><p>50</p></td>
+<td><p>RS</p></td>
+<td><p>8108054</p></td>
 </tr>
-<tr class="row-odd"><td>Duris S 8</td>
-<td>GW P9LMS2.EM-NQNS-57S5-0</td>
-<td>350</td>
-<td>19.8</td>
-<td>200</td>
-<td>4SMD</td>
-<td>0.60</td>
-<td>50</td>
-<td>RS</td>
-<td>8768969</td>
+<tr class="row-odd"><td><p>Duris S 8</p></td>
+<td><p>GW P9LMS2.EM-NQNS-57S5-0</p></td>
+<td><p>350</p></td>
+<td><p>19.8</p></td>
+<td><p>200</p></td>
+<td><p>4SMD</p></td>
+<td><p>0.60</p></td>
+<td><p>50</p></td>
+<td><p>RS</p></td>
+<td><p>8768969</p></td>
 </tr>
 </tbody>
 </table>
@@ -371,11 +376,11 @@ mainly because they were comparatively easy to solder by hand.  They come in 5 �
 cut out of a standard 2.54” striped PCB.</p>
 <div class="figure align-center" id="id1">
 <img alt="_images/DSC_2886.jpg" src="_images/DSC_2886.jpg" />
-<p class="caption"><span class="caption-text">Two LEDs soldered to a standard striped PCB.</span></p>
+<p class="caption"><span class="caption-text">Two LEDs soldered to a standard striped PCB.</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
 </div>
 <div class="admonition warning">
-<p class="first admonition-title">Warning</p>
-<p class="last">The power-LED market has short product cycles.  You must buy enough
+<p class="admonition-title">Warning</p>
+<p>The power-LED market has short product cycles.  You must buy enough
 LEDs for replacement purposes.</p>
 </div>
 </div>
@@ -389,25 +394,25 @@ resistors of the high-side BD140 PNP transistors.</p>
 use separate power supplies for VLED and VCPU.  Separate batteries for VLED and
 VCPU are also advisable for battery-powered operation.</p>
 <p>Now we calculate VLED.  The chosen LEDs have a forward voltage of:</p>
-<table border="1" class="docutils">
+<table class="docutils align-default">
 <colgroup>
-<col width="43%" />
-<col width="57%" />
+<col style="width: 43%" />
+<col style="width: 57%" />
 </colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">V_f</th>
-<th class="head">V</th>
+<thead>
+<tr class="row-odd"><th class="head"><p>V_f</p></th>
+<th class="head"><p>V</p></th>
 </tr>
 </thead>
-<tbody valign="top">
-<tr class="row-even"><td>min</td>
-<td>18.6</td>
+<tbody>
+<tr class="row-even"><td><p>min</p></td>
+<td><p>18.6</p></td>
 </tr>
-<tr class="row-odd"><td>typ</td>
-<td>19.8</td>
+<tr class="row-odd"><td><p>typ</p></td>
+<td><p>19.8</p></td>
 </tr>
-<tr class="row-even"><td>max</td>
-<td>22.2</td>
+<tr class="row-even"><td><p>max</p></td>
+<td><p>22.2</p></td>
 </tr>
 </tbody>
 </table>
@@ -459,15 +464,15 @@ against the back panel.  You may choose different connectors if you don’t moun
 them directly to the PCB board.</p>
 <div class="figure align-center" id="id2">
 <img alt="_images/DSC_2858.jpg" src="_images/DSC_2858.jpg" />
-<p class="caption"><span class="caption-text">The PCB component side front view.</span></p>
+<p class="caption"><span class="caption-text">The PCB component side front view.</span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
 </div>
 <div class="figure align-center" id="id3">
 <img alt="_images/DSC_2857.jpg" src="_images/DSC_2857.jpg" />
-<p class="caption"><span class="caption-text">The PCB component side back view.</span></p>
+<p class="caption"><span class="caption-text">The PCB component side back view.</span><a class="headerlink" href="#id3" title="Permalink to this image">¶</a></p>
 </div>
 <div class="figure align-center" id="id4">
 <img alt="_images/DSC_2863.jpg" src="_images/DSC_2863.jpg" />
-<p class="caption"><span class="caption-text">The PCB solder side.</span></p>
+<p class="caption"><span class="caption-text">The PCB solder side.</span><a class="headerlink" href="#id4" title="Permalink to this image">¶</a></p>
 </div>
 </div>
 <div class="section" id="case">
@@ -480,15 +485,15 @@ for a 100 × 100 mm PCB.  The CAD drawings of front and back panel where printed
 paper and then spotted through with a scriber, drilled and filed to shape.</p>
 <div class="figure align-center" id="id5">
 <img alt="_images/DSC_2827.jpg" src="_images/DSC_2827.jpg" />
-<p class="caption"><span class="caption-text">The front panel.</span></p>
+<p class="caption"><span class="caption-text">The front panel.</span><a class="headerlink" href="#id5" title="Permalink to this image">¶</a></p>
 </div>
 <div class="figure align-center" id="id6">
 <img alt="_images/DSC_2829.jpg" src="_images/DSC_2829.jpg" />
-<p class="caption"><span class="caption-text">The back panel.</span></p>
+<p class="caption"><span class="caption-text">The back panel.</span><a class="headerlink" href="#id6" title="Permalink to this image">¶</a></p>
 </div>
 <div class="figure align-center" id="id7">
 <img alt="_images/DSC_2842.jpg" src="_images/DSC_2842.jpg" />
-<p class="caption"><span class="caption-text">The mounted PCB.</span></p>
+<p class="caption"><span class="caption-text">The mounted PCB.</span><a class="headerlink" href="#id7" title="Permalink to this image">¶</a></p>
 </div>
 </div>
 </div>
