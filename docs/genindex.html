@@ -87,6 +87,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="builder.html">Dome Builder Manual</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="design.html">Electrical Design</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="design.html#overview">Overview</a></li>
 <li class="toctree-l3"><a class="reference internal" href="design.html#choice-of-led">Choice of LED</a></li>
 <li class="toctree-l3"><a class="reference internal" href="design.html#led-driver">Led Driver</a></li>
 <li class="toctree-l3"><a class="reference internal" href="design.html#constant-current-source">Constant Current Source</a></li>
@@ -129,6 +130,7 @@
 <li class="toctree-l3"><a class="reference internal" href="user_scripts.html#scripts-image-filer-py">scripts/image-filer.py</a></li>
 <li class="toctree-l3"><a class="reference internal" href="user_scripts.html#scripts-image-converter-py">scripts/image-converter.py</a></li>
 <li class="toctree-l3"><a class="reference internal" href="user_scripts.html#scripts-lp-builder-py">scripts/lp-builder.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_scripts.html#bin-ptm-encoder">bin/ptm-encoder</a></li>
 <li class="toctree-l3"><a class="reference internal" href="user_scripts.html#bin-ptm-decoder">bin/ptm-decoder</a></li>
 <li class="toctree-l3"><a class="reference internal" href="user_scripts.html#bin-ptm-exploder">bin/ptm-exploder</a></li>
 <li class="toctree-l3"><a class="reference internal" href="user_scripts.html#sample-lp-file-format">sample.lp file format</a></li>
@@ -257,9 +259,18 @@
 </li>
       </ul></li>
       <li>
+    --format
+
+      <ul>
+        <li><a href="user_scripts.html#cmdoption-ptm-encoder-f">ptm-encoder command line option</a>
+</li>
+      </ul></li>
+      <li>
     --help
 
       <ul>
+        <li><a href="user_scripts.html#cmdoption-ptm-encoder">ptm-encoder command line option</a>
+</li>
         <li><a href="user_scripts.html#cmdoption-scripts-image-converter-py-h">scripts/image-converter.py command line option</a>
 </li>
         <li><a href="user_scripts.html#cmdoption-scripts-image-filer-py-h">scripts/image-filer.py command line option</a>
@@ -275,9 +286,32 @@
 </li>
       </ul></li>
       <li>
+    --list
+
+      <ul>
+        <li><a href="user_scripts.html#cmdoption-ptm-encoder-l">ptm-encoder command line option</a>
+</li>
+      </ul></li>
+      <li>
+    --output=&lt;FILE&gt;
+
+      <ul>
+        <li><a href="user_scripts.html#cmdoption-ptm-encoder-o">ptm-encoder command line option</a>
+</li>
+      </ul></li>
+      <li>
+    --usage
+
+      <ul>
+        <li><a href="user_scripts.html#cmdoption-ptm-encoder-usage">ptm-encoder command line option</a>
+</li>
+      </ul></li>
+      <li>
     --verbose
 
       <ul>
+        <li><a href="user_scripts.html#cmdoption-ptm-encoder-v">ptm-encoder command line option</a>
+</li>
         <li><a href="user_scripts.html#cmdoption-scripts-image-converter-py-v">scripts/image-converter.py command line option</a>
 </li>
         <li><a href="user_scripts.html#cmdoption-scripts-image-filer-py-v">scripts/image-filer.py command line option</a>
@@ -285,8 +319,22 @@
         <li><a href="user_scripts.html#cmdoption-scripts-lp-builder-py-v">scripts/lp-builder.py command line option</a>
 </li>
       </ul></li>
+      <li>
+    --version
+
+      <ul>
+        <li><a href="user_scripts.html#cmdoption-ptm-encoder-version">ptm-encoder command line option</a>
+</li>
+      </ul></li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li>
+    -?
+
+      <ul>
+        <li><a href="user_scripts.html#cmdoption-ptm-encoder">ptm-encoder command line option</a>
+</li>
+      </ul></li>
       <li>
     -a &lt;angle&gt;
 
@@ -299,6 +347,13 @@
 
       <ul>
         <li><a href="user_scripts.html#cmdoption-scripts-image-converter-py-e">scripts/image-converter.py command line option</a>
+</li>
+      </ul></li>
+      <li>
+    -f
+
+      <ul>
+        <li><a href="user_scripts.html#cmdoption-ptm-encoder-f">ptm-encoder command line option</a>
 </li>
       </ul></li>
       <li>
@@ -320,6 +375,13 @@
 </li>
       </ul></li>
       <li>
+    -l
+
+      <ul>
+        <li><a href="user_scripts.html#cmdoption-ptm-encoder-l">ptm-encoder command line option</a>
+</li>
+      </ul></li>
+      <li>
     -l &lt;lp&gt;
 
       <ul>
@@ -327,9 +389,25 @@
 </li>
       </ul></li>
       <li>
+    -o
+
+      <ul>
+        <li><a href="user_scripts.html#cmdoption-ptm-encoder-o">ptm-encoder command line option</a>
+</li>
+      </ul></li>
+      <li>
+    -V
+
+      <ul>
+        <li><a href="user_scripts.html#cmdoption-ptm-encoder-version">ptm-encoder command line option</a>
+</li>
+      </ul></li>
+      <li>
     -v
 
       <ul>
+        <li><a href="user_scripts.html#cmdoption-ptm-encoder-v">ptm-encoder command line option</a>
+</li>
         <li><a href="user_scripts.html#cmdoption-scripts-image-converter-py-v">scripts/image-converter.py command line option</a>
 </li>
         <li><a href="user_scripts.html#cmdoption-scripts-image-filer-py-v">scripts/image-filer.py command line option</a>
@@ -456,6 +534,37 @@
         <li><a href="user_scripts.html#cmdoption-ptm-decoder-arg-u">u v</a>
 </li>
       </ul></li>
+      <li>
+    ptm-encoder command line option
+
+      <ul>
+        <li><a href="user_scripts.html#cmdoption-ptm-encoder-f">--format</a>
+</li>
+        <li><a href="user_scripts.html#cmdoption-ptm-encoder">--help</a>
+</li>
+        <li><a href="user_scripts.html#cmdoption-ptm-encoder-l">--list</a>
+</li>
+        <li><a href="user_scripts.html#cmdoption-ptm-encoder-o">--output=&lt;FILE&gt;</a>
+</li>
+        <li><a href="user_scripts.html#cmdoption-ptm-encoder-usage">--usage</a>
+</li>
+        <li><a href="user_scripts.html#cmdoption-ptm-encoder-v">--verbose</a>
+</li>
+        <li><a href="user_scripts.html#cmdoption-ptm-encoder-version">--version</a>
+</li>
+        <li><a href="user_scripts.html#cmdoption-ptm-encoder">-?</a>
+</li>
+        <li><a href="user_scripts.html#cmdoption-ptm-encoder-f">-f</a>
+</li>
+        <li><a href="user_scripts.html#cmdoption-ptm-encoder-l">-l</a>
+</li>
+        <li><a href="user_scripts.html#cmdoption-ptm-encoder-o">-o</a>
+</li>
+        <li><a href="user_scripts.html#cmdoption-ptm-encoder-v">-v</a>
+</li>
+        <li><a href="user_scripts.html#cmdoption-ptm-encoder-version">-V</a>
+</li>
+      </ul></li>
       <li><a href="ptmlib.html#_CPPv416ptm_alloc_blocksP12ptm_header_t">ptm_alloc_blocks (C++ function)</a>
 </li>
       <li><a href="ptmlib.html#_CPPv416ptm_alloc_headerv">ptm_alloc_header (C++ function)</a>
@@ -504,6 +613,8 @@
 </li>
       <li><a href="ptmlib.html#_CPPv4N12ptm_format_t12jpeg_streamsE">ptm_format_t::jpeg_streams (C++ member)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="ptmlib.html#_CPPv4N12ptm_format_t4nameE">ptm_format_t::name (C++ member)</a>
 </li>
       <li><a href="ptmlib.html#_CPPv4N12ptm_format_t10ptm_blocksE">ptm_format_t::ptm_blocks (C++ member)</a>
@@ -518,8 +629,6 @@
 </li>
       <li><a href="ptmlib.html#_CPPv412ptm_header_t">ptm_header_t (C++ class)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="ptmlib.html#_CPPv4N12ptm_header_t4biasE">ptm_header_t::bias (C++ member)</a>
 </li>
       <li><a href="ptmlib.html#_CPPv4N12ptm_header_t15compressed_sizeE">ptm_header_t::compressed_size (C++ member)</a>

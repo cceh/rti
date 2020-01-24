@@ -88,6 +88,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="builder.html">Dome Builder Manual</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="design.html">Electrical Design</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="design.html#overview">Overview</a></li>
 <li class="toctree-l3"><a class="reference internal" href="design.html#choice-of-led">Choice of LED</a></li>
 <li class="toctree-l3"><a class="reference internal" href="design.html#led-driver">Led Driver</a></li>
 <li class="toctree-l3"><a class="reference internal" href="design.html#constant-current-source">Constant Current Source</a></li>
@@ -130,6 +131,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#scripts-image-filer-py">scripts/image-filer.py</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#scripts-image-converter-py">scripts/image-converter.py</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#scripts-lp-builder-py">scripts/lp-builder.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#bin-ptm-encoder">bin/ptm-encoder</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#bin-ptm-decoder">bin/ptm-decoder</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#bin-ptm-exploder">bin/ptm-exploder</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#sample-lp-file-format">sample.lp file format</a></li>
@@ -359,8 +361,66 @@ writing a more general script for other domes.</p>
 </dd></dl>
 
 </div>
+<div class="section" id="bin-ptm-encoder">
+<span id="ptm-encoder"></span><h2>bin/ptm-encoder<a class="headerlink" href="#bin-ptm-encoder" title="Permalink to this headline">¶</a></h2>
+<p>Encode a series of JPEG files into one PTM file.</p>
+<p>Reads a <code class="file docutils literal notranslate"><span class="pre">sample.lp</span></code> file with a list of the JPEG files to encode.  You can
+build a <code class="file docutils literal notranslate"><span class="pre">sample.lp</span></code> file using the <a class="reference internal" href="#image-filer-py"><span class="std std-ref">image filer</span></a>
+script.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">usage: ptm-encoder [OPTION...] sample.lp</span>
+</pre></div>
+</div>
+<dl class="option">
+<dt id="cmdoption-ptm-encoder-f">
+<code class="sig-name descname">-f</code><code class="sig-prename descclassname"></code><code class="sig-prename descclassname">, </code><code class="sig-name descname">--format</code><code class="sig-prename descclassname"></code><a class="headerlink" href="#cmdoption-ptm-encoder-f" title="Permalink to this definition">¶</a></dt>
+<dd><p>Which PTM format to output (default: PTM_FORMAT_RGB).</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-ptm-encoder-l">
+<code class="sig-name descname">-l</code><code class="sig-prename descclassname"></code><code class="sig-prename descclassname">, </code><code class="sig-name descname">--list</code><code class="sig-prename descclassname"></code><a class="headerlink" href="#cmdoption-ptm-encoder-l" title="Permalink to this definition">¶</a></dt>
+<dd><p>Output a list of supported PTM formats, eg:</p>
+<ul class="simple">
+<li><p>PTM_FORMAT_RGB,</p></li>
+<li><p>PTM_FORMAT_LRGB,</p></li>
+<li><p>PTM_FORMAT_JPEG_RGB,</p></li>
+<li><p>PTM_FORMAT_JPEG_LRGB.</p></li>
+</ul>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-ptm-encoder-o">
+<code class="sig-name descname">-o</code><code class="sig-prename descclassname"></code><code class="sig-prename descclassname">, </code><code class="sig-name descname">--output</code><code class="sig-prename descclassname">=&lt;FILE&gt;</code><a class="headerlink" href="#cmdoption-ptm-encoder-o" title="Permalink to this definition">¶</a></dt>
+<dd><p>Output to FILE instead of STDOUT.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-ptm-encoder-v">
+<code class="sig-name descname">-v</code><code class="sig-prename descclassname"></code><code class="sig-prename descclassname">, </code><code class="sig-name descname">--verbose</code><code class="sig-prename descclassname"></code><a class="headerlink" href="#cmdoption-ptm-encoder-v" title="Permalink to this definition">¶</a></dt>
+<dd><p>Produce verbose output.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-ptm-encoder">
+<code class="sig-name descname">-</code><code class="sig-prename descclassname">?</code><code class="sig-prename descclassname">, </code><code class="sig-name descname">--help</code><code class="sig-prename descclassname"></code><a class="headerlink" href="#cmdoption-ptm-encoder" title="Permalink to this definition">¶</a></dt>
+<dd><p>Give this help list.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-ptm-encoder-usage">
+<code class="sig-name descname">--usage</code><code class="sig-prename descclassname"></code><a class="headerlink" href="#cmdoption-ptm-encoder-usage" title="Permalink to this definition">¶</a></dt>
+<dd><p>Give a short usage message.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-ptm-encoder-version">
+<code class="sig-name descname">-V</code><code class="sig-prename descclassname"></code><code class="sig-prename descclassname">, </code><code class="sig-name descname">--version</code><code class="sig-prename descclassname"></code><a class="headerlink" href="#cmdoption-ptm-encoder-version" title="Permalink to this definition">¶</a></dt>
+<dd><p>Print program version.</p>
+</dd></dl>
+
+</div>
 <div class="section" id="bin-ptm-decoder">
-<span id="ptm-decoder"></span><span id="ptm-encoder"></span><h2>bin/ptm-decoder<a class="headerlink" href="#bin-ptm-decoder" title="Permalink to this headline">¶</a></h2>
+<span id="ptm-decoder"></span><h2>bin/ptm-decoder<a class="headerlink" href="#bin-ptm-decoder" title="Permalink to this headline">¶</a></h2>
 <p>Extract one JPEG out of a PTM file.</p>
 <p>The output goes to stdout, so the program is easy to use in a web server.</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">usage: ptm-decoder filename.ptm [u v] &gt; filename.jpg</span>

@@ -9,6 +9,80 @@ The main goals of this design were:
 - the dome should work with any camera using standard interfaces.
 
 
+Overview
+--------
+
+While researching on the internet we found many electrical designs like this:
+
+.. uml::
+   :align: center
+   :caption: Typical design found on the internet
+
+   skinparam backgroundColor transparent
+   skinparam DefaultTextAlignment center
+   skinparam componentStyle uml2
+
+   component "Controller" as timer
+   component "LED Driver" as led_drv
+   rectangle "Camera"  as camera
+   rectangle "Dome"    as dome
+
+   note left of timer:  User must set timing
+   note left of camera: User must set exposure
+
+   timer   --> camera : shutter
+   timer   ->  led_drv
+   led_drv --> dome
+
+
+The camera is in single-shot mode.  The controller tells the LED driver to turn
+on the next LED and then commands the camera shutter.  After a programmable time
+lapse the next LED is turned on, etc.
+
+This is sub-optimal because the controller does not know when the camera is
+ready to take the next exposure.  It depends on the exposure time and the size
+of the picture file and the speed of the camera memory system.  The optimal
+interval can only be found by experiment.  You have to program a generous
+interval because if the interval is too short and the camera misses an exposure
+you will get an unusable set of pictures.
+
+The CCeH driver module takes a different approach that does not have these
+disadvantages.
+
+The camera is in continuous-shot mode and we use the external flash signal from
+the camera to drive the LEDs in the dome: whenever the camera signals the
+external flash to go off, we turn on the next LED.  This completely obviates the
+need to guess an interval and to program it into the controller because the
+camera sure knows when it is ready to take the next picture.  You set the
+exposure on the camera and the RTI pictures will be taken as fast as your camera
+can go.
+
+
+.. uml::
+   :align: center
+   :caption: CCeH Design
+
+   skinparam backgroundColor transparent
+   skinparam DefaultTextAlignment center
+   skinparam componentStyle uml2
+
+   component "Camera Driver" as cam_drv
+   rectangle "Camera"        as camera
+   component "LED Driver"    as led_drv
+   rectangle "Dome"          as dome
+
+   cam_drv --> camera : shutter
+
+   note left of camera: User must set exposure
+
+   camera  --> led_drv : flash
+   led_drv --> dome
+
+
+Other advantages of this design are: conservation of energy, because the LEDs
+are turned on only for the time needed to take the exposure.  This is important
+if your dome is battery-powered.
+
 
 Choice of LED
 -------------

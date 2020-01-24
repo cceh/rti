@@ -88,6 +88,7 @@
 </li>
 <li class="toctree-l1 current"><a class="reference internal" href="builder.html">Dome Builder Manual</a><ul class="current">
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Electrical Design</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#overview">Overview</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#choice-of-led">Choice of LED</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#led-driver">Led Driver</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#constant-current-source">Constant Current Source</a></li>
@@ -228,6 +229,71 @@
 <li><p>the dome should look to the camera like an ordinary flash gun,</p></li>
 <li><p>the dome should work with any camera using standard interfaces.</p></li>
 </ul>
+<div class="section" id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<p>While researching on the internet we found many electrical designs like this:</p>
+<div class="figure align-center" id="id1">
+<p class="plantuml">
+<img src="_images/plantuml-8bcb0f86380be417b46e6061d4ca98da7399f47b.png" alt="skinparam backgroundColor transparent
+skinparam DefaultTextAlignment center
+skinparam componentStyle uml2
+
+component &quot;Controller&quot; as timer
+component &quot;LED Driver&quot; as led_drv
+rectangle &quot;Camera&quot;  as camera
+rectangle &quot;Dome&quot;    as dome
+
+note left of timer:  User must set timing
+note left of camera: User must set exposure
+
+timer   --&gt; camera : shutter
+timer   -&gt;  led_drv
+led_drv --&gt; dome"/>
+</p>
+<p class="caption"><span class="caption-text">Typical design found on the internet</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
+</div>
+<p>The camera is in single-shot mode.  The controller tells the LED driver to turn
+on the next LED and then commands the camera shutter.  After a programmable time
+lapse the next LED is turned on, etc.</p>
+<p>This is sub-optimal because the controller does not know when the camera is
+ready to take the next exposure.  It depends on the exposure time and the size
+of the picture file and the speed of the camera memory system.  The optimal
+interval can only be found by experiment.  You have to program a generous
+interval because if the interval is too short and the camera misses an exposure
+you will get an unusable set of pictures.</p>
+<p>The CCeH driver module takes a different approach that does not have these
+disadvantages.</p>
+<p>The camera is in continuous-shot mode and we use the external flash signal from
+the camera to drive the LEDs in the dome: whenever the camera signals the
+external flash to go off, we turn on the next LED.  This completely obviates the
+need to guess an interval and to program it into the controller because the
+camera sure knows when it is ready to take the next picture.  You set the
+exposure on the camera and the RTI pictures will be taken as fast as your camera
+can go.</p>
+<div class="figure align-center" id="id2">
+<p class="plantuml">
+<img src="_images/plantuml-188f3fe6007364f63df7f3a8792e2e29e6d2360d.png" alt="skinparam backgroundColor transparent
+skinparam DefaultTextAlignment center
+skinparam componentStyle uml2
+
+component &quot;Camera Driver&quot; as cam_drv
+rectangle &quot;Camera&quot;        as camera
+component &quot;LED Driver&quot;    as led_drv
+rectangle &quot;Dome&quot;          as dome
+
+cam_drv --&gt; camera : shutter
+
+note left of camera: User must set exposure
+
+camera  --&gt; led_drv : flash
+led_drv --&gt; dome"/>
+</p>
+<p class="caption"><span class="caption-text">CCeH Design</span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
+</div>
+<p>Other advantages of this design are: conservation of energy, because the LEDs
+are turned on only for the time needed to take the exposure.  This is important
+if your dome is battery-powered.</p>
+</div>
 <div class="section" id="choice-of-led">
 <h2>Choice of LED<a class="headerlink" href="#choice-of-led" title="Permalink to this headline">¶</a></h2>
 <p>Consider the following points before selecting an LED make.</p>
@@ -374,9 +440,9 @@ the LED make before buying quantities.</p>
 mainly because they were comparatively easy to solder by hand.  They come in 5 ×
 5 mm (4SMD) packages, which we then soldered onto postage-stamp sized pieces we
 cut out of a standard 2.54” striped PCB.</p>
-<div class="figure align-center" id="id1">
+<div class="figure align-center" id="id3">
 <img alt="_images/DSC_2886.jpg" src="_images/DSC_2886.jpg" />
-<p class="caption"><span class="caption-text">Two LEDs soldered to a standard striped PCB.</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-text">Two LEDs soldered to a standard striped PCB.</span><a class="headerlink" href="#id3" title="Permalink to this image">¶</a></p>
 </div>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
@@ -462,17 +528,17 @@ manufacturers.</p>
 <p>The back of the board holds a few standard connectors and can be mounted flush
 against the back panel.  You may choose different connectors if you don’t mount
 them directly to the PCB board.</p>
-<div class="figure align-center" id="id2">
-<img alt="_images/DSC_2858.jpg" src="_images/DSC_2858.jpg" />
-<p class="caption"><span class="caption-text">The PCB component side front view.</span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
-</div>
-<div class="figure align-center" id="id3">
-<img alt="_images/DSC_2857.jpg" src="_images/DSC_2857.jpg" />
-<p class="caption"><span class="caption-text">The PCB component side back view.</span><a class="headerlink" href="#id3" title="Permalink to this image">¶</a></p>
-</div>
 <div class="figure align-center" id="id4">
+<img alt="_images/DSC_2858.jpg" src="_images/DSC_2858.jpg" />
+<p class="caption"><span class="caption-text">The PCB component side front view.</span><a class="headerlink" href="#id4" title="Permalink to this image">¶</a></p>
+</div>
+<div class="figure align-center" id="id5">
+<img alt="_images/DSC_2857.jpg" src="_images/DSC_2857.jpg" />
+<p class="caption"><span class="caption-text">The PCB component side back view.</span><a class="headerlink" href="#id5" title="Permalink to this image">¶</a></p>
+</div>
+<div class="figure align-center" id="id6">
 <img alt="_images/DSC_2863.jpg" src="_images/DSC_2863.jpg" />
-<p class="caption"><span class="caption-text">The PCB solder side.</span><a class="headerlink" href="#id4" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-text">The PCB solder side.</span><a class="headerlink" href="#id6" title="Permalink to this image">¶</a></p>
 </div>
 </div>
 <div class="section" id="case">
@@ -483,17 +549,17 @@ room.)</p>
 <p>We used a case made of 2 <em>Fischer Elektronik KO H 2</em> halves, which offers room
 for a 100 × 100 mm PCB.  The CAD drawings of front and back panel where printed on
 paper and then spotted through with a scriber, drilled and filed to shape.</p>
-<div class="figure align-center" id="id5">
-<img alt="_images/DSC_2827.jpg" src="_images/DSC_2827.jpg" />
-<p class="caption"><span class="caption-text">The front panel.</span><a class="headerlink" href="#id5" title="Permalink to this image">¶</a></p>
-</div>
-<div class="figure align-center" id="id6">
-<img alt="_images/DSC_2829.jpg" src="_images/DSC_2829.jpg" />
-<p class="caption"><span class="caption-text">The back panel.</span><a class="headerlink" href="#id6" title="Permalink to this image">¶</a></p>
-</div>
 <div class="figure align-center" id="id7">
+<img alt="_images/DSC_2827.jpg" src="_images/DSC_2827.jpg" />
+<p class="caption"><span class="caption-text">The front panel.</span><a class="headerlink" href="#id7" title="Permalink to this image">¶</a></p>
+</div>
+<div class="figure align-center" id="id8">
+<img alt="_images/DSC_2829.jpg" src="_images/DSC_2829.jpg" />
+<p class="caption"><span class="caption-text">The back panel.</span><a class="headerlink" href="#id8" title="Permalink to this image">¶</a></p>
+</div>
+<div class="figure align-center" id="id9">
 <img alt="_images/DSC_2842.jpg" src="_images/DSC_2842.jpg" />
-<p class="caption"><span class="caption-text">The mounted PCB.</span><a class="headerlink" href="#id7" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-text">The mounted PCB.</span><a class="headerlink" href="#id9" title="Permalink to this image">¶</a></p>
 </div>
 </div>
 </div>

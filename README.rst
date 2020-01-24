@@ -10,6 +10,6 @@ Dependencies
 
 Debian
 
-```shell
-sudo apt install build-essential liblapacke-dev 
-```
+.. code-block:: console
+
+   sudo apt install build-essential liblapacke-dev
