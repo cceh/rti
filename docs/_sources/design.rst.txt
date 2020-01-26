@@ -12,76 +12,95 @@ The main goals of this design were:
 Overview
 --------
 
-While researching on the internet we found many electrical designs like this:
+While researching affordable RTI domes on the internet we found electrical
+designs like this: [#]_ [#]_
 
-.. uml::
-   :align: center
+.. pic:: pic
    :caption: Typical design found on the internet
 
-   skinparam backgroundColor transparent
-   skinparam DefaultTextAlignment center
-   skinparam componentStyle uml2
+   right;
 
-   component "Controller" as timer
-   component "LED Driver" as led_drv
-   rectangle "Camera"  as camera
-   rectangle "Dome"    as dome
+   box "user must" "set timing" note;
+   arrow astyle;
+   CTRL: box "Controller" component;
+   arrow 1 "shutter" above astyle;
+   CAM: box "Camera" external;
+   line <- astyle;
+   box "user must" "set exposure" note;
 
-   note left of timer:  User must set timing
-   note left of camera: User must set exposure
+   move to CTRL.s; down;
+   arrow astyle "step" rjust;
 
-   timer   --> camera : shutter
-   timer   ->  led_drv
-   led_drv --> dome
+   DRV: box "LED Driver" component;
+   move to DRV.e; right;
+   arrow 1 astyle;
+   DOME: box "Dome" external;
 
 
 The camera is in single-shot mode.  The controller tells the LED driver to turn
-on the next LED and then commands the camera shutter.  After a programmable time
-lapse the next LED is turned on, etc.
+on the next LED and then presses and releases the camera shutter.  The camera
+takes one picture.  After a programmable time lapse the controller tells the LED
+driver to turn the LED off again.  After another programmable interval the cycle is
+repeated, for as many times as there are LEDs in the dome.
 
-This is sub-optimal because the controller does not know when the camera is
-ready to take the next exposure.  It depends on the exposure time and the size
-of the picture file and the speed of the camera memory system.  The optimal
-interval can only be found by experiment.  You have to program a generous
-interval because if the interval is too short and the camera misses an exposure
-you will get an unusable set of pictures.
+This is sub-optimal because the controller does not know when the camera is done
+with the current exposure nor when it is ready to take the next exposure.  This
+depends on the exposure time, the size of the picture file, the speed of the
+camera memory system, and many other things.  The optimal intervals can only be
+found by experiment.  You must program generous intervals because if any
+interval is too short the camera will miss exposures and you will get an
+unusable set of pictures.
 
 The CCeH driver module takes a different approach that does not have these
 disadvantages.
 
-The camera is in continuous-shot mode and we use the external flash signal from
-the camera to drive the LEDs in the dome: whenever the camera signals the
-external flash to go off, we turn on the next LED.  This completely obviates the
-need to guess an interval and to program it into the controller because the
-camera sure knows when it is ready to take the next picture.  You set the
-exposure on the camera and the RTI pictures will be taken as fast as your camera
-can go.
+..
+   defcolor lightyellow rgb #fefece
+   defcolor yellow rgb #fbfb77
+   defcolor red rgb #a80136
+
+.. pic:: pic
+   :caption: CCeH design
+
+   right;
+
+   CTRL: box "Controller" component;
+   arrow 1 astyle "shutter" above;
+   CAM: box "Camera" external;
+   line <- astyle;
+   box "user must" "set exposure" note;
+
+   move to CTRL.s; down;
+   line <- astyle "done" rjust;
+
+   DRV: box "LED Driver" component;
+   move to DRV.e; right;
+
+   arrow 1 astyle;
+   DOME: box "Dome" external;
+
+   move to 1/2 <CAM.sw,CAM.s>;
+   spline .6 down 0.25 then left 1.65 then down 0.25 -> astyle;
+
+   move to 1/2 <CAM.c,DRV.c>;
+   "flash" above;
 
 
-.. uml::
-   :align: center
-   :caption: CCeH Design
+In the CCeH design you don't need to program any interval into the controller
+because the camera itself tells the controller what to do.  The system will go
+as fast as the camera allows and never miss an exposure.
 
-   skinparam backgroundColor transparent
-   skinparam DefaultTextAlignment center
-   skinparam componentStyle uml2
+The camera is in continuous-shot mode.  The controller presses the camera
+shutter and keeps it pressed.  When the camera is about to take an exposure it
+signals this on its external flash output.  The LED driver listens to this
+signal and turns on the next LED.  When the camera is done with the exposure it
+resets the flash output and the driver turns off the LED.  This flash cycle
+repeats until the last LED is reached.  Then the LED driver will tell the
+controller to release the shutter and the camera will stop.
 
-   component "Camera Driver" as cam_drv
-   rectangle "Camera"        as camera
-   component "LED Driver"    as led_drv
-   rectangle "Dome"          as dome
-
-   cam_drv --> camera : shutter
-
-   note left of camera: User must set exposure
-
-   camera  --> led_drv : flash
-   led_drv --> dome
-
-
-Other advantages of this design are: conservation of energy, because the LEDs
-are turned on only for the time needed to take the exposure.  This is important
-if your dome is battery-powered.
+This design conserves energy, because the LEDs are turned on only for the time
+needed to take the exposure, and turned off during the time the camera processes
+and stores the image.  You want this in battery-powered domes.
 
 
 Choice of LED
@@ -268,3 +287,13 @@ paper and then spotted through with a scriber, drilled and filed to shape.
    :align: center
 
    The mounted PCB.
+
+
+Footnotes
+=========
+
+.. [#] Leszek Pawlowicz.  Affordable Reflectance Transformation Imaging Dome.
+       https://artid.readthedocs.io/en/latest/index.html
+
+.. [#] Ted Kinsman.  An Easy To Build Reflectance Transformation Imaging (RTI) System.
+       https://firstmonday.org/ojs/index.php/jbc/article/view/6625/5594

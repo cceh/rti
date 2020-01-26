@@ -98,6 +98,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#case">Case</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="#footnotes">Footnotes</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="user.html">Dome User Manual</a><ul>
@@ -231,68 +232,202 @@
 </ul>
 <div class="section" id="overview">
 <h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
-<p>While researching on the internet we found many electrical designs like this:</p>
-<div class="figure align-center" id="id1">
-<p class="plantuml">
-<img src="_images/plantuml-8bcb0f86380be417b46e6061d4ca98da7399f47b.png" alt="skinparam backgroundColor transparent
-skinparam DefaultTextAlignment center
-skinparam componentStyle uml2
+<p>While researching affordable RTI domes on the internet we found electrical
+designs like this: <a class="footnote-reference brackets" href="#id3" id="id1">1</a> <a class="footnote-reference brackets" href="#id4" id="id2">2</a></p>
+<div class="figure align-center" id="id5">
+<div class="pic">
 
-component &quot;Controller&quot; as timer
-component &quot;LED Driver&quot; as led_drv
-rectangle &quot;Camera&quot;  as camera
-rectangle &quot;Dome&quot;    as dome
 
-note left of timer:  User must set timing
-note left of camera: User must set exposure
-
-timer   --&gt; camera : shutter
-timer   -&gt;  led_drv
-led_drv --&gt; dome"/>
-</p>
-<p class="caption"><span class="caption-text">Typical design found on the internet</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
+<!-- Creator: dpic version 2019.11.30 option -v for SVG 1.1 -->
+<!-- width="698" height="151" -->
+<svg
+ xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+ xml:space="preserve"
+ style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision;
+ image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
+ width="697.2px" height="150px"
+ viewBox="0 0 697.2 150"
+ font-size="11pt" text-anchor="middle"
+ stroke="black" stroke-miterlimit="10" stroke-width="1.066667" fill="none">
+<g>
+<rect fill="#fbfb77" stroke-width="2"
+ stroke="#a80136"
+ x="2" y="1" rx="24" ry="24" width="124.8" height="48" />
+<text font-size="11pt" stroke-width="0.2pt" fill="black" x="64.4" y="22.506667">user must</text>
+<text font-size="11pt" stroke-width="0.2pt" fill="black" x="64.4" y="37.173333">set timing</text>
+<polygon stroke-width="0" stroke="#a80136"
+ fill="#a80136"
+ points="168.4,25 165.2,22.6
+174.8,25 165.2,27.4" />
+<line stroke-width="1.333333"
+ stroke="#a80136"
+ x1="126.8" y1="25" x2="172.051263" y2="25" />
+<rect fill="#fefece" stroke-width="2"
+ stroke="#a80136"
+ x="174.8" y="1" width="124.8" height="48" />
+<text font-size="11pt" stroke-width="0.2pt" fill="black" x="237.2" y="29.84">Controller</text>
+<polygon stroke-width="0" stroke="#a80136"
+ fill="#a80136"
+ points="389.2,25 386,22.6
+395.6,25 386,27.4" />
+<line stroke-width="1.333333"
+ stroke="#a80136"
+ x1="299.6" y1="25" x2="392.851263" y2="25" />
+<text font-size="11pt" stroke-width="0.2pt" fill="black" x="346.225631" y="22.333333">shutter</text>
+<rect fill="#fefece" stroke-width="2"
+ stroke="#000000"
+ x="395.6" y="1" width="124.8" height="48" />
+<text font-size="11pt" stroke-width="0.2pt" fill="black" x="458" y="29.84">Camera</text>
+<polygon stroke-width="0" stroke="#a80136"
+ fill="#a80136"
+ points="526.8,25 530,27.4
+520.4,25 530,22.6" />
+<line stroke-width="1.333333"
+ stroke="#a80136"
+ x1="523.148737" y1="25" x2="568.4" y2="25" />
+<rect fill="#fbfb77" stroke-width="2"
+ stroke="#a80136"
+ x="568.4" y="1" rx="24" ry="24" width="124.8" height="48" />
+<text font-size="11pt" stroke-width="0.2pt" fill="black" x="630.8" y="22.506667">user must</text>
+<text font-size="11pt" stroke-width="0.2pt" fill="black" x="630.8" y="37.173333">set exposure</text>
+<polygon stroke-width="0" stroke="#a80136"
+ fill="#a80136"
+ points="237.2,90.6 239.6,87.4
+237.2,97 234.8,87.4" />
+<line stroke-width="1.333333"
+ stroke="#a80136"
+ x1="237.2" y1="49" x2="237.2" y2="94.251263" />
+<text font-size="11pt" stroke-width="0.2pt" fill="black" text-anchor="end"
+ x="234.533333" y="76.465631">step</text>
+<rect fill="#fefece" stroke-width="2"
+ stroke="#a80136"
+ x="174.8" y="97" width="124.8" height="48" />
+<text font-size="11pt" stroke-width="0.2pt" fill="black" x="237.2" y="125.84">LED Driver</text>
+<polygon stroke-width="0" stroke="#a80136"
+ fill="#a80136"
+ points="389.2,121 386,118.6
+395.6,121 386,123.4" />
+<line stroke-width="1.333333"
+ stroke="#a80136"
+ x1="299.6" y1="121" x2="392.851263" y2="121" />
+<rect fill="#fefece" stroke-width="2"
+ stroke="#000000"
+ x="395.6" y="97" width="124.8" height="48" />
+<text font-size="11pt" stroke-width="0.2pt" fill="black" x="458" y="125.84">Dome</text>
+</g></svg>
+</div>
+<p class="caption"><span class="caption-text">Typical design found on the internet</span><a class="headerlink" href="#id5" title="Permalink to this image">¶</a></p>
 </div>
 <p>The camera is in single-shot mode.  The controller tells the LED driver to turn
-on the next LED and then commands the camera shutter.  After a programmable time
-lapse the next LED is turned on, etc.</p>
-<p>This is sub-optimal because the controller does not know when the camera is
-ready to take the next exposure.  It depends on the exposure time and the size
-of the picture file and the speed of the camera memory system.  The optimal
-interval can only be found by experiment.  You have to program a generous
-interval because if the interval is too short and the camera misses an exposure
-you will get an unusable set of pictures.</p>
+on the next LED and then presses and releases the camera shutter.  The camera
+takes one picture.  After a programmable time lapse the controller tells the LED
+driver to turn the LED off again.  After another programmable interval the cycle is
+repeated, for as many times as there are LEDs in the dome.</p>
+<p>This is sub-optimal because the controller does not know when the camera is done
+with the current exposure nor when it is ready to take the next exposure.  This
+depends on the exposure time, the size of the picture file, the speed of the
+camera memory system, and many other things.  The optimal intervals can only be
+found by experiment.  You must program generous intervals because if any
+interval is too short the camera will miss exposures and you will get an
+unusable set of pictures.</p>
 <p>The CCeH driver module takes a different approach that does not have these
 disadvantages.</p>
-<p>The camera is in continuous-shot mode and we use the external flash signal from
-the camera to drive the LEDs in the dome: whenever the camera signals the
-external flash to go off, we turn on the next LED.  This completely obviates the
-need to guess an interval and to program it into the controller because the
-camera sure knows when it is ready to take the next picture.  You set the
-exposure on the camera and the RTI pictures will be taken as fast as your camera
-can go.</p>
-<div class="figure align-center" id="id2">
-<p class="plantuml">
-<img src="_images/plantuml-188f3fe6007364f63df7f3a8792e2e29e6d2360d.png" alt="skinparam backgroundColor transparent
-skinparam DefaultTextAlignment center
-skinparam componentStyle uml2
+<div class="figure align-center" id="id6">
+<div class="pic">
 
-component &quot;Camera Driver&quot; as cam_drv
-rectangle &quot;Camera&quot;        as camera
-component &quot;LED Driver&quot;    as led_drv
-rectangle &quot;Dome&quot;          as dome
 
-cam_drv --&gt; camera : shutter
-
-note left of camera: User must set exposure
-
-camera  --&gt; led_drv : flash
-led_drv --&gt; dome"/>
-</p>
-<p class="caption"><span class="caption-text">CCeH Design</span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
+<!-- Creator: dpic version 2019.11.30 option -v for SVG 1.1 -->
+<!-- width="525" height="151" -->
+<svg
+ xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+ xml:space="preserve"
+ style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision;
+ image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
+ width="524.4px" height="150px"
+ viewBox="0 0 524.4 150"
+ font-size="11pt" text-anchor="middle"
+ stroke="black" stroke-miterlimit="10" stroke-width="1.066667" fill="none">
+<g>
+<rect fill="#fefece" stroke-width="2"
+ stroke="#a80136"
+ x="2" y="1" width="124.8" height="48" />
+<text font-size="11pt" stroke-width="0.2pt" fill="black" x="64.4" y="29.84">Controller</text>
+<polygon stroke-width="0" stroke="#a80136"
+ fill="#a80136"
+ points="216.4,25 213.2,22.6
+222.8,25 213.2,27.4" />
+<line stroke-width="1.333333"
+ stroke="#a80136"
+ x1="126.8" y1="25" x2="220.051263" y2="25" />
+<text font-size="11pt" stroke-width="0.2pt" fill="black" x="173.425631" y="22.333333">shutter</text>
+<rect fill="#fefece" stroke-width="2"
+ stroke="#000000"
+ x="222.8" y="1" width="124.8" height="48" />
+<text font-size="11pt" stroke-width="0.2pt" fill="black" x="285.2" y="29.84">Camera</text>
+<polygon stroke-width="0" stroke="#a80136"
+ fill="#a80136"
+ points="354,25 357.2,27.4
+347.6,25 357.2,22.6" />
+<line stroke-width="1.333333"
+ stroke="#a80136"
+ x1="350.348737" y1="25" x2="395.6" y2="25" />
+<rect fill="#fbfb77" stroke-width="2"
+ stroke="#a80136"
+ x="395.6" y="1" rx="24" ry="24" width="124.8" height="48" />
+<text font-size="11pt" stroke-width="0.2pt" fill="black" x="458" y="22.506667">user must</text>
+<text font-size="11pt" stroke-width="0.2pt" fill="black" x="458" y="37.173333">set exposure</text>
+<polygon stroke-width="0" stroke="#a80136"
+ fill="#a80136"
+ points="64.4,55.4 62,58.6
+64.4,49 66.8,58.6" />
+<line stroke-width="1.333333"
+ stroke="#a80136"
+ x1="64.4" y1="51.748737" x2="64.4" y2="97" />
+<text font-size="11pt" stroke-width="0.2pt" fill="black" text-anchor="end"
+ x="61.733333" y="79.214369">done</text>
+<rect fill="#fefece" stroke-width="2"
+ stroke="#a80136"
+ x="2" y="97" width="124.8" height="48" />
+<text font-size="11pt" stroke-width="0.2pt" fill="black" x="64.4" y="125.84">LED Driver</text>
+<polygon stroke-width="0" stroke="#a80136"
+ fill="#a80136"
+ points="216.4,121 213.2,118.6
+222.8,121 213.2,123.4" />
+<line stroke-width="1.333333"
+ stroke="#a80136"
+ x1="126.8" y1="121" x2="220.051263" y2="121" />
+<rect fill="#fefece" stroke-width="2"
+ stroke="#000000"
+ x="222.8" y="97" width="124.8" height="48" />
+<text font-size="11pt" stroke-width="0.2pt" fill="black" x="285.2" y="125.84">Dome</text>
+<polygon stroke-width="0" stroke="#a80136"
+ fill="#a80136"
+ points="95.6,90.6 98,87.4
+95.6,97 93.2,87.4" />
+<path stroke-width="1.333333"
+ stroke="#a80136"
+ d="M 254,49
+ C 254,63.4 222.32,73 174.8,73 127.28,73 95.6,81.500505 95.6,94.251263" />
+<text font-size="11pt" stroke-width="0.266667"
+ fill="black"
+ x="174.8" y="70.333333">flash</text>
+</g></svg>
 </div>
-<p>Other advantages of this design are: conservation of energy, because the LEDs
-are turned on only for the time needed to take the exposure.  This is important
-if your dome is battery-powered.</p>
+<p class="caption"><span class="caption-text">CCeH design</span><a class="headerlink" href="#id6" title="Permalink to this image">¶</a></p>
+</div>
+<p>In the CCeH design you don’t need to program any interval into the controller
+because the camera itself tells the controller what to do.  The system will go
+as fast as the camera allows and never miss an exposure.</p>
+<p>The camera is in continuous-shot mode.  The controller presses the camera
+shutter and keeps it pressed.  When the camera is about to take an exposure it
+signals this on its external flash output.  The LED driver listens to this
+signal and turns on the next LED.  When the camera is done with the exposure it
+resets the flash output and the driver turns off the LED.  This flash cycle
+repeats until the last LED is reached.  Then the LED driver will tell the
+controller to release the shutter and the camera will stop.</p>
+<p>This design conserves energy, because the LEDs are turned on only for the time
+needed to take the exposure, and turned off during the time the camera processes
+and stores the image.  You want this in battery-powered domes.</p>
 </div>
 <div class="section" id="choice-of-led">
 <h2>Choice of LED<a class="headerlink" href="#choice-of-led" title="Permalink to this headline">¶</a></h2>
@@ -440,9 +575,9 @@ the LED make before buying quantities.</p>
 mainly because they were comparatively easy to solder by hand.  They come in 5 ×
 5 mm (4SMD) packages, which we then soldered onto postage-stamp sized pieces we
 cut out of a standard 2.54” striped PCB.</p>
-<div class="figure align-center" id="id3">
+<div class="figure align-center" id="id7">
 <img alt="_images/DSC_2886.jpg" src="_images/DSC_2886.jpg" />
-<p class="caption"><span class="caption-text">Two LEDs soldered to a standard striped PCB.</span><a class="headerlink" href="#id3" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-text">Two LEDs soldered to a standard striped PCB.</span><a class="headerlink" href="#id7" title="Permalink to this image">¶</a></p>
 </div>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
@@ -528,17 +663,17 @@ manufacturers.</p>
 <p>The back of the board holds a few standard connectors and can be mounted flush
 against the back panel.  You may choose different connectors if you don’t mount
 them directly to the PCB board.</p>
-<div class="figure align-center" id="id4">
+<div class="figure align-center" id="id8">
 <img alt="_images/DSC_2858.jpg" src="_images/DSC_2858.jpg" />
-<p class="caption"><span class="caption-text">The PCB component side front view.</span><a class="headerlink" href="#id4" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-text">The PCB component side front view.</span><a class="headerlink" href="#id8" title="Permalink to this image">¶</a></p>
 </div>
-<div class="figure align-center" id="id5">
+<div class="figure align-center" id="id9">
 <img alt="_images/DSC_2857.jpg" src="_images/DSC_2857.jpg" />
-<p class="caption"><span class="caption-text">The PCB component side back view.</span><a class="headerlink" href="#id5" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-text">The PCB component side back view.</span><a class="headerlink" href="#id9" title="Permalink to this image">¶</a></p>
 </div>
-<div class="figure align-center" id="id6">
+<div class="figure align-center" id="id10">
 <img alt="_images/DSC_2863.jpg" src="_images/DSC_2863.jpg" />
-<p class="caption"><span class="caption-text">The PCB solder side.</span><a class="headerlink" href="#id6" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-text">The PCB solder side.</span><a class="headerlink" href="#id10" title="Permalink to this image">¶</a></p>
 </div>
 </div>
 <div class="section" id="case">
@@ -549,19 +684,32 @@ room.)</p>
 <p>We used a case made of 2 <em>Fischer Elektronik KO H 2</em> halves, which offers room
 for a 100 × 100 mm PCB.  The CAD drawings of front and back panel where printed on
 paper and then spotted through with a scriber, drilled and filed to shape.</p>
-<div class="figure align-center" id="id7">
+<div class="figure align-center" id="id11">
 <img alt="_images/DSC_2827.jpg" src="_images/DSC_2827.jpg" />
-<p class="caption"><span class="caption-text">The front panel.</span><a class="headerlink" href="#id7" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-text">The front panel.</span><a class="headerlink" href="#id11" title="Permalink to this image">¶</a></p>
 </div>
-<div class="figure align-center" id="id8">
+<div class="figure align-center" id="id12">
 <img alt="_images/DSC_2829.jpg" src="_images/DSC_2829.jpg" />
-<p class="caption"><span class="caption-text">The back panel.</span><a class="headerlink" href="#id8" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-text">The back panel.</span><a class="headerlink" href="#id12" title="Permalink to this image">¶</a></p>
 </div>
-<div class="figure align-center" id="id9">
+<div class="figure align-center" id="id13">
 <img alt="_images/DSC_2842.jpg" src="_images/DSC_2842.jpg" />
-<p class="caption"><span class="caption-text">The mounted PCB.</span><a class="headerlink" href="#id9" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-text">The mounted PCB.</span><a class="headerlink" href="#id13" title="Permalink to this image">¶</a></p>
 </div>
 </div>
+</div>
+<div class="section" id="footnotes">
+<h1>Footnotes<a class="headerlink" href="#footnotes" title="Permalink to this headline">¶</a></h1>
+<dl class="footnote brackets">
+<dt class="label" id="id3"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
+<dd><p>Leszek Pawlowicz.  Affordable Reflectance Transformation Imaging Dome.
+<a class="reference external" href="https://artid.readthedocs.io/en/latest/index.html">https://artid.readthedocs.io/en/latest/index.html</a></p>
+</dd>
+<dt class="label" id="id4"><span class="brackets"><a class="fn-backref" href="#id2">2</a></span></dt>
+<dd><p>Ted Kinsman.  An Easy To Build Reflectance Transformation Imaging (RTI) System.
+<a class="reference external" href="https://firstmonday.org/ojs/index.php/jbc/article/view/6625/5594">https://firstmonday.org/ojs/index.php/jbc/article/view/6625/5594</a></p>
+</dd>
+</dl>
 </div>
 
 

@@ -39,8 +39,41 @@ extensions = [
     'sphinx.ext.githubpages',
     'sphinxcontrib.autoprogram',
     'sphinxcontrib.plantuml',
+    'sphinxcontrib-pic.pic',
     'breathe',
 ]
+
+pic_options = {
+    'pic' : {
+        'program'  : ["dpic", "-v"],
+        'align'    : "center",
+        'preamble' : """
+.PS
+define component { shaded "#fefece" outline "#a80136" };
+define note      { shaded "#fbfb77" outline "#a80136" rad 0.25 };
+define external  { shaded "#fefece" outline "#000000" };
+define astyle    { thickness 1 color "#a80136" };
+boxwid    = 1.3;
+arrowhead = 3;
+linethick = 1.5;
+""",
+        'postamble' : """
+.PE
+""",
+    },
+    'uml' : {
+        'program'   : ["plantuml", "-tsvg", "-p"],
+        'align'     : "center",
+        'preamble'  : "",
+        'postamble' : "",
+    },
+    'dot' : {
+        'program'   : ["dot", "-Tsvg"],
+        'align'     : "center",
+        'preamble'  : "",
+        'postamble' : "",
+    },
+}
 
 breathe_projects = { "ptmlib": "../rti-builder/" }
 # breathe_default_project = "ptmlib"
