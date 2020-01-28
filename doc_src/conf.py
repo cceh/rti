@@ -45,7 +45,8 @@ extensions = [
 
 pic_options = {
     'pic' : {
-        'program'  : ["dpic", "-v"],
+        'program'  : "m4 | dpic -v",
+        'shell'    : True,
         'align'    : "center",
         'preamble' : """
 .PS
@@ -64,8 +65,8 @@ linethick = 1.5;
     'uml' : {
         'program'   : ["plantuml", "-tsvg", "-p"],
         'align'     : "center",
-        'preamble'  : "",
-        'postamble' : "",
+        'preamble'  : "@startuml\n",
+        'postamble' : "\n@enduml\n",
     },
     'dot' : {
         'program'   : ["dot", "-Tsvg"],

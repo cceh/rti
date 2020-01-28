@@ -36,12 +36,61 @@ designs like this: [#]_ [#]_
    arrow 1 astyle;
    DOME: box "Dome" external;
 
+   box dashed width 1.6 height 1.8 with .n at CTRL.n + (0, 0.15)
+
 
 The camera is in single-shot mode.  The controller tells the LED driver to turn
-on the next LED and then presses and releases the camera shutter.  The camera
-takes one picture.  After a programmable time lapse the controller tells the LED
-driver to turn the LED off again.  After another programmable interval the cycle is
-repeated, for as many times as there are LEDs in the dome.
+on the next LED and then presses the camera shutter button.  The camera takes
+one picture.  After a programmable time lapse the controller releases the
+shutter button and tells the LED driver to turn the LED off.  After another
+programmable interval the cycle starts again, as many times as there are LEDs in
+the dome.
+
+.. pic:: uml
+   :caption: Typical design sequence diagram
+
+   actor User               as u
+   participant Controller   as ctrl
+   participant Camera       as cam
+   participant "LED Driver" as drv
+   participant Dome         as dome
+
+   u -> cam  : set exposure
+   u -> ctrl : set sleeping interval 1
+   u -> ctrl : set sleeping interval 2
+   u -> ctrl : push start button
+
+   loop on all LEDs in dome
+   ctrl -> drv  : turn LED on
+   drv  -> dome : turn LED on
+   activate dome
+   ctrl -> cam  : press shutter
+   activate ctrl
+   activate cam
+   |||
+   hnote over cam  : taking exposure
+   hnote over ctrl : sleeping interval 1
+   |||
+   dome -[#transparent]> drv
+   deactivate cam
+   dome -[#transparent]> drv
+   activate cam #ccc
+   ctrl -> cam : release shutter
+   deactivate ctrl
+   ctrl -> drv : turn LED off
+   activate ctrl #ccc
+   drv -> dome : turn LED off
+   deactivate dome
+   hnote over cam  : saving picture
+   hnote over ctrl : sleeping interval 2
+   |||
+   drv -[#transparent]> dome
+   deactivate cam
+   |||
+   drv -[#transparent]> dome
+   deactivate ctrl
+   end
+
 
 This is sub-optimal because the controller does not know when the camera is done
 with the current exposure nor when it is ready to take the next exposure.  This
@@ -85,18 +134,57 @@ disadvantages.
    move to 1/2 <CAM.c,DRV.c>;
    "flash" above;
 
+   box dashed width 1.6 height 1.8 with .n at CTRL.n + (0, 0.15)
+
 
 In the CCeH design you don't need to program any interval into the controller
 because the camera itself tells the controller what to do.  The system will go
 as fast as the camera allows and never miss an exposure.
 
 The camera is in continuous-shot mode.  The controller presses the camera
-shutter and keeps it pressed.  When the camera is about to take an exposure it
-signals this on its external flash output.  The LED driver listens to this
-signal and turns on the next LED.  When the camera is done with the exposure it
-resets the flash output and the driver turns off the LED.  This flash cycle
-repeats until the last LED is reached.  Then the LED driver will tell the
-controller to release the shutter and the camera will stop.
+shutter button and keeps it pressed.  The camera initializes and when it is
+about to take an exposure it signals this on its external flash output.  The LED
+driver listens to this signal and turns on the next LED.  When the camera is
+done with the exposure it resets the flash output and the driver turns off the
+LED.  The camera saves the picture.  This flash cycle repeats until all LEDs
+have flashed.  Then the LED driver will tell the controller to release the
+shutter button and the camera will stop.
+
+.. pic:: uml
+   :caption: CCeH design sequence diagram
+
+   actor User               as u
+   participant Controller   as ctrl
+   participant Camera       as cam
+   participant "LED Driver" as drv
+   participant Dome         as dome
+
+   u -> cam  : set exposure
+   u -> ctrl : push start button
+
+   ctrl -> cam : press shutter
+
+   loop on all LEDs in dome
+   cam -> drv  : flash on
+   activate cam
+   drv -> dome : turn LED on
+   activate dome
+   hnote over cam : taking exposure
+   |||
+   cam -> drv  : flash off
+   deactivate cam
+   drv -> dome : turn LED off
+   deactivate dome
+   activate cam #ccc
+   |||
+   hnote over cam : saving picture
+   |||
+   drv -[#transparent]> dome
+   deactivate cam
+   end
+
+   drv  -> ctrl : last LED
+   ctrl -> cam  : release shutter
 
 This design conserves energy, because the LEDs are turned on only for the time
 needed to take the exposure, and turned off during the time the camera processes
