@@ -1,0 +1,34 @@
+boxwid    = 1.0;
+boxht     = 0.3;
+movewid   = 0.5;
+arrowhead = 3;
+linethick = 1.5;
+
+define shadedstyle { shaded "#fefece" };
+define borderstyle { outline "#a80136" thick 1.5 };
+define notestyle   { shaded "#fbfb77" outline "#a80136" };
+define astyle      { thickness 1 color "#a80136" };
+
+# notebox (attributes)
+define notebox {
+    {
+    B: box $1 invisible;
+    tic = B.width / 8;
+    line notestyle from B.nw \
+      to B.ne - (tic, 0) then \
+      to B.ne - (0, tic) then \
+      to B.se then \
+      to B.sw then \
+      to B.nw;
+    line notestyle from B.ne - (tic, 0) \
+      to B.ne - (tic, tic) then \
+      to B.ne - (0, tic);
+    }
+    box $1 invisible;
+}
+
+# wrap(nw_obj, se_obj)
+
+define wrap {
+   box dashed width $2.e.x - $1.w.x + 0.3 height $1.n.y - $2.s.y + 0.3 with .n at $1.n + (0, 0.15);
+}

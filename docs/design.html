@@ -90,7 +90,7 @@
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Electrical Design</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#overview">Overview</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#choice-of-led">Choice of LED</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#led-driver">Led Driver</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#led-driver">LED Driver</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#constant-current-source">Constant Current Source</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#microcontroller">Microcontroller</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#connectors">Connectors</a></li>
@@ -239,161 +239,529 @@ designs like this: <a class="footnote-reference brackets" href="#id3" id="id1">1
 
 
 <!-- Creator: dpic version 2019.11.30 option -v for SVG 1.1 -->
-<!-- width="698" height="180" -->
+<!-- width="583" height="108" -->
 <svg
  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
  xml:space="preserve"
  style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision;
  image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
- width="697.2px" height="178.8px"
- viewBox="0 0 697.2 178.8"
+ width="582px" height="106.8px"
+ viewBox="0 0 582 106.8"
  font-size="11pt" text-anchor="middle"
  stroke="black" stroke-miterlimit="10" stroke-width="1.066667" fill="none">
 <g>
-<rect fill="#fbfb77" stroke-width="2"
+<text font-size="11pt" stroke-width="0.2pt" fill="black" x="50" y="22.506667">user must</text>
+<text font-size="11pt" stroke-width="0.2pt" fill="black" x="50" y="37.173333">set timing</text>
+<polyline stroke-width="0" stroke="#a80136"
+ fill="#fbfb77"
+ points="2,1
+86,1
+98,13
+98,49
+2,49
+2,1" />
+<polyline stroke-width="2"
  stroke="#a80136"
- x="2" y="15.4" rx="24" ry="24" width="124.8" height="48" />
-<text font-size="11pt" stroke-width="0.2pt" fill="black" x="64.4" y="36.906667">user must</text>
-<text font-size="11pt" stroke-width="0.2pt" fill="black" x="64.4" y="51.573333">set timing</text>
+ points="2,1 86,1
+98,13
+98,49
+2,49
+2,1" />
+<polyline stroke-width="0" stroke="#a80136"
+ fill="#fbfb77"
+ points="86,1
+86,13
+98,13" />
+<polyline stroke-width="2"
+ stroke="#a80136"
+ points="86,1 86,13
+98,13" />
+<text font-size="11pt" stroke-width="0.2pt" fill="black" x="50" y="22.506667">user must</text>
+<text font-size="11pt" stroke-width="0.2pt" fill="black" x="50" y="37.173333">set timing</text>
 <polygon stroke-width="0" stroke="#a80136"
  fill="#a80136"
- points="168.4,39.4 165.2,37
-174.8,39.4 165.2,41.8" />
+ points="139.6,25 136.4,22.6
+146,25 136.4,27.4" />
 <line stroke-width="1.333333"
  stroke="#a80136"
- x1="126.8" y1="39.4" x2="172.051263" y2="39.4" />
+ x1="98" y1="25" x2="143.251263" y2="25" />
 <rect fill="#fefece" stroke-width="2"
  stroke="#a80136"
- x="174.8" y="15.4" width="124.8" height="48" />
-<text font-size="11pt" stroke-width="0.2pt" fill="black" x="237.2" y="44.24">Controller</text>
+ x="146" y="10.6" width="96" height="28.8" />
+<text font-size="11pt" stroke-width="0.2pt" fill="black" x="194" y="29.84">Controller</text>
 <polygon stroke-width="0" stroke="#a80136"
  fill="#a80136"
- points="389.2,39.4 386,37
-395.6,39.4 386,41.8" />
+ points="331.6,25 328.4,22.6
+338,25 328.4,27.4" />
 <line stroke-width="1.333333"
  stroke="#a80136"
- x1="299.6" y1="39.4" x2="392.851263" y2="39.4" />
-<text font-size="11pt" stroke-width="0.2pt" fill="black" x="346.225631" y="36.733333">shutter</text>
+ x1="242" y1="25" x2="335.251263" y2="25" />
+<text font-size="11pt" stroke-width="0.2pt" fill="black" x="288.625631" y="22.333333">shutter</text>
 <rect fill="#fefece" stroke-width="2"
- stroke="#000000"
- x="395.6" y="15.4" width="124.8" height="48" />
-<text font-size="11pt" stroke-width="0.2pt" fill="black" x="458" y="44.24">Camera</text>
+ x="338" y="10.6" width="96" height="28.8" />
+<text font-size="11pt" stroke-width="0.2pt" fill="black" x="386" y="29.84">Camera</text>
 <polygon stroke-width="0" stroke="#a80136"
  fill="#a80136"
- points="526.8,39.4 530,41.8
-520.4,39.4 530,37" />
+ points="440.4,25 443.6,27.4
+434,25 443.6,22.6" />
 <line stroke-width="1.333333"
  stroke="#a80136"
- x1="523.148737" y1="39.4" x2="568.4" y2="39.4" />
-<rect fill="#fbfb77" stroke-width="2"
+ x1="436.748737" y1="25" x2="482" y2="25" />
+<text font-size="11pt" stroke-width="0.2pt" fill="black" x="530" y="22.506667">user must</text>
+<text font-size="11pt" stroke-width="0.2pt" fill="black" x="530" y="37.173333">set exposure</text>
+<polyline stroke-width="0" stroke="#a80136"
+ fill="#fbfb77"
+ points="482,1
+566,1
+578,13
+578,49
+482,49
+482,1" />
+<polyline stroke-width="2"
  stroke="#a80136"
- x="568.4" y="15.4" rx="24" ry="24" width="124.8" height="48" />
-<text font-size="11pt" stroke-width="0.2pt" fill="black" x="630.8" y="36.906667">user must</text>
-<text font-size="11pt" stroke-width="0.2pt" fill="black" x="630.8" y="51.573333">set exposure</text>
+ points="482,1 566,1
+578,13
+578,49
+482,49
+482,1" />
+<polyline stroke-width="0" stroke="#a80136"
+ fill="#fbfb77"
+ points="566,1
+566,13
+578,13" />
+<polyline stroke-width="2"
+ stroke="#a80136"
+ points="566,1 566,13
+578,13" />
+<text font-size="11pt" stroke-width="0.2pt" fill="black" x="530" y="22.506667">user must</text>
+<text font-size="11pt" stroke-width="0.2pt" fill="black" x="530" y="37.173333">set exposure</text>
+<line stroke-width="1.333333"
+ stroke="#a80136"
+ x1="194" y1="39.4" x2="194" y2="63.4" />
+<path stroke-width="1.333333"
+ stroke="#a80136"
+ d="M 194,63.4
+ A 24 24 0 0 0 218,87.4" />
 <polygon stroke-width="0" stroke="#a80136"
  fill="#a80136"
- points="237.2,105 239.6,101.8
-237.2,111.4 234.8,101.8" />
+ points="331.6,87.4 328.4,85
+338,87.4 328.4,89.8" />
 <line stroke-width="1.333333"
  stroke="#a80136"
- x1="237.2" y1="63.4" x2="237.2" y2="108.651263" />
-<text font-size="11pt" stroke-width="0.2pt" fill="black" text-anchor="end"
- x="234.533333" y="90.865631">step</text>
+ x1="218" y1="87.4" x2="335.251263" y2="87.4" />
 <rect fill="#fefece" stroke-width="2"
- stroke="#a80136"
- x="174.8" y="111.4" width="124.8" height="48" />
-<text font-size="11pt" stroke-width="0.2pt" fill="black" x="237.2" y="140.24">LED Driver</text>
-<polygon stroke-width="0" stroke="#a80136"
- fill="#a80136"
- points="389.2,135.4 386,133
-395.6,135.4 386,137.8" />
-<line stroke-width="1.333333"
- stroke="#a80136"
- x1="299.6" y1="135.4" x2="392.851263" y2="135.4" />
-<rect fill="#fefece" stroke-width="2"
- stroke="#000000"
- x="395.6" y="111.4" width="124.8" height="48" />
-<text font-size="11pt" stroke-width="0.2pt" fill="black" x="458" y="140.24">Dome</text>
-<rect stroke-width="2"
- stroke-dasharray="5.6,4"
- x="160.4" y="1" width="153.6" height="172.8" />
+ x="338" y="73" width="96" height="28.8" />
+<text font-size="11pt" stroke-width="0.2pt" fill="black" x="386" y="92.24">Dome</text>
 </g></svg>
 </div>
 <p class="caption"><span class="caption-text">Typical design found on the internet</span><a class="headerlink" href="#id5" title="Permalink to this image">¶</a></p>
 </div>
-<p>The camera is in single-shot mode.  The controller tells the LED driver to turn
-on the next LED and then presses the camera shutter button.  The camera takes
-one picture.  After a programmable time lapse the controller releases the
-shutter button and tells the LED driver to turn the LED off.  After another
-programmable interval the cycle starts again, as many times as there are LEDs in
-the dome.</p>
+<p>The camera is in single-shot mode.  The controller turns on the next LED and
+then presses and releases the camera shutter button.  The camera takes one
+picture.  After a programmable time lapse the controller turns the LED off.
+After another programmable interval the cycle starts again, as many times as
+there are LEDs in the dome.</p>
 <div class="figure align-center" id="id6">
 <div class="pic">
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="804px" preserveAspectRatio="none" style="width:567px;height:804px;" version="1.1" viewBox="0 0 567 804" width="567px" zoomAndPan="magnify"><defs><filter height="300%" id="f1vkpipwoea0k6" width="300%" x="-1" y="-1"><feGaussianBlur result="blurOut" stdDeviation="2.0"/><feColorMatrix in="blurOut" result="blurOut2" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"/><feOffset dx="4.0" dy="4.0" in="blurOut2" result="blurOut3"/><feBlend in="SourceGraphic" in2="blurOut3" mode="normal"/></filter></defs><g><rect fill="#FFFFFF" filter="url(#f1vkpipwoea0k6)" height="173.3984" style="stroke: #A80036; stroke-width: 1.0;" width="10" x="186" y="316.3594"/><rect fill="#CCCCCC" filter="url(#f1vkpipwoea0k6)" height="173.3984" style="stroke: #A80036; stroke-width: 1.0;" width="10" x="186" y="518.8906"/><rect fill="#FFFFFF" filter="url(#f1vkpipwoea0k6)" height="130.2656" style="stroke: #A80036; stroke-width: 1.0;" width="10" x="317" y="316.3594"/><rect fill="#CCCCCC" filter="url(#f1vkpipwoea0k6)" height="192.6641" style="stroke: #A80036; stroke-width: 1.0;" width="10" x="317" y="460.625"/><rect fill="#FFFFFF" filter="url(#f1vkpipwoea0k6)" height="260.7969" style="stroke: #A80036; stroke-width: 1.0;" width="10" x="511" y="287.2266"/><rect fill="#FFFFFF" filter="url(#f1vkpipwoea0k6)" height="480.4609" style="stroke: #000000; stroke-width: 2.0;" width="445" x="111" y="219.8281"/><line style="stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 5.0,5.0;" x1="27" x2="27" y1="86.2969" y2="717.2891"/><line style="stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 5.0,5.0;" x1="190.5" x2="190.5" y1="86.2969" y2="717.2891"/><line style="stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 5.0,5.0;" x1="321.5" x2="321.5" y1="86.2969" y2="717.2891"/><line style="stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 5.0,5.0;" x1="411.5" x2="411.5" y1="86.2969" y2="717.2891"/><line style="stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 5.0,5.0;" x1="516" x2="516" y1="86.2969" y2="717.2891"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="32" x="8" y="82.9951">User</text><ellipse cx="27" cy="13" fill="#FEFECE" filter="url(#f1vkpipwoea0k6)" rx="8" ry="8" style="stroke: #A80036; stroke-width: 2.0;"/><path d="M27,21 L27,48 M14,29 L40,29 M27,48 L14,63 M27,48 L40,63 " fill="none" filter="url(#f1vkpipwoea0k6)" style="stroke: #A80036; stroke-width: 2.0;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="32" x="8" y="729.2842">User</text><ellipse cx="27" cy="742.5859" fill="#FEFECE" filter="url(#f1vkpipwoea0k6)" rx="8" ry="8" style="stroke: #A80036; stroke-width: 2.0;"/><path d="M27,750.5859 L27,777.5859 M14,758.5859 L40,758.5859 M27,777.5859 L14,792.5859 M27,777.5859 L40,792.5859 " fill="none" filter="url(#f1vkpipwoea0k6)" style="stroke: #A80036; stroke-width: 2.0;"/><rect fill="#FEFECE" filter="url(#f1vkpipwoea0k6)" height="30.2969" style="stroke: #A80036; stroke-width: 1.5;" width="81" x="148.5" y="51"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="67" x="155.5" y="70.9951">Controller</text><rect fill="#FEFECE" filter="url(#f1vkpipwoea0k6)" height="30.2969" style="stroke: #A80036; stroke-width: 1.5;" width="81" x="148.5" y="716.2891"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="67" x="155.5" y="736.2842">Controller</text><rect fill="#FEFECE" filter="url(#f1vkpipwoea0k6)" height="30.2969" style="stroke: #A80036; stroke-width: 1.5;" width="67" x="286.5" y="51"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="53" x="293.5" y="70.9951">Camera</text><rect fill="#FEFECE" filter="url(#f1vkpipwoea0k6)" height="30.2969" style="stroke: #A80036; stroke-width: 1.5;" width="67" x="286.5" y="716.2891"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="53" x="293.5" y="736.2842">Camera</text><rect fill="#FEFECE" filter="url(#f1vkpipwoea0k6)" height="30.2969" style="stroke: #A80036; stroke-width: 1.5;" width="85" x="367.5" y="51"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="71" x="374.5" y="70.9951">LED Driver</text><rect fill="#FEFECE" filter="url(#f1vkpipwoea0k6)" height="30.2969" style="stroke: #A80036; stroke-width: 1.5;" width="85" x="367.5" y="716.2891"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="71" x="374.5" y="736.2842">LED Driver</text><rect fill="#FEFECE" filter="url(#f1vkpipwoea0k6)" height="30.2969" style="stroke: #A80036; stroke-width: 1.5;" width="56" x="486" y="51"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="42" x="493" y="70.9951">Dome</text><rect fill="#FEFECE" filter="url(#f1vkpipwoea0k6)" height="30.2969" style="stroke: #A80036; stroke-width: 1.5;" width="56" x="486" y="716.2891"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="42" x="493" y="736.2842">Dome</text><rect fill="#FFFFFF" filter="url(#f1vkpipwoea0k6)" height="173.3984" style="stroke: #A80036; stroke-width: 1.0;" width="10" x="186" y="316.3594"/><rect fill="#CCCCCC" filter="url(#f1vkpipwoea0k6)" height="173.3984" style="stroke: #A80036; stroke-width: 1.0;" width="10" x="186" y="518.8906"/><rect fill="#FFFFFF" filter="url(#f1vkpipwoea0k6)" height="130.2656" style="stroke: #A80036; stroke-width: 1.0;" width="10" x="317" y="316.3594"/><rect fill="#CCCCCC" filter="url(#f1vkpipwoea0k6)" height="192.6641" style="stroke: #A80036; stroke-width: 1.0;" width="10" x="317" y="460.625"/><rect fill="#FFFFFF" filter="url(#f1vkpipwoea0k6)" height="260.7969" style="stroke: #A80036; stroke-width: 1.0;" width="10" x="511" y="287.2266"/><polygon fill="#A80036" points="310,113.4297,320,117.4297,310,121.4297,314,117.4297" style="stroke: #A80036; stroke-width: 1.0;"/><line style="stroke: #A80036; stroke-width: 1.0;" x1="27" x2="316" y1="117.4297" y2="117.4297"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="83" x="34" y="112.3638">set exposure</text><polygon fill="#A80036" points="179,142.5625,189,146.5625,179,150.5625,183,146.5625" style="stroke: #A80036; stroke-width: 1.0;"/><line style="stroke: #A80036; stroke-width: 1.0;" x1="27" x2="185" y1="146.5625" y2="146.5625"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="140" x="34" y="141.4966">set sleeping interval 1</text><polygon fill="#A80036" points="179,171.6953,189,175.6953,179,179.6953,183,175.6953" style="stroke: #A80036; stroke-width: 1.0;"/><line style="stroke: #A80036; stroke-width: 1.0;" x1="27" x2="185" y1="175.6953" y2="175.6953"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="140" x="34" y="170.6294">set sleeping interval 2</text><polygon fill="#A80036" points="179,200.8281,189,204.8281,179,208.8281,183,204.8281" style="stroke: #A80036; stroke-width: 1.0;"/><line style="stroke: #A80036; stroke-width: 1.0;" x1="27" x2="185" y1="204.8281" y2="204.8281"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="111" x="34" y="199.7622">push start button</text><path d="M111,219.8281 L188,219.8281 L188,226.8281 L178,236.8281 L111,236.8281 L111,219.8281 " fill="#EEEEEE" style="stroke: #000000; stroke-width: 1.0;"/><rect fill="none" height="480.4609" style="stroke: #000000; stroke-width: 2.0;" width="445" x="111" y="219.8281"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="32" x="126" y="232.895">loop</text><text fill="#000000" font-family="sans-serif" font-size="11" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="136" x="203" y="232.0386">[on all LEDs in dome]</text><polygon fill="#A80036" points="400,254.0938,410,258.0938,400,262.0938,404,258.0938" style="stroke: #A80036; stroke-width: 1.0;"/><line style="stroke: #A80036; stroke-width: 1.0;" x1="191" x2="406" y1="258.0938" y2="258.0938"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="75" x="198" y="253.0278">turn LED on</text><polygon fill="#A80036" points="499,283.2266,509,287.2266,499,291.2266,503,287.2266" style="stroke: #A80036; stroke-width: 1.0;"/><line style="stroke: #A80036; stroke-width: 1.0;" x1="412" x2="505" y1="287.2266" y2="287.2266"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="75" x="419" y="282.1606">turn LED on</text><polygon fill="#A80036" points="305,312.3594,315,316.3594,305,320.3594,309,316.3594" style="stroke: #A80036; stroke-width: 1.0;"/><line style="stroke: #A80036; stroke-width: 1.0;" x1="196" x2="311" y1="316.3594" y2="316.3594"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="85" x="203" y="311.2935">press shutter</text><polygon fill="#FBFB77" filter="url(#f1vkpipwoea0k6)" points="269,354.3594,375,354.3594,385,365.3594,375,377.3594,269,377.3594,259,365.3594,269,354.3594" style="stroke: #A80036; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="102" x="271" y="370.4263">taking exposure</text><polygon fill="#FBFB77" filter="url(#f1vkpipwoea0k6)" points="131,387.4922,251,387.4922,261,398.4922,251,410.4922,131,410.4922,121,398.4922,131,387.4922" style="stroke: #A80036; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="116" x="133" y="403.5591">sleeping interval 1</text><polygon fill="#FFFFFF" points="423,442.625,413,446.625,423,450.625,419,446.625" style="stroke: #FFFFFF; stroke-width: 1.0;"/><line style="stroke: #FFFFFF; stroke-width: 1.0;" x1="417" x2="510" y1="446.625" y2="446.625"/><polygon fill="#FFFFFF" points="423,456.625,413,460.625,423,464.625,419,460.625" style="stroke: #FFFFFF; stroke-width: 1.0;"/><line style="stroke: #FFFFFF; stroke-width: 1.0;" x1="417" x2="510" y1="460.625" y2="460.625"/><polygon fill="#A80036" points="305,485.7578,315,489.7578,305,493.7578,309,489.7578" style="stroke: #A80036; stroke-width: 1.0;"/><line style="stroke: #A80036; stroke-width: 1.0;" x1="191" x2="311" y1="489.7578" y2="489.7578"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="97" x="198" y="484.6919">release shutter</text><polygon fill="#A80036" points="400,514.8906,410,518.8906,400,522.8906,404,518.8906" style="stroke: #A80036; stroke-width: 1.0;"/><line style="stroke: #A80036; stroke-width: 1.0;" x1="196" x2="406" y1="518.8906" y2="518.8906"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="75" x="203" y="513.8247">turn LED off</text><polygon fill="#A80036" points="504,544.0234,514,548.0234,504,552.0234,508,548.0234" style="stroke: #A80036; stroke-width: 1.0;"/><line style="stroke: #A80036; stroke-width: 1.0;" x1="412" x2="510" y1="548.0234" y2="548.0234"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="75" x="419" y="542.9575">turn LED off</text><polygon fill="#FBFB77" filter="url(#f1vkpipwoea0k6)" points="275,561.0234,368,561.0234,378,572.0234,368,584.0234,275,584.0234,265,572.0234,275,561.0234" style="stroke: #A80036; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="89" x="277" y="577.0903">saving picture</text><polygon fill="#FBFB77" filter="url(#f1vkpipwoea0k6)" points="131,594.1563,251,594.1563,261,605.1563,251,617.1563,131,617.1563,121,605.1563,131,594.1563" style="stroke: #A80036; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="116" x="133" y="610.2231">sleeping interval 2</text><polygon fill="#FFFFFF" points="504,649.2891,514,653.2891,504,657.2891,508,653.2891" style="stroke: #FFFFFF; stroke-width: 1.0;"/><line style="stroke: #FFFFFF; stroke-width: 1.0;" x1="412" x2="510" y1="653.2891" y2="653.2891"/><polygon fill="#FFFFFF" points="504,688.2891,514,692.2891,504,696.2891,508,692.2891" style="stroke: #FFFFFF; stroke-width: 1.0;"/><line style="stroke: #FFFFFF; stroke-width: 1.0;" x1="412" x2="510" y1="692.2891" y2="692.2891"/><!--
-@startuml
-actor User               as u
-participant Controller   as ctrl
-participant Camera       as cam
-participant "LED Driver" as drv
-participant Dome         as dome
 
-u -> cam  : set exposure
-u -> ctrl : set sleeping interval 1
-u -> ctrl : set sleeping interval 2
-u -> ctrl : push start button
 
-loop on all LEDs in dome
-ctrl -> drv  : turn LED on
-drv  -> dome : turn LED on
-activate dome
-ctrl -> cam  : press shutter
-activate ctrl
-activate cam
-|||
-hnote over cam  : taking exposure
-hnote over ctrl : sleeping interval 1
-|||
-dome -[#transparent]> drv
-deactivate cam
-dome -[#transparent]> drv
-activate cam #ccc
-ctrl -> cam : release shutter
-deactivate ctrl
-ctrl -> drv : turn LED off
-activate ctrl #ccc
-drv -> dome : turn LED off
-deactivate dome
-hnote over cam  : saving picture
-hnote over ctrl : sleeping interval 2
-|||
-drv -[#transparent]> dome
-deactivate cam
-|||
-drv -[#transparent]> dome
-deactivate ctrl
-end
-@enduml
-
-PlantUML version 1.2018.13(Mon Nov 26 18:11:51 CET 2018)
-(GPL source distribution)
-Java Runtime: OpenJDK Runtime Environment
-JVM: OpenJDK 64-Bit Server VM
-Java Version: 11.0.6+10-post-Debian-1
-Operating System: Linux
-OS Version: 5.3.0-3-amd64
-Default Encoding: UTF-8
-Language: en
-Country: US
---></g></svg></div>
+<!-- Creator: dpic version 2019.11.30 option -v for SVG 1.1 -->
+<!-- width="564" height="606" -->
+<svg
+ xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+ xml:space="preserve"
+ style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision;
+ image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
+ width="562.8px" height="604.56px"
+ viewBox="0 0 562.8 604.56"
+ font-size="11pt" text-anchor="middle"
+ stroke="black" stroke-miterlimit="10" stroke-width="1.066667" fill="none">
+<g>
+<circle fill="#fefece" stroke-width="2"
+ stroke="#a80136"
+ cx="16.4" cy="30.76" r="5.76" />
+<line stroke-width="2"
+ stroke="#a80136"
+ x1="16.4" y1="36.52" x2="16.4" y2="48.04" />
+<polyline stroke-width="0" stroke="#a80136"
+ fill="#fefece"
+ points="2,38.44
+30.8,38.44" />
+<line stroke-width="2"
+ stroke="#a80136"
+ x1="2" y1="38.44" x2="30.8" y2="38.44" />
+<polyline stroke-width="0" stroke="#a80136"
+ fill="#fefece"
+ points="16.4,48.04
+8.72,62.44" />
+<line stroke-width="2"
+ stroke="#a80136"
+ x1="16.4" y1="48.04" x2="8.72" y2="62.44" />
+<polyline stroke-width="0" stroke="#a80136"
+ fill="#fefece"
+ points="16.4,48.04
+24.08,62.44" />
+<line stroke-width="2"
+ stroke="#a80136"
+ x1="16.4" y1="48.04" x2="24.08" y2="62.44" />
+<text font-size="11pt" stroke-width="0.2pt" fill="black" x="16.4" y="7.84"></text>
+<text font-size="11pt" stroke-width="0.2pt" fill="black" x="16.4" y="22.506667"></text>
+<text font-size="11pt" stroke-width="0.2pt" fill="black" x="16.4" y="37.173333"></text>
+<text font-size="11pt" stroke-width="0.2pt" fill="black" x="16.4" y="51.84"></text>
+<rect fill="#fefece" stroke-width="2"
+ stroke="#a80136"
+ x="126.8" y="28.36" width="96" height="28.8" />
+<text font-size="11pt" stroke-width="0.2pt" fill="black" x="174.8" y="47.6">Controller</text>
+<rect fill="#fefece" stroke-width="2"
+ x="270.8" y="28.36" width="96" height="28.8" />
+<text font-size="11pt" stroke-width="0.2pt" fill="black" x="318.8" y="47.6">Camera</text>
+<rect fill="#fefece" stroke-width="2"
+ x="414.8" y="28.36" width="96" height="28.8" />
+<text font-size="11pt" stroke-width="0.2pt" fill="black" x="462.8" y="47.6">Dome</text>
+<polygon stroke-width="0" stroke="#a80136"
+ fill="#a80136"
+ points="312.4,90.76 309.2,88.36
+318.8,90.76 309.2,93.16" />
+<line stroke-width="1.333333"
+ stroke="#a80136"
+ x1="16.4" y1="90.76" x2="316.051263" y2="90.76" />
+<text font-size="11pt" stroke-width="0.266667"
+ fill="black"
+ text-anchor="start"
+ x="21.733333" y="88.093333">set exposure</text>
+<polygon stroke-width="0" stroke="#a80136"
+ fill="#a80136"
+ points="168.4,114.76 165.2,112.36
+174.8,114.76 165.2,117.16" />
+<line stroke-width="1.333333"
+ stroke="#a80136"
+ x1="16.4" y1="114.76" x2="172.051263" y2="114.76" />
+<text font-size="11pt" stroke-width="0.266667"
+ fill="black"
+ text-anchor="start"
+ x="21.733333" y="112.093333">set interval 1</text>
+<polygon stroke-width="0" stroke="#a80136"
+ fill="#a80136"
+ points="168.4,138.76 165.2,136.36
+174.8,138.76 165.2,141.16" />
+<line stroke-width="1.333333"
+ stroke="#a80136"
+ x1="16.4" y1="138.76" x2="172.051263" y2="138.76" />
+<text font-size="11pt" stroke-width="0.266667"
+ fill="black"
+ text-anchor="start"
+ x="21.733333" y="136.093333">set interval 2</text>
+<polygon stroke-width="0" stroke="#a80136"
+ fill="#a80136"
+ points="168.4,162.76 165.2,160.36
+174.8,162.76 165.2,165.16" />
+<line stroke-width="1.333333"
+ stroke="#a80136"
+ x1="16.4" y1="162.76" x2="172.051263" y2="162.76" />
+<text font-size="11pt" stroke-width="0.266667"
+ fill="black"
+ text-anchor="start"
+ x="21.733333" y="160.093333">start</text>
+<line stroke-width="1.333333"
+ stroke="#a80136"
+ stroke-dasharray="5.6,4"
+ x1="174.8" y1="57.16" x2="174.8" y2="186.76" />
+<text font-size="11pt" stroke-width="0.2pt" fill="black" x="165.2" y="206">repeat</text>
+<polyline stroke-width="2"
+ points="213.2,186.76 213.2,201.16
+198.8,215.56
+117.2,215.56" />
+<polygon stroke-width="0" stroke="#a80136"
+ fill="#a80136"
+ points="451.6,239.56 448.4,237.16
+458,239.56 448.4,241.96" />
+<line stroke-width="1.333333"
+ stroke="#a80136"
+ x1="174.8" y1="239.56" x2="455.251263" y2="239.56" />
+<text font-size="11pt" stroke-width="0.266667"
+ fill="black"
+ text-anchor="start"
+ x="180.133333" y="236.893333">LED on</text>
+<line stroke-width="1.333333"
+ stroke="#a80136"
+ stroke-dasharray="5.6,4"
+ x1="462.8" y1="57.16" x2="462.8" y2="239.56" />
+<line stroke-width="1.333333"
+ stroke="#a80136"
+ x1="458" y1="239.56" x2="467.6" y2="239.56" />
+<line stroke-width="1.333333"
+ stroke="#a80136"
+ stroke-dasharray="5.6,4"
+ x1="174.8" y1="215.56" x2="174.8" y2="239.56" />
+<line stroke-width="1.333333"
+ stroke="#a80136"
+ x1="170" y1="239.56" x2="179.6" y2="239.56" />
+<polygon stroke-width="0" stroke="#a80136"
+ fill="#a80136"
+ points="307.6,263.56 304.4,261.16
+314,263.56 304.4,265.96" />
+<line stroke-width="1.333333"
+ stroke="#a80136"
+ x1="179.6" y1="263.56" x2="311.251263" y2="263.56" />
+<text font-size="11pt" stroke-width="0.266667"
+ fill="black"
+ text-anchor="start"
+ x="184.933333" y="260.893333">press shutter</text>
+<line stroke-width="1.333333"
+ stroke="#a80136"
+ stroke-dasharray="5.6,4"
+ x1="318.8" y1="57.16" x2="318.8" y2="263.56" />
+<line stroke-width="1.333333"
+ stroke="#a80136"
+ x1="314" y1="263.56" x2="323.6" y2="263.56" />
+<polygon stroke-width="0" stroke="#a80136"
+ fill="#a80136"
+ points="307.6,287.56 304.4,285.16
+314,287.56 304.4,289.96" />
+<line stroke-width="1.333333"
+ stroke="#a80136"
+ x1="179.6" y1="287.56" x2="311.251263" y2="287.56" />
+<text font-size="11pt" stroke-width="0.266667"
+ fill="black"
+ text-anchor="start"
+ x="184.933333" y="284.893333">release shutter</text>
+<line stroke-width="1.333333"
+ stroke="#a80136"
+ x1="170" y1="239.56" x2="170" y2="311.56" />
+<line stroke-width="1.333333"
+ stroke="#a80136"
+ x1="179.6" y1="239.56" x2="179.6" y2="311.56" />
+<text font-size="11pt" stroke-width="0.2pt" fill="black" x="174.8" y="333.066667">sleeping</text>
+<text font-size="11pt" stroke-width="0.2pt" fill="black" x="174.8" y="347.733333">interval 1</text>
+<polyline stroke-width="0" stroke="#a80136"
+ fill="#fbfb77"
+ points="126.8,311.56
+210.8,311.56
+222.8,323.56
+222.8,359.56
+126.8,359.56
+126.8,311.56" />
+<polyline stroke-width="2"
+ stroke="#a80136"
+ points="126.8,311.56 210.8,311.56
+222.8,323.56
+222.8,359.56
+126.8,359.56
+126.8,311.56" />
+<polyline stroke-width="0" stroke="#a80136"
+ fill="#fbfb77"
+ points="210.8,311.56
+210.8,323.56
+222.8,323.56" />
+<polyline stroke-width="2"
+ stroke="#a80136"
+ points="210.8,311.56 210.8,323.56
+222.8,323.56" />
+<text font-size="11pt" stroke-width="0.2pt" fill="black" x="174.8" y="333.066667">sleeping</text>
+<text font-size="11pt" stroke-width="0.2pt" fill="black" x="174.8" y="347.733333">interval 1</text>
+<line stroke-width="1.333333"
+ stroke="#a80136"
+ x1="314" y1="263.56" x2="314" y2="311.56" />
+<line stroke-width="1.333333"
+ stroke="#a80136"
+ x1="323.6" y1="263.56" x2="323.6" y2="311.56" />
+<text font-size="11pt" stroke-width="0.2pt" fill="black" x="318.8" y="333.066667">taking</text>
+<text font-size="11pt" stroke-width="0.2pt" fill="black" x="318.8" y="347.733333">exposure</text>
+<polyline stroke-width="0" stroke="#a80136"
+ fill="#fbfb77"
+ points="270.8,311.56
+354.8,311.56
+366.8,323.56
+366.8,359.56
+270.8,359.56
+270.8,311.56" />
+<polyline stroke-width="2"
+ stroke="#a80136"
+ points="270.8,311.56 354.8,311.56
+366.8,323.56
+366.8,359.56
+270.8,359.56
+270.8,311.56" />
+<polyline stroke-width="0" stroke="#a80136"
+ fill="#fbfb77"
+ points="354.8,311.56
+354.8,323.56
+366.8,323.56" />
+<polyline stroke-width="2"
+ stroke="#a80136"
+ points="354.8,311.56 354.8,323.56
+366.8,323.56" />
+<text font-size="11pt" stroke-width="0.2pt" fill="black" x="318.8" y="333.066667">taking</text>
+<text font-size="11pt" stroke-width="0.2pt" fill="black" x="318.8" y="347.733333">exposure</text>
+<line stroke-width="1.333333"
+ stroke="#a80136"
+ x1="314" y1="359.56" x2="314" y2="383.56" />
+<line stroke-width="1.333333"
+ stroke="#a80136"
+ x1="323.6" y1="359.56" x2="323.6" y2="383.56" />
+<line stroke-width="1.333333"
+ stroke="#a80136"
+ x1="314" y1="383.56" x2="323.6" y2="383.56" />
+<line stroke-width="1.333333"
+ stroke="#a80136"
+ stroke-dasharray="5.6,4"
+ x1="318.8" y1="383.56" x2="318.8" y2="383.56" />
+<line stroke-width="1.333333"
+ stroke="#a80136"
+ x1="314" y1="383.56" x2="323.6" y2="383.56" />
+<polygon stroke-width="0" stroke="#a80136"
+ fill="#a80136"
+ points="451.6,407.56 448.4,405.16
+458,407.56 448.4,409.96" />
+<line stroke-width="1.333333"
+ stroke="#a80136"
+ x1="179.6" y1="407.56" x2="455.251263" y2="407.56" />
+<text font-size="11pt" stroke-width="0.266667"
+ fill="black"
+ text-anchor="start"
+ x="184.933333" y="404.893333">LED off</text>
+<line stroke-width="1.333333"
+ stroke="#a80136"
+ x1="458" y1="239.56" x2="458" y2="407.56" />
+<line stroke-width="1.333333"
+ stroke="#a80136"
+ x1="467.6" y1="239.56" x2="467.6" y2="407.56" />
+<line stroke-width="1.333333"
+ stroke="#a80136"
+ x1="458" y1="407.56" x2="467.6" y2="407.56" />
+<line stroke-width="1.333333"
+ stroke="#a80136"
+ x1="170" y1="359.56" x2="170" y2="407.56" />
+<line stroke-width="1.333333"
+ stroke="#a80136"
+ x1="179.6" y1="359.56" x2="179.6" y2="407.56" />
+<line stroke-width="1.333333"
+ stroke="#a80136"
+ x1="170" y1="407.56" x2="179.6" y2="407.56" />
+<line stroke-width="1.333333"
+ stroke="#a80136"
+ stroke-dasharray="5.6,4"
+ x1="174.8" y1="407.56" x2="174.8" y2="407.56" />
+<line stroke-width="1.333333"
+ stroke="#a80136"
+ x1="170" y1="407.56" x2="179.6" y2="407.56" />
+<line stroke-width="1.333333"
+ stroke="#a80136"
+ x1="170" y1="407.56" x2="170" y2="431.56" />
+<line stroke-width="1.333333"
+ stroke="#a80136"
+ x1="179.6" y1="407.56" x2="179.6" y2="431.56" />
+<text font-size="11pt" stroke-width="0.2pt" fill="black" x="174.8" y="453.066667">sleeping</text>
+<text font-size="11pt" stroke-width="0.2pt" fill="black" x="174.8" y="467.733333">interval 2</text>
+<polyline stroke-width="0" stroke="#a80136"
+ fill="#fbfb77"
+ points="126.8,431.56
+210.8,431.56
+222.8,443.56
+222.8,479.56
+126.8,479.56
+126.8,431.56" />
+<polyline stroke-width="2"
+ stroke="#a80136"
+ points="126.8,431.56 210.8,431.56
+222.8,443.56
+222.8,479.56
+126.8,479.56
+126.8,431.56" />
+<polyline stroke-width="0" stroke="#a80136"
+ fill="#fbfb77"
+ points="210.8,431.56
+210.8,443.56
+222.8,443.56" />
+<polyline stroke-width="2"
+ stroke="#a80136"
+ points="210.8,431.56 210.8,443.56
+222.8,443.56" />
+<text font-size="11pt" stroke-width="0.2pt" fill="black" x="174.8" y="453.066667">sleeping</text>
+<text font-size="11pt" stroke-width="0.2pt" fill="black" x="174.8" y="467.733333">interval 2</text>
+<line stroke-width="1.333333"
+ stroke="#a80136"
+ x1="314" y1="383.56" x2="314" y2="431.56" />
+<line stroke-width="1.333333"
+ stroke="#a80136"
+ x1="323.6" y1="383.56" x2="323.6" y2="431.56" />
+<text font-size="11pt" stroke-width="0.2pt" fill="black" x="318.8" y="453.066667">saving</text>
+<text font-size="11pt" stroke-width="0.2pt" fill="black" x="318.8" y="467.733333">picture</text>
+<polyline stroke-width="0" stroke="#a80136"
+ fill="#fbfb77"
+ points="270.8,431.56
+354.8,431.56
+366.8,443.56
+366.8,479.56
+270.8,479.56
+270.8,431.56" />
+<polyline stroke-width="2"
+ stroke="#a80136"
+ points="270.8,431.56 354.8,431.56
+366.8,443.56
+366.8,479.56
+270.8,479.56
+270.8,431.56" />
+<polyline stroke-width="0" stroke="#a80136"
+ fill="#fbfb77"
+ points="354.8,431.56
+354.8,443.56
+366.8,443.56" />
+<polyline stroke-width="2"
+ stroke="#a80136"
+ points="354.8,431.56 354.8,443.56
+366.8,443.56" />
+<text font-size="11pt" stroke-width="0.2pt" fill="black" x="318.8" y="453.066667">saving</text>
+<text font-size="11pt" stroke-width="0.2pt" fill="black" x="318.8" y="467.733333">picture</text>
+<line stroke-width="1.333333"
+ stroke="#a80136"
+ x1="314" y1="479.56" x2="314" y2="503.56" />
+<line stroke-width="1.333333"
+ stroke="#a80136"
+ x1="323.6" y1="479.56" x2="323.6" y2="503.56" />
+<line stroke-width="1.333333"
+ stroke="#a80136"
+ x1="314" y1="503.56" x2="323.6" y2="503.56" />
+<line stroke-width="1.333333"
+ stroke="#a80136"
+ x1="170" y1="479.56" x2="170" y2="551.56" />
+<line stroke-width="1.333333"
+ stroke="#a80136"
+ x1="179.6" y1="479.56" x2="179.6" y2="551.56" />
+<line stroke-width="1.333333"
+ stroke="#a80136"
+ x1="170" y1="551.56" x2="179.6" y2="551.56" />
+<text font-size="11pt" stroke-width="0.2pt" fill="black" x="472.4" y="566"></text>
+<rect stroke-width="2"
+ x="117.2" y="186.76" width="403.2" height="388.8" />
+<line stroke-width="1.333333"
+ stroke="#a80136"
+ stroke-dasharray="5.6,4"
+ x1="16.4" y1="65.32" x2="16.4" y2="599.56" />
+<line stroke-width="1.333333"
+ stroke="#a80136"
+ stroke-dasharray="5.6,4"
+ x1="174.8" y1="551.56" x2="174.8" y2="599.56" />
+<line stroke-width="1.333333"
+ stroke="#a80136"
+ stroke-dasharray="5.6,4"
+ x1="318.8" y1="503.56" x2="318.8" y2="599.56" />
+<line stroke-width="1.333333"
+ stroke="#a80136"
+ stroke-dasharray="5.6,4"
+ x1="462.8" y1="407.56" x2="462.8" y2="599.56" />
+</g></svg>
+</div>
 <p class="caption"><span class="caption-text">Typical design sequence diagram</span><a class="headerlink" href="#id6" title="Permalink to this image">¶</a></p>
 </div>
-<p>This is sub-optimal because the controller does not know when the camera is done
-with the current exposure nor when it is ready to take the next exposure.  This
-depends on the exposure time, the size of the picture file, the speed of the
-camera memory system, and many other things.  The optimal intervals can only be
-found by experiment.  You must program generous intervals because if any
-interval is too short the camera will miss exposures and you will get an
-unusable set of pictures.</p>
+<p>While conceptually simple this design is sub-optimal because the controller does
+not know when the camera is done with the current exposure, nor when it is ready
+to take the next exposure.  This depends on the exposure time, the size of the
+picture file, the speed of the camera memory system, and many other things.  The
+optimal intervals can only be found by experiment.</p>
+<p>The intervals must include ample security margins because if any interval is too
+short the camera will miss exposures and you will get an unusable set of
+pictures.</p>
 <p>The CCeH driver module takes a different approach that does not have these
 disadvantages.</p>
 <div class="figure align-center" id="id7">
@@ -401,90 +769,476 @@ disadvantages.</p>
 
 
 <!-- Creator: dpic version 2019.11.30 option -v for SVG 1.1 -->
-<!-- width="540" height="180" -->
+<!-- width="453" height="141" -->
 <svg
  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
  xml:space="preserve"
  style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision;
  image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
- width="538.8px" height="178.8px"
- viewBox="0 0 538.8 178.8"
+ width="452.4px" height="140.4px"
+ viewBox="0 0 452.4 140.4"
  font-size="11pt" text-anchor="middle"
  stroke="black" stroke-miterlimit="10" stroke-width="1.066667" fill="none">
 <g>
 <rect fill="#fefece" stroke-width="2"
  stroke="#a80136"
- x="16.4" y="15.4" width="124.8" height="48" />
-<text font-size="11pt" stroke-width="0.2pt" fill="black" x="78.8" y="44.24">Controller</text>
+ x="16.4" y="15.4" width="96" height="28.8" />
+<text font-size="11pt" stroke-width="0.2pt" fill="black" x="64.4" y="34.64">Controller</text>
 <polygon stroke-width="0" stroke="#a80136"
  fill="#a80136"
- points="230.8,39.4 227.6,37
-237.2,39.4 227.6,41.8" />
+ points="202,29.8 198.8,27.4
+208.4,29.8 198.8,32.2" />
 <line stroke-width="1.333333"
  stroke="#a80136"
- x1="141.2" y1="39.4" x2="234.451263" y2="39.4" />
-<text font-size="11pt" stroke-width="0.2pt" fill="black" x="187.825631" y="36.733333">shutter</text>
+ x1="112.4" y1="29.8" x2="205.651263" y2="29.8" />
+<text font-size="11pt" stroke-width="0.2pt" fill="black" x="159.025631" y="27.133333">shutter</text>
 <rect fill="#fefece" stroke-width="2"
- stroke="#000000"
- x="237.2" y="15.4" width="124.8" height="48" />
-<text font-size="11pt" stroke-width="0.2pt" fill="black" x="299.6" y="44.24">Camera</text>
+ x="208.4" y="15.4" width="96" height="28.8" />
+<text font-size="11pt" stroke-width="0.2pt" fill="black" x="256.4" y="34.64">Camera</text>
 <polygon stroke-width="0" stroke="#a80136"
  fill="#a80136"
- points="368.4,39.4 371.6,41.8
-362,39.4 371.6,37" />
+ points="310.8,29.8 314,32.2
+304.4,29.8 314,27.4" />
 <line stroke-width="1.333333"
  stroke="#a80136"
- x1="364.748737" y1="39.4" x2="410" y2="39.4" />
-<rect fill="#fbfb77" stroke-width="2"
+ x1="307.148737" y1="29.8" x2="352.4" y2="29.8" />
+<text font-size="11pt" stroke-width="0.2pt" fill="black" x="400.4" y="27.306667">user must</text>
+<text font-size="11pt" stroke-width="0.2pt" fill="black" x="400.4" y="41.973333">set exposure</text>
+<polyline stroke-width="0" stroke="#a80136"
+ fill="#fbfb77"
+ points="352.4,5.8
+436.4,5.8
+448.4,17.8
+448.4,53.8
+352.4,53.8
+352.4,5.8" />
+<polyline stroke-width="2"
  stroke="#a80136"
- x="410" y="15.4" rx="24" ry="24" width="124.8" height="48" />
-<text font-size="11pt" stroke-width="0.2pt" fill="black" x="472.4" y="36.906667">user must</text>
-<text font-size="11pt" stroke-width="0.2pt" fill="black" x="472.4" y="51.573333">set exposure</text>
+ points="352.4,5.8 436.4,5.8
+448.4,17.8
+448.4,53.8
+352.4,53.8
+352.4,5.8" />
+<polyline stroke-width="0" stroke="#a80136"
+ fill="#fbfb77"
+ points="436.4,5.8
+436.4,17.8
+448.4,17.8" />
+<polyline stroke-width="2"
+ stroke="#a80136"
+ points="436.4,5.8 436.4,17.8
+448.4,17.8" />
+<text font-size="11pt" stroke-width="0.2pt" fill="black" x="400.4" y="27.306667">user must</text>
+<text font-size="11pt" stroke-width="0.2pt" fill="black" x="400.4" y="41.973333">set exposure</text>
 <polygon stroke-width="0" stroke="#a80136"
  fill="#a80136"
- points="78.8,69.8 76.4,73
-78.8,63.4 81.2,73" />
+ points="64.4,50.6 62,53.8
+64.4,44.2 66.8,53.8" />
 <line stroke-width="1.333333"
  stroke="#a80136"
- x1="78.8" y1="66.148737" x2="78.8" y2="111.4" />
+ x1="64.4" y1="46.948737" x2="64.4" y2="92.2" />
 <text font-size="11pt" stroke-width="0.2pt" fill="black" text-anchor="end"
- x="76.133333" y="93.614369">done</text>
+ x="61.733333" y="74.414369">done</text>
 <rect fill="#fefece" stroke-width="2"
  stroke="#a80136"
- x="16.4" y="111.4" width="124.8" height="48" />
-<text font-size="11pt" stroke-width="0.2pt" fill="black" x="78.8" y="140.24">LED Driver</text>
+ x="16.4" y="92.2" width="96" height="28.8" />
+<text font-size="11pt" stroke-width="0.2pt" fill="black" x="64.4" y="111.44">LED Driver</text>
 <polygon stroke-width="0" stroke="#a80136"
  fill="#a80136"
- points="230.8,135.4 227.6,133
-237.2,135.4 227.6,137.8" />
+ points="202,106.6 198.8,104.2
+208.4,106.6 198.8,109" />
 <line stroke-width="1.333333"
  stroke="#a80136"
- x1="141.2" y1="135.4" x2="234.451263" y2="135.4" />
+ x1="112.4" y1="106.6" x2="205.651263" y2="106.6" />
 <rect fill="#fefece" stroke-width="2"
- stroke="#000000"
- x="237.2" y="111.4" width="124.8" height="48" />
-<text font-size="11pt" stroke-width="0.2pt" fill="black" x="299.6" y="140.24">Dome</text>
+ x="208.4" y="92.2" width="96" height="28.8" />
+<text font-size="11pt" stroke-width="0.2pt" fill="black" x="256.4" y="111.44">Dome</text>
 <polygon stroke-width="0" stroke="#a80136"
  fill="#a80136"
- points="110,105 112.4,101.8
-110,111.4 107.6,101.8" />
+ points="74,85.8 76.4,82.6
+74,92.2 71.6,82.6" />
 <path stroke-width="1.333333"
  stroke="#a80136"
- d="M 268.4,63.4
- C 268.4,77.8 236.72,87.4 189.2,87.4 141.68,87.4 110,95.900505 110,108.651263" />
+ d="M 232.4,44.2
+ C 232.4,58.6 200.72,68.2 153.2,68.2 105.68,68.2 74,76.700505 74,89.451263" />
 <text font-size="11pt" stroke-width="0.266667"
  fill="black"
- x="189.2" y="84.733333">flash</text>
+ x="160.4" y="65.533333">flash</text>
 <rect stroke-width="2"
  stroke-dasharray="5.6,4"
- x="2" y="1" width="153.6" height="172.8" />
+ x="2" y="1" width="124.8" height="134.4" />
 </g></svg>
 </div>
 <p class="caption"><span class="caption-text">CCeH design</span><a class="headerlink" href="#id7" title="Permalink to this image">¶</a></p>
 </div>
-<p>In the CCeH design you don’t need to program any interval into the controller
-because the camera itself tells the controller what to do.  The system will go
-as fast as the camera allows and never miss an exposure.</p>
+<p>In the CCeH design we introduced an LED driver module that looks to the camera
+like an ordinary external flash gun.  (With the difference that ours fires the
+next LED each time it is activated.)  There’s no more any need to program
+intervals into the controller.  The system will go just as fast as the camera
+commands.</p>
+<div class="figure align-center" id="id8">
+<div class="pic">
+
+
+<!-- Creator: dpic version 2019.11.30 option -v for SVG 1.1 -->
+<!-- width="708" height="582" -->
+<svg
+ xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+ xml:space="preserve"
+ style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision;
+ image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
+ width="706.8px" height="580.56px"
+ viewBox="0 0 706.8 580.56"
+ font-size="11pt" text-anchor="middle"
+ stroke="black" stroke-miterlimit="10" stroke-width="1.066667" fill="none">
+<g>
+<circle fill="#fefece" stroke-width="2"
+ stroke="#a80136"
+ cx="16.4" cy="30.76" r="5.76" />
+<line stroke-width="2"
+ stroke="#a80136"
+ x1="16.4" y1="36.52" x2="16.4" y2="48.04" />
+<polyline stroke-width="0" stroke="#a80136"
+ fill="#fefece"
+ points="2,38.44
+30.8,38.44" />
+<line stroke-width="2"
+ stroke="#a80136"
+ x1="2" y1="38.44" x2="30.8" y2="38.44" />
+<polyline stroke-width="0" stroke="#a80136"
+ fill="#fefece"
+ points="16.4,48.04
+8.72,62.44" />
+<line stroke-width="2"
+ stroke="#a80136"
+ x1="16.4" y1="48.04" x2="8.72" y2="62.44" />
+<polyline stroke-width="0" stroke="#a80136"
+ fill="#fefece"
+ points="16.4,48.04
+24.08,62.44" />
+<line stroke-width="2"
+ stroke="#a80136"
+ x1="16.4" y1="48.04" x2="24.08" y2="62.44" />
+<text font-size="11pt" stroke-width="0.2pt" fill="black" x="16.4" y="7.84"></text>
+<text font-size="11pt" stroke-width="0.2pt" fill="black" x="16.4" y="22.506667"></text>
+<text font-size="11pt" stroke-width="0.2pt" fill="black" x="16.4" y="37.173333"></text>
+<text font-size="11pt" stroke-width="0.2pt" fill="black" x="16.4" y="51.84"></text>
+<rect fill="#fefece" stroke-width="2"
+ stroke="#a80136"
+ x="126.8" y="28.36" width="96" height="28.8" />
+<text font-size="11pt" stroke-width="0.2pt" fill="black" x="174.8" y="47.6">Controller</text>
+<rect fill="#fefece" stroke-width="2"
+ x="270.8" y="28.36" width="96" height="28.8" />
+<text font-size="11pt" stroke-width="0.2pt" fill="black" x="318.8" y="47.6">Camera</text>
+<rect fill="#fefece" stroke-width="2"
+ stroke="#a80136"
+ x="414.8" y="28.36" width="96" height="28.8" />
+<text font-size="11pt" stroke-width="0.2pt" fill="black" x="462.8" y="47.6">LED Driver</text>
+<rect fill="#fefece" stroke-width="2"
+ x="558.8" y="28.36" width="96" height="28.8" />
+<text font-size="11pt" stroke-width="0.2pt" fill="black" x="606.8" y="47.6">Dome</text>
+<polygon stroke-width="0" stroke="#a80136"
+ fill="#a80136"
+ points="312.4,90.76 309.2,88.36
+318.8,90.76 309.2,93.16" />
+<line stroke-width="1.333333"
+ stroke="#a80136"
+ x1="16.4" y1="90.76" x2="316.051263" y2="90.76" />
+<text font-size="11pt" stroke-width="0.266667"
+ fill="black"
+ text-anchor="start"
+ x="21.733333" y="88.093333">set exposure</text>
+<polygon stroke-width="0" stroke="#a80136"
+ fill="#a80136"
+ points="163.6,114.76 160.4,112.36
+170,114.76 160.4,117.16" />
+<line stroke-width="1.333333"
+ stroke="#a80136"
+ x1="16.4" y1="114.76" x2="167.251263" y2="114.76" />
+<text font-size="11pt" stroke-width="0.266667"
+ fill="black"
+ text-anchor="start"
+ x="21.733333" y="112.093333">start</text>
+<line stroke-width="1.333333"
+ stroke="#a80136"
+ stroke-dasharray="5.6,4"
+ x1="174.8" y1="57.16" x2="174.8" y2="114.76" />
+<line stroke-width="1.333333"
+ stroke="#a80136"
+ x1="170" y1="114.76" x2="179.6" y2="114.76" />
+<polygon stroke-width="0" stroke="#a80136"
+ fill="#a80136"
+ points="307.6,138.76 304.4,136.36
+314,138.76 304.4,141.16" />
+<line stroke-width="1.333333"
+ stroke="#a80136"
+ x1="179.6" y1="138.76" x2="311.251263" y2="138.76" />
+<text font-size="11pt" stroke-width="0.266667"
+ fill="black"
+ text-anchor="start"
+ x="184.933333" y="136.093333">press shutter</text>
+<line stroke-width="1.333333"
+ stroke="#a80136"
+ stroke-dasharray="5.6,4"
+ x1="318.8" y1="57.16" x2="318.8" y2="138.76" />
+<line stroke-width="1.333333"
+ stroke="#a80136"
+ x1="314" y1="138.76" x2="323.6" y2="138.76" />
+<line stroke-width="1.333333"
+ stroke="#a80136"
+ x1="314" y1="138.76" x2="314" y2="162.76" />
+<line stroke-width="1.333333"
+ stroke="#a80136"
+ x1="323.6" y1="138.76" x2="323.6" y2="162.76" />
+<text font-size="11pt" stroke-width="0.2pt" fill="black" x="309.2" y="182">repeat</text>
+<polyline stroke-width="2"
+ points="357.2,162.76 357.2,177.16
+342.8,191.56
+261.2,191.56" />
+<polygon stroke-width="0" stroke="#a80136"
+ fill="#a80136"
+ points="456.4,215.56 453.2,213.16
+462.8,215.56 453.2,217.96" />
+<line stroke-width="1.333333"
+ stroke="#a80136"
+ x1="323.6" y1="215.56" x2="460.051263" y2="215.56" />
+<text font-size="11pt" stroke-width="0.266667"
+ fill="black"
+ text-anchor="start"
+ x="328.933333" y="212.893333">flash on</text>
+<polygon stroke-width="0" stroke="#a80136"
+ fill="#a80136"
+ points="595.6,215.56 592.4,213.16
+602,215.56 592.4,217.96" />
+<line stroke-width="1.333333"
+ stroke="#a80136"
+ x1="462.8" y1="215.56" x2="599.251263" y2="215.56" />
+<text font-size="11pt" stroke-width="0.266667"
+ fill="black"
+ text-anchor="start"
+ x="468.133333" y="212.893333">LED on</text>
+<line stroke-width="1.333333"
+ stroke="#a80136"
+ stroke-dasharray="5.6,4"
+ x1="606.8" y1="57.16" x2="606.8" y2="215.56" />
+<line stroke-width="1.333333"
+ stroke="#a80136"
+ x1="602" y1="215.56" x2="611.6" y2="215.56" />
+<line stroke-width="1.333333"
+ stroke="#a80136"
+ x1="314" y1="191.56" x2="314" y2="215.56" />
+<line stroke-width="1.333333"
+ stroke="#a80136"
+ x1="323.6" y1="191.56" x2="323.6" y2="215.56" />
+<line stroke-width="1.333333"
+ stroke="#a80136"
+ x1="318.8" y1="215.56" x2="328.4" y2="215.56" />
+<polygon stroke-width="0" stroke="#a80136"
+ fill="#a80136"
+ points="186,239.56 189.2,241.96
+179.6,239.56 189.2,237.16" />
+<line stroke-width="1.333333"
+ stroke="#a80136"
+ stroke-dasharray="5.6,4"
+ x1="462.8" y1="239.56" x2="182.348737" y2="239.56" />
+<text font-size="11pt" stroke-width="0.266667"
+ fill="black"
+ text-anchor="end"
+ x="457.466667" y="236.893333">(last LED)</text>
+<line stroke-width="1.333333"
+ stroke="#a80136"
+ x1="314" y1="215.56" x2="314" y2="263.56" />
+<line stroke-width="1.333333"
+ stroke="#a80136"
+ x1="318.8" y1="215.56" x2="318.8" y2="263.56" />
+<line stroke-width="1.333333"
+ stroke="#a80136"
+ x1="328.4" y1="215.56" x2="328.4" y2="263.56" />
+<text font-size="11pt" stroke-width="0.2pt" fill="black" x="318.8" y="285.066667">taking</text>
+<text font-size="11pt" stroke-width="0.2pt" fill="black" x="318.8" y="299.733333">exposure</text>
+<polyline stroke-width="0" stroke="#a80136"
+ fill="#fbfb77"
+ points="270.8,263.56
+354.8,263.56
+366.8,275.56
+366.8,311.56
+270.8,311.56
+270.8,263.56" />
+<polyline stroke-width="2"
+ stroke="#a80136"
+ points="270.8,263.56 354.8,263.56
+366.8,275.56
+366.8,311.56
+270.8,311.56
+270.8,263.56" />
+<polyline stroke-width="0" stroke="#a80136"
+ fill="#fbfb77"
+ points="354.8,263.56
+354.8,275.56
+366.8,275.56" />
+<polyline stroke-width="2"
+ stroke="#a80136"
+ points="354.8,263.56 354.8,275.56
+366.8,275.56" />
+<text font-size="11pt" stroke-width="0.2pt" fill="black" x="318.8" y="285.066667">taking</text>
+<text font-size="11pt" stroke-width="0.2pt" fill="black" x="318.8" y="299.733333">exposure</text>
+<polygon stroke-width="0" stroke="#a80136"
+ fill="#a80136"
+ points="456.4,359.56 453.2,357.16
+462.8,359.56 453.2,361.96" />
+<line stroke-width="1.333333"
+ stroke="#a80136"
+ x1="328.4" y1="359.56" x2="460.051263" y2="359.56" />
+<text font-size="11pt" stroke-width="0.266667"
+ fill="black"
+ text-anchor="start"
+ x="333.733333" y="356.893333">flash off</text>
+<polygon stroke-width="0" stroke="#a80136"
+ fill="#a80136"
+ points="595.6,359.56 592.4,357.16
+602,359.56 592.4,361.96" />
+<line stroke-width="1.333333"
+ stroke="#a80136"
+ x1="462.8" y1="359.56" x2="599.251263" y2="359.56" />
+<text font-size="11pt" stroke-width="0.266667"
+ fill="black"
+ text-anchor="start"
+ x="468.133333" y="356.893333">LED off</text>
+<line stroke-width="1.333333"
+ stroke="#a80136"
+ x1="602" y1="215.56" x2="602" y2="359.56" />
+<line stroke-width="1.333333"
+ stroke="#a80136"
+ x1="611.6" y1="215.56" x2="611.6" y2="359.56" />
+<line stroke-width="1.333333"
+ stroke="#a80136"
+ x1="602" y1="359.56" x2="611.6" y2="359.56" />
+<line stroke-width="1.333333"
+ stroke="#a80136"
+ x1="314" y1="311.56" x2="314" y2="359.56" />
+<line stroke-width="1.333333"
+ stroke="#a80136"
+ x1="318.8" y1="311.56" x2="318.8" y2="359.56" />
+<line stroke-width="1.333333"
+ stroke="#a80136"
+ x1="328.4" y1="311.56" x2="328.4" y2="359.56" />
+<line stroke-width="1.333333"
+ stroke="#a80136"
+ x1="318.8" y1="359.56" x2="328.4" y2="359.56" />
+<line stroke-width="1.333333"
+ stroke="#a80136"
+ x1="314" y1="359.56" x2="314" y2="359.56" />
+<line stroke-width="1.333333"
+ stroke="#a80136"
+ x1="323.6" y1="359.56" x2="323.6" y2="359.56" />
+<line stroke-width="1.333333"
+ stroke="#a80136"
+ x1="318.8" y1="359.56" x2="328.4" y2="359.56" />
+<line stroke-width="1.333333"
+ stroke="#a80136"
+ x1="314" y1="359.56" x2="314" y2="407.56" />
+<line stroke-width="1.333333"
+ stroke="#a80136"
+ x1="318.8" y1="359.56" x2="318.8" y2="407.56" />
+<line stroke-width="1.333333"
+ stroke="#a80136"
+ x1="328.4" y1="359.56" x2="328.4" y2="407.56" />
+<text font-size="11pt" stroke-width="0.2pt" fill="black" x="318.8" y="429.066667">saving</text>
+<text font-size="11pt" stroke-width="0.2pt" fill="black" x="318.8" y="443.733333">picture</text>
+<polyline stroke-width="0" stroke="#a80136"
+ fill="#fbfb77"
+ points="270.8,407.56
+354.8,407.56
+366.8,419.56
+366.8,455.56
+270.8,455.56
+270.8,407.56" />
+<polyline stroke-width="2"
+ stroke="#a80136"
+ points="270.8,407.56 354.8,407.56
+366.8,419.56
+366.8,455.56
+270.8,455.56
+270.8,407.56" />
+<polyline stroke-width="0" stroke="#a80136"
+ fill="#fbfb77"
+ points="354.8,407.56
+354.8,419.56
+366.8,419.56" />
+<polyline stroke-width="2"
+ stroke="#a80136"
+ points="354.8,407.56 354.8,419.56
+366.8,419.56" />
+<text font-size="11pt" stroke-width="0.2pt" fill="black" x="318.8" y="429.066667">saving</text>
+<text font-size="11pt" stroke-width="0.2pt" fill="black" x="318.8" y="443.733333">picture</text>
+<line stroke-width="1.333333"
+ stroke="#a80136"
+ x1="314" y1="455.56" x2="314" y2="503.56" />
+<line stroke-width="1.333333"
+ stroke="#a80136"
+ x1="318.8" y1="455.56" x2="318.8" y2="503.56" />
+<line stroke-width="1.333333"
+ stroke="#a80136"
+ x1="328.4" y1="455.56" x2="328.4" y2="503.56" />
+<line stroke-width="1.333333"
+ stroke="#a80136"
+ x1="318.8" y1="503.56" x2="328.4" y2="503.56" />
+<text font-size="11pt" stroke-width="0.2pt" fill="black" x="616.4" y="518"></text>
+<rect stroke-width="2"
+ x="261.2" y="162.76" width="403.2" height="364.8" />
+<polygon stroke-width="0" stroke="#a80136"
+ fill="#a80136"
+ points="307.6,551.56 304.4,549.16
+314,551.56 304.4,553.96" />
+<line stroke-width="1.333333"
+ stroke="#a80136"
+ x1="179.6" y1="551.56" x2="311.251263" y2="551.56" />
+<text font-size="11pt" stroke-width="0.266667"
+ fill="black"
+ text-anchor="start"
+ x="184.933333" y="548.893333">release shutter</text>
+<line stroke-width="1.333333"
+ stroke="#a80136"
+ x1="314" y1="503.56" x2="314" y2="551.56" />
+<line stroke-width="1.333333"
+ stroke="#a80136"
+ x1="323.6" y1="503.56" x2="323.6" y2="551.56" />
+<line stroke-width="1.333333"
+ stroke="#a80136"
+ x1="314" y1="551.56" x2="323.6" y2="551.56" />
+<line stroke-width="1.333333"
+ stroke="#a80136"
+ x1="170" y1="114.76" x2="170" y2="551.56" />
+<line stroke-width="1.333333"
+ stroke="#a80136"
+ x1="179.6" y1="114.76" x2="179.6" y2="551.56" />
+<line stroke-width="1.333333"
+ stroke="#a80136"
+ x1="170" y1="551.56" x2="179.6" y2="551.56" />
+<line stroke-width="1.333333"
+ stroke="#a80136"
+ stroke-dasharray="5.6,4"
+ x1="16.4" y1="65.32" x2="16.4" y2="575.56" />
+<line stroke-width="1.333333"
+ stroke="#a80136"
+ stroke-dasharray="5.6,4"
+ x1="174.8" y1="551.56" x2="174.8" y2="575.56" />
+<line stroke-width="1.333333"
+ stroke="#a80136"
+ stroke-dasharray="5.6,4"
+ x1="318.8" y1="551.56" x2="318.8" y2="575.56" />
+<line stroke-width="1.333333"
+ stroke="#a80136"
+ stroke-dasharray="5.6,4"
+ x1="462.8" y1="57.16" x2="462.8" y2="575.56" />
+<line stroke-width="1.333333"
+ stroke="#a80136"
+ stroke-dasharray="5.6,4"
+ x1="606.8" y1="359.56" x2="606.8" y2="575.56" />
+</g></svg>
+</div>
+<p class="caption"><span class="caption-text">CCeH design sequence diagram</span><a class="headerlink" href="#id8" title="Permalink to this image">¶</a></p>
+</div>
 <p>The camera is in continuous-shot mode.  The controller presses the camera
 shutter button and keeps it pressed.  The camera initializes and when it is
 about to take an exposure it signals this on its external flash output.  The LED
@@ -493,57 +1247,6 @@ done with the exposure it resets the flash output and the driver turns off the
 LED.  The camera saves the picture.  This flash cycle repeats until all LEDs
 have flashed.  Then the LED driver will tell the controller to release the
 shutter button and the camera will stop.</p>
-<div class="figure align-center" id="id8">
-<div class="pic">
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="642px" preserveAspectRatio="none" style="width:528px;height:642px;" version="1.1" viewBox="0 0 528 642" width="528px" zoomAndPan="magnify"><defs><filter height="300%" id="f1kaz18kqwicap" width="300%" x="-1" y="-1"><feGaussianBlur result="blurOut" stdDeviation="2.0"/><feColorMatrix in="blurOut" result="blurOut2" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"/><feOffset dx="4.0" dy="4.0" in="blurOut2" result="blurOut3"/><feBlend in="SourceGraphic" in2="blurOut3" mode="normal"/></filter></defs><g><rect fill="#FFFFFF" filter="url(#f1kaz18kqwicap)" height="116.3984" style="stroke: #A80036; stroke-width: 1.0;" width="10" x="278" y="228.9609"/><rect fill="#CCCCCC" filter="url(#f1kaz18kqwicap)" height="97.1328" style="stroke: #A80036; stroke-width: 1.0;" width="10" x="278" y="374.4922"/><rect fill="#FFFFFF" filter="url(#f1kaz18kqwicap)" height="116.3984" style="stroke: #A80036; stroke-width: 1.0;" width="10" x="472" y="258.0938"/><rect fill="#FFFFFF" filter="url(#f1kaz18kqwicap)" height="288.9297" style="stroke: #000000; stroke-width: 2.0;" width="307" x="210" y="190.6953"/><line style="stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 5.0,5.0;" x1="27" x2="27" y1="86.2969" y2="554.8906"/><line style="stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 5.0,5.0;" x1="161.5" x2="161.5" y1="86.2969" y2="554.8906"/><line style="stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 5.0,5.0;" x1="282.5" x2="282.5" y1="86.2969" y2="554.8906"/><line style="stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 5.0,5.0;" x1="372.5" x2="372.5" y1="86.2969" y2="554.8906"/><line style="stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 5.0,5.0;" x1="477" x2="477" y1="86.2969" y2="554.8906"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="32" x="8" y="82.9951">User</text><ellipse cx="27" cy="13" fill="#FEFECE" filter="url(#f1kaz18kqwicap)" rx="8" ry="8" style="stroke: #A80036; stroke-width: 2.0;"/><path d="M27,21 L27,48 M14,29 L40,29 M27,48 L14,63 M27,48 L40,63 " fill="none" filter="url(#f1kaz18kqwicap)" style="stroke: #A80036; stroke-width: 2.0;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="32" x="8" y="566.8857">User</text><ellipse cx="27" cy="580.1875" fill="#FEFECE" filter="url(#f1kaz18kqwicap)" rx="8" ry="8" style="stroke: #A80036; stroke-width: 2.0;"/><path d="M27,588.1875 L27,615.1875 M14,596.1875 L40,596.1875 M27,615.1875 L14,630.1875 M27,615.1875 L40,630.1875 " fill="none" filter="url(#f1kaz18kqwicap)" style="stroke: #A80036; stroke-width: 2.0;"/><rect fill="#FEFECE" filter="url(#f1kaz18kqwicap)" height="30.2969" style="stroke: #A80036; stroke-width: 1.5;" width="81" x="119.5" y="51"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="67" x="126.5" y="70.9951">Controller</text><rect fill="#FEFECE" filter="url(#f1kaz18kqwicap)" height="30.2969" style="stroke: #A80036; stroke-width: 1.5;" width="81" x="119.5" y="553.8906"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="67" x="126.5" y="573.8857">Controller</text><rect fill="#FEFECE" filter="url(#f1kaz18kqwicap)" height="30.2969" style="stroke: #A80036; stroke-width: 1.5;" width="67" x="247.5" y="51"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="53" x="254.5" y="70.9951">Camera</text><rect fill="#FEFECE" filter="url(#f1kaz18kqwicap)" height="30.2969" style="stroke: #A80036; stroke-width: 1.5;" width="67" x="247.5" y="553.8906"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="53" x="254.5" y="573.8857">Camera</text><rect fill="#FEFECE" filter="url(#f1kaz18kqwicap)" height="30.2969" style="stroke: #A80036; stroke-width: 1.5;" width="85" x="328.5" y="51"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="71" x="335.5" y="70.9951">LED Driver</text><rect fill="#FEFECE" filter="url(#f1kaz18kqwicap)" height="30.2969" style="stroke: #A80036; stroke-width: 1.5;" width="85" x="328.5" y="553.8906"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="71" x="335.5" y="573.8857">LED Driver</text><rect fill="#FEFECE" filter="url(#f1kaz18kqwicap)" height="30.2969" style="stroke: #A80036; stroke-width: 1.5;" width="56" x="447" y="51"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="42" x="454" y="70.9951">Dome</text><rect fill="#FEFECE" filter="url(#f1kaz18kqwicap)" height="30.2969" style="stroke: #A80036; stroke-width: 1.5;" width="56" x="447" y="553.8906"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="42" x="454" y="573.8857">Dome</text><rect fill="#FFFFFF" filter="url(#f1kaz18kqwicap)" height="116.3984" style="stroke: #A80036; stroke-width: 1.0;" width="10" x="278" y="228.9609"/><rect fill="#CCCCCC" filter="url(#f1kaz18kqwicap)" height="97.1328" style="stroke: #A80036; stroke-width: 1.0;" width="10" x="278" y="374.4922"/><rect fill="#FFFFFF" filter="url(#f1kaz18kqwicap)" height="116.3984" style="stroke: #A80036; stroke-width: 1.0;" width="10" x="472" y="258.0938"/><polygon fill="#A80036" points="271,113.4297,281,117.4297,271,121.4297,275,117.4297" style="stroke: #A80036; stroke-width: 1.0;"/><line style="stroke: #A80036; stroke-width: 1.0;" x1="27" x2="277" y1="117.4297" y2="117.4297"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="83" x="34" y="112.3638">set exposure</text><polygon fill="#A80036" points="150,142.5625,160,146.5625,150,150.5625,154,146.5625" style="stroke: #A80036; stroke-width: 1.0;"/><line style="stroke: #A80036; stroke-width: 1.0;" x1="27" x2="156" y1="146.5625" y2="146.5625"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="111" x="34" y="141.4966">push start button</text><polygon fill="#A80036" points="271,171.6953,281,175.6953,271,179.6953,275,175.6953" style="stroke: #A80036; stroke-width: 1.0;"/><line style="stroke: #A80036; stroke-width: 1.0;" x1="162" x2="277" y1="175.6953" y2="175.6953"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="85" x="169" y="170.6294">press shutter</text><path d="M210,190.6953 L287,190.6953 L287,197.6953 L277,207.6953 L210,207.6953 L210,190.6953 " fill="#EEEEEE" style="stroke: #000000; stroke-width: 1.0;"/><rect fill="none" height="288.9297" style="stroke: #000000; stroke-width: 2.0;" width="307" x="210" y="190.6953"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="32" x="225" y="203.7622">loop</text><text fill="#000000" font-family="sans-serif" font-size="11" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="136" x="302" y="202.9058">[on all LEDs in dome]</text><polygon fill="#A80036" points="361,224.9609,371,228.9609,361,232.9609,365,228.9609" style="stroke: #A80036; stroke-width: 1.0;"/><line style="stroke: #A80036; stroke-width: 1.0;" x1="288" x2="367" y1="228.9609" y2="228.9609"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="50" x="295" y="223.895">flash on</text><polygon fill="#A80036" points="460,254.0938,470,258.0938,460,262.0938,464,258.0938" style="stroke: #A80036; stroke-width: 1.0;"/><line style="stroke: #A80036; stroke-width: 1.0;" x1="373" x2="466" y1="258.0938" y2="258.0938"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="75" x="380" y="253.0278">turn LED on</text><polygon fill="#FBFB77" filter="url(#f1kaz18kqwicap)" points="230,271.0938,336,271.0938,346,282.0938,336,294.0938,230,294.0938,220,282.0938,230,271.0938" style="stroke: #A80036; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="102" x="232" y="287.1606">taking exposure</text><polygon fill="#A80036" points="361,341.3594,371,345.3594,361,349.3594,365,345.3594" style="stroke: #A80036; stroke-width: 1.0;"/><line style="stroke: #A80036; stroke-width: 1.0;" x1="283" x2="367" y1="345.3594" y2="345.3594"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="50" x="290" y="340.2935">flash off</text><polygon fill="#A80036" points="465,370.4922,475,374.4922,465,378.4922,469,374.4922" style="stroke: #A80036; stroke-width: 1.0;"/><line style="stroke: #A80036; stroke-width: 1.0;" x1="373" x2="471" y1="374.4922" y2="374.4922"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="75" x="380" y="369.4263">turn LED off</text><polygon fill="#FBFB77" filter="url(#f1kaz18kqwicap)" points="236,412.4922,329,412.4922,339,423.4922,329,435.4922,236,435.4922,226,423.4922,236,412.4922" style="stroke: #A80036; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="89" x="238" y="428.5591">saving picture</text><polygon fill="#FFFFFF" points="465,467.625,475,471.625,465,475.625,469,471.625" style="stroke: #FFFFFF; stroke-width: 1.0;"/><line style="stroke: #FFFFFF; stroke-width: 1.0;" x1="373" x2="471" y1="471.625" y2="471.625"/><polygon fill="#A80036" points="173,503.7578,163,507.7578,173,511.7578,169,507.7578" style="stroke: #A80036; stroke-width: 1.0;"/><line style="stroke: #A80036; stroke-width: 1.0;" x1="167" x2="372" y1="507.7578" y2="507.7578"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="52" x="179" y="502.6919">last LED</text><polygon fill="#A80036" points="271,532.8906,281,536.8906,271,540.8906,275,536.8906" style="stroke: #A80036; stroke-width: 1.0;"/><line style="stroke: #A80036; stroke-width: 1.0;" x1="162" x2="277" y1="536.8906" y2="536.8906"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="97" x="169" y="531.8247">release shutter</text><!--
-@startuml
-actor User               as u
-participant Controller   as ctrl
-participant Camera       as cam
-participant "LED Driver" as drv
-participant Dome         as dome
-
-u -> cam  : set exposure
-u -> ctrl : push start button
-
-ctrl -> cam : press shutter
-
-loop on all LEDs in dome
-cam -> drv  : flash on
-activate cam
-drv -> dome : turn LED on
-activate dome
-hnote over cam : taking exposure
-|||
-cam -> drv  : flash off
-deactivate cam
-drv -> dome : turn LED off
-deactivate dome
-activate cam #ccc
-|||
-hnote over cam : saving picture
-|||
-drv -[#transparent]> dome
-deactivate cam
-end
-
-drv  -> ctrl : last LED
-ctrl -> cam  : release shutter
-@enduml
-
-PlantUML version 1.2018.13(Mon Nov 26 18:11:51 CET 2018)
-(GPL source distribution)
-Java Runtime: OpenJDK Runtime Environment
-JVM: OpenJDK 64-Bit Server VM
-Java Version: 11.0.6+10-post-Debian-1
-Operating System: Linux
-OS Version: 5.3.0-3-amd64
-Default Encoding: UTF-8
-Language: en
-Country: US
---></g></svg></div>
-<p class="caption"><span class="caption-text">CCeH design sequence diagram</span><a class="headerlink" href="#id8" title="Permalink to this image">¶</a></p>
-</div>
 <p>This design conserves energy, because the LEDs are turned on only for the time
 needed to take the exposure, and turned off during the time the camera processes
 and stores the image.  You want this in battery-powered domes.</p>
@@ -705,7 +1408,7 @@ LEDs for replacement purposes.</p>
 </div>
 </div>
 <div class="section" id="led-driver">
-<h2>Led Driver<a class="headerlink" href="#led-driver" title="Permalink to this headline">¶</a></h2>
+<h2>LED Driver<a class="headerlink" href="#led-driver" title="Permalink to this headline">¶</a></h2>
 <p>The LED driver section we designed is very flexible.  Adjusting component values
 you can drive almost any LED up to 1.5A / 80V.  The components you have to
 adjust are the resistor of the LM317 constant current source and the base

@@ -20,113 +20,105 @@ designs like this: [#]_ [#]_
 
    right;
 
-   box "user must" "set timing" note;
+   notebox("user must" "set timing" ht 0.5);
    arrow astyle;
-   CTRL: box "Controller" component;
+   CTRL: box "Controller" borderstyle shadedstyle;
    arrow 1 "shutter" above astyle;
-   CAM: box "Camera" external;
+   CAM: box "Camera" shadedstyle;
    line <- astyle;
-   box "user must" "set exposure" note;
+   notebox("user must" "set exposure" ht 0.5);
 
-   move to CTRL.s; down;
-   arrow astyle "step" rjust;
+   move to CTRL.s;
+   down;
+   line 0.25 astyle; arc astyle; arrow astyle to (CAM.w, Here);
 
-   DRV: box "LED Driver" component;
-   move to DRV.e; right;
-   arrow 1 astyle;
-   DOME: box "Dome" external;
-
-   box dashed width 1.6 height 1.8 with .n at CTRL.n + (0, 0.15)
+   DOME: box "Dome" shadedstyle;
 
 
-The camera is in single-shot mode.  The controller tells the LED driver to turn
-on the next LED and then presses the camera shutter button.  The camera takes
-one picture.  After a programmable time lapse the controller releases the
-shutter button and tells the LED driver to turn the LED off.  After another
-programmable interval the cycle starts again, as many times as there are LEDs in
-the dome.
+The camera is in single-shot mode.  The controller turns on the next LED and
+then presses and releases the camera shutter button.  The camera takes one
+picture.  After a programmable time lapse the controller turns the LED off.
+After another programmable interval the cycle starts again, as many times as
+there are LEDs in the dome.
 
-.. pic:: uml
+.. pic:: seq
    :caption: Typical design sequence diagram
 
-   actor User               as u
-   participant Controller   as ctrl
-   participant Camera       as cam
-   participant "LED Driver" as drv
-   participant Dome         as dome
+   actor(U,    "",           borderstyle shadedstyle);
+   move;
+   object(CT,  "Controller", borderstyle shadedstyle);
+   object(CAM, "Camera",     shadedstyle);
+   object(D,   "Dome",       shadedstyle);
 
-   u -> cam  : set exposure
-   u -> ctrl : set sleeping interval 1
-   u -> ctrl : set sleeping interval 2
-   u -> ctrl : push start button
+   step();
 
-   loop on all LEDs in dome
-   ctrl -> drv  : turn LED on
-   drv  -> dome : turn LED on
-   activate dome
-   ctrl -> cam  : press shutter
-   activate ctrl
-   activate cam
-   |||
-   hnote over cam  : taking exposure
-   hnote over ctrl : sleeping interval 1
-   |||
-   dome -[#transparent]> drv
-   deactivate cam
-   dome -[#transparent]> drv
-   activate cam #ccc
-   ctrl -> cam : release shutter
-   deactivate ctrl
-   ctrl -> drv : turn LED off
-   activate ctrl #ccc
-   drv -> dome : turn LED off
-   deactivate dome
-   hnote over cam  : saving picture
-   hnote over ctrl : sleeping interval 2
-   |||
-   drv -[#transparent]> dome
-   deactivate cam
-   |||
-   drv -[#transparent]> dome
-   deactivate ctrl
-   end
+   message(U, CAM, "set exposure");
+   message(U, CT,  "set interval 1");
+   message(U, CT,  "set interval 2");
+   message(U, CT,  "start");
+   step()
+   begin_frame(CT,F,"repeat");
+   message_active(CT, D,  "LED on");
+   active(CT);
+   message_active(CT, CAM, "press shutter");
+   message(CT, CAM, "release shutter");
+   step();
+   { note(CT,  "sleeping" "interval 1" ht 0.5); }
+   note(CAM, "taking" "exposure" ht 0.5);
+   inactive(CAM);
+   active(CAM);
+   message_inactive(CT, D,  "LED off");
+   inactive(CT);
+   active(CT);
+   step();
+   { note(CT, "sleeping" "interval 2" ht 0.5); }
+   note(CAM,"saving" "picture" ht 0.5);
+   inactive(CAM);
+   step();
+   step();
+   inactive(CT);
+   step();
+   end_frame(D,F);
+
+   step();
+   complete(U);
+   complete(CT);
+   complete(CAM);
+   complete(D);
 
 
-This is sub-optimal because the controller does not know when the camera is done
-with the current exposure nor when it is ready to take the next exposure.  This
-depends on the exposure time, the size of the picture file, the speed of the
-camera memory system, and many other things.  The optimal intervals can only be
-found by experiment.  You must program generous intervals because if any
-interval is too short the camera will miss exposures and you will get an
-unusable set of pictures.
+While conceptually simple this design is sub-optimal because the controller does
+not know when the camera is done with the current exposure, nor when it is ready
+to take the next exposure.  This depends on the exposure time, the size of the
+picture file, the speed of the camera memory system, and many other things.  The
+optimal intervals can only be found by experiment.
+
+The intervals must include ample security margins because if any interval is too
+short the camera will miss exposures and you will get an unusable set of
+pictures.
 
 The CCeH driver module takes a different approach that does not have these
 disadvantages.
-
-..
-   defcolor lightyellow rgb #fefece
-   defcolor yellow rgb #fbfb77
-   defcolor red rgb #a80136
 
 .. pic:: pic
    :caption: CCeH design
 
    right;
 
-   CTRL: box "Controller" component;
+   CTRL: box "Controller" borderstyle shadedstyle;
    arrow 1 astyle "shutter" above;
-   CAM: box "Camera" external;
+   CAM: box "Camera" shadedstyle;
    line <- astyle;
-   box "user must" "set exposure" note;
+   notebox("user must" "set exposure" ht 0.5);
 
    move to CTRL.s; down;
    line <- astyle "done" rjust;
 
-   DRV: box "LED Driver" component;
+   DRV: box "LED Driver" borderstyle shadedstyle;
    move to DRV.e; right;
 
    arrow 1 astyle;
-   DOME: box "Dome" external;
+   DOME: box "Dome" shadedstyle;
 
    move to 1/2 <CAM.sw,CAM.s>;
    spline .6 down 0.25 then left 1.65 then down 0.25 -> astyle;
@@ -134,12 +126,63 @@ disadvantages.
    move to 1/2 <CAM.c,DRV.c>;
    "flash" above;
 
-   box dashed width 1.6 height 1.8 with .n at CTRL.n + (0, 0.15)
+   wrap(CTRL, DRV);
 
+In the CCeH design we introduced an LED driver module that looks to the camera
+like an ordinary external flash gun.  (With the difference that ours fires the
+next LED each time it is activated.)  There's no more any need to program
+intervals into the controller.  The system will go just as fast as the camera
+commands.
 
-In the CCeH design you don't need to program any interval into the controller
-because the camera itself tells the controller what to do.  The system will go
-as fast as the camera allows and never miss an exposure.
+.. pic:: seq
+   :caption: CCeH design sequence diagram
+
+   actor(U,    "",           borderstyle shadedstyle);
+   move;
+   object(CT,  "Controller", borderstyle shadedstyle);
+   object(CAM, "Camera",     shadedstyle);
+   object(LD,  "LED Driver", borderstyle shadedstyle);
+   object(D,   "Dome",       shadedstyle);
+
+   step();
+
+   message(U, CAM, "set exposure");
+   message_active(U, CT,  "start");
+   message_active(CT,CAM, "press shutter");
+
+   step();
+   begin_frame(CAM,F,"repeat");
+
+   { message(CAM, LD, "flash on"); }
+   message_active(LD, D, "LED on");
+   active(CAM);
+   return_message(LD, CT, "(last LED)");
+   step();
+   note(CAM, "taking" "exposure" ht 0.5);
+   { message(CAM, LD, "flash off"); }
+   message_inactive(LD, D, "LED off");
+   inactive(CAM);
+   active(CAM);
+   step();
+
+   step();
+   note(CAM, "saving" "picture" ht 0.5);
+   step();
+   inactive(CAM);
+   step();
+   end_frame(D,F);
+
+   message_inactive(CT, CAM, "release shutter");
+   inactive(CT);
+
+   step();
+
+   complete(U);
+   complete(CT);
+   complete(CAM);
+   complete(LD);
+   complete(D);
+
 
 The camera is in continuous-shot mode.  The controller presses the camera
 shutter button and keeps it pressed.  The camera initializes and when it is
@@ -149,42 +192,6 @@ done with the exposure it resets the flash output and the driver turns off the
 LED.  The camera saves the picture.  This flash cycle repeats until all LEDs
 have flashed.  Then the LED driver will tell the controller to release the
 shutter button and the camera will stop.
-
-.. pic:: uml
-   :caption: CCeH design sequence diagram
-
-   actor User               as u
-   participant Controller   as ctrl
-   participant Camera       as cam
-   participant "LED Driver" as drv
-   participant Dome         as dome
-
-   u -> cam  : set exposure
-   u -> ctrl : push start button
-
-   ctrl -> cam : press shutter
-
-   loop on all LEDs in dome
-   cam -> drv  : flash on
-   activate cam
-   drv -> dome : turn LED on
-   activate dome
-   hnote over cam : taking exposure
-   |||
-   cam -> drv  : flash off
-   deactivate cam
-   drv -> dome : turn LED off
-   deactivate dome
-   activate cam #ccc
-   |||
-   hnote over cam : saving picture
-   |||
-   drv -[#transparent]> dome
-   deactivate cam
-   end
-
-   drv  -> ctrl : last LED
-   ctrl -> cam  : release shutter
 
 This design conserves energy, because the LEDs are turned on only for the time
 needed to take the exposure, and turned off during the time the camera processes
@@ -251,7 +258,7 @@ cut out of a standard 2.54" striped PCB.
    LEDs for replacement purposes.
 
 
-Led Driver
+LED Driver
 ----------
 
 The LED driver section we designed is very flexible.  Adjusting component values

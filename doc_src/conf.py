@@ -45,18 +45,11 @@ extensions = [
 
 pic_options = {
     'pic' : {
-        'program'  : "m4 | dpic -v",
-        'shell'    : True,
+        'program'  : ["dpic", "-v"],
         'align'    : "center",
         'preamble' : """
 .PS
-define component { shaded "#fefece" outline "#a80136" };
-define note      { shaded "#fbfb77" outline "#a80136" rad 0.25 };
-define external  { shaded "#fefece" outline "#000000" };
-define astyle    { thickness 1 color "#a80136" };
-boxwid    = 1.3;
-arrowhead = 3;
-linethick = 1.5;
+copy "config.pic";
 """,
         'postamble' : """
 .PE
@@ -67,6 +60,18 @@ linethick = 1.5;
         'align'     : "center",
         'preamble'  : "@startuml\n",
         'postamble' : "\n@enduml\n",
+    },
+    'seq' : {
+        'program'  : ["dpic", "-v"],
+        'align'    : "center",
+        'preamble' : """
+.PS
+copy "sequence.pic";
+copy "config.pic";
+""",
+        'postamble' : """
+.PE
+""",
     },
     'dot' : {
         'program'   : ["dot", "-Tsvg"],

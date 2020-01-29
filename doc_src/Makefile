@@ -11,7 +11,6 @@ BUILDDIR      = ../docs
 .PHONY: html latexpdf clean Makefile
 
 html: Makefile
-	for i in light*.png; do convert "$$i" -trim "$$i"; done
 	$(SPHINXBUILD) -b html $(SPHINXOPTS) $(SOURCEDIR) $(BUILDDIR)
 	@echo
 	@echo "Build finished. The HTML pages are in $(BUILDDIR)."
