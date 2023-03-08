@@ -272,6 +272,7 @@ ISR (TIMER1_COMPA_vect) {
     TCCR1B = 0;
 
     leds_off ();
+    stop_camera();
 }
 
 // Main routine
@@ -321,6 +322,8 @@ int main () {
     init_ms ();
 
     sei ();
+
+    write595 (LED_595_MASK[0]);
 
     while (1) {
         if (start_button_changed) {
