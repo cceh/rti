@@ -245,7 +245,7 @@ Duris S 8  GW P9LMS2.EM-NQNS-57S5-0    350  19.8 200 4SMD 0.60     50 RS      87
 For our dome we selected the make: *Osram Duris S8 GW P9LMS1.EM-NSNU-57S5-0*
 mainly because they were comparatively easy to solder by hand.  They come in 5 ×
 5 mm (4SMD) packages, which we then soldered onto postage-stamp sized pieces we
-cut out of a standard 2.54" striped PCB.
+cut out of a standard 2.54mm striped PCB.
 
 .. figure:: ../images/DSC_2886.jpg
    :align: center

@@ -45,39 +45,39 @@ extensions = [
 
 pic_options = {
     'pic' : {
-        'program'  : ["dpic", "-v"],
-        'align'    : "center",
-        'preamble' : """
+        'program' : ["dpic", "-v"],
+        'align'   : "center",
+        'prolog'  : """
 .PS
 copy "config.pic";
 """,
-        'postamble' : """
+        'epilog' : """
 .PE
 """,
     },
     'uml' : {
-        'program'   : ["plantuml", "-tsvg", "-p"],
-        'align'     : "center",
-        'preamble'  : "@startuml\n",
-        'postamble' : "\n@enduml\n",
+        'program' : ["plantuml", "-tsvg", "-p"],
+        'align'   : "center",
+        'prolog'  : "@startuml\n",
+        'epilog'  : "\n@enduml\n",
     },
     'seq' : {
-        'program'  : ["dpic", "-v"],
-        'align'    : "center",
-        'preamble' : """
+        'program' : ["dpic", "-v"],
+        'align'   : "center",
+        'prolog'  : """
 .PS
 copy "sequence.pic";
 copy "config.pic";
 """,
-        'postamble' : """
+        'epilog' : """
 .PE
 """,
     },
     'dot' : {
-        'program'   : ["dot", "-Tsvg"],
-        'align'     : "center",
-        'preamble'  : "",
-        'postamble' : "",
+        'program' : ["dot", "-Tsvg"],
+        'align'   : "center",
+        'prolog'  : "",
+        'epilog'  : "",
     },
 }
 
