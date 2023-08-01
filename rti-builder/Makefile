@@ -8,7 +8,7 @@ CFLAGS = -std=c11 -Wall -Wextra -fopenmp
 LDFLAGS = -g
 LIBS = -lm -ljpeg -lblas -llapacke -lgomp
 
-.PHONY: all test-images test-exploder
+.PHONY: all clean test test-images test-exploder
 
 all: $(BINDIR)/ptm-decoder $(BINDIR)/ptm-encoder $(BINDIR)/ptm-exploder
 
@@ -41,6 +41,8 @@ $(BINDIR)/ptm-exploder: ptm-exploder.o ptmlib.o
 PTMS        := $(wildcard $(PTMDIR)/*.ptm)
 JPEGS       := $(patsubst $(PTMDIR)/%.ptm, $(IMGDIR)/%.jpeg, $(PTMS))
 
+test: test-images test-exploder
+
 test-images: $(JPEGS)
 
 $(IMGDIR)/%.jpeg : $(PTMDIR)/%.ptm $(BINDIR)/ptm-decoder
@@ -48,3 +50,6 @@ $(IMGDIR)/%.jpeg : $(PTMDIR)/%.ptm $(BINDIR)/ptm-decoder
 
 test-exploder: $(BINDIR)/ptm-exploder
 	$(BINDIR)/ptm-exploder $(PTMDIR)/shell6.ptm $(PTMDIR)/sample.lp $(IMGDIR)/shell6.jpg
+
+clean:
+	rm $(BUILDDIR)/* $(IMGDIR)/*
