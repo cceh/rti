@@ -99,7 +99,7 @@ typedef struct {
 } ptm_format_t;
 
 /** An array containing the PTM file formats we support. */
-const ptm_format_t ptm_formats[6];
+extern const ptm_format_t ptm_formats[6];
 
 /** Holds information about the input images and other. */
 typedef struct {
