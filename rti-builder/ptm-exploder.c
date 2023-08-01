@@ -65,7 +65,8 @@ int main (int argc, char *argv[]) {
         return 1;
     }
 
-    float u = 0.0, v = 0.0;
+    float u = 0.0;
+    float v = 0.0;
     int n = 0;
     char *filename = malloc (strlen (filename_out) + 20);
     strcpy (filename, filename_out);
@@ -78,7 +79,6 @@ int main (int argc, char *argv[]) {
     while (getline (&line, &len, fp_lp) != -1) {
         char *buffer = malloc (len + 1);
         if (sscanf (line, "%s %f %f", buffer, &u, &v) == 3) {
-            free (buffer);
             ++n;
             sprintf (ext, "%03d.jpeg", n);
 
@@ -96,7 +96,9 @@ int main (int argc, char *argv[]) {
 
             fclose (fp_out);
         }
+        free (buffer);
     }
+    fclose (fp_lp);
     free (filename);
 
     /* Cleanup */

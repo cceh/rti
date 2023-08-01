@@ -43,8 +43,8 @@ int main (int argc, char *argv[]) {
     }
 
     const char *filename = argv[1];
-    float u = 0.0,
-          v = 0.0;
+    float u = 0.0;
+    float v = 0.0;
     if (argc == 4) {
         sscanf (argv[2], "%f", &u);
         sscanf (argv[3], "%f", &v);

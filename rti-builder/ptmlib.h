@@ -111,7 +111,7 @@ typedef struct {
     size_t decoder_stride;  /**< The decoder stride in the image buffer, eg. how
                                much to jump to get from one image to the
                                next. */
-    size_t n_decoders;      /**< The no. of decoders == no. of images. */
+    unsigned int n_decoders; /**< The no. of decoders == no. of images. */
 } ptm_image_info_t;
 
 /** This struct contains all information that goes into the PTM header.
@@ -153,8 +153,8 @@ typedef struct {
 /** Clip against inter-sample overflow: While all samples may be in the range
     [0..255] the reconstructed curve may well go beyond that range.  Made an
     inline function instead of a macro to avoid multiple evaluation of POLY. */
-inline JSAMPLE CLIP (float f) {
-    return f > 255.0 ? 255.0 : (f < 0.0 ? 0.0 : f);
+inline JSAMPLE CLIP (const float f) {
+    return f > 255.0f ? 255 : (f < 0.0f ? 0 : f);
 }
 
 #define LUM(r,g,b) ((unsigned int) r + (unsigned int) g + (unsigned int) b)
@@ -184,7 +184,7 @@ ptm_header_t *ptm_alloc_header ();
  *
  * @return A pointer to the allocated block struct.
  */
-ptm_block_t *ptm_alloc_blocks (ptm_header_t *ptm_header);
+ptm_block_t *ptm_alloc_blocks (const ptm_header_t *ptm_header);
 
 /**
  * Free the structure allocated by ptm_free_blocks().
@@ -192,7 +192,7 @@ ptm_block_t *ptm_alloc_blocks (ptm_header_t *ptm_header);
  * @param ptm_header A pointer to an initialized ptm_header_t struct.
  * @param blocks     The structure to free.
  */
-void ptm_free_blocks (ptm_header_t *ptm_header, ptm_block_t *blocks);
+void ptm_free_blocks (const ptm_header_t *ptm_header, ptm_block_t *blocks);
 
 /**
  * Read the header section of a PTM file.
@@ -209,7 +209,7 @@ ptm_header_t *ptm_read_header (FILE *fp);
  * @param fp         A file pointer to a file open for writing.
  * @param ptm_header A pointer to an initialized ptm_header_t struct.
  */
-void ptm_write_header (FILE *fp, ptm_header_t *ptm_header);
+void ptm_write_header (FILE *fp, const ptm_header_t *ptm_header);
 
 /**
  * Read the blocks from a PTM file.
@@ -220,7 +220,7 @@ void ptm_write_header (FILE *fp, ptm_header_t *ptm_header);
  * @param ptm_header A pointer to an initialized ptm_header_t struct.
  * @param blocks     A pointer to an allocated ptm_block_t struct.
  */
-void ptm_read_ptm  (FILE *fp, ptm_header_t *ptm_header, ptm_block_t *blocks);
+void ptm_read_ptm  (FILE *fp, const ptm_header_t *ptm_header, ptm_block_t *blocks);
 
 /**
  * Write the blocks to a PTM file.
@@ -242,7 +242,7 @@ void ptm_write_ptm (FILE *fp, ptm_header_t *ptm_header, ptm_block_t *blocks);
  * @param u The u coordinate of the light.
  * @param v The v coordinate of the light.
  */
-void ptm_write_jpeg (FILE *fp, ptm_header_t *ptm_header, ptm_block_t *blocks, float u, float v);
+void ptm_write_jpeg (FILE *fp, const ptm_header_t *ptm_header, ptm_block_t *blocks, float u, float v);
 
 /**
  * Does the singular value decomposition.
@@ -330,7 +330,7 @@ void ptm_normal (const ptm_unscaled_coefficients_t *coeffs, float *nu, float *nv
  * @param m
  * @param n
  */
-void ptm_print_matrix (const char *name, float* M, int m, int n);
+void ptm_print_matrix (const char *name, const float* M, int m, int n);
 
 
 #endif

@@ -58,7 +58,7 @@ struct arguments {
                  (end - start) * 1000 / CLOCKS_PER_SEC);                \
         fflush (stderr);                                                \
     }                                                                   \
-    start = clock ();
+    start = clock ()
 
 
 static error_t parse_opt (int key, char *arg, struct argp_state *state) {
@@ -122,7 +122,8 @@ int main (int argc, char *argv[]) {
 
     argp_parse (&argp, argc, argv, 0, 0, &arguments);
 
-    clock_t start, end;
+    clock_t start;
+    clock_t end;
     start = clock ();
 
     /* Open the light points file and build one JPEG decoder per input file.
@@ -150,7 +151,9 @@ int main (int argc, char *argv[]) {
     size_t len = 0;
     while (getline (&line, &len, fp_lp) != -1) {
         char *filename = malloc (len + 1);
-        float u = 0.0, v = 0.0, w = 0.0;
+        float u = 0.0f;
+        float v = 0.0f;
+        float w = 0.0f;
         if (sscanf (line, "%s %f %f %f", filename, &u, &v, &w) >= 3) {
 
             /* fprintf (stderr, "reading %s %f %f %f ...\n",
@@ -180,7 +183,8 @@ int main (int argc, char *argv[]) {
             jpeg_stdio_src (dinfo, decoder->fp);
             (void) jpeg_read_header (dinfo, TRUE);
 
-            // use YCbCr color space for PTM_LUM files
+            // use YCbCr color space for PTM_LUM and PTM_LRGB files
+            // use RGB color space for PTM_RGB files
             dinfo->out_color_space = (ptm_header->format->color_components > 0) ? JCS_YCbCr : JCS_RGB;
 
             (void) jpeg_start_decompress (dinfo);
@@ -198,12 +202,12 @@ int main (int argc, char *argv[]) {
     fclose (fp_lp);
 
     if (info.n_decoders < 12) {
-        fprintf (stderr, "not enough jpegs %lu < %d\n", info.n_decoders, 12);
+        fprintf (stderr, "not enough jpegs %u < %d\n", info.n_decoders, 12);
         return 1;
     }
 
     if (arguments.verbose) {
-        fprintf (stderr, "%lu JPEGs opened ...\n", info.n_decoders);
+        fprintf (stderr, "%u JPEGs opened ...\n", info.n_decoders);
         fflush (stderr);
     }
 
@@ -219,7 +223,7 @@ int main (int argc, char *argv[]) {
         fflush (stderr);
     }
 
-    struct jpeg_decompress_struct *dinfo = &decoders[0]->dinfo;
+    const struct jpeg_decompress_struct *dinfo = &decoders[0]->dinfo;
 
     info.height         = dinfo->output_height;
     info.width          = dinfo->output_width;
@@ -232,7 +236,7 @@ int main (int argc, char *argv[]) {
 
     // sanity check: all images must be the same size
     for (size_t i = 0; i < info.n_decoders; ++i) {
-        struct jpeg_decompress_struct *dinfo2 = &decoders[i]->dinfo;
+        const struct jpeg_decompress_struct *dinfo2 = &decoders[i]->dinfo;
         assert (dinfo2->output_width      == dinfo->output_width);
         assert (dinfo2->output_height     == dinfo->output_height);
         assert (dinfo2->output_components == dinfo->output_components);
@@ -259,7 +263,7 @@ int main (int argc, char *argv[]) {
         free (row_pointer);
     }
 
-    TIME ("time for decoding %lu JPEGs = %lums\n", info.n_decoders);
+    TIME ("time for decoding %u JPEGs = %lums\n", info.n_decoders);
 
     // float[rgb][y][x][coeffs]
     ptm_unscaled_coefficients_t *coeffs = NULL;
@@ -330,12 +334,12 @@ int main (int argc, char *argv[]) {
             float cr = ycbcr->cr - CENTERJSAMPLE;
             // See: https://github.com/libjpeg-turbo/libjpeg-turbo/blob/master/jdcolor.c
             // See: https://en.wikipedia.org/wiki/YCbCr#JPEG_conversion
-            rgb->r = CLIP (y                + 1.40200 * cr);
-            rgb->g = CLIP (y - 0.34414 * cb - 0.71414 * cr);
-            rgb->b = CLIP (y + 1.77200 * cb);
+            rgb->r = CLIP (y                 + 1.40200f * cr);
+            rgb->g = CLIP (y - 0.34414f * cb - 0.71414f * cr);
+            rgb->b = CLIP (y + 1.77200f * cb);
 
             // finally fix the polynome factors so that Y * R' ~ R
-            float norm = 256.0 / y;
+            float norm = 256.0f / y;
             cfs->cu2 *= norm;
             cfs->cv2 *= norm;
             cfs->cuv *= norm;
@@ -428,7 +432,7 @@ int main (int argc, char *argv[]) {
         decoder_t *decoder = decoders[i];
         free (decoder->filename);
         free (decoder);
-    };
+    }
     free (decoders);
     free (ptm_header);
 }
